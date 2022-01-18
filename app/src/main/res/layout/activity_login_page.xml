@@ -16,176 +16,56 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/logincard" />
 
-    <TextView
-        android:id="@+id/titleSignin"
-        android:layout_width="205dp"
+    <LinearLayout
+        android:id="@+id/upperPartContainer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="101dp"
-        android:layout_marginBottom="523dp"
-        android:fontFamily="@font/calibri"
         android:gravity="center"
-        android:text="@string/signup_title"
-        android:textColor="@color/app_theme_black"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="83dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="-75dp"
-        android:layout_marginBottom="346dp"
-        android:fontFamily="@font/quicksand_font"
-        android:text="@string/signup_keep_login"
-        android:textSize="16sp" />
-
-    <CheckBox
-        android:id="@+id/signin_Checkbox"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="51dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="309dp"
-        android:layout_marginBottom="330dp" />
-
-    <EditText
-        android:id="@+id/signin_Email_ET"
-        android:layout_width="330dp"
-        android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="38dp"
-        android:layout_marginBottom="452dp"
-        android:background="@drawable/signin_edit_text_shape"
-        android:fontFamily="@font/quicksand_light"
-        android:hint="@string/signup_email"
-        android:padding="10dp"
-        android:textColor="#000000"
-        android:textSize="15sp" />
-
-    <EditText
-        android:id="@+id/signin_Password_ET"
-        android:layout_width="330dp"
-        android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="392dp"
-        android:background="@drawable/signin_edit_text_shape"
-        android:fontFamily="@font/quicksand_light"
-        android:hint="@string/signup_password"
-        android:padding="10dp"
-        android:textSize="15sp" />
-
-    <Button
-        android:id="@+id/signup_buttonSignin"
-        android:layout_width="342dp"
-        android:layout_height="58dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="46dp"
-        android:layout_marginBottom="250dp"
-        android:background="@drawable/signin_button_shape"
-        android:backgroundTint="@color/app_theme_gold"
-        android:fontFamily="@font/quicksand_font"
-        android:text="@string/signup_button_title"
-        android:textColor="@color/white"
-        android:textSize="18sp" />
-
-    <ImageView
-        android:id="@+id/dustnshine"
-        android:layout_width="132dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="154dp"
-        android:layout_marginEnd="125dp"
-        android:layout_marginBottom="617dp"
-        app:srcCompat="@drawable/dustnshine" />
-
-    <TextView
-        android:id="@+id/DustnShine"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="95dp"
-        android:fontFamily="@font/quicksand_font"
-        android:text="@string/signup_DustnShine"
-        android:textAlignment="center"
-        android:textColor="@color/app_theme_blue"
-        android:textSize="30sp" />
-
-<!--
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".LoginPage"
-    android:orientation="vertical"
-    android:background="@color/app_theme_blue"
-    android:gravity="center">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="180dp"
-        android:background="@drawable/signin_container_shape"
-        android:elevation="2dp"
-        android:padding="16dp">
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:src="@drawable/dustnshine" />
 
         <TextView
-            android:id="@+id/titleSignin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
             android:gravity="center"
-            android:text="@string/signup_title"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/quicksand_font"/>
+            android:text="DustNShine"
+            android:textColor="@color/app_theme_blue"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+        |
 
-        &lt;!&ndash;Input Texts&ndash;&gt;
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Sign In"
+            android:fontFamily="@font/quicksand_font"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/upperPartContainer"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginLeft="45dp">
 
         <EditText
             android:id="@+id/signin_Email_ET"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_below="@+id/titleSignin"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/signin_edit_text_shape"
-            android:hint="@string/signup_email"
             android:fontFamily="@font/quicksand_font"
+            android:hint="@string/signup_email"
             android:padding="10dp" />
 
         <EditText
@@ -195,8 +75,8 @@
             android:layout_below="@id/signin_Email_ET"
             android:layout_marginTop="10dp"
             android:background="@drawable/signin_edit_text_shape"
-            android:hint="@string/signup_password"
             android:fontFamily="@font/quicksand_font"
+            android:hint="@string/signup_password"
             android:padding="10dp" />
 
         <CheckBox
@@ -210,10 +90,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/signin_Password_ET"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="19dp"
             android:layout_toRightOf="@id/signin_Checkbox"
-            android:text="@string/signup_keep_login"
             android:fontFamily="@font/quicksand_font"
+            android:text="@string/signup_keep_login"
             android:textSize="16sp" />
 
         <Button
@@ -226,6 +106,9 @@
             android:backgroundTint="@color/app_theme_gold"
             android:text="@string/signup_button_title"
             android:textColor="@color/white" />
+
+
+
     </RelativeLayout>
-</RelativeLayout>-->
+
 </RelativeLayout>
