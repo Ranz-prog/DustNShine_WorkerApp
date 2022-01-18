@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginPage"
+    android:orientation="vertical"
+    android:background="@color/app_theme_blue"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="180dp"
+        android:background="@drawable/signin_container_shape"
+        android:elevation="2dp"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/titleSignin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:gravity="center"
+            android:text="@string/signup_title"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/quicksand_font"/>
+
+        <!--Input Texts-->
+
+        <EditText
+            android:id="@+id/signin_Email_ET"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/titleSignin"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/signin_edit_text_shape"
+            android:hint="@string/signup_email"
+            android:fontFamily="@font/quicksand_font"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/signin_Password_ET"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/signin_Email_ET"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/signin_edit_text_shape"
+            android:hint="@string/signup_password"
+            android:fontFamily="@font/quicksand_font"
+            android:padding="10dp" />
+
+        <CheckBox
+            android:id="@+id/signin_Checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/signin_Password_ET"
+            android:layout_marginTop="14dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/signin_Password_ET"
+            android:layout_marginTop="18dp"
+            android:layout_toRightOf="@id/signin_Checkbox"
+            android:text="@string/signup_keep_login"
+            android:fontFamily="@font/quicksand_font"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/signup_buttonSignin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/signin_Checkbox"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/signin_button_shape"
+            android:backgroundTint="@color/app_theme_gold"
+            android:text="@string/signup_button_title"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+</RelativeLayout>

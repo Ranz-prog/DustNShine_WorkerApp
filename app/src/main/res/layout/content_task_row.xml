@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginTop="6dp"
+    app:cardCornerRadius="10dp"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:background="@drawable/container_border">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/clientImageView"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/task_service_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/clientImageView"
+            android:fontFamily="@font/quicksand_font"
+            android:text="Customer Details"
+            android:textColor="@color/app_theme_blue"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/task_clientName_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/task_service_label"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@+id/clientImageView"
+            android:fontFamily="@font/quicksand_font"
+            android:singleLine="true"
+            android:text="Client Name:"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/task_clientName_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/task_service_label"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@id/task_clientName_label"
+            android:fontFamily="@font/quicksand_font"
+            android:text="Juan Delacruz" />
+
+        <TextView
+            android:id="@+id/task_location_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/task_clientName_label"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/clientImageView"
+            android:fontFamily="@font/quicksand_font"
+            android:singleLine="true"
+            android:text="Location:"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/task_clientLocation_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/task_clientName_TV"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@id/task_location_label"
+            android:fontFamily="@font/quicksand_font"
+            android:text="Dagupan, Pangasinan"
+            android:singleLine="true"/>
+
+        <TextView
+            android:id="@+id/tasK_contact_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/task_location_label"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/clientImageView"
+            android:fontFamily="@font/quicksand_font"
+            android:text="Contact Number:"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/task_clientContact_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/task_clientLocation_TV"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@id/tasK_contact_label"
+            android:fontFamily="@font/quicksand_font"
+            android:text="09123456789" />
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

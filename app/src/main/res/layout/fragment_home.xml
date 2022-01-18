@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/titleTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/home_title"
+        android:textColor="@color/app_theme_gold"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/quicksand_font"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/task_RecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleTask"
+        android:layout_marginTop="10dp" />
+
+</RelativeLayout>

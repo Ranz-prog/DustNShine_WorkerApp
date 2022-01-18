@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CustomerDetailsPage"
+    android:padding="10dp">
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/client_locationMap"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:elevation="6dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/client_locationMap"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:background="@drawable/container_border">
+
+        <TextView
+            android:id="@+id/title1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lorem ipsum"
+            android:textSize="18dp"
+            android:fontFamily="@font/quicksand_font"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/description1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title1"
+            android:text="Lorem ipsum"
+            android:textSize="14dp"
+            android:fontFamily="@font/quicksand_font" />
+        <TextView
+            android:id="@+id/title2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description1"
+            android:text="Lorem ipsum"
+            android:textSize="18dp"
+            android:fontFamily="@font/quicksand_font"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="8dp"/>
+        <TextView
+            android:id="@+id/desc2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title2"
+            android:text="Lorem ipsum"
+            android:textSize="14dp"
+            android:fontFamily="@font/quicksand_font" />
+
+        <TextView
+            android:id="@+id/title3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/desc2"
+            android:text="Lorem ipsum"
+            android:textSize="18dp"
+            android:fontFamily="@font/quicksand_font"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="8dp"/>
+        <TextView
+            android:id="@+id/desc3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title3"
+            android:text="Lorem ipsum"
+            android:textSize="14dp"
+            android:fontFamily="@font/quicksand_font" />
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/app_theme_blue"
+        android:text="Start Work"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

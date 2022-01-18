@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ServiceDetails"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+
+    <LinearLayout
+        android:id="@id/serviceDescription"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/serviceTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand_font"
+            android:text="Lorem Ipsum"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/serviceDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/serviceTitle"
+            android:text="Lorem ipsum lorem ipsum" />
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/serviceDescription"
+        android:padding="10dp"
+        android:elevation="4dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/container_border_2">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/serviceList_Recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <!--<RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:padding="10dp"
+            >
+
+            <TextView
+                android:id="@+id/titleCleaningPackage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cleaning_title"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/service_checkBox1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titleCleaningPackage"
+
+                />
+
+            <ImageView
+                android:id="@+id/service_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_below="@id/titleCleaningPackage"
+                android:src="@drawable/dustnshine"
+                android:layout_toRightOf="@id/service_checkBox1"
+                android:layout_marginLeft="4dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titleCleaningPackage"
+                android:layout_toRightOf="@id/service_icon"
+                android:text="Cleaning Package"
+                android:layout_marginLeft="4dp"
+                />
+        </RelativeLayout>-->
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Work is Done"
+        android:background="@color/app_theme_blue"
+        android:textColor="@color/white"/>
+
+</RelativeLayout>

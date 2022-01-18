@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">DNSWorker</string>
+
+
+    //Splash Title
+    <string name="title_splash">DustNShine</string>
+
+    //Sign up Text
+    <string name="signup_title">Sign In</string>
+    <string name="signup_email">Username or email</string>
+    <string name="signup_password">Password</string>
+    <string name="signup_keep_login">Keep me signed in</string>
+    <string name="signup_button_title">Sign in</string>
+
+    //Main Menu Titles
+    <string name="home_title">Tasks</string>
+    <string name="message_title">Message</string>
+    <string name="bookings_title">Bookings</string>
+
+
+    //Customer Details
+    <string name="cleaning_title">Cleaning Package</string>
+</resources>
