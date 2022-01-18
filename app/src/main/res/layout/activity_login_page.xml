@@ -1,4 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_theme_blue"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".LoginPage">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/logincard" />
+
+    <TextView
+        android:id="@+id/titleSignin"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="101dp"
+        android:layout_marginBottom="523dp"
+        android:fontFamily="@font/calibri"
+        android:gravity="center"
+        android:text="@string/signup_title"
+        android:textColor="@color/app_theme_black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="83dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="-75dp"
+        android:layout_marginBottom="346dp"
+        android:fontFamily="@font/quicksand_font"
+        android:text="@string/signup_keep_login"
+        android:textSize="16sp" />
+
+    <CheckBox
+        android:id="@+id/signin_Checkbox"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="309dp"
+        android:layout_marginBottom="330dp" />
+
+    <EditText
+        android:id="@+id/signin_Email_ET"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="452dp"
+        android:background="@drawable/signin_edit_text_shape"
+        android:fontFamily="@font/quicksand_light"
+        android:hint="@string/signup_email"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/signin_Password_ET"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="392dp"
+        android:background="@drawable/signin_edit_text_shape"
+        android:fontFamily="@font/quicksand_light"
+        android:hint="@string/signup_password"
+        android:padding="10dp"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/signup_buttonSignin"
+        android:layout_width="342dp"
+        android:layout_height="58dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="250dp"
+        android:background="@drawable/signin_button_shape"
+        android:backgroundTint="@color/app_theme_gold"
+        android:fontFamily="@font/quicksand_font"
+        android:text="@string/signup_button_title"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/dustnshine"
+        android:layout_width="132dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="154dp"
+        android:layout_marginEnd="125dp"
+        android:layout_marginBottom="617dp"
+        app:srcCompat="@drawable/dustnshine" />
+
+    <TextView
+        android:id="@+id/DustnShine"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="95dp"
+        android:fontFamily="@font/quicksand_font"
+        android:text="@string/signup_DustnShine"
+        android:textAlignment="center"
+        android:textColor="@color/app_theme_blue"
+        android:textSize="30sp" />
+
+<!--
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -32,7 +175,7 @@
             android:textStyle="bold"
             android:fontFamily="@font/quicksand_font"/>
 
-        <!--Input Texts-->
+        &lt;!&ndash;Input Texts&ndash;&gt;
 
         <EditText
             android:id="@+id/signin_Email_ET"
@@ -84,4 +227,5 @@
             android:text="@string/signup_button_title"
             android:textColor="@color/white" />
     </RelativeLayout>
+</RelativeLayout>-->
 </RelativeLayout>
