@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginTop="269dp"
-            android:fontFamily="@font/quicksand_font"
+            android:fontFamily="@font/calibri_font"
             android:gravity="center"
             android:text="@string/title_splash"
             android:textStyle="bold"
@@ -31,7 +31,6 @@
             android:layout_width="match_parent"
             android:layout_height="351dp"
             android:layout_below="@id/titleTV"
-
             android:layout_marginTop="49dp"
             app:srcCompat="@drawable/launching" />
 
