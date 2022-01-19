@@ -3,7 +3,7 @@
     <font
         android:fontStyle="normal"
         android:fontWeight="400"
-        android:font="@font/calibri" />
+        android:font="@font/calibriregular" />
     <font
         android:fontStyle="italic"
         android:fontWeight="400"
@@ -11,6 +11,6 @@
     <font
         android:fontStyle="italic"
         android:fontWeight="400"
-        android:font="@font/calibrib" />
+        android:font="@font/calibribold" />
 
 </font-family>
