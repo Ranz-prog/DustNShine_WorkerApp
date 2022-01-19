@@ -9,17 +9,22 @@
         <entry key="..\:/Users/adria/Desktop/Worker/DNS/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/adria/Desktop/Worker/DNS/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/adria/Desktop/Worker/DNS/app/src/main/res/menu/bottom_navigation.xml" value="0.20102564102564102" />
+        <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/drawable/ic_arrowback.xml" value="0.21203703703703702" />
+        <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/font/calibri_font.xml" value="0.21203703703703702" />
+        <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/font/quicksand_font.xml" value="0.21203703703703702" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/font/quicksand_medium.xml" value="0.22777777777777777" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/font/raleway_extrabold.xml" value="0.1265625" />
-        <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_customer_details.xml" value="0.2" />
+        <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_customer_details.xml" value="0.18" />
+        <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_customer_details_page.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_login_page.xml" value="0.22" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_main.xml" value="0.16" />
+        <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_main_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/menu/bottom_navigation.xml" value="0.1" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

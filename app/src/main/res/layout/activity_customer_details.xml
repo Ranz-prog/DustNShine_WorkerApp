@@ -6,59 +6,193 @@
     android:layout_height="match_parent"
     tools:context=".CustomerDetails"
     android:orientation="vertical"
-    android:paddingTop="20dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingBottom="10dp">
+    android:padding="10dp">
 
+    <ImageView
+        android:id="@+id/ic_arrowback"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_arrowback"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Customer Details"
+        android:layout_toRightOf="@+id/ic_arrowback"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/app_theme_gold"
+        />
 
-    <ScrollView
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/message_64"/>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@id/ic_arrowback"
+        android:layout_marginTop="10dp">
 
-        <RelativeLayout
-            android:id="@+id/tabBarArea"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/arrow_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_arrowback"
-                android:layout_marginTop="4dp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/titleCustomerDetails"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/arrow_back"
-                android:fontFamily="@font/quicksand_font"
-                android:text="Customer Details"
-                android:textColor="@color/app_theme_gold"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/mapView"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"/>
 
-            <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_alignParentEnd="true"
-                android:src="@drawable/message_64" />
+                <TextView
+                    android:id="@+id/customerDetailsTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/mapView"
+                    android:text="Customer Details"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/app_theme_blue"
+                    android:layout_marginTop="10dp"/>
 
-        </RelativeLayout>
-        <com.google.android.gms.maps.MapView
-            android:id="@+id/mapView"
-            android:layout_below="@id/tabBarArea"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginTop="20dp" />
+                <TextView
+                    android:id="@+id/customerNameLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/customerDetailsTV"
+                    android:text="Customer Name: "
+                    android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/serviceDetails_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Customer Details"
-            />
-    </ScrollView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/customerDetailsTV"
+                    android:layout_toRightOf="@id/customerNameLabel"
+                    android:text="Juan Delacruz" />
+
+                <TextView
+                    android:id="@+id/customerLocationLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/customerNameLabel"
+                    android:text="Location:"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="431 St. Brgy, Poblacion, Dagupan, Pangasinan"
+                    android:layout_toRightOf="@id/customerLocationLabel"
+                    android:layout_below="@id/customerNameLabel"
+                    android:layout_marginLeft="4dp"/>
+
+                <TextView
+                    android:id="@+id/customerContactLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/customerLocationLabel"
+                    android:text="Contact Number"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="09661581921"
+                    android:layout_toRightOf="@+id/customerContactLabel"
+                    android:layout_below="@id/customerLocationLabel"
+                    android:layout_marginLeft="4dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/customerContactLabel"
+                    android:layout_marginTop="10dp"
+                    android:text="Booking Details"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="@color/app_theme_blue"
+                    />
+
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start Work"
+        android:layout_alignParentBottom="true"
+        android:background="@color/app_theme_blue"
+        android:textColor="@color/white"/>
 
 </RelativeLayout>
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".CustomerDetails"
+android:orientation="vertical"
+android:paddingTop="20dp"
+android:paddingLeft="10dp"
+android:paddingRight="10dp"
+android:paddingBottom="10dp">
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/tabBarArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/arrow_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrowback"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/titleCustomerDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/arrow_back"
+            android:fontFamily="@font/quicksand_font"
+            android:text="Customer Details"
+            android:textColor="@color/app_theme_gold"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/message_64" />
+
+    </RelativeLayout>
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_below="@id/tabBarArea"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/serviceDetails_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Customer Details"
+        />
+</ScrollView>
+
+</RelativeLayout>-->
