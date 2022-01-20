@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/ic_arrowback"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_arrowback" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/ic_arrowback"
+        android:text="Customer Feedback"
+        android:textColor="@color/app_theme_gold"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+
+        android:id="@+id/ic_upper"
+        android:layout_width="401dp"
+        android:layout_height="369dp"
+        android:layout_below="@id/ic_arrowback"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/customerDetailsTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Customer Details"
+            android:textColor="@color/app_theme_blue"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/customerNameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/customerDetailsTV"
+            android:text="Customer Name: "
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/customerDetailsTV"
+            android:layout_toRightOf="@id/customerNameLabel"
+            android:text="Juan Delacruz" />
+
+        <TextView
+            android:id="@+id/customerLocationLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/customerNameLabel"
+            android:text="Location:"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/customerNameLabel"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@id/customerLocationLabel"
+            android:text="431 St. Brgy, Poblacion, Dagupan, Pangasinan" />
+
+        <TextView
+            android:id="@+id/customerContactLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/customerLocationLabel"
+            android:text="Contact Number"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/customerLocationLabel"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/customerContactLabel"
+            android:text="09661581921" />
+
+        <TextView
+            android:id="@+id/customerbookingdetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/customerContactLabel"
+            android:layout_marginTop="10dp"
+            android:text="Booking Details"
+            android:textColor="@color/app_theme_blue"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/customerpayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/customerbookingdetails"
+            android:layout_marginTop="100dp"
+            android:text="Payment Method"
+            android:textColor="@color/app_theme_blue"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/customertotalcost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/customerpayment"
+            android:layout_marginTop="80dp"
+            android:text="Total Cost: "
+            android:textColor="@color/app_theme_blue"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/customerpayment"
+            android:layout_marginTop="82dp"
+            android:layout_toRightOf="@id/customertotalcost"
+            android:text="Juan Delacruz" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/customerlower"
+        android:layout_width="401dp"
+        android:layout_height="415dp"
+        android:layout_below="@id/ic_upper"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/customerhowsourwork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
+            android:text="How's our work"
+            android:textColor="@color/app_theme_black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:id="@+id/how"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@id/customerhowsourwork"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/container_border_2"
+            android:orientation="horizontal">
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/customerrating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/how"
+            android:fontFamily="@font/quicksand"
+            android:text="Rating"
+            android:textColor="@color/app_theme_black"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

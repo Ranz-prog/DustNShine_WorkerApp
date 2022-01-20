@@ -28,7 +28,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/message_64"/>
+        android:src="@drawable/messageblue" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -47,18 +47,18 @@
                 <com.google.android.gms.maps.MapView
                     android:id="@+id/mapView"
                     android:layout_width="match_parent"
-                    android:layout_height="350dp"/>
+                    android:layout_height="350dp" />
 
                 <TextView
                     android:id="@+id/customerDetailsTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/mapView"
+                    android:layout_marginTop="10dp"
                     android:text="Customer Details"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
                     android:textColor="@color/app_theme_blue"
-                    android:layout_marginTop="10dp"/>
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/customerNameLabel"
@@ -66,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/customerDetailsTV"
                     android:text="Customer Name: "
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -81,16 +81,15 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/customerNameLabel"
                     android:text="Location:"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="431 St. Brgy, Poblacion, Dagupan, Pangasinan"
-                    android:layout_toRightOf="@id/customerLocationLabel"
                     android:layout_below="@id/customerNameLabel"
-                    android:layout_marginLeft="4dp"/>
+                    android:layout_marginLeft="4dp"
+                    android:layout_toRightOf="@id/customerLocationLabel"
+                    android:text="431 St. Brgy, Poblacion, Dagupan, Pangasinan" />
 
                 <TextView
                     android:id="@+id/customerContactLabel"
@@ -98,25 +97,25 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/customerLocationLabel"
                     android:text="Contact Number"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="09661581921"
-                    android:layout_toRightOf="@+id/customerContactLabel"
                     android:layout_below="@id/customerLocationLabel"
-                    android:layout_marginLeft="4dp"/>
+                    android:layout_marginLeft="4dp"
+                    android:layout_toRightOf="@+id/customerContactLabel"
+                    android:text="09661581921" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/customerContactLabel"
                     android:layout_marginTop="10dp"
                     android:text="Booking Details"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
                     android:textColor="@color/app_theme_blue"
-                    />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
         </ScrollView>

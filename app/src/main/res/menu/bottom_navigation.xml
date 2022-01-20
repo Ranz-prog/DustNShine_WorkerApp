@@ -3,9 +3,8 @@
 
     <item
         android:id="@+id/nav_home"
-        android:icon="@drawable/home_64"
-        android:title=""
-        />
+        android:icon="@drawable/home"
+        android:title="" />
     <item
         android:id="@+id/nav_chat"
         android:icon="@drawable/message_64"
