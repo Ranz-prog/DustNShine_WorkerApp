@@ -16,18 +16,19 @@ import java.util.List;
 
 public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> {
 
+    private List<TaskModel> taskModelList;
+    private OnClickTaskListener onClickTaskListener;
 
-    List<TaskModel> taskModelList;
-
-    public Task_Adapter(List<TaskModel> taskModelList){
+    public Task_Adapter(List<TaskModel> taskModelList, OnClickTaskListener onClickTaskListener){
         this.taskModelList = taskModelList;
+        this.onClickTaskListener = onClickTaskListener;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.content_task_row, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
+        ViewHolder viewHolder = new ViewHolder(view, onClickTaskListener);
 
 
         return viewHolder;
@@ -48,17 +49,33 @@ public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> 
         return taskModelList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView task_clientImage;
         private TextView task_clientName, task_clientLocation, task_clientContact;
-        public ViewHolder(@NonNull View itemView) {
+        OnClickTaskListener onClickTaskListener;
+
+        public ViewHolder(@NonNull View itemView, OnClickTaskListener onClickTaskListener) {
             super(itemView);
 
             task_clientImage = itemView.findViewById(R.id.clientImageView);
             task_clientName = itemView.findViewById(R.id.task_clientName_TV);
             task_clientLocation = itemView.findViewById(R.id.task_clientLocation_TV);
             task_clientContact = itemView.findViewById(R.id.task_clientContact_TV);
+
+            this.onClickTaskListener = onClickTaskListener;
+
+            itemView.setOnClickListener(this);
+
         }
+
+        @Override
+        public void onClick(View v) {
+            onClickTaskListener.onClickTask(getAdapterPosition());
+        }
+    }
+
+    public interface OnClickTaskListener{
+        void onClickTask(int position);
     }
 }

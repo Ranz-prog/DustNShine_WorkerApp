@@ -6,7 +6,7 @@
     android:padding="10dp">
 
     <ImageView
-        android:id="@+id/ic_arrowback"
+        android:id="@+id/ic_arrowbackFeeback"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:src="@drawable/ic_arrowback" />
@@ -14,7 +14,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/ic_arrowback"
+        android:layout_toRightOf="@+id/ic_arrowbackFeeback"
         android:text="Customer Feedback"
         android:textColor="@color/app_theme_gold"
         android:textSize="24sp"
@@ -25,7 +25,7 @@
         android:id="@+id/ic_upper"
         android:layout_width="401dp"
         android:layout_height="369dp"
-        android:layout_below="@id/ic_arrowback"
+        android:layout_below="@id/ic_arrowbackFeeback"
         android:layout_marginTop="10dp">
 
         <TextView

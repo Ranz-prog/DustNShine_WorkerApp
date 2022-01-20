@@ -1,6 +1,10 @@
 package com.example.dnsworker.fragment;
 
+import static android.content.ContentValues.TAG;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dnsworker.CustomerDetails;
 import com.example.dnsworker.Models.TaskModel;
 import com.example.dnsworker.R;
 import com.example.dnsworker.adapters.Task_Adapter;
@@ -18,7 +23,7 @@ import com.example.dnsworker.adapters.Task_Adapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskListener {
 
     private RecyclerView taskRecycler;
     private View view;
@@ -37,7 +42,7 @@ public class HomeFragment extends Fragment {
 
         /*taskModels();*/
 
-        taskRecycler.setAdapter(new Task_Adapter(taskModels()));
+        taskRecycler.setAdapter(new Task_Adapter(taskModels(), this));
 
         return view;
     }
@@ -58,5 +63,12 @@ public class HomeFragment extends Fragment {
 
 
 
+    }
+
+    @Override
+    public void onClickTask(int position) {
+        Log.d(TAG, "onClickTask: clicked");
+        Intent intent = new Intent(getContext(), CustomerDetails.class);
+        startActivity(intent);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.dnsworker.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dnsworker.Feedback;
 import com.example.dnsworker.Models.BookingModel;
 import com.example.dnsworker.R;
 import com.example.dnsworker.adapters.BookingAdapter;
@@ -18,7 +20,7 @@ import com.example.dnsworker.adapters.BookingAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookingFragment extends Fragment {
+public class BookingFragment extends Fragment implements BookingAdapter.OnClickBookingListener {
 
     private RecyclerView bookingRecycler;
     private View view;
@@ -35,7 +37,7 @@ public class BookingFragment extends Fragment {
         bookingRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
         //bookingRecycler.setAdapter(new BookingAdapter(bookingModels()));
-        bookingRecycler.setAdapter(new BookingAdapter(bookingModels()));
+        bookingRecycler.setAdapter(new BookingAdapter(bookingModels(), this));
 
         return view;
 
@@ -57,4 +59,10 @@ public class BookingFragment extends Fragment {
 
     }
 
+
+    @Override
+    public void onClickBooking(int position) {
+        Intent intent = new Intent(getActivity(), Feedback.class);
+        startActivity(intent);
+    }
 }

@@ -16,10 +16,12 @@ import java.util.List;
 
 public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingViewHolder>{
 
-    List<BookingModel> bookingModelsList;
+    private List<BookingModel> bookingModelsList;
+    private OnClickBookingListener onClickBookingListener;
 
-    public BookingAdapter(List<BookingModel> bookingModelsList){
+    public BookingAdapter(List<BookingModel> bookingModelsList, OnClickBookingListener onClickBookingListener){
         this.bookingModelsList = bookingModelsList;
+        this.onClickBookingListener = onClickBookingListener;
     }
 
     @NonNull
@@ -27,7 +29,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingV
     public BookingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.content_booking_row, parent, false);
-        BookingViewHolder viewHolder = new BookingViewHolder(view);
+        BookingViewHolder viewHolder = new BookingViewHolder(view, onClickBookingListener);
 
         return viewHolder;
     }
@@ -46,12 +48,15 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingV
         return bookingModelsList.size();
     }
 
-    public class BookingViewHolder extends RecyclerView.ViewHolder{
+
+
+    public class BookingViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView booking_Image;
         private TextView booking_clientName, booking_clientLocation, booking_contactNumber;
 
-        public BookingViewHolder(@NonNull View itemView) {
+        OnClickBookingListener onClickBookingListener;
+        public BookingViewHolder(@NonNull View itemView, OnClickBookingListener onClickBookingListener) {
             super(itemView);
 
             /*Use from task_container_row.xml as sample*/
@@ -61,6 +66,17 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingV
             booking_clientLocation = itemView.findViewById(R.id.booking_clientLocation_TV);
             booking_contactNumber = itemView.findViewById(R.id.booking_clientContact_TV);
 
+            this.onClickBookingListener = onClickBookingListener;
+
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            onClickBookingListener.onClickBooking(getAdapterPosition());
+        }
+    }
+    public interface OnClickBookingListener{
+        void onClickBooking(int position);
     }
 }
