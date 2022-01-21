@@ -20,13 +20,11 @@ public class CustomerDetails extends AppCompatActivity {
 
         arrowBack = findViewById(R.id.ic_arrowback);
 
-/*        arrowBack.setOnClickListener(new View.OnClickListener() {
+        arrowBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CustomerDetails.this, HomeFragment.class);
-                startActivity(intent);
                 finish();
             }
-        });*/
+        });
     }
 }

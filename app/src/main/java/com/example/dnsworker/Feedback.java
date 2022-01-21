@@ -22,13 +22,11 @@ public class Feedback extends AppCompatActivity {
 
         arrowback = findViewById(R.id.ic_arrowbackFeeback);
 
-/*        arrowback.setOnClickListener(new View.OnClickListener() {
+        arrowback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), BookingFragment.class);
-                getApplicationContext().startActivity(intent);
                 finish();
             }
-        });*/
+        });
     }
 }

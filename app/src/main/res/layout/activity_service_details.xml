@@ -5,92 +5,159 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ServiceDetails"
-    android:orientation="vertical"
-    android:padding="10dp">
+    android:orientation="vertical">
 
-
-    <LinearLayout
-        android:id="@id/serviceDescription"
+    <ImageView
+        android:id="@+id/service_Image"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:orientation="vertical">
+        android:layout_height="220dp" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrowback"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"/>
+
+    <RelativeLayout
+        android:id="@+id/customerDetailsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/service_Image"
+        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
+        android:elevation="4dp">
 
         <TextView
-            android:id="@+id/serviceTitle"
-            android:layout_width="match_parent"
+            android:id="@+id/service_customerDetailsLabel"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand_font"
-            android:text="Lorem Ipsum"
-            android:textSize="24sp"
+            android:text="@string/customer_details"
+            android:textColor="@color/app_theme_blue"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!--Customer Name Here-->
+
+        <TextView
+            android:id="@+id/customerNameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/service_customerDetailsLabel"
+            android:text="@string/customer_name"
+            android:fontFamily="@font/calibri_font"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginTop="4dp"/>
+
+
+
+        <TextView
+            android:id="@+id/service_customerNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/customerNameLabel"
+            android:text="Juan Dela Cruz"
+            android:layout_below="@id/service_customerDetailsLabel"
+            android:textSize="14sp"
+            android:fontFamily="@font/calibri_font"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="4dp"/>
+
+        <!--Customer Location-->
+
+        <TextView
+            android:id="@+id/locationLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/customer_location"
+            android:layout_below="@id/customerNameLabel"
+            android:fontFamily="@font/calibri_font"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/service_customerLocationTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/locationLabel"
+            android:layout_below="@id/service_customerNameTV"
+            android:fontFamily="@font/calibri_font"
+            android:layout_marginLeft="4dp"
+            android:text="123 St. Brgy. One, Dagupan, Pangasinan"
+            />
+
+        <!--Contact Number-->
+
+        <TextView
+            android:id="@+id/contactNumberLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/locationLabel"
+            android:fontFamily="@font/calibri_font"
+            android:text="@string/customer_number"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/serviceDescription"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/serviceTitle"
-            android:text="Lorem ipsum lorem ipsum" />
+            android:text="09661581921"
+            android:layout_toRightOf="@id/contactNumberLabel"
+            android:layout_below="@+id/service_customerLocationTV"
+            android:layout_marginLeft="4dp"
+            />
 
-    </LinearLayout>
+    </RelativeLayout>
 
-    <androidx.cardview.widget.CardView
+    <RelativeLayout
+        android:id="@+id/bookingDetailsContainer"
         android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_below="@id/customerDetailsContainer">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/calibri"
+            android:text="@string/customer_booking"
+            android:textColor="@color/app_theme_blue"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/paymentMethodLabel"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/serviceDescription"
-        android:padding="10dp"
-        android:elevation="4dp"
-        app:cardCornerRadius="10dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/container_border_2">
+        android:text="@string/customer_payment"
+        android:layout_below="@id/bookingDetailsContainer"
+        android:layout_marginLeft="10dp"
+        android:fontFamily="@font/calibri"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/app_theme_blue"
+        />
+    <ImageView
+        android:id="@+id/iconCash"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/money"
+        android:layout_below="@id/paymentMethodLabel"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="4dp"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/serviceList_Recycler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-
-        <!--<RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:padding="10dp"
-            >
-
-            <TextView
-                android:id="@+id/titleCleaningPackage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/cleaning_title"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <CheckBox
-                android:id="@+id/service_checkBox1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/titleCleaningPackage"
-
-                />
-
-            <ImageView
-                android:id="@+id/service_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_below="@id/titleCleaningPackage"
-                android:src="@drawable/dustnshine"
-                android:layout_toRightOf="@id/service_checkBox1"
-                android:layout_marginLeft="4dp"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/titleCleaningPackage"
-                android:layout_toRightOf="@id/service_icon"
-                android:text="Cleaning Package"
-                android:layout_marginLeft="4dp"
-                />
-        </RelativeLayout>-->
-    </androidx.cardview.widget.CardView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/customer_total"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/app_theme_blue"
+        android:layout_below="@id/iconCash"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"/>
 
     <Button
         android:layout_width="match_parent"
