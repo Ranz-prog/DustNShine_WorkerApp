@@ -1,5 +1,6 @@
 package com.example.dnsworker.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dnsworker.Feedback;
+import com.example.dnsworker.MessageBox;
 import com.example.dnsworker.Models.ChatModel;
 import com.example.dnsworker.R;
 import com.example.dnsworker.adapters.Chat_Adapter;
@@ -19,7 +22,7 @@ import com.example.dnsworker.adapters.Chat_Adapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatFragment extends Fragment {
+public class ChatFragment extends Fragment implements Chat_Adapter.OnClickMessageListener {
 
     private RecyclerView chatRecycler;
     private View view;
@@ -38,7 +41,7 @@ public class ChatFragment extends Fragment {
 
         /*taskModels();*/
 
-        chatRecycler.setAdapter(new Chat_Adapter(chatModels()));
+        chatRecycler.setAdapter(new Chat_Adapter(chatModels(), this));
 
         RecyclerView.ItemDecoration divider = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
         chatRecycler.addItemDecoration(divider);
@@ -59,5 +62,11 @@ public class ChatFragment extends Fragment {
 
 
 
+    }
+
+    @Override
+    public void onClickMessage(int position) {
+        Intent intent = new Intent(getActivity(), MessageBox.class);
+        startActivity(intent);
     }
 }

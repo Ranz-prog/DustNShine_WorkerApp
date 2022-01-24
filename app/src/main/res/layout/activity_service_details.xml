@@ -11,12 +11,14 @@
         android:id="@+id/service_Image"
         android:layout_width="match_parent"
         android:layout_height="220dp" />
+
     <ImageView
+        android:id="@+id/service_arrowback"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_arrowback"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/ic_arrowback" />
 
     <RelativeLayout
         android:id="@+id/customerDetailsContainer"
@@ -165,6 +167,9 @@
         android:layout_alignParentBottom="true"
         android:text="Work is Done"
         android:background="@color/app_theme_blue"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"/>
 
 </RelativeLayout>

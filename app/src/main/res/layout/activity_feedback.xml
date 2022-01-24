@@ -3,13 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:paddingTop="15dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="10dp">
 
     <ImageView
         android:id="@+id/ic_arrowbackFeeback"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/ic_arrowback" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrowback"
+        android:layout_marginTop="4dp"/>
 
     <TextView
         android:layout_width="wrap_content"

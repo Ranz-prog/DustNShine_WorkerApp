@@ -20,8 +20,8 @@
 
     //Customer Details
     <string name="cleaning_title">Cleaning Package</string>
-    
-    
+
+
     //Labels
     <string name="customer_details">Customer Details:</string>
     <string name="customer_name">Customer Name:</string>
