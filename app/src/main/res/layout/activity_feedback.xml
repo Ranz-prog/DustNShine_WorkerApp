@@ -28,8 +28,8 @@
     <RelativeLayout
 
         android:id="@+id/ic_upper"
-        android:layout_width="401dp"
-        android:layout_height="369dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/ic_arrowbackFeeback"
         android:layout_marginTop="10dp">
 
@@ -85,8 +85,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/customerLocationLabel"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/quicsandmed"
-            android:text="Contact Number"
+            android:text="Contact Number: "
             android:textStyle="bold" />
 
         <TextView
@@ -96,7 +97,8 @@
             android:layout_marginLeft="4dp"
             android:layout_toRightOf="@+id/customerContactLabel"
             android:fontFamily="@font/quicksandreg"
-            android:text="09661581921" />
+            android:text="09661581921"
+            android:layout_marginTop="16dp"/>
 
         <TextView
             android:id="@+id/customerbookingdetails"
@@ -140,7 +142,7 @@
             android:layout_below="@id/customerpayment"
             android:layout_marginTop="82dp"
             android:layout_toRightOf="@id/customertotalcost"
-            android:text="Juan Delacruz" />
+            />
 
     </RelativeLayout>
 
