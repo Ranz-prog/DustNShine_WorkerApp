@@ -2,10 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/app_theme_blue">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/app_theme_blue"
+    tools:context=".MainActivity">
 
 
     <RelativeLayout
@@ -13,48 +13,47 @@
         android:layout_height="match_parent"
         android:gravity="center">
 
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="250dp"
+            android:fontFamily="@font/calibribold"
+            android:gravity="center"
+            android:text="@string/title_splash"
+            android:textColor="#FFFFFF"
+            android:textSize="50sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="400dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/launching" />
+    </RelativeLayout>
+
+
+    <!--
         <TextView
             android:id="@+id/titleTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="269dp"
-            android:fontFamily="@font/calibri_font"
             android:gravity="center"
+            android:layout_alignParentTop="true"
+            android:fontFamily="@font/quicksand_font"
             android:text="@string/title_splash"
-            android:textStyle="bold"
             android:textColor="#FFFFFF"
             android:textSize="50sp" />
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="351dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_below="@id/titleTV"
-            android:layout_marginTop="49dp"
+            android:layout_alignParentBottom="true"
             app:srcCompat="@drawable/launching" />
-
-    </RelativeLayout>
-
-<!--
-    <TextView
-        android:id="@+id/titleTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_alignParentTop="true"
-        android:fontFamily="@font/quicksand_font"
-        android:text="@string/title_splash"
-        android:textColor="#FFFFFF"
-        android:textSize="50sp" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_below="@id/titleTV"
-        android:layout_alignParentBottom="true"
-        app:srcCompat="@drawable/launching" />
--->
+    -->
 
 </RelativeLayout>

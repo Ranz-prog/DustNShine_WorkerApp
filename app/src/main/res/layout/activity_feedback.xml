@@ -19,6 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/ic_arrowbackFeeback"
+        android:fontFamily="@font/calibribold"
         android:text="Customer Feedback"
         android:textColor="@color/app_theme_gold"
         android:textSize="24sp"
@@ -37,9 +38,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/calibribold"
             android:text="Customer Details"
             android:textColor="@color/app_theme_blue"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -47,6 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/customerDetailsTV"
+            android:fontFamily="@font/quicsandmed"
             android:text="Customer Name: "
             android:textStyle="bold" />
 
@@ -55,6 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/customerDetailsTV"
             android:layout_toRightOf="@id/customerNameLabel"
+            android:fontFamily="@font/quicksandreg"
             android:text="Juan Delacruz" />
 
         <TextView
@@ -62,6 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/customerNameLabel"
+            android:fontFamily="@font/quicsandmed"
             android:text="Location:"
             android:textStyle="bold" />
 
@@ -71,6 +77,7 @@
             android:layout_below="@id/customerNameLabel"
             android:layout_marginLeft="4dp"
             android:layout_toRightOf="@id/customerLocationLabel"
+            android:fontFamily="@font/quicksandreg"
             android:text="431 St. Brgy, Poblacion, Dagupan, Pangasinan" />
 
         <TextView
@@ -78,6 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/customerLocationLabel"
+            android:fontFamily="@font/quicsandmed"
             android:text="Contact Number"
             android:textStyle="bold" />
 
@@ -87,6 +95,7 @@
             android:layout_below="@id/customerLocationLabel"
             android:layout_marginLeft="4dp"
             android:layout_toRightOf="@+id/customerContactLabel"
+            android:fontFamily="@font/quicksandreg"
             android:text="09661581921" />
 
         <TextView
@@ -94,10 +103,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/customerContactLabel"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/calibribold"
             android:text="Booking Details"
             android:textColor="@color/app_theme_blue"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -106,9 +116,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/customerbookingdetails"
             android:layout_marginTop="100dp"
+            android:fontFamily="@font/calibribold"
             android:text="Payment Method"
             android:textColor="@color/app_theme_blue"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -117,9 +128,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/customerpayment"
             android:layout_marginTop="80dp"
+            android:fontFamily="@font/calibribold"
             android:text="Total Cost: "
             android:textColor="@color/app_theme_blue"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -143,10 +155,10 @@
             android:id="@+id/customerhowsourwork"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand"
+            android:fontFamily="@font/calibribold"
             android:text="How's our work"
-            android:textColor="@color/app_theme_black"
-            android:textSize="18sp"
+            android:textColor="@color/app_theme_blue"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
 
@@ -167,11 +179,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/how"
-            android:fontFamily="@font/quicksand"
-            android:text="Rating"
-            android:textColor="@color/app_theme_black"
-            android:textSize="18sp"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/calibribold"
+            android:text="Rating"
+            android:textColor="@color/app_theme_blue"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
     </RelativeLayout>

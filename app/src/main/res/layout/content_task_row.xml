@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_marginTop="6dp"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="5dp"
     >
     <RelativeLayout
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/clientImageView"
-            android:fontFamily="@font/quicksand_font"
+            android:fontFamily="@font/calibribold"
             android:text="Customer Details"
             android:textColor="@color/app_theme_blue"
             android:textSize="16dp"
@@ -40,10 +40,10 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="6dp"
             android:layout_toRightOf="@+id/clientImageView"
-            android:fontFamily="@font/quicksand_font"
+            android:fontFamily="@font/quicsandmed"
             android:singleLine="true"
             android:text="Client Name:"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/task_clientName_TV"
@@ -53,7 +53,7 @@
             android:layout_marginLeft="6dp"
             android:layout_marginTop="6dp"
             android:layout_toRightOf="@id/task_clientName_label"
-            android:fontFamily="@font/quicksand_font"
+            android:fontFamily="@font/quicksandreg"
             android:text="Juan Delacruz" />
 
         <TextView
@@ -63,7 +63,7 @@
             android:layout_below="@id/task_clientName_label"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/clientImageView"
-            android:fontFamily="@font/quicksand_font"
+            android:fontFamily="@font/quicsandmed"
             android:singleLine="true"
             android:text="Location:"
             android:textStyle="bold" />
@@ -75,9 +75,9 @@
             android:layout_below="@id/task_clientName_TV"
             android:layout_marginLeft="6dp"
             android:layout_toRightOf="@id/task_location_label"
-            android:fontFamily="@font/quicksand_font"
-            android:text="Dagupan, Pangasinan"
-            android:singleLine="true"/>
+            android:fontFamily="@font/quicksandreg"
+            android:singleLine="true"
+            android:text="Dagupan, Pangasinan" />
 
         <TextView
             android:id="@+id/tasK_contact_label"
@@ -86,9 +86,10 @@
             android:layout_below="@id/task_location_label"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/clientImageView"
-            android:fontFamily="@font/quicksand_font"
+            android:fontFamily="@font/quicsandmed"
             android:text="Contact Number:"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/task_clientContact_TV"
             android:layout_width="wrap_content"
@@ -96,7 +97,7 @@
             android:layout_below="@id/task_clientLocation_TV"
             android:layout_marginLeft="6dp"
             android:layout_toRightOf="@id/tasK_contact_label"
-            android:fontFamily="@font/quicksand_font"
+            android:fontFamily="@font/quicksandreg"
             android:text="09123456789" />
 
     </RelativeLayout>

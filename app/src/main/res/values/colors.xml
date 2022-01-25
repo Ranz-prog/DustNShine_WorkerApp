@@ -17,6 +17,7 @@
     <color name="textbox_shadow">#F2F4F8</color>
 
     <!--Line Divider Color-->
-    <color name="line_divider_color">#919191</color>
+    <color name="line_divider_color">#D3DEDC</color>
+
 
 </resources>

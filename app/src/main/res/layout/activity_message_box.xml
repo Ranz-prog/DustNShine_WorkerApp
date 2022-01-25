@@ -48,20 +48,21 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_toRightOf="@id/message_userImage"
-                android:fontFamily="@font/calibri"
+                android:fontFamily="@font/quicksandbold"
                 android:text="Juan Dela Cruz"
+                android:textColor="@color/black"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/message_userName"
-                android:layout_toRightOf="@id/message_userImage"
                 android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/message_userImage"
+                android:fontFamily="@font/quicksandreg"
                 android:text="Online"
-                android:textSize="10dp"/>
+                android:textSize="10dp" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
@@ -84,8 +85,9 @@
                 android:layout_marginRight="10dp"
                 android:layout_toLeftOf="@id/message_sendMessage"
                 android:background="@drawable/container_border_3"
-                android:hint="Type here"
-                android:paddingLeft="8dp" />
+                android:hint="Type here . . ."
+                android:paddingLeft="8dp"
+                android:textSize="12sp" />
 
             <ImageView
                 android:id="@+id/message_sendMessage"

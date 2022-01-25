@@ -5,14 +5,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_marginTop="6dp"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="5dp"
     >
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/container_border"
         android:orientation="vertical"
-        android:padding="10dp"
-        android:background="@drawable/container_border">
+        android:padding="10dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/booking_clientImageView"
@@ -26,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/booking_clientImageView"
-            android:fontFamily="@font/quicksand_font"
+            android:fontFamily="@font/calibribold"
             android:text="Customer Details"
             android:textColor="@color/app_theme_blue"
             android:textSize="16dp"
@@ -40,10 +41,10 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="6dp"
             android:layout_toRightOf="@+id/booking_clientImageView"
-            android:fontFamily="@font/quicksand_font"
+            android:fontFamily="@font/quicsandmed"
             android:singleLine="true"
             android:text="Client Name:"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/booking_clientName_TV"
@@ -53,7 +54,7 @@
             android:layout_marginLeft="6dp"
             android:layout_marginTop="6dp"
             android:layout_toRightOf="@id/booking_clientName_label"
-            android:fontFamily="@font/quicksand_font"
+            android:fontFamily="@font/quicksandreg"
             android:text="Juan Delacruz" />
 
         <TextView
@@ -63,7 +64,7 @@
             android:layout_below="@id/booking_clientName_label"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/booking_clientImageView"
-            android:fontFamily="@font/quicksand_font"
+            android:fontFamily="@font/quicsandmed"
             android:singleLine="true"
             android:text="Location:"
             android:textStyle="bold" />
@@ -75,7 +76,7 @@
             android:layout_below="@id/booking_clientName_TV"
             android:layout_marginLeft="6dp"
             android:layout_toRightOf="@id/booking_location_label"
-            android:fontFamily="@font/quicksand_font"
+            android:fontFamily="@font/quicksandreg"
             android:singleLine="true"
             android:text="Dagupan, Pangasinan" />
 
@@ -86,9 +87,10 @@
             android:layout_below="@id/booking_location_label"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/booking_clientImageView"
-            android:fontFamily="@font/quicksand_font"
+            android:fontFamily="@font/quicsandmed"
             android:text="Contact Number:"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/booking_clientContact_TV"
             android:layout_width="wrap_content"
@@ -96,7 +98,7 @@
             android:layout_below="@id/booking_clientLocation_TV"
             android:layout_marginLeft="6dp"
             android:layout_toRightOf="@id/booking_contact_label"
-            android:fontFamily="@font/quicksand_font"
+            android:fontFamily="@font/quicksandreg"
             android:text="09123456789" />
     </RelativeLayout>
 
