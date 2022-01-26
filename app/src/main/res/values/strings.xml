@@ -30,4 +30,7 @@
     <string name="customer_booking">Booking Details</string>
     <string name="customer_payment">Payment Method</string>
     <string name="customer_total">Total Cost:</string>
+    
+    //Pop Up Message
+    <string name="confirmation_message">Please wait for the customers confirmation!</string>
 </resources>
