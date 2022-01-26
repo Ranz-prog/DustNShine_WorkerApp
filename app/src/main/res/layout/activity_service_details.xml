@@ -75,7 +75,12 @@
             android:fontFamily="@font/quicsandmed"
             android:text="@string/customer_location"
             android:textSize="14sp"
+<<<<<<< Updated upstream
             android:textStyle="bold" />
+=======
+            android:textStyle="bold"
+            />
+>>>>>>> Stashed changes
 
         <TextView
             android:id="@+id/service_customerLocationTV"
@@ -84,7 +89,12 @@
             android:layout_below="@id/service_customerNameTV"
             android:layout_marginLeft="4dp"
             android:layout_toRightOf="@id/locationLabel"
+<<<<<<< Updated upstream
             android:fontFamily="@font/quicksandreg"
+=======
+            android:fontFamily="@font/calibri_font"
+            android:maxLines="1"
+>>>>>>> Stashed changes
             android:text="123 St. Brgy. One, Dagupan, Pangasinan" />
 
         <!--Contact Number-->

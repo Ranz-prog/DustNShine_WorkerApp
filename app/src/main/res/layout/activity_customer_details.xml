@@ -99,6 +99,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/customerNameLabel"
                     android:layout_marginLeft="4dp"
+                    android:maxLines="1"
                     android:layout_toRightOf="@id/customerLocationLabel"
                     android:fontFamily="@font/quicksandreg"
                     android:text="431 St. Brgy, Poblacion, Dagupan, Pangasinan" />
