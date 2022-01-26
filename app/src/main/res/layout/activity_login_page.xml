@@ -53,7 +53,7 @@
     </LinearLayout>
 
 
-    <!--Input Account Here-->
+    <!--Input Data Account Here-->
 
     <RelativeLayout
         android:layout_width="wrap_content"
