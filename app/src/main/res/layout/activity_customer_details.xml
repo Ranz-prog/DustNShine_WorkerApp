@@ -40,7 +40,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/ic_arrowback"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:layout_above="@id/startWorkButton">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -99,7 +100,6 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/customerNameLabel"
                     android:layout_marginLeft="4dp"
-                    android:maxLines="1"
                     android:layout_toRightOf="@id/customerLocationLabel"
                     android:fontFamily="@font/quicksandreg"
                     android:text="431 St. Brgy, Poblacion, Dagupan, Pangasinan" />
@@ -109,9 +109,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/customerLocationLabel"
+                    android:layout_marginTop="16dp"
                     android:fontFamily="@font/quicsandmed"
                     android:text="Contact Number: "
-                    android:layout_marginTop="16dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -119,12 +119,13 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/customerLocationLabel"
                     android:layout_marginLeft="4dp"
+                    android:layout_marginTop="16dp"
                     android:layout_toRightOf="@+id/customerContactLabel"
                     android:fontFamily="@font/quicksandreg"
-                    android:text="09661581921"
-                    android:layout_marginTop="16dp"/>
+                    android:text="09661581921" />
 
                 <TextView
+                    android:id="@+id/bookingDetailsTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/customerContactLabel"
@@ -134,6 +135,10 @@
                     android:textColor="@color/app_theme_blue"
                     android:textSize="20sp"
                     android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_below="@id/bookingDetailsTextView"/>
 
             </RelativeLayout>
         </ScrollView>
