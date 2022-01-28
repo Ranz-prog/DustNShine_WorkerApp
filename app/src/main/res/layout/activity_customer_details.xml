@@ -5,143 +5,144 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CustomerDetails"
-    android:orientation="vertical"
-    android:paddingTop="15dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingBottom="10dp">
-
-    <ImageView
-        android:id="@+id/ic_arrowback"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_arrowback"
-        android:layout_marginTop="4dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/ic_arrowback"
-        android:fontFamily="@font/calibribold"
-        android:text="Customer Details"
-        android:textColor="@color/app_theme_gold"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="2dp"
-        android:layout_marginRight="10dp"
-        android:src="@drawable/messageblue" />
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/ic_arrowback"
-        android:layout_marginTop="10dp"
+        android:padding="10dp"
         android:layout_above="@id/startWorkButton">
+        <ImageView
+            android:id="@+id/ic_arrowback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrowback"
+            android:layout_marginTop="4dp"/>
 
-        <ScrollView
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/calibribold"
+            android:text="Customer Details"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/app_theme_gold"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/messageblue" />
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_below="@id/ic_arrowback"
+            android:layout_marginTop="10dp">
 
-            <RelativeLayout
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.google.android.gms.maps.MapView
-                    android:id="@+id/mapView"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="350dp" />
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/customerDetailsTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/mapView"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="15dp"
-                    android:fontFamily="@font/calibribold"
-                    android:text="Customer Details"
-                    android:textColor="@color/app_theme_blue"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    <com.google.android.gms.maps.MapView
+                        android:id="@+id/mapView"
+                        android:layout_width="match_parent"
+                        android:layout_height="350dp" />
 
-                <TextView
-                    android:id="@+id/customerNameLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/customerDetailsTV"
-                    android:fontFamily="@font/quicsandmed"
-                    android:text="Customer Name: "
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/customerDetailsTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/mapView"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="15dp"
+                        android:fontFamily="@font/calibribold"
+                        android:text="Customer Details"
+                        android:textColor="@color/app_theme_blue"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/customerDetailsTV"
-                    android:layout_toRightOf="@id/customerNameLabel"
-                    android:fontFamily="@font/quicksandreg"
-                    android:text="Juan Delacruz" />
+                    <TextView
+                        android:id="@+id/customerNameLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/customerDetailsTV"
+                        android:fontFamily="@font/quicsandmed"
+                        android:text="Customer Name: "
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/customerLocationLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/customerNameLabel"
-                    android:fontFamily="@font/quicsandmed"
-                    android:text="Location:"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/customerDetailsTV"
+                        android:layout_toRightOf="@id/customerNameLabel"
+                        android:fontFamily="@font/quicksandreg"
+                        android:text="Juan Delacruz" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/customerNameLabel"
-                    android:layout_marginLeft="4dp"
-                    android:layout_toRightOf="@id/customerLocationLabel"
-                    android:fontFamily="@font/quicksandreg"
-                    android:text="431 St. Brgy, Poblacion, Dagupan, Pangasinan" />
+                    <TextView
+                        android:id="@+id/customerLocationLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/customerNameLabel"
+                        android:fontFamily="@font/quicsandmed"
+                        android:text="Location:"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/customerContactLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/customerLocationLabel"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/quicsandmed"
-                    android:text="Contact Number: "
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/customerNameLabel"
+                        android:layout_marginLeft="4dp"
+                        android:layout_toRightOf="@id/customerLocationLabel"
+                        android:fontFamily="@font/quicksandreg"
+                        android:text="431 St. Brgy, Poblacion, Dagupan, Pangasinan" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/customerLocationLabel"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_toRightOf="@+id/customerContactLabel"
-                    android:fontFamily="@font/quicksandreg"
-                    android:text="09661581921" />
+                    <TextView
+                        android:id="@+id/customerContactLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/customerLocationLabel"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/quicsandmed"
+                        android:text="Contact Number: "
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/bookingDetailsTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/customerContactLabel"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/calibribold"
-                    android:text="Booking Details"
-                    android:textColor="@color/app_theme_blue"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_below="@id/bookingDetailsTextView"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/customerLocationLabel"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_toRightOf="@+id/customerContactLabel"
+                        android:fontFamily="@font/quicksandreg"
+                        android:text="09661581921" />
 
-            </RelativeLayout>
-        </ScrollView>
+                    <TextView
+                        android:id="@+id/bookingDetailsTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/customerContactLabel"
+                        android:layout_marginTop="15dp"
+                        android:fontFamily="@font/calibribold"
+                        android:text="Booking Details"
+                        android:textColor="@color/app_theme_blue"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_below="@id/bookingDetailsTextView"/>
+
+                </RelativeLayout>
+            </ScrollView>
+        </RelativeLayout>
     </RelativeLayout>
 
     <Button
