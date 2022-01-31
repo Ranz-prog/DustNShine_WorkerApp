@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import com.example.API.APIClient;
 import com.example.LogIn.LogInRequest;
 import com.example.LogIn.LogInResponse;
+import com.example.dnsworker.Models.MData;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -57,6 +59,7 @@ public class LoginPage extends AppCompatActivity {
         });
     }
 
+    private String token;
     //Method for Log in
     public void login(){
         LogInRequest logInRequest = new LogInRequest();
@@ -64,15 +67,18 @@ public class LoginPage extends AppCompatActivity {
         logInRequest.setPassword(signin_password.getText().toString());
 
         Call<LogInResponse> logInResponseCall = APIClient.getUserService().userLogin(logInRequest);
+
         logInResponseCall.enqueue(new Callback<LogInResponse>() {
             @Override
             public void onResponse(Call<LogInResponse> call, Response<LogInResponse> response) {
                 if (response.isSuccessful()){
                     Toast.makeText(LoginPage.this, "Login Successful", Toast.LENGTH_SHORT);
-
-                    LogInResponse logInResponse = response.body();
-
-
+                    Log.d("TAG", "RESULT " + response.body());
+                    LogInResponse r = response.body();
+                    MData b = r.getData();
+                    b.getToken();
+                    MData a =  r.getData();
+                    Log.d("TAG", "TOKEN: " + a.getToken());
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -94,5 +100,7 @@ public class LoginPage extends AppCompatActivity {
 
             }
         });
+
+
     }
 }

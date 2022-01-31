@@ -1,32 +1,54 @@
 package com.example.LogIn;
 
+import com.example.dnsworker.Models.MData;
+
 public class LogInResponse {
 
-    private int user_id;
-    private String email;
-    private String user_token;
+    private String message;
+    private MData data;
 
-    public String getUser_token() {
-        return user_token;
+    public String getMessage() {
+        return message;
     }
 
-    public void setUser_token(String user_token) {
-        this.user_token = user_token;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public MData getData() {
+        return data;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setData(MData data) {
+        this.data = data;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+//
+//    private int user_id;
+//    private String email;
+//    private String usertoken;
+//
+//    public String getUsertoken() {
+//        return usertoken;
+//    }
+//
+//    public void setUsertoken(String usertoken) {
+//        this.usertoken = usertoken;
+//    }
+//
+//    public int getUser_id() {
+//        return user_id;
+//    }
+//
+//    public void setUser_id(int user_id) {
+//        this.user_id = user_id;
+//    }
+//
+//    public String getEmail() {
+//        return email;
+//    }
+//
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
 }
