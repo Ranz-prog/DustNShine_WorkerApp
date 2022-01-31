@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CustomerDetails"
-
     android:orientation="vertical"
     android:paddingTop="15dp"
     android:paddingLeft="10dp"
@@ -37,12 +36,12 @@
         android:layout_marginRight="10dp"
         android:src="@drawable/messageblue" />
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
         android:layout_above="@id/startWorkButton">
+
 
         <ImageView
             android:id="@+id/ic_arrowback"
