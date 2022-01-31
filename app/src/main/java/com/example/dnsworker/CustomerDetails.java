@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.dnsworker.fragment.HomeFragment;
 
@@ -15,6 +16,8 @@ public class CustomerDetails extends AppCompatActivity {
     private ImageView arrowBack;
     private Button startWorkButton;
 
+    private TextView tokenText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +25,18 @@ public class CustomerDetails extends AppCompatActivity {
 
         arrowBack = findViewById(R.id.ic_arrowback);
         startWorkButton = findViewById(R.id.startWorkButton);
+
+
+//        tokenText = findViewById(R.id.forToken);
+//        Intent intent = getIntent();
+//
+//        if (intent.getExtras() != null){
+//            String token = intent.getStringExtra("data");
+//            tokenText.setText(token);
+//
+//            System.out.print("TOKEN: " + tokenText.getText().toString());
+//        }
+
 
         startWorkButton.setOnClickListener(new View.OnClickListener() {
             @Override

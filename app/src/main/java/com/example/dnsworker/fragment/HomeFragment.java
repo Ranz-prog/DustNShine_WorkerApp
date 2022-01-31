@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,6 +29,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
     private RecyclerView taskRecycler;
     private View view;
     private List<TaskModel> itemListSample;
+    private TextView tokenText;
 
     @Nullable
     @Override
