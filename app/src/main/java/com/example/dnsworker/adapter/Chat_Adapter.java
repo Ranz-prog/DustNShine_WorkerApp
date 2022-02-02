@@ -1,4 +1,4 @@
-package com.example.dnsworker.adapters;
+package com.example.dnsworker.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.dnsworker.Models.ChatModel;
+import com.example.dnsworker.Model.ChatModel;
 import com.example.dnsworker.R;
 
 import java.util.List;

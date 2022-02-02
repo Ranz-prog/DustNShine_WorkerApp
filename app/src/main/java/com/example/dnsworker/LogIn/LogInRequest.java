@@ -1,4 +1,4 @@
-package com.example.LogIn;
+package com.example.dnsworker.LogIn;
 
 public class LogInRequest {
 

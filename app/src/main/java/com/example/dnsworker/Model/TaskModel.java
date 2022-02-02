@@ -1,4 +1,4 @@
-package com.example.dnsworker.Models;
+package com.example.dnsworker.Model;
 
 public class TaskModel {
 

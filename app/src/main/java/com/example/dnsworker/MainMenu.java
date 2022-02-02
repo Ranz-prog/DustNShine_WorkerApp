@@ -7,13 +7,12 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.dnsworker.fragment.BookingFragment;
-import com.example.dnsworker.fragment.ChatFragment;
-import com.example.dnsworker.fragment.HomeFragment;
+import com.example.dnsworker.fragments.BookingFragment;
+import com.example.dnsworker.fragments.ChatFragment;
+import com.example.dnsworker.fragments.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainMenu extends AppCompatActivity {
-
 
 
     @Override

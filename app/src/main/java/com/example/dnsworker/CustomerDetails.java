@@ -9,8 +9,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.dnsworker.fragment.HomeFragment;
-
 public class CustomerDetails extends AppCompatActivity {
 
     private ImageView arrowBack;

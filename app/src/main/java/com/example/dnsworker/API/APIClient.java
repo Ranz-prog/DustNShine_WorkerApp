@@ -1,4 +1,4 @@
-package com.example.API;
+package com.example.dnsworker.API;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

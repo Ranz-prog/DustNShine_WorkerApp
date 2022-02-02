@@ -1,4 +1,4 @@
-package com.example.dnsworker.adapters;
+package com.example.dnsworker.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.dnsworker.Models.TaskModel;
+import com.example.dnsworker.Model.TaskModel;
 import com.example.dnsworker.R;
 
 import java.util.List;
@@ -79,3 +79,4 @@ public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> 
         void onClickTask(int position);
     }
 }
+

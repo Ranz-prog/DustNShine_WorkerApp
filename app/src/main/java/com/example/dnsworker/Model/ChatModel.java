@@ -1,4 +1,4 @@
-package com.example.dnsworker.Models;
+package com.example.dnsworker.Model;
 
 public class ChatModel {
     private int chat_clientImage;
@@ -44,3 +44,4 @@ public class ChatModel {
         this.chat_timeReceive = chat_timeReceive;
     }
 }
+

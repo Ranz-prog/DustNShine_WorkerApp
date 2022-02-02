@@ -3,6 +3,7 @@ package com.example.dnsworker;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -12,10 +13,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.API.APIClient;
-import com.example.LogIn.LogInRequest;
-import com.example.LogIn.LogInResponse;
-import com.example.dnsworker.Models.MData;
+import com.example.dnsworker.API.APIClient;
+import com.example.dnsworker.LogIn.LogInRequest;
+import com.example.dnsworker.LogIn.LogInResponse;
+import com.example.dnsworker.Model.MData;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -59,8 +60,7 @@ public class LoginPage extends AppCompatActivity {
         });
     }
 
-    private String token;
-    //Method for Log in
+    //Method for Log in and passing the token for authentication
     public void login(){
         LogInRequest logInRequest = new LogInRequest();
         logInRequest.setEmail(signin_email.getText().toString());
@@ -75,9 +75,13 @@ public class LoginPage extends AppCompatActivity {
                     Toast.makeText(LoginPage.this, "Login Successful", Toast.LENGTH_SHORT);
                     Log.d("TAG", "RESULT " + response.body());
                     LogInResponse r = response.body();
-                    MData b = r.getData();
-                    b.getToken();
                     MData a =  r.getData();
+
+                    String token = a.getToken();
+                    SharedPreferences preferences = getSharedPreferences("AUTH_TOKEN", MODE_PRIVATE);
+                    preferences.edit().putString("TOKEN", token).apply();
+
+
                     Log.d("TAG", "TOKEN: " + a.getToken());
                     new Handler().postDelayed(new Runnable() {
                         @Override

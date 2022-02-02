@@ -1,4 +1,6 @@
-package com.example.dnsworker.Models;
+package com.example.dnsworker.Model;
+
+import com.example.dnsworker.Model.User;
 
 public class MData {
     private User user;

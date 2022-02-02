@@ -1,4 +1,4 @@
-package com.example.dnsworker.fragment;
+package com.example.dnsworker.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dnsworker.Feedback;
-import com.example.dnsworker.Models.BookingModel;
+import com.example.dnsworker.Model.BookingModel;
 import com.example.dnsworker.R;
-import com.example.dnsworker.adapters.BookingAdapter;
+import com.example.dnsworker.adapter.BookingAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,3 +66,4 @@ public class BookingFragment extends Fragment implements BookingAdapter.OnClickB
         startActivity(intent);
     }
 }
+

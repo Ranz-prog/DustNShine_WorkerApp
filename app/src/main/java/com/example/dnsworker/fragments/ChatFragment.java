@@ -1,4 +1,4 @@
-package com.example.dnsworker.fragment;
+package com.example.dnsworker.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,11 +13,10 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.dnsworker.Feedback;
 import com.example.dnsworker.MessageBox;
-import com.example.dnsworker.Models.ChatModel;
+import com.example.dnsworker.Model.ChatModel;
 import com.example.dnsworker.R;
-import com.example.dnsworker.adapters.Chat_Adapter;
+import com.example.dnsworker.adapter.Chat_Adapter;
 
 import java.util.ArrayList;
 import java.util.List;

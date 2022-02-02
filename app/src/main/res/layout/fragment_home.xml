@@ -15,15 +15,13 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
-
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:text="Log Out"
         android:stateListAnimator="@null"
-        />
+        android:text="Log Out" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/task_RecyclerView"

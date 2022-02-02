@@ -1,5 +1,4 @@
 package com.example.dnsworker;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.dnsworker.R;
-import com.example.dnsworker.fragment.BookingFragment;
+import com.example.dnsworker.fragments.BookingFragment;
 
 public class Feedback extends AppCompatActivity {
 
