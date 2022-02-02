@@ -7,13 +7,23 @@
 
     <TextView
         android:id="@+id/titleTask"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/calibribold"
         android:text="@string/home_title"
         android:textColor="@color/app_theme_gold"
         android:textSize="24sp"
         android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:text="Log Out"
+        android:stateListAnimator="@null"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/task_RecyclerView"

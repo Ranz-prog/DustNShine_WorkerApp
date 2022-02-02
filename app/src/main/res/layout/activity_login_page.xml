@@ -59,9 +59,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/upperPartContainer"
-        android:layout_marginLeft="45dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="45dp">
+        android:layout_marginRight="40dp">
 
         <EditText
             android:id="@+id/signin_Email_ET"
