@@ -6,13 +6,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
+
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,7 +28,7 @@ import com.example.dnsworker.R;
 import com.example.dnsworker.adapter.Task_Adapter;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 
@@ -41,7 +41,6 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
     private RecyclerView taskRecycler;
     private View view;
     private List<TaskModel> itemListSample;
-    private TextView tokenText;
     private Button btnLogout;
 
     private  String retrievedToken;
@@ -58,15 +57,11 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
 
         btnLogout = view.findViewById(R.id.btnLogout);
 
-        preferences = getActivity().getSharedPreferences(
-                "AUTH_TOKEN", Context.MODE_PRIVATE
-        );
-
-
+        //Passed Data from shared Pref
+        preferences = getActivity().getSharedPreferences("AUTH_TOKEN", Context.MODE_PRIVATE);
         retrievedToken = preferences.getString("TOKEN", null);
-        tokenText.setText(retrievedToken);
 
-        /*taskModels();*/
+
         taskRecycler.setAdapter(new Task_Adapter(taskModels(), this));
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +95,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
 
             @Override
             public void onFailure(Call<Map<String, String>> call, Throwable t) {
+                Toast.makeText(getContext(), "Logout Failed", Toast.LENGTH_LONG);
 
             }
         });

@@ -23,32 +23,4 @@ public class LogInResponse {
         this.data = data;
     }
 
-//
-//    private int user_id;
-//    private String email;
-//    private String usertoken;
-//
-//    public String getUsertoken() {
-//        return usertoken;
-//    }
-//
-//    public void setUsertoken(String usertoken) {
-//        this.usertoken = usertoken;
-//    }
-//
-//    public int getUser_id() {
-//        return user_id;
-//    }
-//
-//    public void setUser_id(int user_id) {
-//        this.user_id = user_id;
-//    }
-//
-//    public String getEmail() {
-//        return email;
-//    }
-//
-//    public void setEmail(String email) {
-//        this.email = email;
-//    }
 }
