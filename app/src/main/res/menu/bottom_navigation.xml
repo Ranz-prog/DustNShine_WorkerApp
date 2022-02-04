@@ -14,4 +14,9 @@
         android:id="@+id/nav_booking"
         android:icon="@drawable/task_64"
         android:title=""/>
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_profile"
+        android:title=""/>
+
 </menu>

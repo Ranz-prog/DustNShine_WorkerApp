@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.dnsworker.fragments.BookingFragment;
 import com.example.dnsworker.fragments.ChatFragment;
 import com.example.dnsworker.fragments.HomeFragment;
+import com.example.dnsworker.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainMenu extends AppCompatActivity {
@@ -46,6 +47,8 @@ public class MainMenu extends AppCompatActivity {
                 case R.id.nav_booking:
                     selectedFragment = new BookingFragment();
                     break;
+                case R.id.nav_profile:
+                    selectedFragment = new ProfileFragment();
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     selectedFragment).commit();

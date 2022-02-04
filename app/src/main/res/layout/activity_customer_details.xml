@@ -17,16 +17,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_arrowback"
-            android:layout_marginTop="4dp"/>
+            android:layout_marginTop="2dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/calibribold"
-            android:text="Customer Details"
             android:layout_centerHorizontal="true"
+            android:fontFamily="@font/quicksandbold"
+            android:text="Customer Details"
             android:textColor="@color/app_theme_gold"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <ImageView

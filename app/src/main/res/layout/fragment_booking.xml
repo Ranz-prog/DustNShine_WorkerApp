@@ -7,12 +7,13 @@
 
     <TextView
         android:id="@+id/titleBooking"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/calibribold"
+        android:fontFamily="@font/quicksandbold"
+        android:layout_centerHorizontal="true"
         android:text="@string/bookings_title"
         android:textColor="@color/app_theme_gold"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView

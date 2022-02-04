@@ -28,9 +28,8 @@
                 android:id="@+id/service_arrowback"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp"
-                android:src="@drawable/ic_arrowback" />
+                android:src="@drawable/ic_arrowback"
+                android:layout_marginTop="2dp"/>
 
             <RelativeLayout
                 android:id="@+id/customerDetailsContainer"

@@ -60,10 +60,46 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/upperPartContainer"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="40dp">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signin_Email_ET"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:hint="@string/signup_email"
+                android:padding="10dp"
+                android:background="@drawable/signin_edit_text_shape"
+                android:fontFamily="@font/quicksand"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emailInputLayout"
+            app:passwordToggleEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signin_Password_ET"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:hint="@string/signup_password"
+                android:padding="10dp"
+                android:password="true"
+                android:background="@drawable/signin_edit_text_shape"
+                android:inputType="textPassword"
+                android:fontFamily="@font/quicksand"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+<!--        <EditText
             android:id="@+id/signin_Email_ET"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -84,30 +120,14 @@
             android:fontFamily="@font/quicksandreg"
             android:hint="@string/signup_password"
             android:padding="10dp"
-            android:textSize="14sp" />
+            android:textSize="14sp" />-->
 
-        <CheckBox
-            android:id="@+id/signin_Checkbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/signin_Password_ET"
-            android:layout_marginTop="14dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/signin_Password_ET"
-            android:layout_marginTop="20dp"
-            android:layout_toRightOf="@id/signin_Checkbox"
-            android:fontFamily="@font/quicksand_font"
-            android:text="@string/signup_keep_login"
-            android:textSize="16sp" />
 
         <Button
             android:id="@+id/signup_buttonSignin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/signin_Checkbox"
+            android:layout_below="@id/passwordInputLayout"
             android:layout_marginTop="20dp"
             android:background="@drawable/signin_button_shape"
             android:backgroundTint="@color/app_theme_gold"

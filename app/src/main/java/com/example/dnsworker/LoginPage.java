@@ -18,6 +18,7 @@ import com.example.dnsworker.API.APIClient;
 import com.example.dnsworker.LogIn.LogInRequest;
 import com.example.dnsworker.LogIn.LogInResponse;
 import com.example.dnsworker.Model.MData;
+import com.google.android.material.textfield.TextInputEditText;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,7 +27,7 @@ import retrofit2.Response;
 public class LoginPage extends AppCompatActivity {
 
     private Button signin_btnSignin;
-    private EditText signin_email, signin_password;
+    private TextInputEditText signin_email, signin_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

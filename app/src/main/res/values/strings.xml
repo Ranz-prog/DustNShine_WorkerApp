@@ -16,10 +16,13 @@
     <string name="home_title">Tasks</string>
     <string name="message_title">Message</string>
     <string name="bookings_title">Bookings</string>
+    <string name="profile_title">Manage Account</string>
+    <string name="profile_subtitle">Personal Information</string>
 
 
     //Customer Details
     <string name="cleaning_title">Cleaning Package</string>
+
 
 
     //Labels
@@ -33,4 +36,18 @@
     
     //Pop Up Message
     <string name="confirmation_message">Please wait for the customers confirmation!</string>
+    
+    //User Information
+    <string name="user_email">Email</string>
+    <string name="user_firstname">First Name</string>
+    <string name="user_lastname">Last Name</string>
+    <string name="user_contact">Contact Number</string>
+    <string name="user_location">Location</string>
+    <string name="user_house_number">House No.</string>
+    <string name="user_street">Street</string>
+    <string name="user_brgy">Barangay</string>
+    <string name="user_municipality">Municipality/City</string>
+    <string name="user_province">Province</string>
+    <string name="user_zip">Zip Code</string>
+
 </resources>

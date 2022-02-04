@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btnLogout"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/profileTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/quicksandbold"
+            android:text="@string/profile_title"
+            android:textColor="@color/app_theme_gold"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/profile_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profileTitle"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/quicksandbold"
+            android:text="@string/profile_subtitle"
+            android:textSize="20sp" />
+
+        <!--Information-->
+
+
+        <!--First Name-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/firstnameLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profile_subtitle"
+            android:background="@drawable/input_text_layout"
+            android:padding="2dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/worker_fname_ET"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_text_layout"
+                android:hint="@string/user_firstname"
+                android:padding="6dp"
+                android:maxLines="1"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--LastName-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profile_subtitle"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@id/firstnameLayout"
+            android:background="@drawable/input_text_layout"
+            android:padding="2dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/worker_lname_ET"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_text_layout"
+                android:hint="@string/user_lastname"
+                android:padding="6dp"
+                android:maxLines="1"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Email Address-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailAddInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/firstnameLayout"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/input_text_layout"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/worker_email_ET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_text_layout"
+                android:hint="@string/user_email"
+                android:padding="6dp"
+                android:maxLines="1"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Contact Number-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/contactInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emailAddInputLayout"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/input_text_layout"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/worker_contact_ET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_text_layout"
+                android:hint="@string/user_contact"
+                android:padding="6dp"
+                android:maxLines="1"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Location Address-->
+        <TextView
+            android:id="@+id/profile_locationTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/contactInputLayout"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/quicksandbold"
+            android:text="@string/user_location"
+            android:textSize="20sp" />
+
+        <!--House Number-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/housenumberInputLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profile_locationTitle"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/input_text_layout"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/worker_houseno_ET"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_text_layout"
+                android:hint="@string/user_house_number"
+                android:padding="6dp"
+                android:maxLines="1"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Street-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/streetInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profile_locationTitle"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@id/housenumberInputLayout"
+            android:background="@drawable/input_text_layout"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/worker_street_ET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_text_layout"
+                android:hint="@string/user_street"
+                android:maxLines="1"
+                android:padding="6dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Barangay-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/brgyInputLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/housenumberInputLayout"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/input_text_layout"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/worker_brgy_ET"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_text_layout"
+                android:hint="@string/user_brgy"
+                android:maxLines="1"
+                android:padding="6dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Municipality-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/cityInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/housenumberInputLayout"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@id/brgyInputLayout"
+            android:background="@drawable/input_text_layout"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/worker_municipality_ET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_text_layout"
+                android:hint="@string/user_municipality"
+                android:maxLines="1"
+                android:padding="6dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Province-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/provinceInputLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/brgyInputLayout"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/input_text_layout"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/worker_province_ET"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_text_layout"
+                android:hint="@string/user_province"
+                android:maxLines="1"
+                android:padding="6dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Zip Code-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/zipCodeInputLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/brgyInputLayout"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@id/provinceInputLayout"
+            android:background="@drawable/input_text_layout"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/worker_zipcode_ET"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_text_layout"
+                android:hint="@string/user_zip"
+                android:maxLines="1"
+                android:padding="6dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button_shape"
+        android:backgroundTint="@color/app_theme_blue"
+        android:text="Log out"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

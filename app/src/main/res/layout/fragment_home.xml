@@ -9,19 +9,12 @@
         android:id="@+id/titleTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/calibribold"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/quicksandbold"
         android:text="@string/home_title"
         android:textColor="@color/app_theme_gold"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:stateListAnimator="@null"
-        android:text="Log Out" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/task_RecyclerView"
