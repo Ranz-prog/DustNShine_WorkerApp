@@ -1,5 +1,6 @@
 package com.example.dnsworker;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,12 +10,18 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class CustomerDetails extends AppCompatActivity {
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+public class CustomerDetails extends AppCompatActivity implements OnMapReadyCallback {
 
     private ImageView arrowBack;
     private Button startWorkButton;
-
-    private TextView tokenText;
+    private GoogleMap map;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,16 +32,11 @@ public class CustomerDetails extends AppCompatActivity {
         startWorkButton = findViewById(R.id.startWorkButton);
 
 
-//        tokenText = findViewById(R.id.forToken);
-//        Intent intent = getIntent();
-//
-//        if (intent.getExtras() != null){
-//            String token = intent.getStringExtra("data");
-//            tokenText.setText(token);
-//
-//            System.out.print("TOKEN: " + tokenText.getText().toString());
-//        }
 
+        //MapView
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.mapView);
+        mapFragment.getMapAsync(this);
 
         startWorkButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,4 +53,16 @@ public class CustomerDetails extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        map = googleMap;
+
+        LatLng Address = new LatLng(16.0471126,120.3424204);
+        map.addMarker(new MarkerOptions().position(Address).title("UPANG"));
+        map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        map.moveCamera(CameraUpdateFactory.newLatLng(Address));
+    }
+
+    
 }

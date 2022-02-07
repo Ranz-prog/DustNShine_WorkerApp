@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
     tools:context=".CustomerDetails"
     android:orientation="vertical">
 
@@ -51,10 +52,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <com.google.android.gms.maps.MapView
-                        android:id="@+id/mapView"
+                    <fragment
                         android:layout_width="match_parent"
-                        android:layout_height="350dp" />
+                        android:layout_height="320dp"
+                        android:id="@+id/mapView"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        map:uiZoomControls="true"
+                        map:uiRotateGestures="true"
+                        map:cameraTilt="30"
+                        map:cameraZoom="15"
+                        map:mapType="normal"
+                        map:uiCompass="false"
+                        map:uiScrollGestures="false"
+                        map:uiTiltGestures="true"
+                        map:uiZoomGestures="true"/>
 
                     <TextView
                         android:id="@+id/customerDetailsTV"

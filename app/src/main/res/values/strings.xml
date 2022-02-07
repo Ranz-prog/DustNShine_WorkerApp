@@ -23,7 +23,8 @@
     //Customer Details
     <string name="cleaning_title">Cleaning Package</string>
 
-
+    //Google Map API KEY
+    <string name="map_key">AIzaSyDO-LIt8TXeE_2kEGStwVdJMtIH9qGSKtI</string>
 
     //Labels
     <string name="customer_details">Customer Details:</string>
