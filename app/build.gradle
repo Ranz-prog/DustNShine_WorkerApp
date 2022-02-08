@@ -25,6 +25,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    android {
+        dataBinding {
+            enabled = true
+        }
+    }
 }
 
 dependencies {
@@ -44,4 +49,10 @@ dependencies {
 
     //Map
     implementation 'com.google.android.gms:play-services-maps:18.0.1'
+
+
+    //lifecycle
+
+    implementation 'android.arch.lifecycle:extensions:1.1.0'
+
 }

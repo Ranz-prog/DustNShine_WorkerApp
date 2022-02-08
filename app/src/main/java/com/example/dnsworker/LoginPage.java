@@ -1,7 +1,11 @@
 package com.example.dnsworker;
 
-import androidx.appcompat.app.AppCompatActivity;
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+
+import android.app.Application;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -18,6 +22,7 @@ import com.example.dnsworker.API.APIClient;
 import com.example.dnsworker.LogIn.LogInRequest;
 import com.example.dnsworker.LogIn.LogInResponse;
 import com.example.dnsworker.Model.MData;
+import com.example.dnsworker.ViewModel.SignInViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 
 import retrofit2.Call;
@@ -29,6 +34,10 @@ public class LoginPage extends AppCompatActivity {
     private Button signin_btnSignin;
     private TextInputEditText signin_email, signin_password;
 
+    SignInViewModel signInViewModel;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,75 +47,52 @@ public class LoginPage extends AppCompatActivity {
         signin_password = findViewById(R.id.signin_Password_ET);
         signin_btnSignin = findViewById(R.id.signup_buttonSignin);
 
+        Log.d("TAG", "LOGIN PAGE!");
+        signInViewModel = new SignInViewModel();
+
+
         signin_btnSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 //Validations for Email and Password
-                if (TextUtils.isEmpty(signin_email.getText().toString())){
+                if (TextUtils.isEmpty(signin_email.getText().toString())) {
                     signin_email.setError("Email is required");
 
-                }
-                else if (TextUtils.isEmpty(signin_password.getText().toString())){
+                } else if (TextUtils.isEmpty(signin_password.getText().toString())) {
                     signin_password.setError("Password is required");
-                }
-                else {
+                } else {
                     //proceed to log in
-                    login();
+                    login(signin_email.getText().toString(),signin_password.getText().toString() );
                     Toast.makeText(LoginPage.this, "Login Successful", Toast.LENGTH_LONG).show();
 
                 }
             }
         });
+
     }
-    //Method for Log in and passing the token for authentication
-    public void login(){
 
-        LogInRequest logInRequest = new LogInRequest();
-        logInRequest.setEmail(signin_email.getText().toString());
-        logInRequest.setPassword(signin_password.getText().toString());
+    void login(String email, String password) {
 
-        Call<LogInResponse> logInResponseCall = APIClient.getUserService().userLogin(logInRequest);
+        signInViewModel.getSigninResponse(email, password).observe(this, new Observer<LogInResponse>() {
 
-        logInResponseCall.enqueue(new Callback<LogInResponse>() {
             @Override
-            public void onResponse(Call<LogInResponse> call, Response<LogInResponse> response) {
+            public void onChanged(LogInResponse logInResponse) {
+                Log.d("TAG", "RESULT =======> " + logInResponse.getMessage());
+                String token = logInResponse.getData().getToken();
+                SharedPreferences preferences = getSharedPreferences("AUTH_TOKEN", MODE_PRIVATE);
+                preferences.edit().putString("TOKEN", token).apply();
 
-                //conditional statement for the call
-                if (response.isSuccessful()){
-                    Toast.makeText(LoginPage.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                    Log.d("TAG", "RESULT " + response.body());
-
-                    LogInResponse logInResponse = response.body();
-                    MData data =  logInResponse.getData();
-
-                    //Save token temporarily on shared pref
-                    String token = data.getToken();
-                    SharedPreferences preferences = getSharedPreferences("AUTH_TOKEN", MODE_PRIVATE);
-                    preferences.edit().putString("TOKEN", token).apply();
-
-                    Log.d("TAG", "TOKEN: " + data.getToken());
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            startActivity(new Intent(LoginPage.this, MainMenu.class));
-                            finish();
-                        }
-                    }, 700);
-
-                }
-                else {
-                    Toast.makeText(LoginPage.this, "Login Failed", Toast.LENGTH_SHORT).show();
-
-                }
-            }
-            @Override
-            public void onFailure(Call<LogInResponse> call, Throwable t) {
-                Toast.makeText(LoginPage.this, "Throwable: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-
+                Log.d("TAG", "TOKEN: " + token);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(new Intent(LoginPage.this, MainMenu.class));
+                        finish();
+                    }
+                }, 700);
             }
         });
-
     }
 
     //OnBack press to Exit the Application
