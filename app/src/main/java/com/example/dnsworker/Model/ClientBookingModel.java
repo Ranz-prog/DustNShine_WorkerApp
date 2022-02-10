@@ -20,7 +20,6 @@ public class ClientBookingModel {
     public void setMessage(String value) { this.message = value; }
 }
 
-// Detail.java
 
 class Detail {
     private long id;
@@ -69,8 +68,6 @@ class Detail {
     public void setUpdatedAt(String value) { this.updatedAt = value; }
 }
 
-// Service.java
-
 class Service {
     private long bookingsID;
     private long servicesID;
@@ -81,9 +78,6 @@ class Service {
     public long getServicesID() { return servicesID; }
     public void setServicesID(long value) { this.servicesID = value; }
 }
-
-// Worker.java
-
 
 class Worker {
     private long bookingID;

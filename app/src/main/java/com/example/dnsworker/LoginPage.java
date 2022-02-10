@@ -3,9 +3,6 @@ package com.example.dnsworker;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-
-import android.app.Application;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,15 +12,9 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
-
-import com.example.dnsworker.API.APIClient;
-import com.example.dnsworker.LogIn.LogInRequest;
 import com.example.dnsworker.LogIn.LogInResponse;
-import com.example.dnsworker.Model.MData;
 import com.example.dnsworker.ViewModel.SignInViewModel;
-import com.example.dnsworker.ViewModel.UserAPIRepo;
 import com.google.android.material.textfield.TextInputEditText;
 
 import retrofit2.Call;
@@ -50,6 +41,7 @@ public class LoginPage extends AppCompatActivity {
         signInViewModel = new SignInViewModel();
 
 
+        //Proceed to Login
         signin_btnSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,12 +55,12 @@ public class LoginPage extends AppCompatActivity {
                 } else {
                     //proceed to log in
                     login(signin_email.getText().toString(), signin_password.getText().toString());
-                    //Toast.makeText(LoginPage.this, "Login Successful", Toast.LENGTH_LONG).show();
                 }
             }
         });
 
 
+        //Checking the Status Code with Toast Warning
 
       signInViewModel.setOnSigninListener(new SignInViewModel.SigninCallback() {
           @Override
@@ -91,14 +83,14 @@ public class LoginPage extends AppCompatActivity {
                   Toast.makeText(getApplicationContext(), "Invalid Credentials, Try Again", Toast.LENGTH_SHORT).show();
               }
               else{
-                  Toast.makeText(getApplicationContext(), "Failed, Try again", Toast.LENGTH_SHORT).show();
+                  Toast.makeText(getApplicationContext(), "Login Failed, Try again", Toast.LENGTH_SHORT).show();
               }
           }
       });
     }
 
+    //passing the email and password into the signinviewmodel
     void login(String email, String password) {
-
         signInViewModel.getSignInRes(email, password);
     }
 
@@ -112,7 +104,7 @@ public class LoginPage extends AppCompatActivity {
         }
 
         this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Please tap BACK again to exit", Toast.LENGTH_SHORT).show();
 
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
 
