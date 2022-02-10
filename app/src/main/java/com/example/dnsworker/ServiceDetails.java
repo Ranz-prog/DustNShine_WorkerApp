@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -17,7 +18,7 @@ import androidx.fragment.app.Fragment;
 
 public class ServiceDetails extends Activity {
 
-    private ImageView serviceBackButton;
+    private LinearLayout serviceBackButton;
     private Button doneWorkBtn;
 
     private Dialog dialog;

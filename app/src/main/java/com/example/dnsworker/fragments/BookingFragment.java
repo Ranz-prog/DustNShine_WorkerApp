@@ -47,11 +47,11 @@ public class BookingFragment extends Fragment implements BookingAdapter.OnClickB
         itemListBookingSample = new ArrayList<BookingModel>();
 
         itemListBookingSample.add(new BookingModel(R.drawable.user,
-                "Juan Dela Cruz", "123 St. Brgy, Lorem, Dagupan City", "09123456789"));
+                "Juan Dela Cruz", "123 Arellano, Dagupan City", "09123456789"));
         itemListBookingSample.add(new BookingModel(R.drawable.user,
-                "Ivan Dasigan", "123 St. Brgy, Lorem, Dagupan City", "09123456789"));
+                "Ivan Dasigan", "123 Arellano, Dagupan City", "09123456789"));
         itemListBookingSample.add(new BookingModel(R.drawable.user,
-                "Michael Jackson", "123 St. Brgy, Lorem, Dagupan City", "09123456789"));
+                "Michael Jackson", "123 Arellano, Dagupan City", "09123456789"));
 
 
 

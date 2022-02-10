@@ -5,16 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ServiceDetails"
+    android:background="@color/background"
     android:orientation="vertical">
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/doneWorkButton"
+
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_margin="10dp"
-        android:elevation="4dp">
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:elevation="4dp"
+        android:scrollbars="none">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -24,30 +29,45 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp" />
 
-            <ImageView
+            <LinearLayout
                 android:id="@+id/service_arrowback"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_arrowback"
-                android:layout_marginTop="2dp"/>
+                android:layout_marginTop="7dp"
+                android:background="@drawable/roundbutton"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/back" />
+
+            </LinearLayout>
 
             <RelativeLayout
                 android:id="@+id/customerDetailsContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/service_Image"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_margin="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
                 android:elevation="4dp">
 
                 <TextView
                     android:id="@+id/service_customerDetailsLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/calibribold"
+                    android:fontFamily="@font/quicsandmed"
                     android:text="@string/customer_details"
                     android:textColor="@color/app_theme_blue"
-                    android:textSize="20sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <!--Customer Name Here-->
@@ -57,10 +77,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/service_customerDetailsLabel"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/quicsandmed"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/quicksandreg"
                     android:text="@string/customer_name"
-                    android:textSize="14sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
 
@@ -70,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/service_customerDetailsLabel"
                     android:layout_marginLeft="4dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="12dp"
                     android:layout_toRightOf="@id/customerNameLabel"
                     android:fontFamily="@font/quicksandreg"
                     android:text="Juan Dela Cruz"
@@ -83,9 +103,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/customerNameLabel"
-                    android:fontFamily="@font/quicsandmed"
+                    android:fontFamily="@font/quicksandreg"
                     android:text="@string/customer_location"
-                    android:textSize="14sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -94,9 +114,10 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/service_customerNameTV"
                     android:layout_marginLeft="4dp"
+                    android:layout_marginTop="2dp"
                     android:layout_toRightOf="@id/locationLabel"
                     android:fontFamily="@font/quicksand"
-                    android:text="123 St. Brgy. Poblacion, Dagupan, Pangasinan" />
+                    android:text="123 Arellano, Dagupan City" />
 
                 <!--Contact Number-->
 
@@ -105,17 +126,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/locationLabel"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/quicsandmed"
+                    android:fontFamily="@font/quicksandreg"
                     android:text="@string/customer_number"
-                    android:textSize="14sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/service_customerLocationTV"
-                    android:layout_marginLeft="4dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="2dp"
                     android:layout_toRightOf="@id/contactNumberLabel"
                     android:fontFamily="@font/quicksandreg"
                     android:text="09661581921" />
@@ -132,10 +153,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:fontFamily="@font/calibribold"
+                    android:fontFamily="@font/quicsandmed"
                     android:text="@string/customer_booking"
                     android:textColor="@color/app_theme_blue"
-                    android:textSize="20sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -145,19 +166,20 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/bookingDetailsContainer"
                 android:layout_marginLeft="10dp"
-                android:fontFamily="@font/calibribold"
+                android:fontFamily="@font/quicsandmed"
                 android:text="@string/customer_payment"
                 android:textColor="@color/app_theme_blue"
-                android:textSize="20sp"
+                android:textSize="17sp"
                 android:textStyle="bold" />
+
             <ImageView
                 android:id="@+id/iconCash"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/money"
                 android:layout_below="@id/paymentMethodLabel"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="4dp"/>
+                android:layout_marginTop="4dp"
+                android:src="@drawable/money" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -165,10 +187,10 @@
                 android:layout_below="@id/iconCash"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/calibribold"
+                android:fontFamily="@font/quicsandmed"
                 android:text="@string/customer_total"
                 android:textColor="@color/app_theme_blue"
-                android:textSize="20sp"
+                android:textSize="17sp"
                 android:textStyle="bold" />
 
         </RelativeLayout>
@@ -178,7 +200,7 @@
     <Button
         android:id="@+id/doneWorkButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:background="@color/app_theme_blue"
         android:fontFamily="@font/quicksandbold"

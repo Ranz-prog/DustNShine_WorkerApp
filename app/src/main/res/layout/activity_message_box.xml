@@ -22,7 +22,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_centerVertical="true"
-                android:src="@drawable/ic_arrowback2" />
+                android:src="@drawable/back" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/message_userImage"
@@ -80,11 +80,12 @@
             <EditText
                 android:id="@+id/message_inputMessage"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
                 android:layout_toLeftOf="@id/message_sendMessage"
                 android:background="@drawable/container_border_3"
+                android:fontFamily="@font/quicksandreg"
                 android:hint="Type here . . ."
                 android:paddingLeft="8dp"
                 android:textSize="12sp" />

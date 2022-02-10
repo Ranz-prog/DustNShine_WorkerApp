@@ -6,42 +6,62 @@
     android:layout_height="match_parent"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     tools:context=".CustomerDetails"
+    android:background="@color/background"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp"
-        android:layout_above="@id/startWorkButton">
-        <ImageView
-            android:id="@+id/ic_arrowback"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrowback"
-            android:layout_marginTop="2dp"/>
+        android:layout_above="@id/startWorkButton"
+        android:padding="10dp">
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/quicksandbold"
             android:text="Customer Details"
             android:textColor="@color/app_theme_gold"
             android:textSize="20sp"
             android:textStyle="bold" />
 
+
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="2dp"
+
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="10dp"
             android:src="@drawable/messageblue" />
+
+        <LinearLayout
+            android:id="@+id/ic_arrowbackCustomerDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/roundbutton"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_weight="1"
+                android:src="@drawable/back" />
+
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/ic_arrowback"
+            android:layout_below="@id/ic_arrowbackCustomerDetails"
             android:layout_marginTop="10dp">
 
             <ScrollView
@@ -53,32 +73,31 @@
                     android:layout_height="match_parent">
 
                     <fragment
-                        android:layout_width="match_parent"
-                        android:layout_height="320dp"
                         android:id="@+id/mapView"
                         android:name="com.google.android.gms.maps.SupportMapFragment"
-                        map:uiZoomControls="true"
-                        map:uiRotateGestures="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="320dp"
                         map:cameraTilt="30"
                         map:cameraZoom="15"
                         map:mapType="normal"
                         map:uiCompass="false"
+                        map:uiRotateGestures="true"
                         map:uiScrollGestures="false"
                         map:uiTiltGestures="true"
-                        map:uiZoomGestures="true"/>
+                        map:uiZoomControls="true"
+                        map:uiZoomGestures="true" />
 
                     <TextView
                         android:id="@+id/customerDetailsTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/mapView"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="20dp"
                         android:layout_marginBottom="15dp"
-                        android:fontFamily="@font/calibribold"
+                        android:fontFamily="@font/quicsandmed"
                         android:text="Customer Details"
                         android:textColor="@color/app_theme_blue"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textSize="17sp" />
 
                     <TextView
                         android:id="@+id/customerNameLabel"
@@ -87,12 +106,13 @@
                         android:layout_below="@id/customerDetailsTV"
                         android:fontFamily="@font/quicsandmed"
                         android:text="Customer Name: "
-                        android:textStyle="bold" />
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/customerDetailsTV"
+                        android:layout_marginLeft="5dp"
                         android:layout_toRightOf="@id/customerNameLabel"
                         android:fontFamily="@font/quicksandreg"
                         android:text="Juan Delacruz" />
@@ -103,14 +123,13 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/customerNameLabel"
                         android:fontFamily="@font/quicsandmed"
-                        android:text="Location:"
-                        android:textStyle="bold" />
+                        android:text="Location:" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/customerNameLabel"
-                        android:layout_marginLeft="4dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_toRightOf="@id/customerLocationLabel"
                         android:fontFamily="@font/quicksandreg"
                         android:text="431 St. Brgy, Poblacion, Dagupan, Pangasinan" />
@@ -120,17 +139,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/customerLocationLabel"
-                        android:layout_marginTop="16dp"
                         android:fontFamily="@font/quicsandmed"
                         android:text="Contact Number: "
-                        android:textStyle="bold" />
+                            />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/customerLocationLabel"
-                        android:layout_marginLeft="4dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_toRightOf="@+id/customerContactLabel"
                         android:fontFamily="@font/quicksandreg"
                         android:text="09661581921" />
@@ -141,21 +158,20 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/customerContactLabel"
                         android:layout_marginTop="15dp"
-                        android:fontFamily="@font/calibribold"
+                        android:fontFamily="@font/quicsandmed"
                         android:text="Booking Details"
                         android:textColor="@color/app_theme_blue"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textSize="17sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:layout_below="@id/bookingDetailsTextView">
+
                         <TextView
                             android:id="@+id/forToken"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            />
+                            android:layout_height="wrap_content" />
 
                     </LinearLayout>
                 </RelativeLayout>
@@ -166,11 +182,12 @@
     <Button
         android:id="@+id/startWorkButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:background="@color/app_theme_blue"
         android:fontFamily="@font/quicksandbold"
         android:text="Start Work"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textSize="14sp" />
 
 </RelativeLayout>

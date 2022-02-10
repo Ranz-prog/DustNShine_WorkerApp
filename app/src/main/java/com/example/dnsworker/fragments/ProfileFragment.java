@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -41,9 +42,10 @@ public class ProfileFragment  extends Fragment {
                               worker_email, worker_contact,
                               worker_housenumber, worker_street,
                               workker_brgy, worker_municipality,
-                              worker_province, worker_zipcode;
+                              worker_province, worker_zipcode,worker_city;
 
-    private Button btnLogout;
+
+    private TextView btnLogout;
 
     private  String retrievedToken;
     SharedPreferences preferences;
@@ -66,6 +68,7 @@ public class ProfileFragment  extends Fragment {
         worker_housenumber = view.findViewById(R.id.worker_houseno_ET);
         worker_street = view.findViewById(R.id.worker_street_ET);
         workker_brgy = view.findViewById(R.id.worker_brgy_ET);
+        //worker_city = view.findViewById(R.id.worker_city);
         worker_province = view.findViewById(R.id.worker_province_ET);
         worker_zipcode = view.findViewById(R.id.worker_zipcode_ET);
 

@@ -1,23 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple">#8f5bd8</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
+    <color name="black">#060b17</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="background">#f9f9f9</color>
 
     <!--App Theme-->
     <color name="app_theme_blue">#38B0C8</color>
     <color name="app_theme_gold">#F5C711</color>
-    <color name="app_theme_black">#1C2126</color>
+    <color name="app_theme_black">#060b17</color>
+    <color name="test">#0067ff</color>
 
     <!--TextBox Color-->
     <color name="textbox_shadow">#F2F4F8</color>
 
     <!--Line Divider Color-->
-    <color name="line_divider_color">#D3DEDC</color>
+    <color name="line_divider_color">#bdbfc3</color>
+
+    <!--background featured services-->
+    <color name="garage">#EFFFB7</color>
+    <color name="general">#FFD6C9</color>
+    <color name="garden">#E9D0FE</color>
+    <color name="repair">#C8F3FF</color>
+    <color name="iconsback">#F6F6F6</color>
+
+
 
 
 </resources>

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -19,7 +20,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class CustomerDetails extends AppCompatActivity implements OnMapReadyCallback {
 
-    private ImageView arrowBack;
+    private LinearLayout arrowBack;
     private Button startWorkButton;
     private GoogleMap map;
 
@@ -28,7 +29,7 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_details);
 
-        arrowBack = findViewById(R.id.ic_arrowback);
+        arrowBack = findViewById(R.id.ic_arrowbackCustomerDetails);
         startWorkButton = findViewById(R.id.startWorkButton);
 
 

@@ -51,4 +51,27 @@
     <string name="user_province">Province</string>
     <string name="user_zip">Zip Code</string>
 
+    //Booking Content
+    <string name="ClientName">Juan Delacruz</string>
+    <string name="Location">123 Arellano, Dagupan City</string>
+    <string name="ContactNumber">09123456789</string>
+
+    //Manage Profile
+    <string name="signup">Sign Up</string>
+    <string name="Manage">Manage Profile</string>
+    <string name="personalinformation">Personal Information</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="email">Email Address</string>
+    <string name="retypepassword">Re-type Password</string>
+    <string name="location">Location</string>
+    <string name="houseno">House no.</string>
+    <string name="street">Street</string>
+    <string name="barangay">Barangay</string>
+    <string name="citymunicipality">City/Municipality</string>
+    <string name="province">Province</string>
+    <string name="zipcode">Zip Code</string>
+
+
+
 </resources>

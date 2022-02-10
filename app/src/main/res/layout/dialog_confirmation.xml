@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -15,6 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
         >
 
         <RelativeLayout
@@ -46,6 +48,13 @@
                 android:stateListAnimator="@null"
                 android:text="Done"
                 android:textColor="@color/app_theme_blue" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                app:srcCompat="@drawable/check"
+                android:layout_centerHorizontal="true"/>
 
         </RelativeLayout>
 

@@ -9,27 +9,61 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/btnLogout"
-        android:padding="10dp">
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp">
 
-        <TextView
-            android:id="@+id/profileTitle"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/quicksandbold"
-            android:text="@string/profile_title"
-            android:textColor="@color/app_theme_gold"
-            android:textSize="20sp" />
+            android:background="@color/background"
+            android:paddingTop="15dp"
+            android:paddingBottom="10dp">
+
+            <LinearLayout
+                android:id="@+id/ReturnBtnOnHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/roundbutton"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/back" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/quicsandmed"
+                android:paddingTop="10dp"
+                android:text="@string/Manage"
+                android:textColor="@color/app_theme_gold"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
 
         <TextView
             android:id="@+id/profile_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/profileTitle"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/quicksandbold"
+            android:layout_below="@id/title"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/quicsandmed"
             android:text="@string/profile_subtitle"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
 
         <!--Information-->
 
@@ -40,8 +74,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/profile_subtitle"
-            android:background="@drawable/input_text_layout"
-            android:padding="2dp"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp">
 
@@ -49,10 +81,12 @@
                 android:id="@+id/worker_fname_ET"
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
                 android:background="@drawable/input_text_layout"
                 android:hint="@string/user_firstname"
-                android:padding="6dp"
-                android:maxLines="1"/>
+                android:maxLength="50"
+                android:padding="15dp"
+                android:textSize="15sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--LastName-->
@@ -60,10 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/profile_subtitle"
-            android:layout_marginLeft="4dp"
             android:layout_toRightOf="@id/firstnameLayout"
-            android:background="@drawable/input_text_layout"
-            android:padding="2dp"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp">
 
@@ -73,8 +104,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/input_text_layout"
                 android:hint="@string/user_lastname"
-                android:padding="6dp"
-                android:maxLines="1"/>
+                android:maxLength="50"
+                android:padding="15dp"
+                android:textSize="15sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--Email Address-->
@@ -83,8 +115,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/firstnameLayout"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/input_text_layout"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp">
 
@@ -94,8 +124,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/input_text_layout"
                 android:hint="@string/user_email"
-                android:padding="6dp"
-                android:maxLines="1"/>
+                android:maxLength="50"
+                android:padding="15dp"
+                android:textSize="15sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--Contact Number-->
@@ -104,8 +135,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/emailAddInputLayout"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/input_text_layout"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp">
 
@@ -115,8 +144,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/input_text_layout"
                 android:hint="@string/user_contact"
-                android:padding="6dp"
-                android:maxLines="1"/>
+                android:maxLength="50"
+                android:padding="15dp"
+                android:textSize="15sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--Location Address-->
@@ -126,9 +156,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/contactInputLayout"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/quicksandbold"
+            android:fontFamily="@font/quicsandmed"
             android:text="@string/user_location"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
 
         <!--House Number-->
         <com.google.android.material.textfield.TextInputLayout
@@ -136,8 +166,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/profile_locationTitle"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/input_text_layout"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp">
 
@@ -147,8 +175,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/input_text_layout"
                 android:hint="@string/user_house_number"
-                android:padding="6dp"
-                android:maxLines="1"/>
+                android:maxLength="50"
+                android:padding="15dp"
+                android:textSize="15sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--Street-->
@@ -158,9 +187,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/profile_locationTitle"
             android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
             android:layout_toRightOf="@id/housenumberInputLayout"
-            android:background="@drawable/input_text_layout"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp">
 
@@ -170,8 +197,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/input_text_layout"
                 android:hint="@string/user_street"
-                android:maxLines="1"
-                android:padding="6dp"/>
+                android:maxLength="50"
+                android:padding="15dp"
+                android:textSize="15sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--Barangay-->
@@ -181,8 +209,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/housenumberInputLayout"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/input_text_layout"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp">
 
@@ -192,8 +218,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/input_text_layout"
                 android:hint="@string/user_brgy"
-                android:maxLines="1"
-                android:padding="6dp" />
+                android:maxLength="50"
+                android:padding="15dp"
+                android:textSize="15sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--Municipality-->
@@ -204,9 +231,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/housenumberInputLayout"
             android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
             android:layout_toRightOf="@id/brgyInputLayout"
-            android:background="@drawable/input_text_layout"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp">
 
@@ -216,8 +241,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/input_text_layout"
                 android:hint="@string/user_municipality"
-                android:maxLines="1"
-                android:padding="6dp" />
+                android:maxLength="50"
+                android:padding="15dp"
+                android:textSize="15sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--Province-->
@@ -226,8 +252,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/brgyInputLayout"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/input_text_layout"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp">
 
@@ -237,8 +261,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/input_text_layout"
                 android:hint="@string/user_province"
-                android:maxLines="1"
-                android:padding="6dp" />
+                android:maxLength="50"
+                android:padding="15dp"
+                android:textSize="15sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--Zip Code-->
@@ -249,9 +274,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/brgyInputLayout"
             android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
             android:layout_toRightOf="@id/provinceInputLayout"
-            android:background="@drawable/input_text_layout"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp">
 
@@ -261,8 +284,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/input_text_layout"
                 android:hint="@string/user_zip"
-                android:maxLines="1"
-                android:padding="6dp" />
+                android:maxLength="50"
+                android:padding="15dp"
+                android:textSize="15sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
     </RelativeLayout>

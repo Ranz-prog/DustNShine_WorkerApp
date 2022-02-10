@@ -58,7 +58,7 @@ public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> 
         public ViewHolder(@NonNull View itemView, OnClickTaskListener onClickTaskListener) {
             super(itemView);
 
-            task_clientImage = itemView.findViewById(R.id.clientImageView);
+            task_clientImage = itemView.findViewById(R.id.task_clientImageView);
             task_clientName = itemView.findViewById(R.id.task_clientName_TV);
             task_clientLocation = itemView.findViewById(R.id.task_clientLocation_TV);
             task_clientContact = itemView.findViewById(R.id.task_clientContact_TV);

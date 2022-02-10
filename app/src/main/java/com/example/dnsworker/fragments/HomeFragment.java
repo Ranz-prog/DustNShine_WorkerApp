@@ -108,11 +108,11 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         itemListSample = new ArrayList<>();
 
         itemListSample.add(new TaskModel(R.drawable.user,
-                "Juan Dela Cruz", "123 St. Brgy, Lorem, Dagupan City", "09123456789"));
+                "Juan Dela Cruz", "123 Arellano, Dagupan City", "09123456789"));
         itemListSample.add(new TaskModel(R.drawable.user,
-                "Ivan Dasigan", "123 St. Brgy, Lorem, Dagupan City", "09123456789"));
+                "Ivan Dasigan", "123 Arellano, Dagupan City", "09123456789"));
         itemListSample.add(new TaskModel(R.drawable.user,
-                "Michael Jackson", "123 St. Brgy, Lorem, Dagupan City", "09123456789"));
+                "Michael Jackson", "123 Arellano, Dagupan City", "09123456789"));
 
 
         return itemListSample;
