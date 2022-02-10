@@ -23,6 +23,7 @@ import com.example.dnsworker.LogIn.LogInRequest;
 import com.example.dnsworker.LogIn.LogInResponse;
 import com.example.dnsworker.Model.MData;
 import com.example.dnsworker.ViewModel.SignInViewModel;
+import com.example.dnsworker.ViewModel.UserAPIRepo;
 import com.google.android.material.textfield.TextInputEditText;
 
 import retrofit2.Call;
@@ -35,8 +36,6 @@ public class LoginPage extends AppCompatActivity {
     private TextInputEditText signin_email, signin_password;
 
     SignInViewModel signInViewModel;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,36 +62,44 @@ public class LoginPage extends AppCompatActivity {
                     signin_password.setError("Password is required");
                 } else {
                     //proceed to log in
-                    login(signin_email.getText().toString(),signin_password.getText().toString() );
-                    Toast.makeText(LoginPage.this, "Login Successful", Toast.LENGTH_LONG).show();
-
+                    login(signin_email.getText().toString(), signin_password.getText().toString());
+                    //Toast.makeText(LoginPage.this, "Login Successful", Toast.LENGTH_LONG).show();
                 }
             }
         });
 
+
+
+      signInViewModel.setOnSigninListener(new SignInViewModel.SigninCallback() {
+          @Override
+          public void signinCallback(Integer statusCode, LogInResponse response) {
+              if(statusCode == 200){
+                  Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
+                  String token = response.getData().getToken();
+                  SharedPreferences preferences = getSharedPreferences("AUTH_TOKEN", MODE_PRIVATE);
+                  preferences.edit().putString("TOKEN", token).apply();
+                  new Handler().postDelayed(new Runnable() {
+                      @Override
+                      public void run() {
+                          startActivity(new Intent(LoginPage.this, MainMenu.class));
+                          finish();
+                      }
+                  }, 700);
+                  Log.d(TAG, "signinCallback: StatusCode ====>");
+              }
+              else if (statusCode == 401){
+                  Toast.makeText(getApplicationContext(), "Invalid Credentials, Try Again", Toast.LENGTH_SHORT).show();
+              }
+              else{
+                  Toast.makeText(getApplicationContext(), "Failed, Try again", Toast.LENGTH_SHORT).show();
+              }
+          }
+      });
     }
 
     void login(String email, String password) {
 
-        signInViewModel.getSigninResponse(email, password).observe(this, new Observer<LogInResponse>() {
-
-            @Override
-            public void onChanged(LogInResponse logInResponse) {
-                Log.d("TAG", "RESULT =======> " + logInResponse.getMessage());
-                String token = logInResponse.getData().getToken();
-                SharedPreferences preferences = getSharedPreferences("AUTH_TOKEN", MODE_PRIVATE);
-                preferences.edit().putString("TOKEN", token).apply();
-
-                Log.d("TAG", "TOKEN: " + token);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        startActivity(new Intent(LoginPage.this, MainMenu.class));
-                        finish();
-                    }
-                }, 700);
-            }
-        });
+        signInViewModel.getSignInRes(email, password);
     }
 
     //OnBack press to Exit the Application
