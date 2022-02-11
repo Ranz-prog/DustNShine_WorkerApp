@@ -58,7 +58,6 @@ public class SignInViewModel extends ViewModel {
 
     SigninCallback callback;
 
-
     public interface SigninCallback {
         void signinCallback(Integer statusCode, LogInResponse response);
     }

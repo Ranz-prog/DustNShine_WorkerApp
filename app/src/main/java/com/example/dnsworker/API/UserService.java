@@ -2,8 +2,11 @@ package com.example.dnsworker.API;
 
 import com.example.dnsworker.LogIn.LogInRequest;
 import com.example.dnsworker.LogIn.LogInResponse;
+import com.example.dnsworker.Model.ClientBookingModel;
+import com.example.dnsworker.Model.TaskModel;
 import com.example.dnsworker.Model.User;
 
+import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -22,5 +25,8 @@ public interface UserService {
 
     @GET("user")
     Call <User> getUserData(@Header("Authorization") String authToken);
+
+    @GET("bookings")
+    Call <ClientBookingModel> getClientBooking(@Header("Authorization") String bookingRequest);
 
 }
