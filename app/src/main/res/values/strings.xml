@@ -2,7 +2,8 @@
     <string name="app_name">DNSWorker</string>
 
     //Splash Title
-    <string name="title_splash">DustNShine</string>
+    <string name="title_splash">DustnShine</string>
+    <string name="title">Worker</string>
 
     //Sign up Text
     <string name="signup_title">Sign In</string>
