@@ -7,7 +7,7 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.dnsworker.API.APIClient;
-import com.example.dnsworker.Model.ClientBookingModel;
+import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
 import com.example.dnsworker.Model.User;
 
 import java.util.Map;
@@ -20,21 +20,20 @@ public class UserAPIRepo {
 
 
     //for task Bookings
-
     public MutableLiveData<ClientBookingModel> clientBookingRequest(String authToken) {
         final MutableLiveData<ClientBookingModel> clientBookingMLD = new MutableLiveData<>();
 
-        Call<ClientBookingModel> clientBookingModelCall = APIClient.getUserService().getClientBooking("Bearer" + authToken);
+        Call<ClientBookingModel> clientBookingModelCall = APIClient.getUserService().getClientBooking("Bearer " + authToken);
 
         clientBookingModelCall.enqueue(new Callback<ClientBookingModel>() {
             @Override
             public void onResponse(Call<ClientBookingModel> call, Response<ClientBookingModel> response) {
                 clientBookingMLD.setValue(response.body());
+                Log.d(TAG, "onResponse: " + response.body().getMessage());
             }
-
             @Override
             public void onFailure(Call<ClientBookingModel> call, Throwable t) {
-
+                Log.d(TAG, "onFailure: Logout Failed ==>");
             }
         });
 

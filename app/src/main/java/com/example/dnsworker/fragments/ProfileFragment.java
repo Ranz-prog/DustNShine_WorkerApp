@@ -45,7 +45,7 @@ public class ProfileFragment  extends Fragment {
                               worker_province, worker_zipcode,worker_city;
 
 
-    private TextView btnLogout;
+    private Button btnLogout;
 
     private  String retrievedToken;
     SharedPreferences preferences;
@@ -101,7 +101,7 @@ public class ProfileFragment  extends Fragment {
                 worker_lname.setText(user.getLast_name());
                 worker_email.setText(user.getEmail());
                 worker_contact.setText(user.getMobile_number());
-//                worker_housenumber.setText(user.get);
+//                worker_housenumber.setText(user.getHou);
 //                worker_street = view.findViewById(R.id.worker_street_ET);
 //                workker_brgy = view.findViewById(R.id.worker_brgy_ET);
 //                worker_province = view.findViewById(R.id.worker_province_ET);

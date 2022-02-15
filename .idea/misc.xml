@@ -8,8 +8,6 @@
         <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/drawable/container_border_2.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/drawable/edittext_layout.xml" value="0.11614583333333334" />
         <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/drawable/ic_arrowback.xml" value="0.22552083333333334" />
-        <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1346153846153846" />
-        <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/drawable/launche_background.xml" value="0.1346153846153846" />
         <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/drawable/rounded_corners_button_layout.xml" value="0.11614583333333334" />
         <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/drawable/signin_button_shape.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/drawable/signin_container_shape.xml" value="0.22552083333333334" />
@@ -20,10 +18,10 @@
         <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/layout/activity_feedback.xml" value="0.33" />
         <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/layout/activity_login_page.xml" value="0.22" />
         <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/layout/activity_main_menu.xml" value="0.25" />
+        <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/layout/activity_main_menu.xml" value="0.1638888888888889" />
         <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/layout/activity_message_box.xml" value="0.22" />
         <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/layout/activity_service_details.xml" value="0.33" />
-        <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/layout/content_booking_row.xml" value="0.22" />
+        <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/layout/content_booking_row.xml" value="0.5" />
         <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/layout/content_message_row.xml" value="0.25" />
         <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/layout/content_servicelist_row.xml" value="0.33" />
         <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/layout/content_task_row.xml" value="0.5" />
@@ -32,8 +30,6 @@
         <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/layout/fragment_chat.xml" value="0.209375" />
         <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
-        <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/menu/bottom_navigation.xml" value="0.12136752136752137" />
-        <entry key="..\:/Users/R A N Z/Documents/GitHub/workers-app/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1346153846153846" />
         <entry key="..\:/Users/adria/Desktop/Worker/DNS/app/src/main/res/layout/activity_login_page.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/adria/Desktop/Worker/DNS/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/adria/Desktop/Worker/DNS/app/src/main/res/layout/fragment_home.xml" value="0.1" />
@@ -46,7 +42,7 @@
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/font/quicksand_font.xml" value="0.21203703703703702" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/font/quicksand_medium.xml" value="0.22777777777777777" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/font/raleway_extrabold.xml" value="0.1265625" />
-        <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_customer_details.xml" value="0.22" />
+        <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_customer_details.xml" value="0.18" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_customer_details_page.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_feedback.xml" value="0.2" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_login_page.xml" value="0.22" />
@@ -54,7 +50,9 @@
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_main_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_message_box.xml" value="0.22" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_service_details.xml" value="0.22" />
+        <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/content_task_row.xml" value="0.5" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/fragment_profile.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/menu/bottom_navigation.xml" value="0.1" />
       </map>
     </option>
@@ -64,5 +62,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.2" />
+      </ProjectState>
+    </option>
   </component>
 </project>
