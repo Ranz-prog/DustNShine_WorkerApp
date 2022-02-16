@@ -109,6 +109,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/c_details_fullname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/customerDetailsTV"
@@ -126,6 +127,7 @@
                         android:text="Location:" />
 
                     <TextView
+                        android:id="@+id/c_details_location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/customerNameLabel"
@@ -144,6 +146,7 @@
                             />
 
                     <TextView
+                        android:id="@+id/c_details_mobileNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/customerLocationLabel"
@@ -166,12 +169,14 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
+                        android:padding="4dp"
+                        android:background="@color/background"
                         android:layout_below="@id/bookingDetailsTextView">
 
-                        <TextView
-                            android:id="@+id/forToken"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/service_RecyclerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
 
                     </LinearLayout>
                 </RelativeLayout>

@@ -70,6 +70,7 @@ public class LoginPage extends AppCompatActivity {
                   String token = response.getData().getToken();
                   SharedPreferences preferences = getSharedPreferences("AUTH_TOKEN", MODE_PRIVATE);
                   preferences.edit().putString("TOKEN", token).apply();
+
                   new Handler().postDelayed(new Runnable() {
                       @Override
                       public void run() {

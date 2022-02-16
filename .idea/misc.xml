@@ -42,15 +42,17 @@
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/font/quicksand_font.xml" value="0.21203703703703702" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/font/quicksand_medium.xml" value="0.22777777777777777" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/font/raleway_extrabold.xml" value="0.1265625" />
-        <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_customer_details.xml" value="0.18" />
+        <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_customer_details.xml" value="0.2" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_customer_details_page.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_feedback.xml" value="0.2" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_login_page.xml" value="0.22" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_main.xml" value="0.16" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_main_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_message_box.xml" value="0.22" />
-        <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_service_details.xml" value="0.22" />
-        <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/content_task_row.xml" value="0.5" />
+        <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/activity_service_details.xml" value="0.2" />
+        <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/content_booking_row.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/content_servicelist_row.xml" value="0.25" />
+        <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/content_task_row.xml" value="0.33" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/layout/fragment_profile.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/menu/bottom_navigation.xml" value="0.1" />

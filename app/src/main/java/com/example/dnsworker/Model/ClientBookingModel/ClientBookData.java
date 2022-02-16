@@ -11,7 +11,7 @@ public class ClientBookData {
     private Object latitude;
     private Object longitude;
     private long status;
-    private long total;
+    private double total;
     private Date createdAt;
     private Date updatedAt;
     private Service[] services;
@@ -42,7 +42,7 @@ public class ClientBookData {
     public long getStatus() { return status; }
     public void setStatus(long value) { this.status = value; }
 
-    public long getTotal() { return total; }
+    public double getTotal() { return total; }
     public void setTotal(long value) { this.total = value; }
 
     public Date getCreatedAt() { return createdAt; }

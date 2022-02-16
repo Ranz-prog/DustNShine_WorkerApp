@@ -25,10 +25,6 @@ public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> 
     private List<Customer> customerList;
     private OnClickTaskListener onClickTaskListener;
 
-//    public Task_Adapter(Context context, List<Customer> customerList, OnClickTaskListener onClickTaskListener){
-//        this.context = context;
-//        this.customerList = customerList;
-//        this.onClickTaskListener = onClickTaskListener;
 
     public Task_Adapter(Context context, List<Customer> customerList, OnClickTaskListener onClickTaskListener) {
         this.context = context;

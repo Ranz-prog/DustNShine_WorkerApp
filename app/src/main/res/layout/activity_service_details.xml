@@ -12,7 +12,6 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
@@ -22,7 +21,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/service_Image"
@@ -132,6 +131,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/service_customerMobileNumberTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/service_customerLocationTV"
@@ -146,10 +146,11 @@
             <RelativeLayout
                 android:id="@+id/bookingDetailsContainer"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/customerDetailsContainer">
 
                 <TextView
+                    android:id="@+id/titleBookingDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -158,6 +159,19 @@
                     android:textColor="@color/app_theme_blue"
                     android:textSize="17sp"
                     android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/titleBookingDetails">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/sdRecycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+
+                </LinearLayout>
             </RelativeLayout>
 
             <TextView
@@ -182,11 +196,26 @@
                 android:src="@drawable/money" />
 
             <TextView
+                android:id="@+id/totalCostlabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/iconCash"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/quicsandmed"
+                android:text="@string/customer_total"
+                android:textColor="@color/app_theme_blue"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/totalCost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iconCash"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/totalCostlabel"
                 android:fontFamily="@font/quicsandmed"
                 android:text="@string/customer_total"
                 android:textColor="@color/app_theme_blue"
