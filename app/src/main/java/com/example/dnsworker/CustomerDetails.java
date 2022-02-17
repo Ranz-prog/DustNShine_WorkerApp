@@ -43,11 +43,11 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
     Service[] serviceList;
     ServiceListAdapter serviceListAdapter;
 
-    private TextView fullname, mobilenumber;
+    private TextView fullname, mobilenumber, address;
 
     SharedPreferences preferences, servicePreference;
 
-    private String first_name, last_name, mobile_number;
+    private String first_name, last_name, mobile_number, location;
 
 
     @Override
@@ -66,30 +66,13 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         serviceRecyclerView.setAdapter(serviceListAdapter);
 
 
-        //Shared pref for Customer Details
-        preferences = getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
-        first_name = preferences.getString("first_name", null);
-        last_name = preferences.getString("last_name", null);
-        mobile_number = preferences.getString("mobile_number", null);
-
-        servicePreference = getSharedPreferences("CUSTOMER_SERVICE", Context.MODE_PRIVATE);
-        String jsonString = servicePreference.getString("SERVICE_LIST", null);
-
-
-        Gson gson = new Gson();
-        Type type = new TypeToken<Service[]>(){}.getType();
-
-        gson.fromJson(jsonString, type);
-        serviceList = gson.fromJson(jsonString, type);
-        serviceListAdapter.setServiceList(serviceList);
-
-        Log.d(TAG, "onCreate: firstname ======>" + first_name);
-
         fullname = findViewById(R.id.c_details_fullname);
         mobilenumber = findViewById(R.id.c_details_mobileNumber);
+        address = findViewById(R.id.c_details_location);
 
-        fullname.setText(first_name + " " + last_name);
-        mobilenumber.setText(mobile_number);
+        loadData();
+
+
 
 
 
@@ -114,6 +97,32 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         });
     }
 
+    private void loadData(){
+
+        //Shared pref for Customer Details
+        preferences = getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
+        first_name = preferences.getString("first_name", null);
+        last_name = preferences.getString("last_name", null);
+        mobile_number = preferences.getString("mobile_number", null);
+        location = preferences.getString("address", null);
+
+        servicePreference = getSharedPreferences("CUSTOMER_SERVICE", Context.MODE_PRIVATE);
+        String jsonString = servicePreference.getString("SERVICE_LIST", null);
+
+
+        Gson gson = new Gson();
+        Type type = new TypeToken<Service[]>(){}.getType();
+
+        gson.fromJson(jsonString, type);
+        serviceList = gson.fromJson(jsonString, type);
+        serviceListAdapter.setServiceList(serviceList);
+
+        fullname.setText(first_name + " " + last_name);
+        address.setText(location);
+        mobilenumber.setText(mobile_number);
+
+        Log.d(TAG, "onCreate: firstname ======>" + first_name);
+    }
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         map = googleMap;

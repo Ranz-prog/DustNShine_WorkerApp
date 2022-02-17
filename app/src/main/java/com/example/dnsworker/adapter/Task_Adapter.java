@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.Model.ClientBookingModel.Customer;
 import com.example.dnsworker.R;
 
@@ -22,18 +23,17 @@ public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> 
 
     //private List<TaskModel> taskModelList;
     Context context;
-    private List<Customer> customerList;
+    private ClientBookData[] customerList;
     private OnClickTaskListener onClickTaskListener;
 
 
-    public Task_Adapter(Context context, List<Customer> customerList, OnClickTaskListener onClickTaskListener) {
+    public Task_Adapter(Context context, ClientBookData[] customerList, OnClickTaskListener onClickTaskListener) {
         this.context = context;
         this.customerList = customerList;
         this.onClickTaskListener = onClickTaskListener;
     }
 
-
-    public void setTaskModelList(List<Customer> customerList){
+    public void setTaskModelList(ClientBookData[] customerList){
         this.customerList = customerList;
         notifyDataSetChanged();
     }
@@ -49,23 +49,16 @@ public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.task_clientName.setText(customerList.get(position).getFirstName() + " " + customerList.get(position).getLastName());
-        holder.task_clientContact.setText(customerList.get(position).getMobileNumber());
-
-        Log.d(TAG, "onBindViewHolder: client Name ====> " + customerList.get(position).getFirstName());
-        Log.d(TAG, "onBindViewHolder: client Name ====> " + customerList.get(position).getMobileNumber());
-
-        //holder.task_clientImage.setImageResource(taskModelList.get(position).getClientImage());
-        //holder.task_clientName.setText(taskModelList.get(position).getClientName());
-        //holder.task_clientLocation.setText(taskModelList.get(position).getClientLocation());
-        //holder.task_clientContact.setText(taskModelList.get(position).getClientNContactNumber());
+        holder.task_clientName.setText(customerList [position].getCustomer().getFirstName() + " " + customerList [position].getCustomer().getLastName());
+        holder.task_clientLocation.setText(customerList [position].getAddress());
+        holder.task_clientContact.setText(customerList [position].getCustomer().getMobileNumber());
 
     }
 
     @Override
     public int getItemCount() {
         if (this.customerList !=null){
-            return this.customerList.size();
+            return this.customerList.length;
         }
         return 0;
     }
@@ -81,7 +74,7 @@ public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> 
 
             //task_clientImage = itemView.findViewById(R.id.task_clientImageView);
             task_clientName = itemView.findViewById(R.id.task_clientName_TV);
-            //task_clientLocation = itemView.findViewById(R.id.task_clientLocation_TV);
+            task_clientLocation = itemView.findViewById(R.id.task_clientLocation_TV);
             task_clientContact = itemView.findViewById(R.id.task_clientContact_TV);
 
             this.onClickTaskListener = onClickTaskListener;

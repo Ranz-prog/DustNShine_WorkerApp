@@ -48,8 +48,8 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
 
     private RecyclerView taskRecycler;
     private View view;
-    List<Customer> customerList;
     ClientBookData[] clientBookDataList;
+    ClientBookData[] customerList;
     Service[] serviceList;
     Task_Adapter task_adapter;
     private ClientBookingViewModel clientBookingViewModel;
@@ -73,14 +73,15 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         retrievedToken = preferences.getString("TOKEN", null);
 
 
-        customerList = new ArrayList<>();
+        //customerList = new ArrayList<>();
+
 
         clientBookingViewModel = ViewModelProviders.of(getActivity()).get(ClientBookingViewModel.class);
         clientBookingViewModel.getClientBookingData(retrievedToken).observe(getActivity(), new Observer<ClientBookingModel>() {
             @Override
             public void onChanged(ClientBookingModel clientBookingModel) {
                 ClientBookData[] clientBookData  = clientBookingModel.getData();
-                customerList.add(clientBookData[0].getCustomer());
+                customerList = clientBookData;
                 clientBookDataList = clientBookingModel.getData();
                 task_adapter.setTaskModelList(customerList);
                 serviceList = clientBookData[0].getServices();
@@ -101,22 +102,22 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
     private void loadData(int position){
 
         //Customer Details
-        String first_name = customerList.get(position).getFirstName();
-        String last_name = customerList.get(position).getLastName();
-        String mobile_number = customerList.get(position).getMobileNumber();
+        String first_name = customerList [position].getCustomer().getFirstName();
+        String last_name = customerList[position].getCustomer().getLastName();
+        String mobile_number = customerList [position].getCustomer().getMobileNumber();
+        String address = customerList [position].getAddress();
         double totalCost = clientBookDataList[position].getTotal();
 
-
-        Log.d(TAG, "onClickTask: C_DATA ========> " + customerList.get(position));
-        Log.d(TAG, "onClickTask: TOTALCOST =======>" + totalCost);
+//        Log.d(TAG, "onClickTask: C_DATA ========> " + customerList.get(position));
+//        Log.d(TAG, "onClickTask: TOTALCOST =======>" + totalCost);
 
         //Customer service data
         SharedPreferences preferences = getActivity().getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
         preferences.edit().putString("first_name", first_name).apply();
         preferences.edit().putString("last_name", last_name).apply();
         preferences.edit().putString("mobile_number", mobile_number).apply();
+        preferences.edit().putString("address", address).apply();
         preferences.edit().putString("total", String.valueOf(totalCost)).apply();
-
 
         Gson gson = new Gson();
 

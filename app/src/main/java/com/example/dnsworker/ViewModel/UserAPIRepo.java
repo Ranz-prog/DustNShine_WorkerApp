@@ -10,6 +10,7 @@ import com.example.dnsworker.API.APIClient;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
 import com.example.dnsworker.Model.User;
 
+import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -28,7 +29,7 @@ public class UserAPIRepo {
         clientBookingModelCall.enqueue(new Callback<ClientBookingModel>() {
             @Override
             public void onResponse(Call<ClientBookingModel> call, Response<ClientBookingModel> response) {
-                clientBookingMLD.setValue(response.body());
+                clientBookingMLD.postValue(response.body());
                 Log.d(TAG, "onResponse: " + response.body().getMessage());
             }
             @Override

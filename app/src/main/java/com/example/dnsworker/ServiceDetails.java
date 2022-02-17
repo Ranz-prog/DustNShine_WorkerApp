@@ -10,29 +10,22 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.dnsworker.Model.ClientBookingModel.Service;
 import com.example.dnsworker.adapter.SLAdapter.SLAdapter;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.lang.reflect.Type;
-
 
 public class ServiceDetails extends Activity {
 
     private LinearLayout serviceBackButton;
     private Button doneWorkBtn;
-    private TextView customerName, customerMobileNumber, totalCost;
+    private TextView customerName, customerMobileNumber, totalCost, customerLocation;
     private Dialog dialog;
 
     private RecyclerView serviceRecyclerView;
@@ -41,8 +34,7 @@ public class ServiceDetails extends Activity {
     private SLAdapter slAdapter;
     Service[] serviceList;
 
-    private String first_name, last_name, mobile_number;
-    private String total;
+    private String first_name, last_name, mobile_number, location, total;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,6 +47,7 @@ public class ServiceDetails extends Activity {
 
         customerName = findViewById(R.id.service_customerNameTV);
         customerMobileNumber = findViewById(R.id.service_customerMobileNumberTV);
+        customerLocation = findViewById(R.id.service_customerLocationTV);
         totalCost = findViewById(R.id.totalCost);
 
         serviceRecyclerView = findViewById(R.id.sdRecycler);
@@ -66,9 +59,9 @@ public class ServiceDetails extends Activity {
         loadData();
 
         customerName.setText(first_name + " " + last_name);
+        customerLocation.setText(location);
         customerMobileNumber.setText(mobile_number);
         totalCost.setText(total);
-
 
         serviceBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +85,7 @@ public class ServiceDetails extends Activity {
         first_name = preferences.getString("first_name", null);
         last_name = preferences.getString("last_name", null);
         mobile_number = preferences.getString("mobile_number", null);
+        location = preferences.getString("address", null);
         total = preferences.getString("total", null);
 
 
