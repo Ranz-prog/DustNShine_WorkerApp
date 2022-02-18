@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,14 +13,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.example.dnsworker.Model.ClientBookingModel.Customer;
 import com.example.dnsworker.Model.ClientBookingModel.Service;
 import com.example.dnsworker.adapter.ServiceListAdapter.ServiceListAdapter;
-import com.example.dnsworker.adapter.Task_Adapter;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -30,9 +25,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.lang.reflect.Type;
-import java.util.List;
 
 public class CustomerDetails extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -40,14 +33,13 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
     private Button startWorkButton;
     private GoogleMap map;
     private RecyclerView serviceRecyclerView;
+    private TextView fullname, mobilenumber, address;
+    private String first_name, last_name, mobile_number, location;
+
     Service[] serviceList;
     ServiceListAdapter serviceListAdapter;
-
-    private TextView fullname, mobilenumber, address;
-
     SharedPreferences preferences, servicePreference;
 
-    private String first_name, last_name, mobile_number, location;
 
 
     @Override
@@ -71,10 +63,6 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         address = findViewById(R.id.c_details_location);
 
         loadData();
-
-
-
-
 
         //MapView
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()

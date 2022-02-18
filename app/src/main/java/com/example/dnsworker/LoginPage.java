@@ -17,10 +17,6 @@ import com.example.dnsworker.LogIn.LogInResponse;
 import com.example.dnsworker.ViewModel.SignInViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 public class LoginPage extends AppCompatActivity {
 
     private Button signin_btnSignin;
@@ -39,7 +35,6 @@ public class LoginPage extends AppCompatActivity {
 
         Log.d("TAG", "LOGIN PAGE!");
         signInViewModel = new SignInViewModel();
-
 
         //Proceed to Login
         signin_btnSignin.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +56,6 @@ public class LoginPage extends AppCompatActivity {
 
 
         //Checking the Status Code with Toast Warning
-
       signInViewModel.setOnSigninListener(new SignInViewModel.SigninCallback() {
           @Override
           public void signinCallback(Integer statusCode, LogInResponse response) {

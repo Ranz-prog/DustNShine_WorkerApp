@@ -16,7 +16,7 @@ public class ClientBookingViewModel extends ViewModel{
     }
 
     public LiveData<ClientBookingModel> getClientBookingData(String authToken){
-        if(clientBookingMLD==null){
+        if(clientBookingMLD == null){
             clientBookingMLD = userAPIRepo.clientBookingRequest(authToken);
         }
         return clientBookingMLD;

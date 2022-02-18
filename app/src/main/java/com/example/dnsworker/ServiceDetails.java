@@ -88,7 +88,6 @@ public class ServiceDetails extends Activity {
         location = preferences.getString("address", null);
         total = preferences.getString("total", null);
 
-
         //Shared Customer Service List
         servicePreference = getSharedPreferences("CUSTOMER_SERVICE", Context.MODE_PRIVATE);
         String jsonString = servicePreference.getString("SERVICE_LIST", null);
@@ -100,7 +99,6 @@ public class ServiceDetails extends Activity {
         serviceList = gson.fromJson(jsonString, type);
         slAdapter.setSLData(serviceList);
     }
-
     private void openDialog(){
         dialog.setContentView(R.layout.dialog_confirmation);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

@@ -1,7 +1,6 @@
 package com.example.dnsworker.fragments;
 
 import static android.content.ContentValues.TAG;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,10 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-
-import android.widget.Toast;
-
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -21,28 +17,14 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.dnsworker.API.APIClient;
 import com.example.dnsworker.CustomerDetails;
-import com.example.dnsworker.LoginPage;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
-import com.example.dnsworker.Model.ClientBookingModel.Customer;
 import com.example.dnsworker.Model.ClientBookingModel.Service;
-import com.example.dnsworker.Model.TaskModel;
 import com.example.dnsworker.R;
 import com.example.dnsworker.ViewModel.ClientBookingViewModel;
 import com.example.dnsworker.adapter.Task_Adapter;
 import com.google.gson.Gson;
-
-import java.util.ArrayList;
-
-import java.util.List;
-import java.util.Map;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskListener {
 
@@ -54,7 +36,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
     Task_Adapter task_adapter;
     private ClientBookingViewModel clientBookingViewModel;
 
-    private  String retrievedToken;
+    private String retrievedToken;
     SharedPreferences preferences;
 
     @Nullable
@@ -68,23 +50,29 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         task_adapter = new Task_Adapter(getContext(), customerList, this);
         taskRecycler.setAdapter(task_adapter);
 
+        TextView noResult = view.findViewById(R.id.emptyTaskTV);
+
         //Passed Data from shared Pref
         preferences = getActivity().getSharedPreferences("AUTH_TOKEN", Context.MODE_PRIVATE);
         retrievedToken = preferences.getString("TOKEN", null);
-
-
-        //customerList = new ArrayList<>();
 
 
         clientBookingViewModel = ViewModelProviders.of(getActivity()).get(ClientBookingViewModel.class);
         clientBookingViewModel.getClientBookingData(retrievedToken).observe(getActivity(), new Observer<ClientBookingModel>() {
             @Override
             public void onChanged(ClientBookingModel clientBookingModel) {
-                ClientBookData[] clientBookData  = clientBookingModel.getData();
-                customerList = clientBookData;
-                clientBookDataList = clientBookingModel.getData();
-                task_adapter.setTaskModelList(customerList);
-                serviceList = clientBookData[0].getServices();
+
+                if (clientBookingModel != null){
+
+                    ClientBookData[] clientBookData  = clientBookingModel.getData();
+                    customerList = clientBookData;
+                    clientBookDataList = clientBookingModel.getData();
+                    task_adapter.setTaskModelList(customerList);
+                    serviceList = clientBookData[0].getServices();
+                } else{
+                    //if No Data retrieved
+                    noResult.setVisibility(View.VISIBLE);
+                }
             }
         });
         return view;
@@ -93,7 +81,6 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
     @Override
     public void onClickTask(int position) {
         Log.d(TAG, "onClickTask: clicked");
-
         loadData(position);
         Intent intent = new Intent(getContext(), CustomerDetails.class);
         startActivity(intent);
@@ -106,10 +93,8 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         String last_name = customerList[position].getCustomer().getLastName();
         String mobile_number = customerList [position].getCustomer().getMobileNumber();
         String address = customerList [position].getAddress();
+        String email = customerList[position].getCustomer().getEmail();
         double totalCost = clientBookDataList[position].getTotal();
-
-//        Log.d(TAG, "onClickTask: C_DATA ========> " + customerList.get(position));
-//        Log.d(TAG, "onClickTask: TOTALCOST =======>" + totalCost);
 
         //Customer service data
         SharedPreferences preferences = getActivity().getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
@@ -118,6 +103,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         preferences.edit().putString("mobile_number", mobile_number).apply();
         preferences.edit().putString("address", address).apply();
         preferences.edit().putString("total", String.valueOf(totalCost)).apply();
+        preferences.edit().putString("email", email).apply();
 
         Gson gson = new Gson();
 
