@@ -26,6 +26,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
+import java.util.Random;
 
 public class CustomerDetails extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -34,7 +35,7 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
     private GoogleMap map;
     private RecyclerView serviceRecyclerView;
     private TextView fullname, mobilenumber, address;
-    private String first_name, last_name, mobile_number, location;
+    private String first_name, last_name, mobile_number, location, email;
 
     Service[] serviceList;
     ServiceListAdapter serviceListAdapter;
@@ -54,14 +55,14 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         serviceRecyclerView = findViewById(R.id.service_RecyclerView);
         serviceRecyclerView.setHasFixedSize(true);
         serviceRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        serviceListAdapter = new ServiceListAdapter(this, serviceList);
-        serviceRecyclerView.setAdapter(serviceListAdapter);
-
 
         fullname = findViewById(R.id.c_details_fullname);
         mobilenumber = findViewById(R.id.c_details_mobileNumber);
         address = findViewById(R.id.c_details_location);
 
+
+        serviceListAdapter = new ServiceListAdapter(this, serviceList);
+        serviceRecyclerView.setAdapter(serviceListAdapter);
         loadData();
 
         //MapView
@@ -72,6 +73,8 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         startWorkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                onJitsiMeet();
                 Intent intent = new Intent(CustomerDetails.this, ServiceDetails.class);
                 startActivity(intent);
             }
@@ -97,7 +100,6 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         servicePreference = getSharedPreferences("CUSTOMER_SERVICE", Context.MODE_PRIVATE);
         String jsonString = servicePreference.getString("SERVICE_LIST", null);
 
-
         Gson gson = new Gson();
         Type type = new TypeToken<Service[]>(){}.getType();
 
@@ -109,7 +111,7 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         address.setText(location);
         mobilenumber.setText(mobile_number);
 
-        Log.d(TAG, "onCreate: firstname ======>" + first_name);
+        Log.d(TAG, "onCreate: servicelist ======>");
     }
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
@@ -119,6 +121,20 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         map.addMarker(new MarkerOptions().position(Address).title("UPANG"));
         map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         map.moveCamera(CameraUpdateFactory.newLatLng(Address));
+    }
+
+    private void onJitsiMeet(){
+
+        SharedPreferences jitsiPref = getSharedPreferences("CUSTOMER_DATA", MODE_PRIVATE);
+        email = jitsiPref.getString("email", null);
+
+        Random random = new Random();
+        int randomVal = random.nextInt(10000);
+
+        Log.d(TAG, "onJitsiMeet: RANDOM CODE ===>" + randomVal);
+
+
+
     }
 
     

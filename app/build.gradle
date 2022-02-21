@@ -44,7 +44,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    //Cicular Image
+    //Circular Image
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     //Map
@@ -52,7 +52,11 @@ dependencies {
 
 
     //lifecycle
-
     implementation 'android.arch.lifecycle:extensions:1.1.0'
+
+    //Jitsi dependency
+    //implementation ('org.jitsi.react:jitsi-meet-sdk:3.+') { transitive = true }
+    implementation 'com.sun.mail:android-mail:1.6.0'
+    implementation 'com.sun.mail:android-activation:1.6.0'
 
 }

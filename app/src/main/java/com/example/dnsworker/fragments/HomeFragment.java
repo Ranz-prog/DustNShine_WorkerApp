@@ -35,9 +35,11 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
     Service[] serviceList;
     Task_Adapter task_adapter;
     private ClientBookingViewModel clientBookingViewModel;
-
     private String retrievedToken;
     SharedPreferences preferences;
+
+
+
 
     @Nullable
     @Override
@@ -63,12 +65,11 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
             public void onChanged(ClientBookingModel clientBookingModel) {
 
                 if (clientBookingModel != null){
-
                     ClientBookData[] clientBookData  = clientBookingModel.getData();
                     customerList = clientBookData;
                     clientBookDataList = clientBookingModel.getData();
                     task_adapter.setTaskModelList(customerList);
-                    serviceList = clientBookData[0].getServices();
+                    //serviceList = clientBookData[0].getServices();
                 } else{
                     //if No Data retrieved
                     noResult.setVisibility(View.VISIBLE);
@@ -95,6 +96,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         String address = customerList [position].getAddress();
         String email = customerList[position].getCustomer().getEmail();
         double totalCost = clientBookDataList[position].getTotal();
+        serviceList = clientBookDataList[position].getServices();
 
         //Customer service data
         SharedPreferences preferences = getActivity().getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
@@ -110,6 +112,6 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         //Service Details
         SharedPreferences servicePreference = getActivity().getSharedPreferences("CUSTOMER_SERVICE", Context.MODE_PRIVATE);
         String jsonString = gson.toJson(serviceList);
-        servicePreference.edit().putString("SERVICE_LIST", jsonString).apply();
+        servicePreference.edit().putString("SERVICE_LIST", jsonString).commit();
     }
 }
