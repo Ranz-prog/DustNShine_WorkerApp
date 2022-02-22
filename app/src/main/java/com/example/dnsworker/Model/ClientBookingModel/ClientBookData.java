@@ -6,14 +6,14 @@ public class ClientBookData {
     private long id;
     private long user_id;
     private long company_id;
-    private Date startDatetime;
+    private String start_datetime;
     private String address;
     private Object latitude;
     private Object longitude;
     private long status;
     private double total;
-    private Date createdAt;
-    private Date updatedAt;
+    private String created_at;
+    private String updated_at;
     private Service[] services;
     private Customer customer;
     private Customer[] workers;
@@ -27,8 +27,8 @@ public class ClientBookData {
     public long getCompanyID() { return company_id; }
     public void setCompanyID(long value) { this.company_id = value; }
 
-    public Date getStartDatetime() { return startDatetime; }
-    public void setStartDatetime(Date value) { this.startDatetime = value; }
+    public String getStartDatetime() { return start_datetime; }
+    public void setStartDatetime(String value) { this.start_datetime = value; }
 
     public String getAddress() { return address; }
     public void setAddress(String value) { this.address = value; }
@@ -45,11 +45,11 @@ public class ClientBookData {
     public double getTotal() { return total; }
     public void setTotal(long value) { this.total = value; }
 
-    public Date getCreatedAt() { return createdAt; }
-    public void setCreatedAt(Date value) { this.createdAt = value; }
+    public String getCreatedAt() { return created_at; }
+    public void setCreatedAt(String value) { this.created_at = value; }
 
-    public Date getUpdatedAt() { return updatedAt; }
-    public void setUpdatedAt(Date value) { this.updatedAt = value; }
+    public String getUpdatedAt() { return updated_at; }
+    public void setUpdatedAt(String value) { this.updated_at = value; }
 
     public Service[] getServices() { return services; }
     public void setServices(Service[] value) { this.services = value; }

@@ -3,23 +3,16 @@ package com.example.dnsworker.ViewModel;
 import static android.content.ContentValues.TAG;
 
 import android.util.Log;
-
 import androidx.lifecycle.MutableLiveData;
-
 import com.example.dnsworker.API.APIClient;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
 import com.example.dnsworker.Model.User;
-
-import java.util.List;
 import java.util.Map;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UserAPIRepo {
-
-
     //for task Bookings
     public MutableLiveData<ClientBookingModel> clientBookingRequest(String authToken) {
         final MutableLiveData<ClientBookingModel> clientBookingMLD = new MutableLiveData<>();
@@ -34,7 +27,7 @@ public class UserAPIRepo {
             }
             @Override
             public void onFailure(Call<ClientBookingModel> call, Throwable t) {
-                Log.d(TAG, "onFailure: Logout Failed ==>");
+                Log.d(TAG, "onFailure: ==>" + t.toString());
             }
         });
 
@@ -50,9 +43,7 @@ public class UserAPIRepo {
             @Override
             public void onResponse(Call<Map<String, String>> call, Response<Map<String, String>> response) {
                 if (response.isSuccessful()) {
-
                     signoutMutableData.setValue(response.body());
-
                     Log.d(TAG, "onResponse: " + response.body().get("message"));
 
                 }
@@ -69,14 +60,11 @@ public class UserAPIRepo {
         return signoutMutableData;
     }
 
-
     //Getting User Information
     public MutableLiveData<User> userDataRequest(String authToken) {
-
         final MutableLiveData<User> userMutableLiveData = new MutableLiveData<>();
 
         Call<User> userResponseCall = APIClient.getUserService().getUserData("Bearer " + authToken);
-
         userResponseCall.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
@@ -89,7 +77,7 @@ public class UserAPIRepo {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-
+                Log.d(TAG, "onFailure: " + t);
             }
         });
 

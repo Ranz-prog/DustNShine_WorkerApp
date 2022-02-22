@@ -3,7 +3,6 @@ package com.example.dnsworker.ViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
 import com.example.dnsworker.LogIn.LogInResponse;
 
 import java.util.Map;

@@ -21,26 +21,6 @@
             android:paddingTop="15dp"
             android:paddingBottom="10dp">
 
-<!--            <LinearLayout-->
-<!--                android:id="@+id/ReturnBtnOnHome"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_alignParentTop="true"-->
-<!--                android:layout_marginTop="7dp"-->
-<!--                android:background="@drawable/roundbutton"-->
-<!--                android:gravity="center_horizontal"-->
-<!--                android:orientation="vertical"-->
-<!--                android:padding="10dp">-->
-
-
-<!--                <ImageView-->
-<!--                    android:id="@+id/imageView5"-->
-<!--                    android:layout_width="18dp"-->
-<!--                    android:layout_height="18dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    app:srcCompat="@drawable/back" />-->
-<!--            </LinearLayout>-->
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -53,7 +33,6 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </RelativeLayout>
-
 
         <TextView
             android:id="@+id/profile_subtitle"

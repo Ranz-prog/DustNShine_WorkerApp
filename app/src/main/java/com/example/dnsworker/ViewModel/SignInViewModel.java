@@ -51,7 +51,7 @@ public class SignInViewModel extends ViewModel {
             public void onFailure(Call<LogInResponse> call, Throwable t) {
                 //Toast.makeText(activity, "Throwable: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
 
-                Log.d(TAG, "onFailure: STATUS CODE ERROR =====>" );
+                Log.d(TAG, "onFailure: STATUS CODE ERROR =====>" + t);
             }
         });
     }

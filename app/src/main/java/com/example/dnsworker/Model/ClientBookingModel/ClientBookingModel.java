@@ -12,16 +12,3 @@ public class ClientBookingModel {
     public String getMessage() { return message; }
     public void setMessage(String value) { this.message = value; }
 }
-
-
-
-
-
-
-
-// Service.java
-
-
-
-// ServicePivot.java
-

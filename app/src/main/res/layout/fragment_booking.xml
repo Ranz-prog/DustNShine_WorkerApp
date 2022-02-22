@@ -21,7 +21,17 @@
         android:id="@+id/booking_RecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_below="@id/titleBooking" />
+
+    <TextView
+        android:id="@+id/emptyTaskTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/quicsandmed"
+        android:textSize="24sp"
+        android:text="No Available Data"
+        android:visibility="invisible"/>
+
 
 </RelativeLayout>

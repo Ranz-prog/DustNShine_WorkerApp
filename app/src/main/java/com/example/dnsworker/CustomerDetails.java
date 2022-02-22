@@ -50,16 +50,14 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
 
         arrowBack = findViewById(R.id.ic_arrowbackCustomerDetails);
         startWorkButton = findViewById(R.id.startWorkButton);
+        fullname = findViewById(R.id.c_details_fullname);
+        mobilenumber = findViewById(R.id.c_details_mobileNumber);
+        address = findViewById(R.id.c_details_location);
 
         //RecyclerView for Service List
         serviceRecyclerView = findViewById(R.id.service_RecyclerView);
         serviceRecyclerView.setHasFixedSize(true);
         serviceRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        fullname = findViewById(R.id.c_details_fullname);
-        mobilenumber = findViewById(R.id.c_details_mobileNumber);
-        address = findViewById(R.id.c_details_location);
-
 
         serviceListAdapter = new ServiceListAdapter(this, serviceList);
         serviceRecyclerView.setAdapter(serviceListAdapter);
@@ -74,7 +72,7 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
             @Override
             public void onClick(View v) {
 
-                onJitsiMeet();
+                //onJitsiMeet();
                 Intent intent = new Intent(CustomerDetails.this, ServiceDetails.class);
                 startActivity(intent);
             }
@@ -123,19 +121,19 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         map.moveCamera(CameraUpdateFactory.newLatLng(Address));
     }
 
-    private void onJitsiMeet(){
-
-        SharedPreferences jitsiPref = getSharedPreferences("CUSTOMER_DATA", MODE_PRIVATE);
-        email = jitsiPref.getString("email", null);
-
-        Random random = new Random();
-        int randomVal = random.nextInt(10000);
-
-        Log.d(TAG, "onJitsiMeet: RANDOM CODE ===>" + randomVal);
-
-
-
-    }
+//    private void onJitsiMeet(){
+//
+//        SharedPreferences jitsiPref = getSharedPreferences("CUSTOMER_DATA", MODE_PRIVATE);
+//        email = jitsiPref.getString("email", null);
+//
+//        Random random = new Random();
+//        int randomVal = random.nextInt(10000);
+//
+//        Log.d(TAG, "onJitsiMeet: RANDOM CODE ===>" + randomVal);
+//
+//
+//
+//    }
 
     
 }

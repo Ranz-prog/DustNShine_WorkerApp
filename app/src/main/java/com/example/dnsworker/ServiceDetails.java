@@ -43,12 +43,12 @@ public class ServiceDetails extends Activity {
 
         serviceBackButton = findViewById(R.id.service_arrowback);
         doneWorkBtn = findViewById(R.id.doneWorkButton);
-        dialog = new Dialog(this);
-
         customerName = findViewById(R.id.service_customerNameTV);
         customerMobileNumber = findViewById(R.id.service_customerMobileNumberTV);
         customerLocation = findViewById(R.id.service_customerLocationTV);
         totalCost = findViewById(R.id.totalCost);
+
+        dialog = new Dialog(this);
 
         serviceRecyclerView = findViewById(R.id.sdRecycler);
         serviceRecyclerView.setHasFixedSize(true);
@@ -99,6 +99,8 @@ public class ServiceDetails extends Activity {
         serviceList = gson.fromJson(jsonString, type);
         slAdapter.setSLData(serviceList);
     }
+
+
     private void openDialog(){
         dialog.setContentView(R.layout.dialog_confirmation);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

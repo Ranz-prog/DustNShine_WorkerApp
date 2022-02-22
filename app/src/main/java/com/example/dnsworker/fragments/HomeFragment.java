@@ -31,15 +31,11 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
     private RecyclerView taskRecycler;
     private View view;
     ClientBookData[] clientBookDataList;
-    ClientBookData[] customerList;
     Service[] serviceList;
     Task_Adapter task_adapter;
     private ClientBookingViewModel clientBookingViewModel;
     private String retrievedToken;
     SharedPreferences preferences;
-
-
-
 
     @Nullable
     @Override
@@ -49,7 +45,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         taskRecycler = view.findViewById(R.id.task_RecyclerView);
         taskRecycler.setHasFixedSize(true);
         taskRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        task_adapter = new Task_Adapter(getContext(), customerList, this);
+        task_adapter = new Task_Adapter(getContext(), clientBookDataList, this);
         taskRecycler.setAdapter(task_adapter);
 
         TextView noResult = view.findViewById(R.id.emptyTaskTV);
@@ -58,7 +54,6 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         preferences = getActivity().getSharedPreferences("AUTH_TOKEN", Context.MODE_PRIVATE);
         retrievedToken = preferences.getString("TOKEN", null);
 
-
         clientBookingViewModel = ViewModelProviders.of(getActivity()).get(ClientBookingViewModel.class);
         clientBookingViewModel.getClientBookingData(retrievedToken).observe(getActivity(), new Observer<ClientBookingModel>() {
             @Override
@@ -66,10 +61,12 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
 
                 if (clientBookingModel != null){
                     ClientBookData[] clientBookData  = clientBookingModel.getData();
-                    customerList = clientBookData;
-                    clientBookDataList = clientBookingModel.getData();
-                    task_adapter.setTaskModelList(customerList);
+                    clientBookDataList = clientBookData;
+                    //clientBookDataList = clientBookingModel.getData();
+                    task_adapter.setTaskModelList(clientBookDataList);
                     //serviceList = clientBookData[0].getServices();
+
+                    Log.d(TAG, "onChanged: DATA HERE======>" + clientBookData);
                 } else{
                     //if No Data retrieved
                     noResult.setVisibility(View.VISIBLE);
@@ -89,16 +86,15 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
 
     private void loadData(int position){
 
-        //Customer Details
-        String first_name = customerList [position].getCustomer().getFirstName();
-        String last_name = customerList[position].getCustomer().getLastName();
-        String mobile_number = customerList [position].getCustomer().getMobileNumber();
-        String address = customerList [position].getAddress();
-        String email = customerList[position].getCustomer().getEmail();
+        //Specific Customer Details
+        String first_name = clientBookDataList[position].getCustomer().getFirstName();
+        String last_name = clientBookDataList[position].getCustomer().getLastName();
+        String mobile_number = clientBookDataList [position].getCustomer().getMobileNumber();
+        String address = clientBookDataList [position].getAddress();
+        String email = clientBookDataList[position].getCustomer().getEmail();
         double totalCost = clientBookDataList[position].getTotal();
         serviceList = clientBookDataList[position].getServices();
 
-        //Customer service data
         SharedPreferences preferences = getActivity().getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
         preferences.edit().putString("first_name", first_name).apply();
         preferences.edit().putString("last_name", last_name).apply();
@@ -109,7 +105,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
 
         Gson gson = new Gson();
 
-        //Service Details
+        //Service Details of the customer
         SharedPreferences servicePreference = getActivity().getSharedPreferences("CUSTOMER_SERVICE", Context.MODE_PRIVATE);
         String jsonString = gson.toJson(serviceList);
         servicePreference.edit().putString("SERVICE_LIST", jsonString).commit();

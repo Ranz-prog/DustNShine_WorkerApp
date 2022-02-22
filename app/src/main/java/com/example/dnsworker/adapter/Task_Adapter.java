@@ -48,7 +48,6 @@ public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
         holder.task_clientName.setText(customerList [position].getCustomer().getFirstName() + " " + customerList [position].getCustomer().getLastName());
         holder.task_clientLocation.setText(customerList [position].getAddress());
         holder.task_clientContact.setText(customerList [position].getCustomer().getMobileNumber());
@@ -78,7 +77,6 @@ public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> 
             task_clientContact = itemView.findViewById(R.id.task_clientContact_TV);
 
             this.onClickTaskListener = onClickTaskListener;
-
             itemView.setOnClickListener(this);
 
         }
