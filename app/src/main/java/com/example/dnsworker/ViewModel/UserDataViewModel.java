@@ -2,8 +2,6 @@ package com.example.dnsworker.ViewModel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-
-import com.example.dnsworker.LogIn.LogInResponse;
 import com.example.dnsworker.Model.User;
 
 public class UserDataViewModel {

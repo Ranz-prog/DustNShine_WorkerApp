@@ -1,6 +1,7 @@
 package com.example.dnsworker.fragments;
 
 import static android.content.ContentValues.TAG;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -17,6 +19,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.dnsworker.CustomerDetails;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
@@ -25,6 +28,12 @@ import com.example.dnsworker.R;
 import com.example.dnsworker.ViewModel.ClientBookingViewModel;
 import com.example.dnsworker.adapter.Task_Adapter;
 import com.google.gson.Gson;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 
 public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskListener {
 
@@ -40,7 +49,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_home,container,false);
+        view = inflater.inflate(R.layout.fragment_home, container, false);
 
         taskRecycler = view.findViewById(R.id.task_RecyclerView);
         taskRecycler.setHasFixedSize(true);
@@ -59,15 +68,15 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
             @Override
             public void onChanged(ClientBookingModel clientBookingModel) {
 
-                if (clientBookingModel != null){
-                    ClientBookData[] clientBookData  = clientBookingModel.getData();
+                if (clientBookingModel != null) {
+                    ClientBookData[] clientBookData = clientBookingModel.getData();
                     clientBookDataList = clientBookData;
-                    //clientBookDataList = clientBookingModel.getData();
                     task_adapter.setTaskModelList(clientBookDataList);
+                    //clientBookDataList = clientBookingModel.getData();
                     //serviceList = clientBookData[0].getServices();
-
-                    Log.d(TAG, "onChanged: DATA HERE======>" + clientBookData);
-                } else{
+                    Log.d(TAG, "onChanged: DATA HERE ======>" + clientBookData);
+                }
+                else {
                     //if No Data retrieved
                     noResult.setVisibility(View.VISIBLE);
                 }
@@ -75,6 +84,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         });
         return view;
     }
+
 
     @Override
     public void onClickTask(int position) {
@@ -84,13 +94,13 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         startActivity(intent);
     }
 
-    private void loadData(int position){
+    private void loadData(int position) {
 
         //Specific Customer Details
         String first_name = clientBookDataList[position].getCustomer().getFirstName();
         String last_name = clientBookDataList[position].getCustomer().getLastName();
-        String mobile_number = clientBookDataList [position].getCustomer().getMobileNumber();
-        String address = clientBookDataList [position].getAddress();
+        String mobile_number = clientBookDataList[position].getCustomer().getMobileNumber();
+        String address = clientBookDataList[position].getAddress();
         String email = clientBookDataList[position].getCustomer().getEmail();
         double totalCost = clientBookDataList[position].getTotal();
         serviceList = clientBookDataList[position].getServices();

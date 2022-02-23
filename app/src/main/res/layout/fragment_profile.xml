@@ -128,145 +128,145 @@
                 android:textSize="15sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!--Location Address-->
-        <TextView
-            android:id="@+id/profile_locationTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/contactInputLayout"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/quicsandmed"
-            android:text="@string/user_location"
-            android:textSize="17sp" />
+<!--        &lt;!&ndash;Location Address&ndash;&gt;-->
+<!--        <TextView-->
+<!--            android:id="@+id/profile_locationTitle"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/contactInputLayout"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:fontFamily="@font/quicsandmed"-->
+<!--            android:text="@string/user_location"-->
+<!--            android:textSize="17sp" />-->
 
-        <!--House Number-->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/housenumberInputLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/profile_locationTitle"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
+<!--        &lt;!&ndash;House Number&ndash;&gt;-->
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/housenumberInputLayout"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/profile_locationTitle"-->
+<!--            app:boxStrokeWidth="0dp"-->
+<!--            app:boxStrokeWidthFocused="0dp">-->
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/worker_houseno_ET"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/input_text_layout"
-                android:hint="@string/user_house_number"
-                android:maxLength="50"
-                android:padding="15dp"
-                android:textSize="15sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/worker_houseno_ET"-->
+<!--                android:layout_width="130dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/input_text_layout"-->
+<!--                android:hint="@string/user_house_number"-->
+<!--                android:maxLength="50"-->
+<!--                android:padding="15dp"-->
+<!--                android:textSize="15sp" />-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
 
-        <!--Street-->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/streetInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/profile_locationTitle"
-            android:layout_marginLeft="4dp"
-            android:layout_toRightOf="@id/housenumberInputLayout"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
+<!--        &lt;!&ndash;Street&ndash;&gt;-->
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/streetInputLayout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/profile_locationTitle"-->
+<!--            android:layout_marginLeft="4dp"-->
+<!--            android:layout_toRightOf="@id/housenumberInputLayout"-->
+<!--            app:boxStrokeWidth="0dp"-->
+<!--            app:boxStrokeWidthFocused="0dp">-->
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/worker_street_ET"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/input_text_layout"
-                android:hint="@string/user_street"
-                android:maxLength="50"
-                android:padding="15dp"
-                android:textSize="15sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/worker_street_ET"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/input_text_layout"-->
+<!--                android:hint="@string/user_street"-->
+<!--                android:maxLength="50"-->
+<!--                android:padding="15dp"-->
+<!--                android:textSize="15sp" />-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
 
-        <!--Barangay-->
+<!--        &lt;!&ndash;Barangay&ndash;&gt;-->
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/brgyInputLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/housenumberInputLayout"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/brgyInputLayout"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/housenumberInputLayout"-->
+<!--            app:boxStrokeWidth="0dp"-->
+<!--            app:boxStrokeWidthFocused="0dp">-->
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/worker_brgy_ET"
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/input_text_layout"
-                android:hint="@string/user_brgy"
-                android:maxLength="50"
-                android:padding="15dp"
-                android:textSize="15sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/worker_brgy_ET"-->
+<!--                android:layout_width="180dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/input_text_layout"-->
+<!--                android:hint="@string/user_brgy"-->
+<!--                android:maxLength="50"-->
+<!--                android:padding="15dp"-->
+<!--                android:textSize="15sp" />-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
 
-        <!--Municipality-->
+<!--        &lt;!&ndash;Municipality&ndash;&gt;-->
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/cityInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/housenumberInputLayout"
-            android:layout_marginLeft="4dp"
-            android:layout_toRightOf="@id/brgyInputLayout"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/cityInputLayout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/housenumberInputLayout"-->
+<!--            android:layout_marginLeft="4dp"-->
+<!--            android:layout_toRightOf="@id/brgyInputLayout"-->
+<!--            app:boxStrokeWidth="0dp"-->
+<!--            app:boxStrokeWidthFocused="0dp">-->
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/worker_municipality_ET"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/input_text_layout"
-                android:hint="@string/user_municipality"
-                android:maxLength="50"
-                android:padding="15dp"
-                android:textSize="15sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/worker_municipality_ET"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/input_text_layout"-->
+<!--                android:hint="@string/user_municipality"-->
+<!--                android:maxLength="50"-->
+<!--                android:padding="15dp"-->
+<!--                android:textSize="15sp" />-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
 
-        <!--Province-->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/provinceInputLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/brgyInputLayout"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
+<!--        &lt;!&ndash;Province&ndash;&gt;-->
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/provinceInputLayout"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/brgyInputLayout"-->
+<!--            app:boxStrokeWidth="0dp"-->
+<!--            app:boxStrokeWidthFocused="0dp">-->
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/worker_province_ET"
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/input_text_layout"
-                android:hint="@string/user_province"
-                android:maxLength="50"
-                android:padding="15dp"
-                android:textSize="15sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/worker_province_ET"-->
+<!--                android:layout_width="180dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/input_text_layout"-->
+<!--                android:hint="@string/user_province"-->
+<!--                android:maxLength="50"-->
+<!--                android:padding="15dp"-->
+<!--                android:textSize="15sp" />-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
 
-        <!--Zip Code-->
+<!--        &lt;!&ndash;Zip Code&ndash;&gt;-->
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/zipCodeInputLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/brgyInputLayout"
-            android:layout_marginLeft="4dp"
-            android:layout_toRightOf="@id/provinceInputLayout"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/zipCodeInputLayout"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/brgyInputLayout"-->
+<!--            android:layout_marginLeft="4dp"-->
+<!--            android:layout_toRightOf="@id/provinceInputLayout"-->
+<!--            app:boxStrokeWidth="0dp"-->
+<!--            app:boxStrokeWidthFocused="0dp">-->
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/worker_zipcode_ET"
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/input_text_layout"
-                android:hint="@string/user_zip"
-                android:maxLength="50"
-                android:padding="15dp"
-                android:textSize="15sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/worker_zipcode_ET"-->
+<!--                android:layout_width="180dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/input_text_layout"-->
+<!--                android:hint="@string/user_zip"-->
+<!--                android:maxLength="50"-->
+<!--                android:padding="15dp"-->
+<!--                android:textSize="15sp" />-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
 
     </RelativeLayout>
 
