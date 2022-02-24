@@ -10,8 +10,8 @@ public class ClientBookData implements Comparable<ClientBookData>{
     private long company_id;
     private String start_datetime;
     private String address;
-    private Object latitude;
-    private Object longitude;
+    private long latitude;
+    private long longitude;
     private long status;
     private double total;
     private String created_at;
@@ -35,11 +35,11 @@ public class ClientBookData implements Comparable<ClientBookData>{
     public String getAddress() { return address; }
     public void setAddress(String value) { this.address = value; }
 
-    public Object getLatitude() { return latitude; }
-    public void setLatitude(Object value) { this.latitude = value; }
+    public long getLatitude() { return latitude; }
+    public void setLatitude(long value) { this.latitude = value; }
 
-    public Object getLongitude() { return longitude; }
-    public void setLongitude(Object value) { this.longitude = value; }
+    public long getLongitude() { return longitude; }
+    public void setLongitude(long value) { this.longitude = value; }
 
     public long getStatus() { return status; }
     public void setStatus(long value) { this.status = value; }

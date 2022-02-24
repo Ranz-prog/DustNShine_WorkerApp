@@ -113,9 +113,22 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
     }
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
-        map = googleMap;
 
+        //Sharedpref lat and longt
+        preferences = getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
+        long longitude = Long.parseLong(preferences.getString("longitude", null));
+        long latitude = Long.parseLong(preferences.getString("latitude", null));
+        String clientAdd = preferences.getString("address", null);
+
+        Log.d(TAG, "onMapReady: LOCATION LATT ==>" + latitude);
+        Log.d(TAG, "onMapReady: LOCATION LONGT ==>" + longitude);
+        Log.d(TAG, "onMapReady: LOCATION CLIENTADD  ==>" + clientAdd);
+
+
+        map = googleMap;
         LatLng Address = new LatLng(16.0471126,120.3424204);
+        //LatLng Address = new LatLng(latitude,longitude);
+        //map.addMarker(new MarkerOptions().position(Address).title(clientAdd));
         map.addMarker(new MarkerOptions().position(Address).title("UPANG"));
         map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         map.moveCamera(CameraUpdateFactory.newLatLng(Address));

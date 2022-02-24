@@ -1,7 +1,6 @@
 package com.example.dnsworker.ViewModel;
 
 import static android.content.ContentValues.TAG;
-
 import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import com.example.dnsworker.API.APIClient;
