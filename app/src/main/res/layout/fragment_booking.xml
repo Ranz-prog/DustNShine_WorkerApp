@@ -10,8 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:fontFamily="@font/quicksandbold"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/quicksandbold"
         android:text="@string/bookings_title"
         android:textColor="@color/app_theme_gold"
         android:textSize="20sp"
@@ -29,9 +29,9 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:fontFamily="@font/quicsandmed"
-        android:textSize="24sp"
         android:text="No Available Data"
-        android:visibility="visible"/>
+        android:textSize="24sp"
+        android:visibility="invisible" />
 
 
 </RelativeLayout>

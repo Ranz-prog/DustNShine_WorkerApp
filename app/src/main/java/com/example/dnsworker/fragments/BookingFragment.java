@@ -36,25 +36,25 @@ public class BookingFragment extends Fragment implements BookingAdapter.OnClickB
         bookingRecycler.setHasFixedSize(true);
         bookingRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        //bookingRecycler.setAdapter(new BookingAdapter(bookingModels()));
-        //bookingRecycler.setAdapter(new BookingAdapter(bookingModels(), this));
+        //bookingRecycler.setAdapter(new BookingAdapter(bookingModels(), this ));
+        bookingRecycler.setAdapter(new BookingAdapter(bookingModels(), this));
 
         return view;
 
     }
-//    private List<BookingModel> bookingModels(){
-//
-//        itemListBookingSample = new ArrayList<BookingModel>();
-//
-//        itemListBookingSample.add(new BookingModel(R.drawable.user,
-//                "Juan Dela Cruz", "123 Arellano, Dagupan City", "09123456789"));
-//        itemListBookingSample.add(new BookingModel(R.drawable.user,
-//                "Ivan Dasigan", "123 Arellano, Dagupan City", "09123456789"));
-//        itemListBookingSample.add(new BookingModel(R.drawable.user,
-//                "Michael Jackson", "123 Arellano, Dagupan City", "09123456789"));
-//        return itemListBookingSample;
-//
-//    }
+    private List<BookingModel> bookingModels(){
+
+        itemListBookingSample = new ArrayList<BookingModel>();
+
+        itemListBookingSample.add(new BookingModel(R.drawable.user,
+                "Juan Dela Cruz", "123 Arellano, Dagupan City", "09123456789"));
+        itemListBookingSample.add(new BookingModel(R.drawable.user,
+                "Ivan Dasigan", "123 Arellano, Dagupan City", "09123456789"));
+        itemListBookingSample.add(new BookingModel(R.drawable.user,
+                "Michael Jackson", "123 Arellano, Dagupan City", "09123456789"));
+        return itemListBookingSample;
+
+    }
 
 
     @Override

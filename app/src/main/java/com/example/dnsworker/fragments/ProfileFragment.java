@@ -11,28 +11,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-
-import com.example.dnsworker.API.APIClient;
 import com.example.dnsworker.LoginPage;
 import com.example.dnsworker.Model.User;
 import com.example.dnsworker.R;
-import com.example.dnsworker.ViewModel.SignInViewModel;
-import com.example.dnsworker.ViewModel.SignOutViewModel;
-import com.example.dnsworker.ViewModel.UserDataViewModel;
+import com.example.dnsworker.ViewModel.UserViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Map;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class ProfileFragment  extends Fragment {
 
@@ -50,9 +39,11 @@ public class ProfileFragment  extends Fragment {
     private  String retrievedToken;
     SharedPreferences preferences;
 
-    SignOutViewModel signOutViewModel;
+    //SignOutViewModel signOutViewModel;
 
-    UserDataViewModel userDataViewModel;
+    //UserDataViewModel userDataViewModel;
+
+    UserViewModel userViewModel;
 
     @Nullable
     @Override
@@ -73,8 +64,8 @@ public class ProfileFragment  extends Fragment {
 //        worker_zipcode = view.findViewById(R.id.worker_zipcode_ET);
 
 
-        signOutViewModel = new SignOutViewModel();
-        userDataViewModel = new UserDataViewModel();
+        //signOutViewModel = new SignOutViewModel();
+        userViewModel = new UserViewModel();
 
         preferences = getActivity().getSharedPreferences("AUTH_TOKEN", Context.MODE_PRIVATE);
         retrievedToken = preferences.getString("TOKEN", null);
@@ -84,7 +75,6 @@ public class ProfileFragment  extends Fragment {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 logout();
             }
         });
@@ -94,7 +84,7 @@ public class ProfileFragment  extends Fragment {
     }
 
     private void getUserInfo(){
-        userDataViewModel.getUserDataResponse(retrievedToken).observe(getActivity(), new Observer<User>() {
+        userViewModel.getUserDataResponse(retrievedToken).observe(getActivity(), new Observer<User>() {
             @Override
             public void onChanged(User user) {
                 worker_fname.setText(user.getFirst_name());
@@ -112,7 +102,7 @@ public class ProfileFragment  extends Fragment {
     }
 
     private void logout(){
-        signOutViewModel.getSignoutResponse(retrievedToken).observe(getActivity(), new Observer<Map<String, String>>() {
+        userViewModel.getSignoutResponse(retrievedToken).observe(getActivity(), new Observer<Map<String, String>>() {
             @Override
             public void onChanged(Map<String, String> stringStringMap) {
 

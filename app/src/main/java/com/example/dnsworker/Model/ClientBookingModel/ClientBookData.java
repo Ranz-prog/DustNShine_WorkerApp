@@ -9,10 +9,11 @@ public class ClientBookData implements Comparable<ClientBookData>{
     private long user_id;
     private long company_id;
     private String start_datetime;
+    private String end_datetime;
     private String address;
     private long latitude;
     private long longitude;
-    private long status;
+    private int status;
     private double total;
     private String created_at;
     private String updated_at;
@@ -32,6 +33,9 @@ public class ClientBookData implements Comparable<ClientBookData>{
     public String getStartDatetime() { return start_datetime; }
     public void setStartDatetime(String value) { this.start_datetime = value; }
 
+    public String getEnd_datetime() { return end_datetime; }
+    public void setEnd_datetime(String value) { this.end_datetime = value; }
+
     public String getAddress() { return address; }
     public void setAddress(String value) { this.address = value; }
 
@@ -41,8 +45,8 @@ public class ClientBookData implements Comparable<ClientBookData>{
     public long getLongitude() { return longitude; }
     public void setLongitude(long value) { this.longitude = value; }
 
-    public long getStatus() { return status; }
-    public void setStatus(long value) { this.status = value; }
+    public int getStatus() { return status; }
+    public void setStatus(int value) { this.status = value; }
 
     public double getTotal() { return total; }
     public void setTotal(long value) { this.total = value; }

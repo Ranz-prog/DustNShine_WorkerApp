@@ -25,7 +25,7 @@ public class ServiceDetails extends Activity {
 
     private LinearLayout serviceBackButton;
     private Button doneWorkBtn;
-    private TextView customerName, customerMobileNumber, totalCost, customerLocation;
+    private TextView customerName, customerMobileNumber, totalCost, customerLocation, workStatus;
     private Dialog dialog;
 
     private RecyclerView serviceRecyclerView;
@@ -47,6 +47,7 @@ public class ServiceDetails extends Activity {
         customerMobileNumber = findViewById(R.id.service_customerMobileNumberTV);
         customerLocation = findViewById(R.id.service_customerLocationTV);
         totalCost = findViewById(R.id.totalCost);
+        workStatus = findViewById(R.id.statusTV);
 
         dialog = new Dialog(this);
 

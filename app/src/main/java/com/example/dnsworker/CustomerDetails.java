@@ -4,6 +4,7 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
@@ -15,7 +16,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
 import com.example.dnsworker.Model.ClientBookingModel.Service;
+import com.example.dnsworker.ViewModel.ClientBookingViewModel;
 import com.example.dnsworker.adapter.ServiceListAdapter.ServiceListAdapter;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -26,6 +30,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class CustomerDetails extends AppCompatActivity implements OnMapReadyCallback {
@@ -40,6 +48,7 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
     Service[] serviceList;
     ServiceListAdapter serviceListAdapter;
     SharedPreferences preferences, servicePreference;
+    ClientBookingViewModel clientBookingVM;
 
 
 
@@ -61,6 +70,8 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
 
         serviceListAdapter = new ServiceListAdapter(this, serviceList);
         serviceRecyclerView.setAdapter(serviceListAdapter);
+
+        clientBookingVM = new ClientBookingViewModel();
         loadData();
 
         //MapView
@@ -72,9 +83,12 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
             @Override
             public void onClick(View v) {
 
+                postTimeAndDate();
+//                Intent intent = new Intent(CustomerDetails.this, ServiceDetails.class);
+//                startActivity(intent);
+                //getTimeAndDate();
                 //onJitsiMeet();
-                Intent intent = new Intent(CustomerDetails.this, ServiceDetails.class);
-                startActivity(intent);
+
             }
         });
 
@@ -111,6 +125,37 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
 
         Log.d(TAG, "onCreate: servicelist ======>");
     }
+
+    private void postTimeAndDate(){
+
+        String authToken = preferences.getString("TOKEN", null);
+        int id = 56;
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat format = new SimpleDateFormat(" yyyy-MM-dd HH:mm:ss ");
+        String time =  format.format(calendar.getTime());
+
+        Map<String, String> map = new HashMap<>();
+
+        map.put("start_datetime", time);
+
+        clientBookingVM.postTimeAndDate(authToken,id, map).observe(this, new Observer<ClientBookingModel>() {
+            @Override
+            public void onChanged(ClientBookingModel clientBookingModel) {
+
+
+                Log.d(TAG, "onChanged: DATA ===>" + time + "/n" + id);
+//                Intent intent = new Intent(CustomerDetails.this, ServiceDetails.class);
+//                startActivity(intent);
+            }
+        });
+
+
+        Log.d(TAG, "getTimeAndDate: =====>" + time);
+//        TextView textView = findViewById(R.id.cdt);
+//        textView.setText(time);
+    }
+
+
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
 

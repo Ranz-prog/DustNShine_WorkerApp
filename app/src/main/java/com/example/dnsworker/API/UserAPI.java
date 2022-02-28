@@ -2,6 +2,7 @@ package com.example.dnsworker.API;
 
 import com.example.dnsworker.LogIn.LogInRequest;
 import com.example.dnsworker.LogIn.LogInResponse;
+import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
 import com.example.dnsworker.Model.User;
 
@@ -12,8 +13,9 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
-public interface UserService {
+public interface UserAPI {
 
     @POST("login")
     Call<LogInResponse> userLogin(@Body LogInRequest logInRequest);
@@ -27,4 +29,13 @@ public interface UserService {
     @GET("worker")
     Call <ClientBookingModel> getClientBooking(@Header("Authorization") String bookingRequest);
 
+//    @POST("work/{id}")
+//    Call <ClientBookingModel> postTimeAndDate(@Header("Authorization") String authToken,
+//                                              @Path("id") int id,
+//                                              @Body String datetimeRequest);
+
+    @POST("work/{id}")
+    Call <ClientBookingModel> postDateAndTime(@Header("Authorization") String authToken,
+                                              @Path("id") int id,
+                                              @Body Map<String, String> dateTimeRequest);
 }

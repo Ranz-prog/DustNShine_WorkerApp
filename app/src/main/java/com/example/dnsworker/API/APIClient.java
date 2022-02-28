@@ -23,9 +23,9 @@ public class APIClient {
 
         return retrofit;
     }
-    public static UserService getUserService(){
-        UserService userService = getRetrofit().create(UserService.class);
+    public static UserAPI getUserService(){
+        UserAPI userAPI = getRetrofit().create(UserAPI.class);
 
-        return userService;
+        return userAPI;
     }
 }

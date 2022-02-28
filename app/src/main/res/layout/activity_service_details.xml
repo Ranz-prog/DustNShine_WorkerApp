@@ -38,7 +38,6 @@
                 android:orientation="vertical"
                 android:padding="10dp">
 
-
                 <ImageView
                     android:id="@+id/imageView5"
                     android:layout_width="18dp"
@@ -138,6 +137,26 @@
                     android:layout_toRightOf="@id/contactNumberLabel"
                     android:fontFamily="@font/quicksandreg"
                     android:text="09661581921" />
+
+                <TextView
+                    android:id="@+id/statusLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/contactNumberLabel"
+                    android:fontFamily="@font/quicksandreg"
+                    android:text="@string/customer_status"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/statusTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/service_customerMobileNumberTV"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_toRightOf="@id/statusLabel"
+                    android:fontFamily="@font/quicksandreg" />
 
             </RelativeLayout>
 

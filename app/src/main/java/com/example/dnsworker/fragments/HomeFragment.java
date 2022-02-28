@@ -29,12 +29,6 @@ import com.example.dnsworker.ViewModel.ClientBookingViewModel;
 import com.example.dnsworker.adapter.Task_Adapter;
 import com.google.gson.Gson;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-
 public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskListener {
 
     private RecyclerView taskRecycler;

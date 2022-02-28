@@ -16,7 +16,7 @@
     //Main Menu Titles
     <string name="home_title">Tasks</string>
     <string name="message_title">Message</string>
-    <string name="bookings_title">Bookings</string>
+    <string name="bookings_title">History</string>
     <string name="profile_title">Manage Account</string>
     <string name="profile_subtitle">Personal Information</string>
 
@@ -32,6 +32,7 @@
     <string name="customer_name">Customer Name:</string>
     <string name="customer_location">Location:</string>
     <string name="customer_number">Contact Number:</string>
+    <string name="customer_status">Status: </string>
     <string name="customer_booking">Booking Details</string>
     <string name="customer_payment">Payment Method</string>
     <string name="customer_total">Total Cost:</string>

@@ -1,39 +1,25 @@
-package com.example.dnsworker.ViewModel;
+package com.example.dnsworker.Service;
 
 import static android.content.ContentValues.TAG;
+
 import android.util.Log;
+
+import androidx.constraintlayout.helper.widget.MotionEffect;
 import androidx.lifecycle.MutableLiveData;
+
 import com.example.dnsworker.API.APIClient;
-import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
+import com.example.dnsworker.LogIn.LogInRequest;
+import com.example.dnsworker.LogIn.LogInResponse;
 import com.example.dnsworker.Model.User;
+
 import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UserAPIRepo {
-    //for task Bookings
-    public MutableLiveData<ClientBookingModel> clientBookingRequest(String authToken) {
-        final MutableLiveData<ClientBookingModel> clientBookingMLD = new MutableLiveData<>();
+public class UserService {
 
-        Call<ClientBookingModel> clientBookingModelCall = APIClient.getUserService().getClientBooking("Bearer " + authToken);
-
-        clientBookingModelCall.enqueue(new Callback<ClientBookingModel>() {
-            @Override
-            public void onResponse(Call<ClientBookingModel> call, Response<ClientBookingModel> response) {
-                clientBookingMLD.postValue(response.body());
-                Log.d(TAG, "onResponse: " + response.body().getMessage());
-            }
-            @Override
-            public void onFailure(Call<ClientBookingModel> call, Throwable t) {
-                Log.d(TAG, "onFailure: ==>" + t.toString());
-            }
-        });
-
-        return clientBookingMLD;
-    }
-
-    /*For Signout Request*/
     public MutableLiveData<Map<String, String>> signoutRequest(String retrievedToken) {
         final MutableLiveData<Map<String, String>> signoutMutableData = new MutableLiveData<>();
 
@@ -59,7 +45,6 @@ public class UserAPIRepo {
         return signoutMutableData;
     }
 
-    //Getting User Information
     public MutableLiveData<User> userDataRequest(String authToken) {
         final MutableLiveData<User> userMutableLiveData = new MutableLiveData<>();
 
@@ -81,8 +66,42 @@ public class UserAPIRepo {
         });
 
         return userMutableLiveData;
+    }
 
+    public void signinRequest(String email, String password) {
+        LogInRequest logInRequest = new LogInRequest();
+        logInRequest.setEmail(email);
+        logInRequest.setPassword(password);
+
+        Call<LogInResponse> logInResponseCall = APIClient.getUserService().userLogin(logInRequest);
+
+        logInResponseCall.enqueue(new Callback<LogInResponse>() {
+            @Override
+            public void onResponse(Call<LogInResponse> call, Response<LogInResponse> response) {
+                // Trigger
+                callback.signinCallback(response.code(), response.body());
+
+            }
+
+            @Override
+            public void onFailure(Call<LogInResponse> call, Throwable t) {
+                //Toast.makeText(activity, "Throwable: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+
+                Log.d(MotionEffect.TAG, "onFailure: STATUS CODE ERROR =====>" + t);
+            }
+        });
+    }
+
+    SigninCallback callback;
+
+    public interface SigninCallback {
+        void signinCallback(Integer statusCode, LogInResponse response);
+    }
+
+    public void setOnSigninListener(SigninCallback signinCallback){
+        callback = signinCallback;
     }
 
 }
+
 
