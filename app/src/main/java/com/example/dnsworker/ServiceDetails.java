@@ -1,24 +1,32 @@
 package com.example.dnsworker;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.dnsworker.Model.ClientBookingModel.Service;
 import com.example.dnsworker.adapter.SLAdapter.SLAdapter;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import java.lang.reflect.Type;
 
 public class ServiceDetails extends Activity {
@@ -34,7 +42,7 @@ public class ServiceDetails extends Activity {
     private SLAdapter slAdapter;
     Service[] serviceList;
 
-    private String first_name, last_name, mobile_number, location, total;
+    private String first_name, last_name, mobile_number, location, total, status;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,6 +71,7 @@ public class ServiceDetails extends Activity {
         customerLocation.setText(location);
         customerMobileNumber.setText(mobile_number);
         totalCost.setText(total);
+        workStatus.setText("On Going");
 
         serviceBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,12 +83,12 @@ public class ServiceDetails extends Activity {
         doneWorkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openDialog();
+                confirmationDialog();
             }
         });
     }
 
-    private void loadData(){
+    private void loadData() {
 
         //Shared Customer Data
         preferences = getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
@@ -94,7 +103,8 @@ public class ServiceDetails extends Activity {
         String jsonString = servicePreference.getString("SERVICE_LIST", null);
 
         Gson gson = new Gson();
-        Type type = new TypeToken<Service[]>(){}.getType();
+        Type type = new TypeToken<Service[]>() {
+        }.getType();
 
         gson.fromJson(jsonString, type);
         serviceList = gson.fromJson(jsonString, type);
@@ -102,7 +112,7 @@ public class ServiceDetails extends Activity {
     }
 
 
-    private void openDialog(){
+    private void confirmationDialog() {
         dialog.setContentView(R.layout.dialog_confirmation);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
@@ -118,5 +128,50 @@ public class ServiceDetails extends Activity {
         });
         dialog.show();
     }
+
+    private void cancelDialog() {
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Warning")
+                .setMessage("Are you sure you want to cancel?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //set what would happen when positive button is clicked
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //set what should happen when negative button is clicked
+                        Toast.makeText(getApplicationContext(), "Nothing Happened", Toast.LENGTH_LONG).show();
+                    }
+                })
+                .show();
+    }
+
+
+    boolean doubleBackToExitPressedOnce = false;
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        //Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+        cancelDialog();
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
+    }
+
 
 }

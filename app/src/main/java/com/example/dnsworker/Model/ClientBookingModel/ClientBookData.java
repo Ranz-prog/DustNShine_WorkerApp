@@ -1,10 +1,7 @@
 package com.example.dnsworker.Model.ClientBookingModel;
 
-import android.view.SurfaceControl;
 
-import java.util.Date;
-
-public class ClientBookData implements Comparable<ClientBookData>{
+public class ClientBookData{
     private long id;
     private long user_id;
     private long company_id;
@@ -66,8 +63,4 @@ public class ClientBookData implements Comparable<ClientBookData>{
     public Customer[] getWorkers() { return workers; }
     public void setWorkers(Customer[] value) { this.workers = value; }
 
-    @Override
-    public int compareTo(ClientBookData o) {
-        return new Date(this.start_datetime).compareTo(new Date(o.start_datetime));
-    }
 }

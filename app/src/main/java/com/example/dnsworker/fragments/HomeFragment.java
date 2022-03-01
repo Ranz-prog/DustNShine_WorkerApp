@@ -98,6 +98,8 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         String email = clientBookDataList[position].getCustomer().getEmail();
         String longitude = Long.toString(clientBookDataList[position].getLongitude());
         String latitude = Long.toString(clientBookDataList[position].getLatitude());
+        int status = clientBookDataList[position].getStatus();
+        int id = (int) clientBookDataList[position].getID();
         double totalCost = clientBookDataList[position].getTotal();
         serviceList = clientBookDataList[position].getServices();
 
@@ -108,8 +110,10 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         preferences.edit().putString("address", address).apply();
         preferences.edit().putString("total", String.valueOf(totalCost)).apply();
         preferences.edit().putString("email", email).apply();
+        preferences.edit().putString("status", String.valueOf(status));
         preferences.edit().putString("longitude", longitude).apply();
         preferences.edit().putString("latitude", latitude).apply();
+        preferences.edit().putInt("id", id).apply();
 
         Gson gson = new Gson();
 

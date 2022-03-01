@@ -32,9 +32,6 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
 
 public class CustomerDetails extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -43,11 +40,11 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
     private GoogleMap map;
     private RecyclerView serviceRecyclerView;
     private TextView fullname, mobilenumber, address;
-    private String first_name, last_name, mobile_number, location, email;
+    private String first_name, last_name, mobile_number, location, email, workStatus, setStatus;
 
     Service[] serviceList;
     ServiceListAdapter serviceListAdapter;
-    SharedPreferences preferences, servicePreference;
+    SharedPreferences preferences, servicePreference, authPref;
     ClientBookingViewModel clientBookingVM;
 
 
@@ -84,8 +81,8 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
             public void onClick(View v) {
 
                 postTimeAndDate();
-//                Intent intent = new Intent(CustomerDetails.this, ServiceDetails.class);
-//                startActivity(intent);
+                Intent intent = new Intent(CustomerDetails.this, ServiceDetails.class);
+                startActivity(intent);
                 //getTimeAndDate();
                 //onJitsiMeet();
 
@@ -109,6 +106,7 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         mobile_number = preferences.getString("mobile_number", null);
         location = preferences.getString("address", null);
 
+
         servicePreference = getSharedPreferences("CUSTOMER_SERVICE", Context.MODE_PRIVATE);
         String jsonString = servicePreference.getString("SERVICE_LIST", null);
 
@@ -128,24 +126,25 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
 
     private void postTimeAndDate(){
 
-        String authToken = preferences.getString("TOKEN", null);
-        int id = 56;
+        authPref = getSharedPreferences("AUTH_TOKEN", MODE_PRIVATE);
+        String authToken = authPref.getString("TOKEN", null);
+        int id = preferences.getInt("id", 0);
+        Log.d(TAG, "postTimeAndDate: ID===>" + id);
+
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat format = new SimpleDateFormat(" yyyy-MM-dd HH:mm:ss ");
         String time =  format.format(calendar.getTime());
 
-        Map<String, String> map = new HashMap<>();
+        //DummyModel dummyModel  = new DummyModel(time, time);
 
-        map.put("start_datetime", time);
 
-        clientBookingVM.postTimeAndDate(authToken,id, map).observe(this, new Observer<ClientBookingModel>() {
+        Log.d(TAG, "postTimeAndDate: TOKEN" + authToken);
+
+        clientBookingVM.postTimeAndDate(authToken,id, time).observe(this, new Observer<ClientBookingModel>() {
             @Override
             public void onChanged(ClientBookingModel clientBookingModel) {
-
-
                 Log.d(TAG, "onChanged: DATA ===>" + time + "/n" + id);
-//                Intent intent = new Intent(CustomerDetails.this, ServiceDetails.class);
-//                startActivity(intent);
+
             }
         });
 

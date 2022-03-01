@@ -7,8 +7,6 @@ import androidx.lifecycle.ViewModel;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
 import com.example.dnsworker.Service.BookingService;
 
-import java.util.Map;
-
 
 public class ClientBookingViewModel extends ViewModel{
 
@@ -26,9 +24,9 @@ public class ClientBookingViewModel extends ViewModel{
         return clientBookingMLD;
     }
 
-    public LiveData<ClientBookingModel> postTimeAndDate(String authToken, int id , Map<String, String> datetime){
+    public LiveData<ClientBookingModel> postTimeAndDate(String authToken,int id , String dummyModel){
         if (clientBookingMLD == null){
-            clientBookingMLD = bookingService.timedateRequest(authToken, id ,datetime);
+            clientBookingMLD = bookingService.timedateRequest(authToken,id ,dummyModel);
         }
         return clientBookingMLD;
     }

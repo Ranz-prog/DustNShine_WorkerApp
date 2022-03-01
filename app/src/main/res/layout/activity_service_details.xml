@@ -87,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/service_customerDetailsLabel"
                     android:layout_marginLeft="4dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="11dp"
                     android:layout_toRightOf="@id/customerNameLabel"
                     android:fontFamily="@font/quicksandreg"
                     android:text="Juan Dela Cruz"
@@ -111,7 +111,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/service_customerNameTV"
                     android:layout_marginLeft="4dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="1dp"
                     android:layout_toRightOf="@id/locationLabel"
                     android:fontFamily="@font/quicksand"
                     android:text="123 Arellano, Dagupan City" />
@@ -133,7 +133,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/service_customerLocationTV"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="1dp"
                     android:layout_toRightOf="@id/contactNumberLabel"
                     android:fontFamily="@font/quicksandreg"
                     android:text="09661581921" />
