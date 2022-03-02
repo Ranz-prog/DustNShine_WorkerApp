@@ -35,15 +35,35 @@ public class BookingService{
         return clientBookingMLD;
     }
 
-    public MutableLiveData<ClientBookingModel> timedateRequest(String authToken, int id, String dummyModel){
-        final MutableLiveData<ClientBookingModel> timedateMLD = new MutableLiveData<>();
+    public MutableLiveData<ClientBookingModel> clientHistoryBookingRequest(String authToken) {
+        final MutableLiveData<ClientBookingModel> clientHistoryBookingMLD = new MutableLiveData<>();
 
-        Call<ClientBookingModel> timedateCall = APIClient.getUserService().postDateAndTime("Bearer " + authToken,id,dummyModel);
+        Call<ClientBookingModel> clientBookingModelCall = APIClient.getUserService().getHistoryBooking("Bearer " + authToken);
 
-        timedateCall.enqueue(new Callback<ClientBookingModel>() {
+        clientBookingModelCall.enqueue(new Callback<ClientBookingModel>() {
             @Override
             public void onResponse(Call<ClientBookingModel> call, Response<ClientBookingModel> response) {
-                timedateMLD.postValue(response.body());
+                clientHistoryBookingMLD.postValue(response.body());
+                Log.d(TAG, "onResponse: " + response.body());
+            }
+            @Override
+            public void onFailure(Call<ClientBookingModel> call, Throwable t) {
+                Log.d(TAG, "onFailure: ==>" + t.toString());
+            }
+        });
+
+        return clientHistoryBookingMLD;
+    }
+
+    public MutableLiveData<ClientBookingModel> start_datetimeRequest(String authToken, int id, String start_datetime){
+        final MutableLiveData<ClientBookingModel> start_dateTimeMLD = new MutableLiveData<>();
+
+        Call<ClientBookingModel> start_datetimeCall = APIClient.getUserService().postStartDateAndTime("Bearer " + authToken, id , start_datetime);
+
+        start_datetimeCall.enqueue(new Callback<ClientBookingModel>() {
+            @Override
+            public void onResponse(Call<ClientBookingModel> call, Response<ClientBookingModel> response) {
+                start_dateTimeMLD.postValue(response.body());
                 Log.d(TAG, "onResponse: " + response.body());
 
             }
@@ -54,6 +74,28 @@ public class BookingService{
             }
         });
 
-        return timedateMLD;
+        return start_dateTimeMLD;
+    }
+
+    public MutableLiveData<ClientBookingModel> end_datetimeRequest(String authToken, int id, String end_datetime){
+        final MutableLiveData<ClientBookingModel> end_dateTimeMLD = new MutableLiveData<>();
+
+        Call<ClientBookingModel> end_datetimeCall = APIClient.getUserService().postEndDateAndTime("Bearer " + authToken, id , end_datetime);
+
+        end_datetimeCall.enqueue(new Callback<ClientBookingModel>() {
+            @Override
+            public void onResponse(Call<ClientBookingModel> call, Response<ClientBookingModel> response) {
+                end_dateTimeMLD.postValue(response.body());
+                Log.d(TAG, "onResponse: " + response.body());
+
+            }
+
+            @Override
+            public void onFailure(Call<ClientBookingModel> call, Throwable t) {
+                Log.d(TAG, "onFailure: ==>" + t.toString());
+            }
+        });
+
+        return end_dateTimeMLD;
     }
 }

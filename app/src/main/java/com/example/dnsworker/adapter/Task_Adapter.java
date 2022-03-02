@@ -18,11 +18,11 @@ import com.example.dnsworker.Model.ClientBookingModel.Customer;
 import com.example.dnsworker.R;
 
 import java.util.List;
+import java.util.Map;
 
 public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> {
 
-    //private List<TaskModel> taskModelList;
-    Context context;
+    private Context context;
     private ClientBookData[] customerList;
     private OnClickTaskListener onClickTaskListener;
 
@@ -48,9 +48,16 @@ public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.task_clientName.setText(customerList [position].getCustomer().getFirstName() + " " + customerList [position].getCustomer().getLastName());
-        holder.task_clientLocation.setText(customerList [position].getAddress());
-        holder.task_clientContact.setText(customerList [position].getCustomer().getMobileNumber());
+
+
+        if (customerList[position].getStatus() == 1){
+            holder.task_clientName.setText(customerList[position].getCustomer().getFirstName() + " " + customerList [position].getCustomer().getLastName());
+            holder.task_clientLocation.setText(customerList[position].getAddress());
+            holder.task_clientContact.setText(customerList[position].getCustomer().getMobileNumber());
+
+        } 
+        Log.d(TAG, "onBindViewHolder: DATA HERE =====> " + customerList[position].getStatus());
+
 
     }
 

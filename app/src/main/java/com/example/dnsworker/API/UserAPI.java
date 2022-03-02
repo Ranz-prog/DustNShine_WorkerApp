@@ -31,14 +31,22 @@ public interface UserAPI {
     @GET("worker")
     Call<ClientBookingModel> getClientBooking(@Header("Authorization") String bookingRequest);
 
-    //    @POST("work/{id}")
-//    Call <ClientBookingModel> postTimeAndDate(@Header("Authorization") String authToken,
-//                                              @Path("id") int id,
-//                                              @Body String datetimeRequest);
+    @GET("booking-history")
+    Call<ClientBookingModel> getHistoryBooking(@Header("Authorization") String historyBookingRequest);
+
     @FormUrlEncoded
     @PUT("work/{id}")
-    Call<ClientBookingModel> postDateAndTime(
+    Call<ClientBookingModel> postStartDateAndTime(
             @Header("Authorization") String authToken,
             @Path("id") int id,
-            @Field("start_datetime") String dateTimeRequest);
+            @Field("start_datetime") String startTimeDateRequest
+    );
+
+    @FormUrlEncoded
+    @PUT("work/{id}")
+    Call<ClientBookingModel> postEndDateAndTime(
+            @Header("Authorization") String authToken,
+            @Path("id") int id,
+            @Field("end_datetime") String endTimeDateRequest
+    );
 }

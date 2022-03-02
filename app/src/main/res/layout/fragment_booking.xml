@@ -24,7 +24,7 @@
         android:layout_below="@id/titleBooking" />
 
     <TextView
-        android:id="@+id/emptyTaskTV"
+        android:id="@+id/emptyHistoryTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"

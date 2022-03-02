@@ -4,14 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.dnsworker.fragments.BookingFragment;
+import com.example.dnsworker.fragments.HistoryFragment;
 import com.example.dnsworker.fragments.ChatFragment;
 import com.example.dnsworker.fragments.HomeFragment;
 import com.example.dnsworker.fragments.ProfileFragment;
@@ -45,7 +44,7 @@ public class MainMenu extends AppCompatActivity {
                     selectedFragment = new ChatFragment();
                     break;
                 case R.id.nav_booking:
-                    selectedFragment = new BookingFragment();
+                    selectedFragment = new HistoryFragment();
                     break;
                 case R.id.nav_profile:
                     selectedFragment = new ProfileFragment();

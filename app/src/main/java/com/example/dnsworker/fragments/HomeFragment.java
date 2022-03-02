@@ -33,12 +33,12 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
 
     private RecyclerView taskRecycler;
     private View view;
-    ClientBookData[] clientBookDataList;
-    Service[] serviceList;
-    Task_Adapter task_adapter;
+    private ClientBookData[] clientBookDataList;
+    private Service[] serviceList;
+    private Task_Adapter task_adapter;
     private ClientBookingViewModel clientBookingViewModel;
     private String retrievedToken;
-    SharedPreferences preferences;
+    private SharedPreferences preferences;
 
     @Nullable
     @Override
@@ -66,8 +66,6 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
                     ClientBookData[] clientBookData = clientBookingModel.getData();
                     clientBookDataList = clientBookData;
                     task_adapter.setTaskModelList(clientBookDataList);
-                    //clientBookDataList = clientBookingModel.getData();
-                    //serviceList = clientBookData[0].getServices();
                     Log.d(TAG, "onChanged: DATA HERE ======>" + clientBookData);
                 }
                 else {

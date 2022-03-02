@@ -12,6 +12,7 @@ public class ClientBookingViewModel extends ViewModel{
 
     private BookingService bookingService;
     private MutableLiveData<ClientBookingModel> clientBookingMLD;
+    private MutableLiveData<ClientBookingModel> clientHistoryBookingMLD;
 
     public ClientBookingViewModel(){
         bookingService = new BookingService();
@@ -23,10 +24,23 @@ public class ClientBookingViewModel extends ViewModel{
         }
         return clientBookingMLD;
     }
+    public LiveData<ClientBookingModel> getHistoryBookingData(String authToken){
+        if (clientHistoryBookingMLD == null){
+            clientHistoryBookingMLD = bookingService.clientHistoryBookingRequest(authToken);
+        }
+        return clientHistoryBookingMLD;
+    }
 
-    public LiveData<ClientBookingModel> postTimeAndDate(String authToken,int id , String dummyModel){
+    public LiveData<ClientBookingModel> postStartDateTime(String authToken,int id , String start_datetime){
         if (clientBookingMLD == null){
-            clientBookingMLD = bookingService.timedateRequest(authToken,id ,dummyModel);
+            clientBookingMLD = bookingService.start_datetimeRequest(authToken,id ,start_datetime);
+        }
+        return clientBookingMLD;
+    }
+
+    public LiveData<ClientBookingModel> postEndDateTime(String authToken, int id, String end_datetime){
+        if (clientBookingMLD == null){
+            clientBookingMLD = bookingService.end_datetimeRequest(authToken, id, end_datetime);
         }
         return clientBookingMLD;
     }

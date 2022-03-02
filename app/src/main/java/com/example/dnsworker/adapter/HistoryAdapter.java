@@ -1,5 +1,6 @@
 package com.example.dnsworker.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,19 +10,25 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.dnsworker.Model.BookingModel;
+import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.R;
 
-import java.util.List;
+public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.BookingViewHolder>{
 
-public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingViewHolder>{
-
-    private List<BookingModel> bookingModelsList;
     private OnClickBookingListener onClickBookingListener;
+    private ClientBookData[] customerDataList;
+    private Context context;
 
-    public BookingAdapter(List<BookingModel> bookingModelsList, OnClickBookingListener onClickBookingListener){
-        this.bookingModelsList = bookingModelsList;
+
+    public HistoryAdapter(Context context, ClientBookData[] customerList, OnClickBookingListener onClickBookingListener){
+        this.context = context;
+        this.customerDataList = customerList;
         this.onClickBookingListener = onClickBookingListener;
+    }
+
+    public void setHistoryModelList(ClientBookData[] customerList){
+        this.customerDataList = customerList;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -36,16 +43,19 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingV
 
     @Override
     public void onBindViewHolder(@NonNull BookingViewHolder holder, int position) {
-        holder.booking_Image.setImageResource(bookingModelsList.get(position).getBooking_clientImage());
-        holder.booking_clientName.setText(bookingModelsList.get(position).getBooking_clientName());
-        holder.booking_clientLocation.setText(bookingModelsList.get(position).getBooking_clientLocation());
-        holder.booking_contactNumber.setText(bookingModelsList.get(position).getBoooking_clientNumber());
+        //holder.booking_Image.setImageResource(bookingModelsList.get(position).getBooking_clientImage());
+        holder.booking_clientName.setText(customerDataList [position].getCustomer().getFirstName() + " " + customerDataList [position].getCustomer().getLastName());
+        holder.booking_clientLocation.setText(customerDataList [position].getAddress());
+        holder.booking_contactNumber.setText(customerDataList [position].getCustomer().getMobileNumber());
 
     }
 
     @Override
     public int getItemCount() {
-        return bookingModelsList.size();
+        if (this.customerDataList !=null){
+            return this.customerDataList.length;
+        }
+        return 0;
     }
 
 
@@ -61,7 +71,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingV
 
             /*Use from task_container_row.xml as sample*/
 
-            booking_Image = itemView.findViewById(R.id.booking_clientImageView);
+            //booking_Image = itemView.findViewById(R.id.booking_clientImageView);
             booking_clientName = itemView.findViewById(R.id.booking_clientName_TV);
             booking_clientLocation = itemView.findViewById(R.id.booking_clientLocation_TV);
             booking_contactNumber = itemView.findViewById(R.id.booking_clientContact_TV);

@@ -1,5 +1,7 @@
 package com.example.dnsworker;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -12,6 +14,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -19,17 +22,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
 import com.example.dnsworker.Model.ClientBookingModel.Service;
+import com.example.dnsworker.ViewModel.ClientBookingViewModel;
 import com.example.dnsworker.adapter.SLAdapter.SLAdapter;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
-public class ServiceDetails extends Activity {
+public class ServiceDetails extends AppCompatActivity {
 
     private LinearLayout serviceBackButton;
     private Button doneWorkBtn;
@@ -40,7 +50,8 @@ public class ServiceDetails extends Activity {
     private SharedPreferences preferences;
     private SharedPreferences servicePreference;
     private SLAdapter slAdapter;
-    Service[] serviceList;
+    private Service[] serviceList;
+    private ClientBookingViewModel clientBVM;
 
     private String first_name, last_name, mobile_number, location, total, status;
 
@@ -56,6 +67,8 @@ public class ServiceDetails extends Activity {
         customerLocation = findViewById(R.id.service_customerLocationTV);
         totalCost = findViewById(R.id.totalCost);
         workStatus = findViewById(R.id.statusTV);
+
+        clientBVM = new ClientBookingViewModel();
 
         dialog = new Dialog(this);
 
@@ -83,6 +96,7 @@ public class ServiceDetails extends Activity {
         doneWorkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                postEndTimeAndDate();
                 confirmationDialog();
             }
         });
@@ -111,6 +125,28 @@ public class ServiceDetails extends Activity {
         slAdapter.setSLData(serviceList);
     }
 
+    private void postEndTimeAndDate(){
+
+        SharedPreferences authPref = getSharedPreferences("AUTH_TOKEN", MODE_PRIVATE);
+        String authToken = authPref.getString("TOKEN", null);
+        int id = preferences.getInt("id", 0);
+        Log.d(TAG, "postTimeAndDate: ID===>" + id);
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat format = new SimpleDateFormat(" yyyy-MM-dd HH:mm:ss ");
+        String time =  format.format(calendar.getTime());
+
+        Log.d(TAG, "postTimeAndDate: TOKEN" + authToken);
+
+        clientBVM.postEndDateTime(authToken, id, time).observe(this, new Observer<ClientBookingModel>() {
+            @Override
+            public void onChanged(ClientBookingModel clientBookingModel) {
+                Log.d(TAG, "onChanged: ENDTIME ===>" + time + "/n" + id);
+            }
+        });
+        Log.d(TAG, "getTimeAndDate: =====>" + time);
+
+    }
 
     private void confirmationDialog() {
         dialog.setContentView(R.layout.dialog_confirmation);

@@ -40,7 +40,7 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
     private GoogleMap map;
     private RecyclerView serviceRecyclerView;
     private TextView fullname, mobilenumber, address;
-    private String first_name, last_name, mobile_number, location, email, workStatus, setStatus;
+    private String first_name, last_name, mobile_number, location, email;
 
     Service[] serviceList;
     ServiceListAdapter serviceListAdapter;
@@ -80,7 +80,7 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
             @Override
             public void onClick(View v) {
 
-                postTimeAndDate();
+                postStartTimeAndDate();
                 Intent intent = new Intent(CustomerDetails.this, ServiceDetails.class);
                 startActivity(intent);
                 //getTimeAndDate();
@@ -124,7 +124,7 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         Log.d(TAG, "onCreate: servicelist ======>");
     }
 
-    private void postTimeAndDate(){
+    private void postStartTimeAndDate(){
 
         authPref = getSharedPreferences("AUTH_TOKEN", MODE_PRIVATE);
         String authToken = authPref.getString("TOKEN", null);
@@ -135,12 +135,9 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         SimpleDateFormat format = new SimpleDateFormat(" yyyy-MM-dd HH:mm:ss ");
         String time =  format.format(calendar.getTime());
 
-        //DummyModel dummyModel  = new DummyModel(time, time);
-
-
         Log.d(TAG, "postTimeAndDate: TOKEN" + authToken);
 
-        clientBookingVM.postTimeAndDate(authToken,id, time).observe(this, new Observer<ClientBookingModel>() {
+        clientBookingVM.postStartDateTime(authToken,id, time).observe(this, new Observer<ClientBookingModel>() {
             @Override
             public void onChanged(ClientBookingModel clientBookingModel) {
                 Log.d(TAG, "onChanged: DATA ===>" + time + "/n" + id);
@@ -148,11 +145,10 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
             }
         });
 
-
         Log.d(TAG, "getTimeAndDate: =====>" + time);
-//        TextView textView = findViewById(R.id.cdt);
-//        textView.setText(time);
+
     }
+
 
 
     @Override
