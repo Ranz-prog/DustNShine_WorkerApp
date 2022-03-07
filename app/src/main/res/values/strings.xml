@@ -60,7 +60,7 @@
 
     //Manage Profile
     <string name="signup">Sign Up</string>
-    <string name="Manage">Manage Profile</string>
+    <string name="Manage">Profile</string>
     <string name="personalinformation">Personal Information</string>
     <string name="firstname">First Name</string>
     <string name="lastname">Last Name</string>

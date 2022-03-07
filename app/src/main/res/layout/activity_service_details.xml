@@ -75,7 +75,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/service_customerDetailsLabel"
-                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/quicksandreg"
                     android:text="@string/customer_name"
                     android:textSize="15sp"
@@ -87,11 +86,27 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/service_customerDetailsLabel"
                     android:layout_marginLeft="4dp"
-                    android:layout_marginTop="11dp"
                     android:layout_toRightOf="@id/customerNameLabel"
                     android:fontFamily="@font/quicksandreg"
                     android:text="Juan Dela Cruz"
-                    android:textSize="14sp" />
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/customerScheduleLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/service_customerNameTV"
+                    android:fontFamily="@font/quicsandmed"
+                    android:text="Schedule: "
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/service_schedule"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/service_customerNameTV"
+                    android:layout_toRightOf="@+id/customerScheduleLabel"
+                    android:fontFamily="@font/quicsandmed" />
 
                 <!--Customer Location-->
 
@@ -99,7 +114,7 @@
                     android:id="@+id/locationLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/customerNameLabel"
+                    android:layout_below="@id/customerScheduleLabel"
                     android:fontFamily="@font/quicksandreg"
                     android:text="@string/customer_location"
                     android:textSize="15sp"
@@ -109,7 +124,7 @@
                     android:id="@+id/service_customerLocationTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/service_customerNameTV"
+                    android:layout_below="@id/customerScheduleLabel"
                     android:layout_marginLeft="4dp"
                     android:layout_marginTop="1dp"
                     android:layout_toRightOf="@id/locationLabel"
@@ -177,10 +192,33 @@
                     android:textSize="17sp"
                     android:textStyle="bold" />
 
+                <TextView
+                    android:id="@+id/noteLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/titleBookingDetails"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/quicsandmed"
+                    android:text="Note: "
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/service_noteTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/titleBookingDetails"
+                    android:layout_toRightOf="@id/noteLabel"
+                    android:fontFamily="@font/quicsandmed"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/titleBookingDetails">
+                    android:layout_below="@id/noteLabel"
+                    android:layout_marginTop="3dp">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/sdRecycler"

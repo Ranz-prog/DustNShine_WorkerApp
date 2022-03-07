@@ -20,35 +20,33 @@
             android:layout_centerVertical="true"
             android:src="@drawable/user" />
 
-        <TextView
-            android:id="@+id/booking_service_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="11dp"
-            android:layout_toRightOf="@+id/booking_clientImageView"
-            android:fontFamily="@font/quicsandmed"
-            android:text="Customer Details"
-            android:textColor="@color/app_theme_blue"
-            android:textSize="17sp"
-            android:textStyle="bold" />
+<!--        <TextView-->
+<!--            android:id="@+id/booking_service_label"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="11dp"-->
+<!--            android:layout_toRightOf="@+id/booking_clientImageView"-->
+<!--            android:fontFamily="@font/quicsandmed"-->
+<!--            android:text="Customer Details"-->
+<!--            android:textColor="@color/app_theme_blue"-->
+<!--            android:textSize="17sp"-->
+<!--            android:textStyle="bold" />-->
 
         <TextView
             android:id="@+id/booking_clientName_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/booking_service_label"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/booking_clientImageView"
             android:fontFamily="@font/quicsandmed"
             android:text="Client Name:"
-            android:textSize="14sp"
-            />
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/booking_clientName_TV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/booking_service_label"
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@+id/booking_clientName_label"
             android:fontFamily="@font/quicksandreg"
@@ -56,25 +54,50 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/booking_location_label"
+            android:id="@+id/booking_clientSchedule_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/booking_clientName_label"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/booking_clientImageView"
+            android:fontFamily="@font/quicsandmed"
+            android:text="Schedule:"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/booking_clientSchedule_TV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/booking_clientName_TV"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/booking_clientSchedule_label"
+            android:fontFamily="@font/quicksandreg"
+            android:singleLine="true"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/booking_location_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/booking_clientSchedule_label"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/booking_clientImageView"
             android:fontFamily="@font/quicsandmed"
             android:text="Location:"
-            android:textSize="14sp"
-             />
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/booking_clientLocation_TV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/booking_clientName_TV"
+            android:layout_below="@+id/booking_clientSchedule_label"
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@+id/booking_location_label"
             android:fontFamily="@font/quicksandreg"
+            android:maxLines="1"
+            android:singleLine="true"
             android:text="@string/Location"
             android:textSize="14sp" />
 
@@ -87,8 +110,8 @@
             android:layout_toRightOf="@+id/booking_clientImageView"
             android:fontFamily="@font/quicsandmed"
             android:text="Contact Number:"
-            android:textSize="14sp"
-             />
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/booking_clientContact_TV"

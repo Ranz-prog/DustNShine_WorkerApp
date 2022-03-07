@@ -43,9 +43,8 @@ public class ServiceDetails extends AppCompatActivity {
 
     private LinearLayout serviceBackButton;
     private Button doneWorkBtn;
-    private TextView customerName, customerMobileNumber, totalCost, customerLocation, workStatus;
+    private TextView customerName, customerMobileNumber, totalCost, customerLocation, workStatus, schedule, note;
     private Dialog dialog;
-
     private RecyclerView serviceRecyclerView;
     private SharedPreferences preferences;
     private SharedPreferences servicePreference;
@@ -53,7 +52,7 @@ public class ServiceDetails extends AppCompatActivity {
     private Service[] serviceList;
     private ClientBookingViewModel clientBVM;
 
-    private String first_name, last_name, mobile_number, location, total, status;
+    private String first_name, last_name, mobile_number, location, total, status, sched, noteValue;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,6 +66,8 @@ public class ServiceDetails extends AppCompatActivity {
         customerLocation = findViewById(R.id.service_customerLocationTV);
         totalCost = findViewById(R.id.totalCost);
         workStatus = findViewById(R.id.statusTV);
+        schedule = findViewById(R.id.service_schedule);
+        note = findViewById(R.id.service_noteTV);
 
         clientBVM = new ClientBookingViewModel();
 
@@ -80,15 +81,13 @@ public class ServiceDetails extends AppCompatActivity {
 
         loadData();
 
-        customerName.setText(first_name + " " + last_name);
-        customerLocation.setText(location);
-        customerMobileNumber.setText(mobile_number);
-        totalCost.setText(total);
-        workStatus.setText("On Going");
+
 
         serviceBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                Intent intent = new Intent(ServiceDetails.this, CustomerDetails.class);
+//                startActivity(intent);
                 finish();
             }
         });
@@ -111,11 +110,13 @@ public class ServiceDetails extends AppCompatActivity {
         mobile_number = preferences.getString("mobile_number", null);
         location = preferences.getString("address", null);
         total = preferences.getString("total", null);
-
+        sched = preferences.getString("sched_datetime", null);
+        noteValue = preferences.getString("note", null);
+        int status = preferences.getInt("status", 0);
         //Shared Customer Service List
         servicePreference = getSharedPreferences("CUSTOMER_SERVICE", Context.MODE_PRIVATE);
         String jsonString = servicePreference.getString("SERVICE_LIST", null);
-
+        Log.d("TAG", String.valueOf(status));
         Gson gson = new Gson();
         Type type = new TypeToken<Service[]>() {
         }.getType();
@@ -123,6 +124,14 @@ public class ServiceDetails extends AppCompatActivity {
         gson.fromJson(jsonString, type);
         serviceList = gson.fromJson(jsonString, type);
         slAdapter.setSLData(serviceList);
+
+        customerName.setText(first_name + " " + last_name);
+        customerLocation.setText(location);
+        customerMobileNumber.setText(mobile_number);
+        totalCost.setText(total);
+        workStatus.setText("On Going");
+        schedule.setText(sched);
+        note.setText(noteValue);
     }
 
     private void postEndTimeAndDate(){
@@ -165,28 +174,6 @@ public class ServiceDetails extends AppCompatActivity {
         dialog.show();
     }
 
-    private void cancelDialog() {
-        AlertDialog alertDialog = new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle("Warning")
-                .setMessage("Are you sure you want to cancel?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //set what would happen when positive button is clicked
-                        finish();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //set what should happen when negative button is clicked
-                        Toast.makeText(getApplicationContext(), "Nothing Happened", Toast.LENGTH_LONG).show();
-                    }
-                })
-                .show();
-    }
-
 
     boolean doubleBackToExitPressedOnce = false;
 
@@ -199,7 +186,7 @@ public class ServiceDetails extends AppCompatActivity {
 
         this.doubleBackToExitPressedOnce = true;
         //Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-        cancelDialog();
+        finish();
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
 
             @Override

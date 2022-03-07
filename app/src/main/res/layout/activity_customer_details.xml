@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:map="http://schemas.android.com/apk/res-auto"
-    tools:context=".CustomerDetails"
     android:background="@color/background"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".CustomerDetails">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/startWorkButton"
+        android:layout_above="@id/buttonHolder"
         android:padding="10dp">
 
         <TextView
@@ -28,7 +28,7 @@
 
 
         <ImageView
-
+            android:id="@+id/messageIcon"
             android:layout_width="22dp"
             android:layout_height="22dp"
             android:layout_alignParentRight="true"
@@ -92,7 +92,6 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/mapView"
                         android:layout_marginTop="20dp"
-                        android:layout_marginBottom="15dp"
                         android:fontFamily="@font/quicsandmed"
                         android:text="Customer Details"
                         android:textColor="@color/app_theme_blue"
@@ -105,7 +104,24 @@
                         android:layout_below="@id/customerDetailsTV"
                         android:fontFamily="@font/quicsandmed"
                         android:text="Customer Name: "
-                        />
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/customerScheduleLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/customerNameLabel"
+                        android:fontFamily="@font/quicsandmed"
+                        android:text="Schedule: "
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/c_details_schedule"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/customerNameLabel"
+                        android:layout_toRightOf="@+id/customerScheduleLabel"
+                        android:fontFamily="@font/quicsandmed" />
 
                     <TextView
                         android:id="@+id/c_details_fullname"
@@ -121,15 +137,16 @@
                         android:id="@+id/customerLocationLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/customerNameLabel"
+                        android:layout_below="@id/customerScheduleLabel"
                         android:fontFamily="@font/quicsandmed"
-                        android:text="Location:" />
+                        android:text="Location:"
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/c_details_location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/customerNameLabel"
+                        android:layout_below="@id/customerScheduleLabel"
                         android:layout_marginLeft="5dp"
                         android:layout_toRightOf="@id/customerLocationLabel"
                         android:fontFamily="@font/quicksandreg"
@@ -142,7 +159,7 @@
                         android:layout_below="@id/customerLocationLabel"
                         android:fontFamily="@font/quicsandmed"
                         android:text="Contact Number: "
-                            />
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/c_details_mobileNumber"
@@ -165,32 +182,73 @@
                         android:textColor="@color/app_theme_blue"
                         android:textSize="17sp" />
 
+
+                    <TextView
+                        android:id="@+id/noteLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/bookingDetailsTextView"
+                        android:fontFamily="@font/quicsandmed"
+                        android:text="Note: "
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/customer_noteTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/bookingDetailsTextView"
+                        android:layout_toRightOf="@id/noteLabel"
+                        android:fontFamily="@font/quicsandmed"
+                        android:textSize="15sp"
+                        android:textColor="@color/black"
+                        />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="4dp"
+                        android:layout_below="@id/customer_noteTV"
                         android:background="@color/background"
-                        android:layout_below="@id/bookingDetailsTextView">
+                        android:padding="4dp">
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/service_RecyclerView"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
                 </RelativeLayout>
             </ScrollView>
         </RelativeLayout>
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/startWorkButton"
+
+    <RelativeLayout
+        android:id="@+id/buttonHolder"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/app_theme_blue"
-        android:fontFamily="@font/quicksandbold"
-        android:text="Start Work"
-        android:textColor="@color/white"
-        android:textSize="14sp" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/startWorkButton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/app_theme_blue"
+            android:fontFamily="@font/quicksandbold"
+            android:text="Start Work"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/onGoingWorkButton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/app_theme_blue"
+            android:enabled="false"
+            android:fontFamily="@font/quicksandbold"
+            android:text="On Going Work"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:visibility="invisible" />
+    </RelativeLayout>
 
 </RelativeLayout>

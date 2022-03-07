@@ -23,11 +23,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.dnsworker.Feedback;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
+import com.example.dnsworker.Model.ClientBookingModel.Review;
 import com.example.dnsworker.Model.ClientBookingModel.Service;
 import com.example.dnsworker.R;
 import com.example.dnsworker.ViewModel.ClientBookingViewModel;
 import com.example.dnsworker.adapter.HistoryAdapter;
+import com.google.android.gms.common.api.Response;
 import com.google.gson.Gson;
+
+import java.io.IOException;
+import java.lang.annotation.Annotation;
+
+import okhttp3.ResponseBody;
+import retrofit2.Converter;
 
 public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickBookingListener {
 
@@ -35,6 +43,7 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
     private View view;
     private ClientBookData[] clientHistoryDataList;
     private Service[] serviceList;
+    private Review[] historyReviews;
     private HistoryAdapter historyAdapter;
     private ClientBookingViewModel clientBookingVM;
     private String retrievedToken;
@@ -95,21 +104,30 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
         String last_name = clientHistoryDataList[position].getCustomer().getLastName();
         String mobile_number = clientHistoryDataList[position].getCustomer().getMobileNumber();
         String address = clientHistoryDataList[position].getAddress();
+        String schedule = clientHistoryDataList[position].getSched_datetime();
         String email = clientHistoryDataList[position].getCustomer().getEmail();
         int status = clientHistoryDataList[position].getStatus();
         int id = (int) clientHistoryDataList[position].getID();
         double totalCost = clientHistoryDataList[position].getTotal();
         serviceList = clientHistoryDataList[position].getServices();
+        String comment = clientHistoryDataList[position].getReviews().getComment();
+        double rating = clientHistoryDataList[position].getReviews().getRating();
+//        String comment = historyReviews[position].getComment();
+//        double rating = historyReviews[position].getRating();
+
 
         SharedPreferences preferences = getActivity().getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
         preferences.edit().putString("first_name", first_name).apply();
         preferences.edit().putString("last_name", last_name).apply();
         preferences.edit().putString("mobile_number", mobile_number).apply();
         preferences.edit().putString("address", address).apply();
+        preferences.edit().putString("sched_datetime", schedule);
         preferences.edit().putString("total", String.valueOf(totalCost)).apply();
         preferences.edit().putString("email", email).apply();
         preferences.edit().putString("status", String.valueOf(status));
         preferences.edit().putInt("id", id).apply();
+        preferences.edit().putString("comment", comment).apply();
+        preferences.edit().putString("rating", String.valueOf(rating)).apply();
 
         Gson gson = new Gson();
 
@@ -118,5 +136,6 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
         String jsonString = gson.toJson(serviceList);
         servicePreference.edit().putString("SERVICE_LIST", jsonString).commit();
     }
+
 }
 

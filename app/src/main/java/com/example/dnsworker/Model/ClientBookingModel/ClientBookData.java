@@ -1,20 +1,22 @@
 package com.example.dnsworker.Model.ClientBookingModel;
 
-
 public class ClientBookData{
     private long id;
     private long user_id;
     private long company_id;
+    private String sched_datetime;
     private String start_datetime;
     private String end_datetime;
     private String address;
     private long latitude;
     private long longitude;
     private int status;
-    private double total;
+    private long total;
     private String created_at;
     private String updated_at;
+    private String note;
     private Service[] services;
+    private Review reviews;
     private Customer customer;
     private Customer[] workers;
 
@@ -26,6 +28,9 @@ public class ClientBookData{
 
     public long getCompanyID() { return company_id; }
     public void setCompanyID(long value) { this.company_id = value; }
+
+    public String getSched_datetime(){return sched_datetime;}
+    public void setSched_datetime(String value) {this.sched_datetime = value;}
 
     public String getStartDatetime() { return start_datetime; }
     public void setStartDatetime(String value) { this.start_datetime = value; }
@@ -45,7 +50,7 @@ public class ClientBookData{
     public int getStatus() { return status; }
     public void setStatus(int value) { this.status = value; }
 
-    public double getTotal() { return total; }
+    public long getTotal() { return total; }
     public void setTotal(long value) { this.total = value; }
 
     public String getCreatedAt() { return created_at; }
@@ -54,8 +59,14 @@ public class ClientBookData{
     public String getUpdatedAt() { return updated_at; }
     public void setUpdatedAt(String value) { this.updated_at = value; }
 
+    public String getNote() { return note; }
+    public void setNote(String value) { this.note = value; }
+
     public Service[] getServices() { return services; }
     public void setServices(Service[] value) { this.services = value; }
+
+    public Review getReviews(){ return reviews;}
+    public void setReviews(Review value){this.reviews = value; }
 
     public Customer getCustomer() { return customer; }
     public void setCustomer(Customer value) { this.customer = value; }

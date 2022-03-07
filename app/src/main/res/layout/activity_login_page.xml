@@ -97,7 +97,6 @@
                 android:maxLines="1"
                 android:hint="@string/signup_password"
                 android:padding="10dp"
-                android:password="true"
                 android:background="@drawable/signin_edit_text_shape"
                 android:inputType="textPassword"
                 android:fontFamily="@font/quicksand"

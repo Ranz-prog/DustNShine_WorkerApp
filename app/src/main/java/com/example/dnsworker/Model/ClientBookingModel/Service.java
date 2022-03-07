@@ -8,6 +8,8 @@ public class Service {
     private String description;
     private Date createdAt;
     private Date updatedAt;
+    private String time;
+    private float price;
     private ServicePivot pivot;
 
     public long getID() { return id; }
@@ -24,6 +26,12 @@ public class Service {
 
     public Date getUpdatedAt() { return updatedAt; }
     public void setUpdatedAt(Date value) { this.updatedAt = value; }
+
+    public String getTime(){return time;}
+    public void setTime(String value){this.time = value;}
+
+    public float getPrice(){return price;}
+    public void setPrice(float value){this.price = value;}
 
     public ServicePivot getPivot() { return pivot; }
     public void setPivot(ServicePivot value) { this.pivot = value; }

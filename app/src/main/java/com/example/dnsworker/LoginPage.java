@@ -19,13 +19,13 @@ import com.example.dnsworker.LogIn.LogInResponse;
 import com.example.dnsworker.Service.UserService;
 import com.example.dnsworker.ViewModel.UserViewModel;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginPage extends AppCompatActivity {
 
     private Button signin_btnSignin;
     private TextInputEditText signin_email, signin_password;
-
-    //SignInViewModel signInViewModel;
+    //private TextInputLayout signinpassword;
     UserViewModel userViewModel;
 
     @Override
@@ -51,6 +51,9 @@ public class LoginPage extends AppCompatActivity {
 
                 } else if (TextUtils.isEmpty(signin_password.getText().toString())) {
                     signin_password.setError("Password is required");
+                    //signinpassword.setError("Password is required");
+                    //signinpassword.setPasswordVisibilityToggleEnabled(false);
+
                 } else {
                     //proceed to log in
                     login(signin_email.getText().toString(), signin_password.getText().toString());

@@ -29,6 +29,8 @@ import com.example.dnsworker.ViewModel.ClientBookingViewModel;
 import com.example.dnsworker.adapter.Task_Adapter;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+
 public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskListener {
 
     private RecyclerView taskRecycler;
@@ -39,6 +41,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
     private ClientBookingViewModel clientBookingViewModel;
     private String retrievedToken;
     private SharedPreferences preferences;
+    TextView noResult;
 
     @Nullable
     @Override
@@ -51,13 +54,23 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         task_adapter = new Task_Adapter(getContext(), clientBookDataList, this);
         taskRecycler.setAdapter(task_adapter);
 
-        TextView noResult = view.findViewById(R.id.emptyTaskTV);
+        noResult = view.findViewById(R.id.emptyTaskTV);
 
         //Passed Data from shared Pref
         preferences = getActivity().getSharedPreferences("AUTH_TOKEN", Context.MODE_PRIVATE);
         retrievedToken = preferences.getString("TOKEN", null);
 
         clientBookingViewModel = ViewModelProviders.of(getActivity()).get(ClientBookingViewModel.class);
+
+        return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        Log.d(TAG, "onStart: ");
+
         clientBookingViewModel.getClientBookingData(retrievedToken).observe(getActivity(), new Observer<ClientBookingModel>() {
             @Override
             public void onChanged(ClientBookingModel clientBookingModel) {
@@ -74,9 +87,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
                 }
             }
         });
-        return view;
     }
-
 
     @Override
     public void onClickTask(int position) {
@@ -94,11 +105,13 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         String mobile_number = clientBookDataList[position].getCustomer().getMobileNumber();
         String address = clientBookDataList[position].getAddress();
         String email = clientBookDataList[position].getCustomer().getEmail();
-        String longitude = Long.toString(clientBookDataList[position].getLongitude());
-        String latitude = Long.toString(clientBookDataList[position].getLatitude());
+        String schedule = clientBookDataList[position].getSched_datetime();
+        long longitude = clientBookDataList[position].getLongitude();
+        long latitude = clientBookDataList[position].getLatitude();
         int status = clientBookDataList[position].getStatus();
         int id = (int) clientBookDataList[position].getID();
         double totalCost = clientBookDataList[position].getTotal();
+        String note = clientBookDataList[position].getNote();
         serviceList = clientBookDataList[position].getServices();
 
         SharedPreferences preferences = getActivity().getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
@@ -108,10 +121,12 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         preferences.edit().putString("address", address).apply();
         preferences.edit().putString("total", String.valueOf(totalCost)).apply();
         preferences.edit().putString("email", email).apply();
-        preferences.edit().putString("status", String.valueOf(status));
-        preferences.edit().putString("longitude", longitude).apply();
-        preferences.edit().putString("latitude", latitude).apply();
+        preferences.edit().putInt("status", status).apply();
+        preferences.edit().putLong("longitude", longitude).apply();
+        preferences.edit().putLong("latitude", latitude).apply();
         preferences.edit().putInt("id", id).apply();
+        preferences.edit().putString("sched_datetime", schedule).apply();
+        preferences.edit().putString("note", note).apply();
 
         Gson gson = new Gson();
 
@@ -120,4 +135,6 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         String jsonString = gson.toJson(serviceList);
         servicePreference.edit().putString("SERVICE_LIST", jsonString).commit();
     }
+
+
 }

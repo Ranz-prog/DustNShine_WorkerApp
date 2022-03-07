@@ -20,35 +20,33 @@
             android:layout_centerVertical="true"
             android:src="@drawable/user" />
 
-        <TextView
-            android:id="@+id/task_service_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="11dp"
-            android:layout_toRightOf="@+id/task_clientImageView"
-            android:fontFamily="@font/quicsandmed"
-            android:text="Customer Details"
-            android:textColor="@color/app_theme_blue"
-            android:textSize="17sp"
-            android:textStyle="bold" />
+<!--        <TextView-->
+<!--            android:id="@+id/task_service_label"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="11dp"-->
+<!--            android:layout_toRightOf="@+id/task_clientImageView"-->
+<!--            android:fontFamily="@font/quicsandmed"-->
+<!--            android:text="Customer Details"-->
+<!--            android:textColor="@color/app_theme_blue"-->
+<!--            android:textSize="17sp"-->
+<!--            android:textStyle="bold" />-->
 
         <TextView
             android:id="@+id/task_clientName_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/task_service_label"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/task_clientImageView"
             android:fontFamily="@font/quicsandmed"
             android:text="Client Name:"
-            android:textSize="14sp"
-             />
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/task_clientName_TV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/task_service_label"
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@+id/task_clientName_label"
             android:fontFamily="@font/quicksandreg"
@@ -56,26 +54,52 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/task_location_label"
+            android:id="@+id/task_clientSchedule_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/task_clientName_TV"
+            android:layout_below="@id/task_clientName_label"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/task_clientImageView"
             android:fontFamily="@font/quicsandmed"
-            android:text="Location:"
+            android:text="Schedule:"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/task_clientLocation_TV"
+            android:id="@+id/task_clientSchedule_TV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/task_clientName_TV"
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@+id/task_location_label"
             android:fontFamily="@font/quicksandreg"
-            android:text="@string/Location"
+            android:singleLine="true"
             android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/task_location_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/task_clientSchedule_label"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/task_clientImageView"
+            android:fontFamily="@font/quicsandmed"
+            android:text="Location:"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+             />
+
+        <TextView
+            android:id="@+id/task_clientLocation_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/task_clientSchedule_label"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/task_location_label"
+            android:fontFamily="@font/quicksandreg"
+            android:text="@string/Location"
+            android:textSize="14sp"
+            android:maxLines="1"/>
 
         <TextView
             android:id="@+id/task_contact_label"
@@ -86,8 +110,9 @@
             android:layout_toRightOf="@+id/task_clientImageView"
             android:fontFamily="@font/quicsandmed"
             android:text="Contact Number:"
+            android:textColor="@color/black"
             android:textSize="14sp"
-            />
+             />
 
         <TextView
             android:id="@+id/task_clientContact_TV"
@@ -100,10 +125,6 @@
             android:text="@string/ContactNumber"
             android:textSize="14sp" />
     </RelativeLayout>
-
-    //Sample comment comment
-
-
 </androidx.cardview.widget.CardView>
 
 

@@ -14,9 +14,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
 import com.example.dnsworker.Model.ClientBookingModel.Service;
 import com.example.dnsworker.ViewModel.ClientBookingViewModel;
@@ -36,16 +38,20 @@ import java.util.Calendar;
 public class CustomerDetails extends AppCompatActivity implements OnMapReadyCallback {
 
     private LinearLayout arrowBack;
-    private Button startWorkButton;
+    private Button startWorkButton, onGoingWorkButton;
     private GoogleMap map;
     private RecyclerView serviceRecyclerView;
-    private TextView fullname, mobilenumber, address;
-    private String first_name, last_name, mobile_number, location, email;
+    private TextView fullnameTV, mobilenumberTV, addressTV, scheduleTV, noteTV;
+    private ImageView messageIcon;
+    private String first_name, last_name, mobile_number, location, email, schedule, note;
 
     Service[] serviceList;
+    ClientBookData[] customerList;
     ServiceListAdapter serviceListAdapter;
     SharedPreferences preferences, servicePreference, authPref;
     ClientBookingViewModel clientBookingVM;
+
+    //Boolean isOnging = false;
 
 
 
@@ -56,10 +62,13 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
 
         arrowBack = findViewById(R.id.ic_arrowbackCustomerDetails);
         startWorkButton = findViewById(R.id.startWorkButton);
-        fullname = findViewById(R.id.c_details_fullname);
-        mobilenumber = findViewById(R.id.c_details_mobileNumber);
-        address = findViewById(R.id.c_details_location);
-
+        onGoingWorkButton = findViewById(R.id.onGoingWorkButton);
+        fullnameTV = findViewById(R.id.c_details_fullname);
+        mobilenumberTV = findViewById(R.id.c_details_mobileNumber);
+        addressTV = findViewById(R.id.c_details_location);
+        messageIcon = findViewById(R.id.messageIcon);
+        scheduleTV = findViewById(R.id.c_details_schedule);
+        noteTV = findViewById(R.id.customer_noteTV);
         //RecyclerView for Service List
         serviceRecyclerView = findViewById(R.id.service_RecyclerView);
         serviceRecyclerView.setHasFixedSize(true);
@@ -71,21 +80,41 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         clientBookingVM = new ClientBookingViewModel();
         loadData();
 
+
+
         //MapView
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.mapView);
         mapFragment.getMapAsync(this);
 
+
+        messageIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        preferences = getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
+
         startWorkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 postStartTimeAndDate();
                 Intent intent = new Intent(CustomerDetails.this, ServiceDetails.class);
                 startActivity(intent);
                 //getTimeAndDate();
                 //onJitsiMeet();
 
+            }
+        });
+
+        onGoingWorkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CustomerDetails.this, ServiceDetails.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -105,7 +134,8 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         last_name = preferences.getString("last_name", null);
         mobile_number = preferences.getString("mobile_number", null);
         location = preferences.getString("address", null);
-
+        schedule = preferences.getString("sched_datetime", null);
+        note = preferences.getString("note", null);
 
         servicePreference = getSharedPreferences("CUSTOMER_SERVICE", Context.MODE_PRIVATE);
         String jsonString = servicePreference.getString("SERVICE_LIST", null);
@@ -117,14 +147,16 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         serviceList = gson.fromJson(jsonString, type);
         serviceListAdapter.setServiceList(serviceList);
 
-        fullname.setText(first_name + " " + last_name);
-        address.setText(location);
-        mobilenumber.setText(mobile_number);
-
-        Log.d(TAG, "onCreate: servicelist ======>");
+        fullnameTV.setText(first_name + " " + last_name);
+        addressTV.setText(location);
+        mobilenumberTV.setText(mobile_number);
+        scheduleTV.setText(schedule);
+        noteTV.setText(note);
     }
 
     private void postStartTimeAndDate(){
+
+        preferences.edit().putInt("status", 2).apply();
 
         authPref = getSharedPreferences("AUTH_TOKEN", MODE_PRIVATE);
         String authToken = authPref.getString("TOKEN", null);
@@ -150,14 +182,32 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        int status = preferences.getInt("status", 0);
+        Log.d("TAG", String.valueOf(status));
+        if (status == 2) {
+            startWorkButton.setEnabled(false);
+            startWorkButton.setVisibility(View.INVISIBLE);
+            onGoingWorkButton.setVisibility(View.VISIBLE);
+            onGoingWorkButton.setEnabled(true);
+        } else {
+            startWorkButton.setEnabled(true);
+            startWorkButton.setVisibility(View.VISIBLE);
+            onGoingWorkButton.setVisibility(View.INVISIBLE);
+            onGoingWorkButton.setEnabled(false);
+        }
+    }
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
 
         //Sharedpref lat and longt
         preferences = getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
-        long longitude = Long.parseLong(preferences.getString("longitude", null));
-        long latitude = Long.parseLong(preferences.getString("latitude", null));
+        long longitude = preferences.getLong("longitude", 0);
+        long latitude = preferences.getLong("latitude", 0);
+
         String clientAdd = preferences.getString("address", null);
 
         Log.d(TAG, "onMapReady: LOCATION LATT ==>" + latitude);
@@ -172,9 +222,12 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         map.addMarker(new MarkerOptions().position(Address).title("UPANG"));
         map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         map.moveCamera(CameraUpdateFactory.newLatLng(Address));
+
     }
 
-//    private void onJitsiMeet(){
+
+
+    //    private void onJitsiMeet(){
 //
 //        SharedPreferences jitsiPref = getSharedPreferences("CUSTOMER_DATA", MODE_PRIVATE);
 //        email = jitsiPref.getString("email", null);
@@ -188,5 +241,5 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
 //
 //    }
 
-    
+
 }
