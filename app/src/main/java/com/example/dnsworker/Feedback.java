@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -25,7 +26,7 @@ import java.lang.reflect.Type;
 
 public class Feedback extends AppCompatActivity {
 
-    private LinearLayout arrowback;
+    private ImageView arrowback;
     private TextView clientName, clientAddress, clientContact,
             clientTotal, clientSchedule, clientComment, clientRatingValue;
     private SharedPreferences historyPreferences, serviceHistoryPreference;

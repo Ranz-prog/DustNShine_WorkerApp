@@ -37,7 +37,7 @@ import java.util.Calendar;
 
 public class CustomerDetails extends AppCompatActivity implements OnMapReadyCallback {
 
-    private LinearLayout arrowBack;
+    private ImageView arrowBack;
     private Button startWorkButton, onGoingWorkButton;
     private GoogleMap map;
     private RecyclerView serviceRecyclerView;

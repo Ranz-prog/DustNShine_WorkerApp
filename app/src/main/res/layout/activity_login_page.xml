@@ -47,7 +47,7 @@
             android:fontFamily="@font/montserrat_regular"
             android:gravity="center"
             android:text="Sign In"
-            android:textSize="24sp"
+            android:textSize="17sp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -55,19 +55,21 @@
     <!--Input Data Account Here-->
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/upperPartContainer"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="40dp">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/input_text_layout"
-            android:paddingTop="2dp">
+            android:layout_marginTop="20dp"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/signin_Email_ET"
@@ -76,8 +78,9 @@
                 android:background="@drawable/signin_edit_text_shape"
                 android:fontFamily="@font/roboto_regular"
                 android:hint="@string/signup_email"
-                android:maxLines="1"
-                android:padding="10dp"
+                android:inputType="textEmailAddress"
+                android:maxLength="30"
+                android:padding="20dp"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,25 +89,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/emailInputLayout"
-            app:passwordToggleEnabled="true"
-            android:background="@drawable/input_text_layout"
-            android:layout_marginTop="8dp"
-            android:paddingTop="2dp">
+            android:layout_marginTop="10dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/signin_Password_ET"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/signin_edit_text_shape"
                 android:fontFamily="@font/roboto_regular"
                 android:hint="@string/signup_password"
                 android:inputType="textPassword"
                 android:maxLines="1"
-                android:padding="10dp"
+                android:padding="20dp"
+                android:textColorHighlight="@color/app_theme_blue"
+                android:textColorLink="@color/app_theme_blue"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-<!--        <EditText
+        <!--        <EditText
             android:id="@+id/signin_Email_ET"
             android:layout_width="match_parent"
             android:layout_height="50dp"

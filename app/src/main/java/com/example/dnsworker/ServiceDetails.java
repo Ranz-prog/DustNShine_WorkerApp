@@ -17,6 +17,7 @@ import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,7 +42,7 @@ import java.util.Calendar;
 
 public class ServiceDetails extends AppCompatActivity {
 
-    private LinearLayout serviceBackButton;
+    private ImageView serviceBackButton;
     private Button doneWorkBtn;
     private TextView customerName, customerMobileNumber, totalCost, customerLocation, workStatus, schedule, note;
     private Dialog dialog;
