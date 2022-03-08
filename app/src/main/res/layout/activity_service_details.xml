@@ -28,24 +28,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp" />
 
-            <LinearLayout
+            <ImageView
                 android:id="@+id/service_arrowback"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:background="@drawable/roundbutton"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:padding="10dp">
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:src="@drawable/back" />
 
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/back" />
 
-            </LinearLayout>
 
             <RelativeLayout
                 android:id="@+id/customerDetailsContainer"

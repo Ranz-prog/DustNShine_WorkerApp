@@ -19,11 +19,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="11dp"
         android:layout_toRightOf="@+id/icon"
-        android:fontFamily="@font/quicsandmed"
+        android:fontFamily="@font/roboto_medium"
         android:text="Customer Details"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/service_description"
@@ -32,7 +30,7 @@
         android:layout_below="@id/service_title"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/icon"
-        android:fontFamily="@font/quicsandmed"
+        android:fontFamily="@font/roboto_regular"
         android:text="Client Name:"
         android:textSize="14sp" />
 

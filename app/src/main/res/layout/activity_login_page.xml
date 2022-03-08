@@ -34,18 +34,17 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/calibribold"
+            android:fontFamily="@font/montserrat_medium"
             android:gravity="center"
             android:text="DustNShine"
             android:textColor="@color/app_theme_blue"
-            android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textSize="28sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/calibribold"
+            android:fontFamily="@font/montserrat_regular"
             android:gravity="center"
             android:text="Sign In"
             android:textSize="24sp"
@@ -69,16 +68,17 @@
             android:layout_height="wrap_content"
             android:background="@drawable/input_text_layout"
             android:paddingTop="2dp">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/signin_Email_ET"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:maxLines="1"
-                android:hint="@string/signup_email"
-                android:padding="10dp"
                 android:background="@drawable/signin_edit_text_shape"
-                android:fontFamily="@font/quicksand"
-                />
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/signup_email"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -90,17 +90,18 @@
             android:background="@drawable/input_text_layout"
             android:layout_marginTop="8dp"
             android:paddingTop="2dp">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/signin_Password_ET"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:maxLines="1"
-                android:hint="@string/signup_password"
-                android:padding="10dp"
                 android:background="@drawable/signin_edit_text_shape"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/signup_password"
                 android:inputType="textPassword"
-                android:fontFamily="@font/quicksand"
-                />
+                android:maxLines="1"
+                android:padding="10dp"
+                android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
 <!--        <EditText
@@ -135,9 +136,10 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/signin_button_shape"
             android:backgroundTint="@color/app_theme_gold"
-            android:fontFamily="@font/quicksandbold"
+            android:fontFamily="@font/montserrat_regular"
             android:text="@string/signup_button_title"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="15sp" />
 
 
     </RelativeLayout>

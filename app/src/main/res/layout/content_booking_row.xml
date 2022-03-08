@@ -38,9 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/booking_clientImageView"
-            android:fontFamily="@font/quicsandmed"
+            android:fontFamily="@font/roboto_medium"
             android:text="Client Name:"
-            android:textColor="@color/black"
             android:textSize="14sp" />
 
         <TextView
@@ -49,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@+id/booking_clientName_label"
-            android:fontFamily="@font/quicksandreg"
+            android:fontFamily="@font/roboto_regular"
             android:text="@string/ClientName"
             android:textSize="14sp" />
 
@@ -60,9 +59,8 @@
             android:layout_below="@id/booking_clientName_label"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/booking_clientImageView"
-            android:fontFamily="@font/quicsandmed"
+            android:fontFamily="@font/roboto_medium"
             android:text="Schedule:"
-            android:textColor="@color/black"
             android:textSize="14sp" />
 
         <TextView
@@ -83,9 +81,8 @@
             android:layout_below="@+id/booking_clientSchedule_label"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/booking_clientImageView"
-            android:fontFamily="@font/quicsandmed"
+            android:fontFamily="@font/roboto_medium"
             android:text="Location:"
-            android:textColor="@color/black"
             android:textSize="14sp" />
 
         <TextView
@@ -95,7 +92,7 @@
             android:layout_below="@+id/booking_clientSchedule_label"
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@+id/booking_location_label"
-            android:fontFamily="@font/quicksandreg"
+            android:fontFamily="@font/roboto_regular"
             android:maxLines="1"
             android:singleLine="true"
             android:text="@string/Location"
@@ -108,9 +105,8 @@
             android:layout_below="@+id/booking_location_label"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/booking_clientImageView"
-            android:fontFamily="@font/quicsandmed"
+            android:fontFamily="@font/roboto_medium"
             android:text="Contact Number:"
-            android:textColor="@color/black"
             android:textSize="14sp" />
 
         <TextView
@@ -120,7 +116,7 @@
             android:layout_below="@+id/booking_clientLocation_TV"
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@+id/booking_contact_label"
-            android:fontFamily="@font/quicksandreg"
+            android:fontFamily="@font/roboto_regular"
             android:text="@string/ContactNumber"
             android:textSize="14sp" />
     </RelativeLayout>

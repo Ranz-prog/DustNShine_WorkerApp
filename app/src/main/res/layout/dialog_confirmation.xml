@@ -29,14 +29,11 @@
                 android:id="@+id/confirmationMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:fontFamily="@font/quicksand"
-                android:text="@string/confirmation_message"
+                android:layout_centerInParent="true"
                 android:layout_marginTop="15dp"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/confirmation_message"
+                android:textSize="14sp" />
 
             <Button
                 android:id="@+id/confirmButton"
@@ -45,9 +42,11 @@
                 android:layout_below="@id/confirmationMessage"
                 android:layout_centerHorizontal="true"
                 android:background="@color/white"
+                android:fontFamily="@font/montserrat_regular"
                 android:stateListAnimator="@null"
                 android:text="Done"
-                android:textColor="@color/app_theme_blue" />
+                android:textColor="@color/app_theme_blue"
+                android:textSize="15sp" />
 
             <ImageView
                 android:id="@+id/imageView2"
