@@ -110,13 +110,29 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
         int id = (int) clientHistoryDataList[position].getID();
         double totalCost = clientHistoryDataList[position].getTotal();
         serviceList = clientHistoryDataList[position].getServices();
-        String comment = clientHistoryDataList[position].getReviews().getComment();
-        double rating = clientHistoryDataList[position].getReviews().getRating();
 //        String comment = historyReviews[position].getComment();
 //        double rating = historyReviews[position].getRating();
 
-
         SharedPreferences preferences = getActivity().getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
+
+        historyReviews = clientHistoryDataList[position].getReviews();
+
+        String commentVal = "";
+        double ratingVal = 0.0;
+
+        if (historyReviews.length != 0){
+            String comment = historyReviews[0].getComment();
+            double rating = historyReviews[0].getRating();
+            preferences.edit().putString("comment", comment).apply();
+            preferences.edit().putString("rating", String.valueOf(rating)).apply();
+
+            Log.d(TAG, "loadHistoryData: COMMENT ==>" + comment);
+        }
+        else{
+            historyPreferences.edit().putString("comment", commentVal).apply();
+            historyPreferences.edit().putString("rating", String.valueOf(ratingVal)).apply();
+        }
+
         preferences.edit().putString("first_name", first_name).apply();
         preferences.edit().putString("last_name", last_name).apply();
         preferences.edit().putString("mobile_number", mobile_number).apply();
@@ -126,8 +142,6 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
         preferences.edit().putString("email", email).apply();
         preferences.edit().putString("status", String.valueOf(status));
         preferences.edit().putInt("id", id).apply();
-        preferences.edit().putString("comment", comment).apply();
-        preferences.edit().putString("rating", String.valueOf(rating)).apply();
 
         Gson gson = new Gson();
 

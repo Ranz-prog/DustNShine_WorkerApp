@@ -2,6 +2,7 @@ package com.example.dnsworker.Model.ClientBookingModel;
 
 public class Review {
     private int id;
+    private int customer_id;
     private int booking_id;
     private String comment;
     private double rating;
@@ -9,14 +10,16 @@ public class Review {
     private String updated_at;
 
 
-    public Review(int id, int booking_id, String comment, double rating, String created_at, String updated_at) {
+    public Review(int id, int customer_id,int booking_id, String comment, double rating, String created_at, String updated_at) {
         this.id = id;
+        this.customer_id = customer_id;
         this.booking_id = booking_id;
         this.comment = comment;
         this.rating = rating;
         this.created_at = created_at;
         this.updated_at = updated_at;
     }
+
 
     public int getId() {
         return id;
@@ -26,6 +29,13 @@ public class Review {
         this.id = id;
     }
 
+    public int getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
+    }
     public int getBooking_id() {
         return booking_id;
     }

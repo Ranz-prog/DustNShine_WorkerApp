@@ -16,7 +16,7 @@ public class ClientBookData{
     private String updated_at;
     private String note;
     private Service[] services;
-    private Review reviews;
+    private Review[] reviews;
     private Customer customer;
     private Customer[] workers;
 
@@ -65,8 +65,8 @@ public class ClientBookData{
     public Service[] getServices() { return services; }
     public void setServices(Service[] value) { this.services = value; }
 
-    public Review getReviews(){ return reviews;}
-    public void setReviews(Review value){this.reviews = value; }
+    public Review[] getReviews(){ return reviews;}
+    public void setReviews(Review[] value){this.reviews = value; }
 
     public Customer getCustomer() { return customer; }
     public void setCustomer(Customer value) { this.customer = value; }
