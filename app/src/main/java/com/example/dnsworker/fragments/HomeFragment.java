@@ -2,6 +2,7 @@ package com.example.dnsworker.fragments;
 
 import static android.content.ContentValues.TAG;
 
+import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -24,6 +27,7 @@ import com.example.dnsworker.CustomerDetails;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
 import com.example.dnsworker.Model.ClientBookingModel.Service;
+import com.example.dnsworker.NotificationChannel;
 import com.example.dnsworker.R;
 import com.example.dnsworker.ViewModel.ClientBookingViewModel;
 import com.example.dnsworker.adapter.Task_Adapter;
@@ -42,11 +46,15 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
     private String retrievedToken;
     private SharedPreferences preferences;
     TextView noResult;
+    private NotificationManagerCompat notificationManagerCompat;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        notificationManagerCompat = NotificationManagerCompat.from(getContext());
+
 
         taskRecycler = view.findViewById(R.id.task_RecyclerView);
         taskRecycler.setHasFixedSize(true);
@@ -79,6 +87,18 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
                     ClientBookData[] clientBookData = clientBookingModel.getData();
                     clientBookDataList = clientBookData;
                     task_adapter.setTaskModelList(clientBookDataList);
+
+                    Notification notification = new NotificationCompat.Builder(getContext(),
+                            NotificationChannel.CHANNEL_1_ID)
+                            .setSmallIcon(R.drawable.ic_launcher_foreground)
+                            .setContentTitle("DNS Worker")
+                            .setContentText("You have a new task for today")
+                            .setPriority(NotificationCompat.PRIORITY_HIGH)
+                            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                            .build();
+
+                    notificationManagerCompat.notify(1, notification);
+
                     Log.d(TAG, "onChanged: DATA HERE ======>" + clientBookData);
                 }
                 else {

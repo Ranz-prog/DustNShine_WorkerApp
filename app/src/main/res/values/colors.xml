@@ -8,6 +8,7 @@
     <color name="black">#060b17</color>
     <color name="white">#FFFFFFFF</color>
     <color name="background">#f9f9f9</color>
+    <color name="line_color">#B9B9B9</color>
 
     <!--App Theme-->
     <color name="app_theme_blue">#38B0C8</color>

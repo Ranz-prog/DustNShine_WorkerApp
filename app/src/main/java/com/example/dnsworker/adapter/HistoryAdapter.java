@@ -35,7 +35,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.BookingV
     @Override
     public BookingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.content_booking_row, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.new_content_booking_row, parent, false);
         BookingViewHolder viewHolder = new BookingViewHolder(view, onClickBookingListener);
 
         return viewHolder;

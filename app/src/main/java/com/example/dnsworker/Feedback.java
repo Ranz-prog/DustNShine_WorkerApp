@@ -1,8 +1,11 @@
 package com.example.dnsworker;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -28,7 +31,7 @@ public class Feedback extends AppCompatActivity {
 
     private ImageView arrowback;
     private TextView clientName, clientAddress, clientContact,
-            clientTotal, clientSchedule, clientComment, clientRatingValue;
+            clientTotal, clientSchedule, clientComment, clientRatingValue, clientNote;
     private SharedPreferences historyPreferences, serviceHistoryPreference;
     private String first_name, last_name, mobile_number, location, total, schedule, comment;
     private RecyclerView historyRecycler;
@@ -50,6 +53,7 @@ public class Feedback extends AppCompatActivity {
         clientSchedule = findViewById(R.id.history_schedule);
         clientComment = findViewById(R.id.history_clientComment);
         clientRatingValue = findViewById(R.id.ratingValue);
+        clientNote = findViewById(R.id.history_noteTV);
         ratingBar = findViewById(R.id.ratingBar);
         historyRecycler = findViewById(R.id.history_recyclerView);
 
@@ -80,6 +84,7 @@ public class Feedback extends AppCompatActivity {
         schedule = historyPreferences.getString("sched_datetime", null);
         comment = historyPreferences.getString("comment", null);
         String rating = historyPreferences.getString("rating", null);
+        String note = historyPreferences.getString("note", null);
 
 
         serviceHistoryPreference = getSharedPreferences("CUSTOMER_SERVICE", Context.MODE_PRIVATE);
@@ -97,9 +102,22 @@ public class Feedback extends AppCompatActivity {
         clientContact.setText(mobile_number);
         clientTotal.setText(total);
         clientSchedule.setText(schedule);
-        clientComment.setText(comment);
-        clientRatingValue.setText(rating);
-        ratingBar.setRating(Float.parseFloat(rating));
+        clientNote.setText(note);
+
+        Log.d(TAG, "loadFeedbackData: Comment" + comment);
+        Log.d(TAG, "loadFeedbackData: Rating" + rating);
+
+        if((comment == null) && (rating == null)){
+            clientComment.setText("");
+            clientRatingValue.setText(0);
+            ratingBar.setRating(0);
+        }
+        else{
+            clientComment.setText(comment);
+            clientRatingValue.setText(rating);
+            ratingBar.setRating(Float.parseFloat(rating));
+        }
+
     }
 
 }

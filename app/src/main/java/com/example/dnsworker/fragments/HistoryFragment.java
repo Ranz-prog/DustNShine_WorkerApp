@@ -106,12 +106,11 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
         String address = clientHistoryDataList[position].getAddress();
         String schedule = clientHistoryDataList[position].getSched_datetime();
         String email = clientHistoryDataList[position].getCustomer().getEmail();
+        String note = clientHistoryDataList[position].getNote();
         int status = clientHistoryDataList[position].getStatus();
         int id = (int) clientHistoryDataList[position].getID();
         double totalCost = clientHistoryDataList[position].getTotal();
         serviceList = clientHistoryDataList[position].getServices();
-//        String comment = historyReviews[position].getComment();
-//        double rating = historyReviews[position].getRating();
 
         SharedPreferences preferences = getActivity().getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
 
@@ -126,7 +125,7 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
             preferences.edit().putString("comment", comment).apply();
             preferences.edit().putString("rating", String.valueOf(rating)).apply();
 
-            Log.d(TAG, "loadHistoryData: COMMENT ==>" + comment);
+            Log.d(TAG, "loadHistoryData: COMMENTHERE ==>" + comment);
         }
         else{
             historyPreferences.edit().putString("comment", commentVal).apply();
@@ -142,6 +141,7 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
         preferences.edit().putString("email", email).apply();
         preferences.edit().putString("status", String.valueOf(status));
         preferences.edit().putInt("id", id).apply();
+        preferences.edit().putString("note", note).apply();
 
         Gson gson = new Gson();
 

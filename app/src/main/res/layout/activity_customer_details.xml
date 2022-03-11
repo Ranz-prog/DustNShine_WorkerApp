@@ -13,43 +13,48 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/buttonHolder"
-        android:padding="10dp">
+        >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="Customer Details"
-            android:textColor="@color/app_theme_gold"
-            android:textSize="20sp" />
+        <RelativeLayout
+            android:id="@+id/upperPart"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@color/app_theme_blue"
+            android:padding="2dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Customer Details"
+                android:layout_centerVertical="true"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
-        <ImageView
-            android:id="@+id/messageIcon"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="5dp"
-            android:src="@drawable/messageblue" />
+<!--            <ImageView-->
+<!--                android:id="@+id/messageIcon"-->
+<!--                android:layout_width="22dp"-->
+<!--                android:layout_height="22dp"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginRight="5dp"-->
+<!--                android:src="@drawable/messageblue" />-->
 
-        <ImageView
-            android:id="@+id/ic_arrowbackCustomerDetails"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/back" />
-
-
+            <ImageView
+                android:id="@+id/ic_arrowbackCustomerDetails"
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                app:srcCompat="@drawable/ic_back_white" />
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/ic_arrowbackCustomerDetails"
-            android:layout_marginTop="10dp">
+            android:layout_below="@id/upperPart"
+            android:layout_marginTop="4dp">
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -57,7 +62,10 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp">
 
                     <fragment
                         android:id="@+id/mapView"
@@ -74,101 +82,82 @@
                         map:uiZoomControls="true"
                         map:uiZoomGestures="true" />
 
+                    <ImageView
+                        android:id="@+id/cdIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_below="@id/mapView"
+                        android:src="@drawable/ic_customerdetails"/>
+
                     <TextView
                         android:id="@+id/customerDetailsTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/mapView"
-                        android:layout_marginTop="20dp"
-                        android:fontFamily="@font/montserrat_medium"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/roboto_bold"
                         android:text="Customer Details"
                         android:textColor="@color/app_theme_blue"
-                        android:textSize="17sp" />
-
-                    <TextView
-                        android:id="@+id/customerNameLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/customerDetailsTV"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="Customer Name: "
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/customerScheduleLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/customerNameLabel"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="Schedule: "
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/c_details_schedule"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/customerNameLabel"
-                        android:layout_toRightOf="@+id/customerScheduleLabel"
-                        android:fontFamily="@font/quicsandmed" />
+                        android:textSize="17sp"
+                        android:layout_toRightOf="@id/cdIcon"/>
 
                     <TextView
                         android:id="@+id/c_details_fullname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/customerDetailsTV"
-                        android:layout_marginLeft="5dp"
-                        android:layout_toRightOf="@id/customerNameLabel"
+                        android:layout_marginLeft="28dp"
                         android:fontFamily="@font/roboto_regular"
                         android:text="Juan Delacruz"
                         android:textSize="14sp" />
 
                     <TextView
-                        android:id="@+id/customerLocationLabel"
+                        android:id="@+id/c_details_schedule"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/customerScheduleLabel"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="Location:"
-                        android:textSize="14sp" />
+                        android:layout_marginLeft="28dp"
+                        android:layout_below="@id/c_details_fullname"
+                        android:fontFamily="@font/roboto_regular" />
+
 
                     <TextView
                         android:id="@+id/c_details_location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/customerScheduleLabel"
-                        android:layout_marginLeft="5dp"
-                        android:layout_toRightOf="@id/customerLocationLabel"
+                        android:layout_below="@id/c_details_schedule"
+                        android:layout_marginLeft="28dp"
                         android:fontFamily="@font/roboto_regular"
                         android:text="431 St. Brgy, Poblacion, Dagupan, Pangasinan"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/customerContactLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/customerLocationLabel"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="Contact Number: "
                         android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/c_details_mobileNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/customerLocationLabel"
-                        android:layout_marginLeft="5dp"
-                        android:layout_toRightOf="@+id/customerContactLabel"
+                        android:layout_below="@id/c_details_location"
+                        android:layout_marginLeft="28dp"
                         android:fontFamily="@font/roboto_regular"
                         android:text="09661581921"
                         android:textSize="14sp" />
+
+
+                    <ImageView
+                        android:id="@+id/cdBooking"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginTop="8dp"
+                        android:src="@drawable/ic_bookingdetails"
+                        android:layout_below="@id/c_details_mobileNumber"/>
 
                     <TextView
                         android:id="@+id/bookingDetailsTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/customerContactLabel"
-                        android:layout_marginTop="15dp"
-                        android:fontFamily="@font/montserrat_medium"
+                        android:layout_below="@id/c_details_mobileNumber"
+                        android:layout_marginTop="8dp"
+                        android:layout_toRightOf="@id/cdBooking"
+                        android:fontFamily="@font/roboto_bold"
                         android:text="Booking Details"
                         android:textColor="@color/app_theme_blue"
                         android:textSize="17sp" />
@@ -181,6 +170,7 @@
                         android:layout_below="@id/bookingDetailsTextView"
                         android:fontFamily="@font/roboto_medium"
                         android:text="Note: "
+                        android:layout_marginLeft="28dp"
                         android:textSize="14sp" />
 
                     <TextView
@@ -189,10 +179,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/bookingDetailsTextView"
                         android:layout_toRightOf="@id/noteLabel"
-                        android:fontFamily="@font/quicsandmed"
-                        android:textSize="15sp"
-                        android:textColor="@color/black"
-                        />
+                        android:fontFamily="@font/roboto_regular"
+                        android:textSize="15sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -223,7 +211,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@color/app_theme_blue"
-            android:fontFamily="@font/quicksandbold"
+            android:fontFamily="@font/roboto_regular"
             android:text="Start Work"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -234,7 +222,7 @@
             android:layout_height="60dp"
             android:background="@color/app_theme_blue"
             android:enabled="false"
-            android:fontFamily="@font/montserrat_regular"
+            android:fontFamily="@font/roboto_regular"
             android:text="On Going Work"
             android:textColor="@color/white"
             android:textSize="15sp"

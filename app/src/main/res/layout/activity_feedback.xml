@@ -2,134 +2,110 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingTop="15dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingBottom="10dp">
-
-    <ImageView
-        android:id="@+id/ic_arrowbackFeeback"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="1"
-        android:src="@drawable/back" />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-
-        android:fontFamily="@font/montserrat_bold"
-        android:text="Customer Feedback"
-        android:textColor="@color/app_theme_gold"
-        android:textSize="20sp" />
+    android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/upperPart"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:background="@color/app_theme_blue"
+        android:padding="2dp">
 
+        <ImageView
+            android:id="@+id/ic_arrowbackFeeback"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_back_white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Customer Feedback"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+
+    </RelativeLayout>
+
+
+
+
+    <RelativeLayout
         android:id="@+id/ic_upper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ic_arrowbackFeeback"
-        android:layout_marginTop="10dp">
+        android:layout_below="@id/upperPart"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:id="@+id/cdIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_customerdetails" />
 
         <TextView
             android:id="@+id/customerDetailsTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/montserrat_medium"
+            android:layout_toRightOf="@id/cdIcon"
+            android:fontFamily="@font/roboto_medium"
             android:text="Customer Details"
             android:textColor="@color/app_theme_blue"
             android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/customerNameLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/customerDetailsTV"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/roboto_medium"
-            android:text="Customer Name: "
-            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/history_customerName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/customerDetailsTV"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_toRightOf="@id/customerNameLabel"
+            android:layout_marginLeft="28dp"
             android:fontFamily="@font/roboto_regular"
             android:text="Juan Delacruz"
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/customerScheduleLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/customerNameLabel"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/roboto_medium"
-            android:text="Schedule: "
-            android:textSize="14sp" />
-        <TextView
             android:id="@+id/history_schedule"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/history_customerName"
             android:fontFamily="@font/quicsandmed"
-            android:layout_below="@id/customerNameLabel"
-            android:layout_toRightOf="@+id/customerScheduleLabel"
-            android:textSize="15sp"
-            />
+            android:layout_marginLeft="28dp"
+            android:textSize="15sp" />
 
-        <TextView
-            android:id="@+id/customerLocationLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/customerScheduleLabel"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/roboto_medium"
-            android:text="Location:"
-            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/history_clientAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/customerScheduleLabel"
-            android:layout_marginLeft="5dp"
+            android:layout_below="@id/history_schedule"
+            android:layout_marginLeft="28dp"
             android:layout_marginTop="2dp"
-            android:layout_toRightOf="@id/customerLocationLabel"
             android:fontFamily="@font/roboto_regular"
             android:maxLines="1"
+            android:singleLine="true"
             android:text="431 St. Brgy, Poblacion, Dagupan, Pangasinan"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/customerContactLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/customerLocationLabel"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/roboto_medium"
-            android:text="Contact Number: "
             android:textSize="14sp" />
 
         <TextView
             android:id="@+id/history_clientContactNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/customerLocationLabel"
-            android:layout_marginLeft="5dp"
+            android:layout_below="@id/history_clientAddress"
+            android:layout_marginLeft="28dp"
             android:layout_marginTop="2dp"
-            android:layout_toRightOf="@+id/customerContactLabel"
             android:fontFamily="@font/roboto_regular"
             android:text="09661581921"
             android:textSize="14sp" />
@@ -138,15 +114,23 @@
             android:id="@+id/recyclerContainaer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/customerContactLabel"
-            >
+            android:layout_below="@id/history_clientContactNumber">
+
+            <ImageView
+                android:id="@+id/cdBooking"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_bookingdetails" />
 
             <TextView
                 android:id="@+id/customerbookingdetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/montserrat_medium"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@id/cdBooking"
+                android:fontFamily="@font/roboto_medium"
                 android:text="Booking Details"
                 android:textColor="@color/app_theme_blue"
                 android:textSize="17sp" />
@@ -156,7 +140,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/customerbookingdetails"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="28dp"
                 android:fontFamily="@font/roboto_medium"
                 android:text="Note: "
                 android:textSize="14sp" />
@@ -167,54 +151,69 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/customerbookingdetails"
                 android:layout_toRightOf="@id/history_noteLabel"
-                android:fontFamily="@font/quicsandmed"
-                android:textSize="15sp"
-                android:textColor="@color/black"/>
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="15sp" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/history_recyclerView"
                 android:layout_width="match_parent"
-                android:layout_below="@id/history_noteTV"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_below="@id/history_noteTV" />
         </RelativeLayout>
 
+        <ImageView
+            android:id="@+id/cdPayment"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_below="@id/recyclerContainaer"
+            android:src="@drawable/money" />
 
         <TextView
             android:id="@+id/customerpayment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/recyclerContainaer"
-            android:fontFamily="@font/montserrat_medium"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@id/cdPayment"
+            android:fontFamily="@font/roboto_medium"
             android:text="Payment Method"
             android:textColor="@color/app_theme_blue"
             android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/history_paymentMethod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_below="@id/customerpayment"
+            android:layout_marginLeft="28dp"
+            android:textSize="15sp"
+            android:layout_marginTop="4dp"
+            android:text="Cash Payment"
+            />
+
 
         <TextView
             android:id="@+id/customertotalcost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/customerpayment"
-            android:layout_marginTop="80dp"
-            android:fontFamily="@font/montserrat_medium"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/roboto_medium"
             android:text="Total Cost: "
             android:textColor="@color/app_theme_blue"
             android:textSize="17sp" />
+
         <TextView
             android:id="@+id/history_totalCost"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/customerpayment"
+            android:layout_marginTop="30dp"
             android:layout_toRightOf="@id/customertotalcost"
-            android:layout_marginTop="80dp"
             android:fontFamily="@font/quicsandmed"
-            android:textStyle="bold"
-            android:layout_below="@id/customerpayment"
-            android:layout_height="wrap_content"
-            android:textSize="17sp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/customerpayment"
-            android:layout_marginTop="82dp"
-            android:layout_toRightOf="@id/customertotalcost" />
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
@@ -223,13 +222,16 @@
         android:layout_width="401dp"
         android:layout_height="415dp"
         android:layout_below="@id/ic_upper"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp">
 
         <TextView
             android:id="@+id/customerhowsourwork"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_medium"
+            android:fontFamily="@font/roboto_medium"
             android:text="How's our work"
             android:textSize="17sp" />
 
@@ -260,8 +262,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/how"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/montserrat_medium"
+            android:fontFamily="@font/roboto_medium"
             android:text="Rating"
+            android:textColor="@color/app_theme_blue"
             android:textSize="17sp" />
 
         <RatingBar
@@ -270,6 +273,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/customerrating"
             android:numStars="5"
+            android:isIndicator="true"
             android:progressTint="@color/app_theme_gold" />
 
         <TextView
@@ -280,7 +284,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_toRightOf="@id/ratingBar"
-            android:fontFamily="@font/quicsandmed"
+            android:fontFamily="@font/roboto_medium"
             android:text="5.0"
             android:textColor="@color/app_theme_gold"
             android:textSize="24dp"

@@ -66,7 +66,7 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         fullnameTV = findViewById(R.id.c_details_fullname);
         mobilenumberTV = findViewById(R.id.c_details_mobileNumber);
         addressTV = findViewById(R.id.c_details_location);
-        messageIcon = findViewById(R.id.messageIcon);
+//        messageIcon = findViewById(R.id.messageIcon);
         scheduleTV = findViewById(R.id.c_details_schedule);
         noteTV = findViewById(R.id.customer_noteTV);
         //RecyclerView for Service List
@@ -88,12 +88,12 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         mapFragment.getMapAsync(this);
 
 
-        messageIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+//        messageIcon.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
 
         preferences = getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
 
@@ -220,7 +220,7 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         //LatLng Address = new LatLng(latitude,longitude);
         //map.addMarker(new MarkerOptions().position(Address).title(clientAdd));
         map.addMarker(new MarkerOptions().position(Address).title("UPANG"));
-        map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         map.moveCamera(CameraUpdateFactory.newLatLng(Address));
 
     }
