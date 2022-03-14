@@ -44,6 +44,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.BookingV
     @Override
     public void onBindViewHolder(@NonNull BookingViewHolder holder, int position) {
         //holder.booking_Image.setImageResource(bookingModelsList.get(position).getBooking_clientImage());
+        holder.booking_firstLetter.setText(customerDataList[position].getCustomer().getFirstName().substring(0,1));
         holder.booking_clientName.setText(customerDataList[position].getCustomer().getFirstName() + " " + customerDataList[position].getCustomer().getLastName());
         holder.booking_clientLocation.setText(customerDataList[position].getAddress());
         holder.booking_contactNumber.setText(customerDataList[position].getCustomer().getMobileNumber());
@@ -62,9 +63,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.BookingV
 
     public class BookingViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private ImageView booking_Image;
+
         private TextView booking_clientName, booking_clientLocation,
-                booking_contactNumber, booking_schedule;
+                booking_contactNumber, booking_schedule, booking_firstLetter;
 
         OnClickBookingListener onClickBookingListener;
 
@@ -78,6 +79,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.BookingV
             booking_clientLocation = itemView.findViewById(R.id.booking_clientLocation_TV);
             booking_contactNumber = itemView.findViewById(R.id.booking_clientContact_TV);
             booking_schedule = itemView.findViewById(R.id.booking_clientSchedule_TV);
+            booking_firstLetter = itemView.findViewById(R.id.history_firstLetterTV);
 
             this.onClickBookingListener = onClickBookingListener;
 

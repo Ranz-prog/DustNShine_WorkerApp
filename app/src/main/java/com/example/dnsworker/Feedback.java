@@ -83,8 +83,32 @@ public class Feedback extends AppCompatActivity {
         total = historyPreferences.getString("total", null);
         schedule = historyPreferences.getString("sched_datetime", null);
         comment = historyPreferences.getString("comment", null);
-        String rating = historyPreferences.getString("rating", null);
+        String rating = historyPreferences.getString("ratings", null);
         String note = historyPreferences.getString("note", null);
+        int id = historyPreferences.getInt("id", 0);
+
+        clientName.setText(first_name + " " + last_name);
+        clientAddress.setText(location);
+        clientContact.setText(mobile_number);
+        clientTotal.setText(total);
+        clientSchedule.setText(schedule);
+        clientNote.setText(note);
+
+        Log.d(TAG, "loadFeedbackData: CommentIto " + comment);
+        Log.d(TAG, "loadFeedbackData: RatingIto " + rating);
+
+        if((comment == null) && (rating == null)){
+            clientComment.setText("");
+            clientRatingValue.setText(0);
+            ratingBar.setRating(0);
+        }
+        else{
+            clientComment.setText(comment);
+            clientRatingValue.setText(rating);
+            ratingBar.setRating(Float.parseFloat(rating));
+        }
+
+        Log.d(TAG, "loadFeedbackData: USER ID==> " + id);
 
 
         serviceHistoryPreference = getSharedPreferences("CUSTOMER_SERVICE", Context.MODE_PRIVATE);
@@ -97,26 +121,6 @@ public class Feedback extends AppCompatActivity {
         serviceHistoryList = gson.fromJson(jsonString, type);
         serviceListHistoryAdapter.setServiceList(serviceHistoryList);
 
-        clientName.setText(first_name + " " + last_name);
-        clientAddress.setText(location);
-        clientContact.setText(mobile_number);
-        clientTotal.setText(total);
-        clientSchedule.setText(schedule);
-        clientNote.setText(note);
-
-        Log.d(TAG, "loadFeedbackData: Comment" + comment);
-        Log.d(TAG, "loadFeedbackData: Rating" + rating);
-
-        if((comment == null) && (rating == null)){
-            clientComment.setText("");
-            clientRatingValue.setText(0);
-            ratingBar.setRating(0);
-        }
-        else{
-            clientComment.setText(comment);
-            clientRatingValue.setText(rating);
-            ratingBar.setRating(Float.parseFloat(rating));
-        }
 
     }
 

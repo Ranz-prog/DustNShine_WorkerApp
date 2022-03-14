@@ -22,6 +22,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.dnsworker.CustomerDetails;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
@@ -47,6 +48,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
     private SharedPreferences preferences;
     TextView noResult;
     private NotificationManagerCompat notificationManagerCompat;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Nullable
     @Override
@@ -61,6 +63,16 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         taskRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         task_adapter = new Task_Adapter(getContext(), clientBookDataList, this);
         taskRecycler.setAdapter(task_adapter);
+
+
+//        swipeRefreshLayout = view.findViewById(R.id.refreshLayout);
+//
+//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//
+//            }
+//        });
 
         noResult = view.findViewById(R.id.emptyTaskTV);
 
@@ -88,16 +100,16 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
                     clientBookDataList = clientBookData;
                     task_adapter.setTaskModelList(clientBookDataList);
 
-                    Notification notification = new NotificationCompat.Builder(getContext(),
-                            NotificationChannel.CHANNEL_1_ID)
-                            .setSmallIcon(R.drawable.ic_launcher_foreground)
-                            .setContentTitle("DNS Worker")
-                            .setContentText("You have a new task for today")
-                            .setPriority(NotificationCompat.PRIORITY_HIGH)
-                            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                            .build();
-
-                    notificationManagerCompat.notify(1, notification);
+//                    Notification notification = new NotificationCompat.Builder(getContext(),
+//                            NotificationChannel.CHANNEL_1_ID)
+//                            .setSmallIcon(R.drawable.ic_launcher_foreground)
+//                            .setContentTitle("DNS Worker")
+//                            .setContentText("You have a new task for today")
+//                            .setPriority(NotificationCompat.PRIORITY_HIGH)
+//                            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+//                            .build();
+//
+//                    notificationManagerCompat.notify(1, notification);
 
                     Log.d(TAG, "onChanged: DATA HERE ======>" + clientBookData);
                 }

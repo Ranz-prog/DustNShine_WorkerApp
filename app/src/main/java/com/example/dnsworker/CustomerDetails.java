@@ -11,12 +11,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
@@ -103,6 +106,7 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
                 postStartTimeAndDate();
                 Intent intent = new Intent(CustomerDetails.this, ServiceDetails.class);
                 startActivity(intent);
+                finish();
                 //getTimeAndDate();
                 //onJitsiMeet();
 
@@ -121,7 +125,9 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         arrowBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent = new Intent(CustomerDetails.this, MainMenu.class);
+                startActivity(intent);
+
             }
         });
     }
@@ -224,8 +230,6 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         map.moveCamera(CameraUpdateFactory.newLatLng(Address));
 
     }
-
-
 
     //    private void onJitsiMeet(){
 //

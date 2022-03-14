@@ -175,27 +175,4 @@ public class ServiceDetails extends AppCompatActivity {
         dialog.show();
     }
 
-
-    boolean doubleBackToExitPressedOnce = false;
-
-    @Override
-    public void onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
-            super.onBackPressed();
-            return;
-        }
-
-        this.doubleBackToExitPressedOnce = true;
-        //Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-        finish();
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                doubleBackToExitPressedOnce = false;
-            }
-        }, 2000);
-    }
-
-
 }

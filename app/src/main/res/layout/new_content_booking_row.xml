@@ -19,25 +19,36 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
             android:layout_marginTop="30dp"
+            android:layout_marginRight="10dp"
             android:src="@drawable/ic_arrow_open" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/ic_Customer"
+        <LinearLayout
+            android:id="@+id/ciclerImage"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="8dp"
+            android:background="@drawable/circle_container"
+            android:gravity="center"
+            android:orientation="vertical"
             android:layout_marginTop="16dp"
-            android:src="@drawable/user" />
+            android:layout_marginLeft="8dp">
 
+            <TextView
+                android:id="@+id/history_firstLetterTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="J"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
         <TextView
             android:id="@+id/booking_clientName_TV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="14dp"
-            android:layout_toRightOf="@+id/ic_Customer"
+            android:layout_toRightOf="@+id/ciclerImage"
             android:fontFamily="@font/roboto_bold"
             android:text="@string/ClientName"
             android:textColor="@color/app_theme_blue"
@@ -49,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/booking_clientName_TV"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/ic_Customer"
+            android:layout_toRightOf="@id/ciclerImage"
             android:fontFamily="@font/roboto_regular"
             android:maxLines="1"
             android:text="@string/Location"
@@ -61,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/booking_clientLocation_TV"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/ic_Customer"
+            android:layout_toRightOf="@+id/ciclerImage"
             android:fontFamily="@font/roboto_regular"
             android:text="@string/ContactNumber"
             android:textSize="14sp" />
@@ -98,7 +109,6 @@
                 android:fontFamily="@font/roboto_medium"
                 android:singleLine="true"
                 android:text="03-12-2022 09:00:00"
-                android:textColor="@color/black"
                 android:textSize="14sp" />
         </RelativeLayout>
 

@@ -5,42 +5,62 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
+
+    <RelativeLayout
+        android:id="@+id/upPart"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:background="@color/app_theme_blue">
+
+
+        <TextView
+            android:id="@+id/titleTask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Profile"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="2dp"/>
+
+    </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_above="@id/btnLogout"
+        android:layout_below="@id/upPart"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp">
 
-        <RelativeLayout
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/background"
-            android:paddingTop="15dp"
-            android:paddingBottom="10dp">
+        <LinearLayout
+            android:id="@+id/appicon"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@drawable/circle_container"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp">
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/appicon"/>
+        </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="20dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:paddingTop="10dp"
-                android:text="@string/Manage"
-                android:textColor="@color/app_theme_gold"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </RelativeLayout>
 
         <TextView
             android:id="@+id/profile_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/title"
+            android:layout_below="@+id/appicon"
+            android:layout_marginTop="30dp"
             android:layout_marginBottom="10dp"
-            android:fontFamily="@font/montserrat_medium"
+            android:fontFamily="@font/roboto_medium"
             android:text="@string/profile_subtitle"
             android:textSize="17sp" />
 
@@ -136,146 +156,6 @@
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-<!--        &lt;!&ndash;Location Address&ndash;&gt;-->
-<!--        <TextView-->
-<!--            android:id="@+id/profile_locationTitle"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@id/contactInputLayout"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:fontFamily="@font/quicsandmed"-->
-<!--            android:text="@string/user_location"-->
-<!--            android:textSize="17sp" />-->
-
-<!--        &lt;!&ndash;House Number&ndash;&gt;-->
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            android:id="@+id/housenumberInputLayout"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@id/profile_locationTitle"-->
-<!--            app:boxStrokeWidth="0dp"-->
-<!--            app:boxStrokeWidthFocused="0dp">-->
-
-<!--            <com.google.android.material.textfield.TextInputEditText-->
-<!--                android:id="@+id/worker_houseno_ET"-->
-<!--                android:layout_width="130dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:background="@drawable/input_text_layout"-->
-<!--                android:hint="@string/user_house_number"-->
-<!--                android:maxLength="50"-->
-<!--                android:padding="15dp"-->
-<!--                android:textSize="15sp" />-->
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
-
-<!--        &lt;!&ndash;Street&ndash;&gt;-->
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            android:id="@+id/streetInputLayout"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@id/profile_locationTitle"-->
-<!--            android:layout_marginLeft="4dp"-->
-<!--            android:layout_toRightOf="@id/housenumberInputLayout"-->
-<!--            app:boxStrokeWidth="0dp"-->
-<!--            app:boxStrokeWidthFocused="0dp">-->
-
-<!--            <com.google.android.material.textfield.TextInputEditText-->
-<!--                android:id="@+id/worker_street_ET"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:background="@drawable/input_text_layout"-->
-<!--                android:hint="@string/user_street"-->
-<!--                android:maxLength="50"-->
-<!--                android:padding="15dp"-->
-<!--                android:textSize="15sp" />-->
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
-
-<!--        &lt;!&ndash;Barangay&ndash;&gt;-->
-
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            android:id="@+id/brgyInputLayout"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@id/housenumberInputLayout"-->
-<!--            app:boxStrokeWidth="0dp"-->
-<!--            app:boxStrokeWidthFocused="0dp">-->
-
-<!--            <com.google.android.material.textfield.TextInputEditText-->
-<!--                android:id="@+id/worker_brgy_ET"-->
-<!--                android:layout_width="180dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:background="@drawable/input_text_layout"-->
-<!--                android:hint="@string/user_brgy"-->
-<!--                android:maxLength="50"-->
-<!--                android:padding="15dp"-->
-<!--                android:textSize="15sp" />-->
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
-
-<!--        &lt;!&ndash;Municipality&ndash;&gt;-->
-
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            android:id="@+id/cityInputLayout"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@id/housenumberInputLayout"-->
-<!--            android:layout_marginLeft="4dp"-->
-<!--            android:layout_toRightOf="@id/brgyInputLayout"-->
-<!--            app:boxStrokeWidth="0dp"-->
-<!--            app:boxStrokeWidthFocused="0dp">-->
-
-<!--            <com.google.android.material.textfield.TextInputEditText-->
-<!--                android:id="@+id/worker_municipality_ET"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:background="@drawable/input_text_layout"-->
-<!--                android:hint="@string/user_municipality"-->
-<!--                android:maxLength="50"-->
-<!--                android:padding="15dp"-->
-<!--                android:textSize="15sp" />-->
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
-
-<!--        &lt;!&ndash;Province&ndash;&gt;-->
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            android:id="@+id/provinceInputLayout"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@id/brgyInputLayout"-->
-<!--            app:boxStrokeWidth="0dp"-->
-<!--            app:boxStrokeWidthFocused="0dp">-->
-
-<!--            <com.google.android.material.textfield.TextInputEditText-->
-<!--                android:id="@+id/worker_province_ET"-->
-<!--                android:layout_width="180dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:background="@drawable/input_text_layout"-->
-<!--                android:hint="@string/user_province"-->
-<!--                android:maxLength="50"-->
-<!--                android:padding="15dp"-->
-<!--                android:textSize="15sp" />-->
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
-
-<!--        &lt;!&ndash;Zip Code&ndash;&gt;-->
-
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            android:id="@+id/zipCodeInputLayout"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@id/brgyInputLayout"-->
-<!--            android:layout_marginLeft="4dp"-->
-<!--            android:layout_toRightOf="@id/provinceInputLayout"-->
-<!--            app:boxStrokeWidth="0dp"-->
-<!--            app:boxStrokeWidthFocused="0dp">-->
-
-<!--            <com.google.android.material.textfield.TextInputEditText-->
-<!--                android:id="@+id/worker_zipcode_ET"-->
-<!--                android:layout_width="180dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:background="@drawable/input_text_layout"-->
-<!--                android:hint="@string/user_zip"-->
-<!--                android:maxLength="50"-->
-<!--                android:padding="15dp"-->
-<!--                android:textSize="15sp" />-->
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
-
     </RelativeLayout>
 
 
@@ -287,7 +167,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
         android:backgroundTint="@color/app_theme_blue"
-        android:fontFamily="@font/montserrat_regular"
+        android:fontFamily="@font/roboto_regular"
         android:text="Log out"
         android:textColor="@color/white"
         android:textSize="15sp" />

@@ -63,6 +63,8 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
 
         TextView noResult = view.findViewById(R.id.emptyHistoryTV);
 
+
+
         //Passed Data from shared Pref
         historyPreferences = getActivity().getSharedPreferences("AUTH_TOKEN", Context.MODE_PRIVATE);
         retrievedToken = historyPreferences.getString("TOKEN", null);
@@ -123,13 +125,14 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
             String comment = historyReviews[0].getComment();
             double rating = historyReviews[0].getRating();
             preferences.edit().putString("comment", comment).apply();
-            preferences.edit().putString("rating", String.valueOf(rating)).apply();
+            preferences.edit().putString("ratings", String.valueOf(rating)).apply();
 
-            Log.d(TAG, "loadHistoryData: COMMENTHERE ==>" + comment);
+            Log.d(TAG, "loadHistoryData: COMMENT HERE ==>" + comment);
+            Log.d(TAG, "loadHistoryData: RATING HERE ==>" + rating);
         }
         else{
-            historyPreferences.edit().putString("comment", commentVal).apply();
-            historyPreferences.edit().putString("rating", String.valueOf(ratingVal)).apply();
+            preferences.edit().putString("comment", commentVal).apply();
+            preferences.edit().putString("ratings", String.valueOf(ratingVal)).apply();
         }
 
         preferences.edit().putString("first_name", first_name).apply();

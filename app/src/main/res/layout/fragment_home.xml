@@ -11,9 +11,7 @@
         android:id="@+id/upPart"
         android:layout_width="match_parent"
         android:layout_height="36dp"
-        android:background="@color/app_theme_blue"
-        android:padding="2dp"
-        >
+        android:background="@color/app_theme_blue">
 
 
         <TextView
@@ -27,36 +25,31 @@
             android:text="Task"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <!--        <TextView-->
-        <!--            android:id="@+id/titleTask"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_centerHorizontal="true"-->
-        <!--            android:layout_marginTop="10dp"-->
-        <!--            android:fontFamily="@font/montserrat_bold"-->
-        <!--            android:text="@string/home_title"-->
-        <!--            android:textColor="@color/app_theme_gold"-->
-        <!--            android:textSize="20sp"-->
-        <!--            android:textStyle="bold" />-->
-
+            android:textStyle="bold"
+            android:layout_marginBottom="2dp"/>
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/upPart"
         android:layout_marginTop="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/task_RecyclerView"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/task_RecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
         <TextView
             android:id="@+id/emptyTaskTV"

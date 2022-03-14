@@ -37,7 +37,8 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.ChatViewHold
     @Override
     public void onBindViewHolder(@NonNull ChatViewHolder holder, int position) {
 
-        holder.chat_clientImageView.setImageResource(chatModelList.get(position).getChat_clientImage());
+        //holder.chat_clientImageView.setImageResource(chatModelList.get(position).getChat_clientImage());
+        holder.chat_firstLetter.setText(chatModelList.get(position).getChat_clientName().substring(0,1));
         holder.chat_clientName.setText(chatModelList.get(position).getChat_clientName());
         holder.chat_clientMessage.setText(chatModelList.get(position).getChat_clientMessage());
 
@@ -50,17 +51,17 @@ public class Chat_Adapter extends RecyclerView.Adapter<Chat_Adapter.ChatViewHold
 
     public class ChatViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private CircleImageView chat_clientImageView;
-        private TextView chat_clientName, chat_clientMessage, chat_timeReceived;
+
+        private TextView chat_clientName, chat_clientMessage, chat_timeReceived,chat_firstLetter;
 
         OnClickMessageListener onClickMessageListener;
 
         public ChatViewHolder(@NonNull View itemView, OnClickMessageListener onClickMessageListener) {
             super(itemView);
 
-            chat_clientImageView = itemView.findViewById(R.id.chat_clientImage);
             chat_clientName = itemView.findViewById(R.id.chat_clientName_TV);
             chat_clientMessage = itemView.findViewById(R.id.chat_clientMessage_TV);
+            chat_firstLetter = itemView.findViewById(R.id.chat_firstLetterTV);
 
             this.onClickMessageListener = onClickMessageListener;
 

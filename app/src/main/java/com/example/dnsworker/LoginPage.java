@@ -4,6 +4,8 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -80,12 +82,40 @@ public class LoginPage extends AppCompatActivity {
                     }, 700);
                     Log.d(TAG, "signinCallback: StatusCode ====>");
                 } else if (statusCode == 401) {
-                    Toast.makeText(getApplicationContext(), "Invalid Credentials, Try Again", Toast.LENGTH_SHORT).show();
+
+                    warningDialog();
+                    //Toast.makeText(getApplicationContext(), "Invalid Credentials, Try Again", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Login Failed, Try again", Toast.LENGTH_SHORT).show();
+
+                    warningDialog();
+                    //Toast.makeText(getApplicationContext(), "Login Failed, Try again", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    private void warningDialog(){
+        AlertDialog.Builder dialog = new AlertDialog.Builder(LoginPage.this);
+        dialog.setCancelable(false);
+        dialog.setTitle("Error");
+        dialog.setIcon(R.drawable.ic_warning);
+        dialog.setMessage("Invalid Credentials, Try again" );
+        dialog.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                //Action for "Delete".
+                dialog.dismiss();
+            }
+        });
+//                .setNegativeButton("Cancel ", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        //Action for "Cancel".
+//                    }
+//                });
+
+        final AlertDialog alert = dialog.create();
+        alert.show();
     }
 
     //passing the email and password into the user view model

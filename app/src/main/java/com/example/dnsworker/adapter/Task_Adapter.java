@@ -41,7 +41,7 @@ public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> 
         this.onClickTaskListener = onClickTaskListener;
     }
 
-    public void setTaskModelList(ClientBookData[] customerList){
+    public void setTaskModelList(ClientBookData[] customerList) {
         this.customerList = customerList;
         notifyDataSetChanged();
     }
@@ -57,7 +57,8 @@ public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.task_clientName.setText(customerList[position].getCustomer().getFirstName() + " " + customerList [position].getCustomer().getLastName());
+        holder.task_firstLetter.setText(customerList[position].getCustomer().getFirstName().substring(0,1));
+        holder.task_clientName.setText(customerList[position].getCustomer().getFirstName() + " " + customerList[position].getCustomer().getLastName());
         holder.task_clientLocation.setText(customerList[position].getAddress());
         holder.task_clientContact.setText(customerList[position].getCustomer().getMobileNumber());
         holder.task_clientSchedule.setText(customerList[position].getSched_datetime());
@@ -77,15 +78,12 @@ public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> 
         }*/
 
 
-
     }
-
-
 
 
     @Override
     public int getItemCount() {
-        if (this.customerList !=null){
+        if (this.customerList != null) {
             return this.customerList.length;
         }
         return 0;
@@ -93,8 +91,8 @@ public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private ImageView task_clientImage;
-        private TextView task_clientName, task_clientLocation, task_clientContact, task_clientSchedule;
+        private TextView task_clientName, task_clientLocation, task_clientContact,
+                task_clientSchedule, task_firstLetter;
         OnClickTaskListener onClickTaskListener;
 
         public ViewHolder(@NonNull View itemView, OnClickTaskListener onClickTaskListener) {
@@ -105,6 +103,7 @@ public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> 
             task_clientLocation = itemView.findViewById(R.id.task_clientLocation_TV);
             task_clientContact = itemView.findViewById(R.id.task_clientContact_TV);
             task_clientSchedule = itemView.findViewById(R.id.task_clientSchedule_TV);
+            task_firstLetter = itemView.findViewById(R.id.firstLetterTV);
 
             this.onClickTaskListener = onClickTaskListener;
             itemView.setOnClickListener(this);
@@ -117,7 +116,7 @@ public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> 
         }
     }
 
-    public interface OnClickTaskListener{
+    public interface OnClickTaskListener {
         void onClickTask(int position);
     }
 }
