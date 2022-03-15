@@ -12,8 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/buttonHolder"
-        >
+        android:layout_above="@id/buttonHolder">
 
         <RelativeLayout
             android:id="@+id/upperPart"
@@ -26,21 +25,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/roboto_bold"
                 android:text="Customer Details"
-                android:layout_centerVertical="true"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
-<!--            <ImageView-->
-<!--                android:id="@+id/messageIcon"-->
-<!--                android:layout_width="22dp"-->
-<!--                android:layout_height="22dp"-->
-<!--                android:layout_alignParentRight="true"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:layout_marginRight="5dp"-->
-<!--                android:src="@drawable/messageblue" />-->
+            <ImageView
+                android:id="@+id/btnVideoCall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_videocall"
+                android:onClick="videoCall"/>
 
             <ImageView
                 android:id="@+id/ic_arrowbackCustomerDetails"
@@ -86,9 +87,9 @@
                         android:id="@+id/cdIcon"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:layout_marginTop="10dp"
                         android:layout_below="@id/mapView"
-                        android:src="@drawable/ic_customerdetails"/>
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/ic_customerdetails" />
 
                     <TextView
                         android:id="@+id/customerDetailsTV"
@@ -96,11 +97,11 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/mapView"
                         android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@id/cdIcon"
                         android:fontFamily="@font/roboto_bold"
                         android:text="Customer Details"
                         android:textColor="@color/app_theme_blue"
-                        android:textSize="17sp"
-                        android:layout_toRightOf="@id/cdIcon"/>
+                        android:textSize="17sp" />
 
                     <TextView
                         android:id="@+id/c_details_fullname"
@@ -116,8 +117,8 @@
                         android:id="@+id/c_details_schedule"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="28dp"
                         android:layout_below="@id/c_details_fullname"
+                        android:layout_marginLeft="28dp"
                         android:fontFamily="@font/roboto_regular" />
 
 
@@ -146,9 +147,9 @@
                         android:id="@+id/cdBooking"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
+                        android:layout_below="@id/c_details_mobileNumber"
                         android:layout_marginTop="8dp"
-                        android:src="@drawable/ic_bookingdetails"
-                        android:layout_below="@id/c_details_mobileNumber"/>
+                        android:src="@drawable/ic_bookingdetails" />
 
                     <TextView
                         android:id="@+id/bookingDetailsTextView"
@@ -168,9 +169,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/bookingDetailsTextView"
+                        android:layout_marginLeft="28dp"
                         android:fontFamily="@font/roboto_medium"
                         android:text="Note: "
-                        android:layout_marginLeft="28dp"
                         android:textSize="14sp" />
 
                     <TextView

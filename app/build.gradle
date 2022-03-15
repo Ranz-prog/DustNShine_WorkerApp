@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.dnsworker"
-        minSdk 21
+        minSdk 23
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -55,9 +55,9 @@ dependencies {
     implementation 'android.arch.lifecycle:extensions:1.1.0'
 
     //Jitsi dependency
-    //implementation ('org.jitsi.react:jitsi-meet-sdk:3.+') { transitive = true }
-    implementation 'com.sun.mail:android-mail:1.6.0'
-    implementation 'com.sun.mail:android-activation:1.6.0'
+    implementation ('org.jitsi.react:jitsi-meet-sdk:3.+') { transitive = true }
+    implementation 'com.sun.mail:android-mail:1.6.3'
+    implementation 'com.sun.mail:android-activation:1.6.3'
 
     //swipe refresh
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"

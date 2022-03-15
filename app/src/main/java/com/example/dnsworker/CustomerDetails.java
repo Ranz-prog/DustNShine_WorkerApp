@@ -10,9 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -24,7 +26,9 @@ import android.widget.Toast;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
 import com.example.dnsworker.Model.ClientBookingModel.Service;
+import com.example.dnsworker.Model.User;
 import com.example.dnsworker.ViewModel.ClientBookingViewModel;
+import com.example.dnsworker.ViewModel.UserViewModel;
 import com.example.dnsworker.adapter.ServiceListAdapter.ServiceListAdapter;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -34,19 +38,37 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import org.jitsi.meet.sdk.JitsiMeet;
+import org.jitsi.meet.sdk.JitsiMeetActivity;
+import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
+
 import java.lang.reflect.Type;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Properties;
+import java.util.Random;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class CustomerDetails extends AppCompatActivity implements OnMapReadyCallback {
 
     private ImageView arrowBack;
     private Button startWorkButton, onGoingWorkButton;
+    private ImageView button_VideoCall;
     private GoogleMap map;
     private RecyclerView serviceRecyclerView;
     private TextView fullnameTV, mobilenumberTV, addressTV, scheduleTV, noteTV;
-    private ImageView messageIcon;
-    private String first_name, last_name, mobile_number, location, email, schedule, note;
+    private String first_name, last_name, mobile_number, location, client_email,
+            schedule, note, authToken, worker_email, worker_password;
 
     Service[] serviceList;
     ClientBookData[] customerList;
@@ -69,20 +91,22 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         fullnameTV = findViewById(R.id.c_details_fullname);
         mobilenumberTV = findViewById(R.id.c_details_mobileNumber);
         addressTV = findViewById(R.id.c_details_location);
-//        messageIcon = findViewById(R.id.messageIcon);
         scheduleTV = findViewById(R.id.c_details_schedule);
         noteTV = findViewById(R.id.customer_noteTV);
+        button_VideoCall = findViewById(R.id.btnVideoCall);
+
         //RecyclerView for Service List
         serviceRecyclerView = findViewById(R.id.service_RecyclerView);
         serviceRecyclerView.setHasFixedSize(true);
         serviceRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         serviceListAdapter = new ServiceListAdapter(this, serviceList);
         serviceRecyclerView.setAdapter(serviceListAdapter);
 
+        authPref = getSharedPreferences("AUTH_TOKEN", MODE_PRIVATE);
+        authToken = authPref.getString("TOKEN", null);
+
         clientBookingVM = new ClientBookingViewModel();
         loadData();
-
 
 
         //MapView
@@ -107,8 +131,6 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
                 Intent intent = new Intent(CustomerDetails.this, ServiceDetails.class);
                 startActivity(intent);
                 finish();
-                //getTimeAndDate();
-                //onJitsiMeet();
 
             }
         });
@@ -130,6 +152,25 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
 
             }
         });
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        int status = preferences.getInt("status", 0);
+        Log.d("TAG", String.valueOf(status));
+        if (status == 2) {
+            startWorkButton.setEnabled(false);
+            startWorkButton.setVisibility(View.INVISIBLE);
+            onGoingWorkButton.setVisibility(View.VISIBLE);
+            onGoingWorkButton.setEnabled(true);
+        } else {
+            startWorkButton.setEnabled(true);
+            startWorkButton.setVisibility(View.VISIBLE);
+            onGoingWorkButton.setVisibility(View.INVISIBLE);
+            onGoingWorkButton.setEnabled(false);
+        }
     }
 
     private void loadData(){
@@ -163,9 +204,6 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
     private void postStartTimeAndDate(){
 
         preferences.edit().putInt("status", 2).apply();
-
-        authPref = getSharedPreferences("AUTH_TOKEN", MODE_PRIVATE);
-        String authToken = authPref.getString("TOKEN", null);
         int id = preferences.getInt("id", 0);
         Log.d(TAG, "postTimeAndDate: ID===>" + id);
 
@@ -187,24 +225,6 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
 
     }
 
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        int status = preferences.getInt("status", 0);
-        Log.d("TAG", String.valueOf(status));
-        if (status == 2) {
-            startWorkButton.setEnabled(false);
-            startWorkButton.setVisibility(View.INVISIBLE);
-            onGoingWorkButton.setVisibility(View.VISIBLE);
-            onGoingWorkButton.setEnabled(true);
-        } else {
-            startWorkButton.setEnabled(true);
-            startWorkButton.setVisibility(View.VISIBLE);
-            onGoingWorkButton.setVisibility(View.INVISIBLE);
-            onGoingWorkButton.setEnabled(false);
-        }
-    }
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
@@ -231,19 +251,118 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
 
     }
 
-    //    private void onJitsiMeet(){
-//
-//        SharedPreferences jitsiPref = getSharedPreferences("CUSTOMER_DATA", MODE_PRIVATE);
-//        email = jitsiPref.getString("email", null);
-//
-//        Random random = new Random();
-//        int randomVal = random.nextInt(10000);
-//
-//        Log.d(TAG, "onJitsiMeet: RANDOM CODE ===>" + randomVal);
-//
-//
-//
-//    }
+    public void videoCall(View view) {
+        onJitsiMeet();
+    }
 
+    private void onJitsiMeet() {
+
+
+        URL serverURL;
+        try{
+            serverURL = new URL("https://meet.jit.si ");
+            JitsiMeetConferenceOptions defaultOptions=
+                    new JitsiMeetConferenceOptions.Builder()
+                            .setServerURL(serverURL)
+                            .setWelcomePageEnabled(false)
+                            .build();
+
+            JitsiMeet.setDefaultConferenceOptions(defaultOptions);
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        SharedPreferences jitsiPref = getSharedPreferences("CUSTOMER_DATA", MODE_PRIVATE);
+        SharedPreferences emailPref = getSharedPreferences("WORKER_EMAIL", MODE_PRIVATE);
+        client_email = jitsiPref.getString("email", null);
+        worker_email = emailPref.getString("worker_email", null);
+        worker_password = emailPref.getString("worker_password", null);
+
+
+        Random random = new Random();
+        int randomVal = random.nextInt(10000);
+
+        Log.d(TAG, "onJitsiMeet: RANDOM CODE ===>" + randomVal);
+
+        JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
+                .setRoom(String.valueOf(randomVal))
+                .setWelcomePageEnabled(false)
+                .build();
+
+        final String workerEmail = worker_email;
+        final String workerPassword = worker_password;
+
+        String messageToSend = "Hello and good day, this is an auto generated mesage. This is your Room Code:  '"  + randomVal + "' or click this Link: ";
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth","true");
+        props.put("mail.smtp.starttls.enable","true");
+        props.put("mail.smtp.host","smtp.gmail.com");
+        props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        props.put("mail.smtp.connectiontimeout", "t1");
+        props.put("mail.smtp.timeout", "t2");
+        props.put("mail.smtp.auth","true");
+        props.put("mail.smtp.port","888");
+
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator(){
+                    @Override
+                    protected PasswordAuthentication getPasswordAuthentication(){
+                        return new PasswordAuthentication(workerEmail,workerPassword);
+                    }
+
+                });
+
+//        try {
+//            javax.mail.Transport transport = session.getTransport("smtp");
+//            Message message = new MimeMessage(session);
+//            message.setFrom(new InternetAddress(workerEmail));
+//            message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("juanitoalbuera@gmail.com"));
+//            message.setText(messageToSend);
+//            transport.sendMessage(message, message.getAllRecipients());
+//            //Transport.send(message);
+//            //new SendMail().execute(message);
+//            Toast.makeText(getApplicationContext(),"Email sent successfully", Toast.LENGTH_LONG).show();
+//
+//        }
+//
+//        catch (MessagingException e) {
+//            throw new RuntimeException(e);
+//        }
+
+        JitsiMeetActivity.launch(CustomerDetails.this, options);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+    }
+
+
+    private class SendMail extends AsyncTask<Message, String, String> {
+
+
+        @Override
+        protected String doInBackground(Message... messages) {
+            try {
+
+                Transport.send(messages[0]);
+                return "Success";
+            } catch (MessagingException e) {
+                e.printStackTrace();
+                return "Error";
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            if (s.equals("Success")){
+
+            }
+
+        }
+    }
 
 }

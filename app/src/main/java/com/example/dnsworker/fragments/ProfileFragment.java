@@ -28,20 +28,11 @@ public class ProfileFragment  extends Fragment {
     private View view;
 
     private TextInputEditText worker_fname, worker_lname,
-                              worker_email, worker_contact,
-                              worker_housenumber, worker_street,
-                              workker_brgy, worker_municipality,
-                              worker_province, worker_zipcode,worker_city;
-
-
+                              worker_email, worker_contact;
     private Button btnLogout;
 
     private  String retrievedToken;
     SharedPreferences preferences;
-
-    //SignOutViewModel signOutViewModel;
-
-    //UserDataViewModel userDataViewModel;
 
     UserViewModel userViewModel;
 
@@ -56,13 +47,6 @@ public class ProfileFragment  extends Fragment {
         worker_lname = view.findViewById(R.id.worker_lname_ET);
         worker_email = view.findViewById(R.id.worker_email_ET);
         worker_contact = view.findViewById(R.id.worker_contact_ET);
-//        worker_housenumber = view.findViewById(R.id.worker_houseno_ET);
-//        worker_street = view.findViewById(R.id.worker_street_ET);
-//        workker_brgy = view.findViewById(R.id.worker_brgy_ET);
-//        //worker_city = view.findViewById(R.id.worker_city);
-//        worker_province = view.findViewById(R.id.worker_province_ET);
-//        worker_zipcode = view.findViewById(R.id.worker_zipcode_ET);
-
 
         //signOutViewModel = new SignOutViewModel();
         userViewModel = new UserViewModel();
@@ -91,12 +75,6 @@ public class ProfileFragment  extends Fragment {
                 worker_lname.setText(user.getLast_name());
                 worker_email.setText(user.getEmail());
                 worker_contact.setText(user.getMobile_number());
-//                worker_housenumber.setText(user.getHou);
-//                worker_street = view.findViewById(R.id.worker_street_ET);
-//                workker_brgy = view.findViewById(R.id.worker_brgy_ET);
-//                worker_province = view.findViewById(R.id.worker_province_ET);
-//                worker_zipcode = view.findViewById(R.id.worker_zipcode_ET);
-
             }
         });
     }

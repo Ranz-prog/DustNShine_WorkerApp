@@ -59,6 +59,11 @@ public class LoginPage extends AppCompatActivity {
                 } else {
                     //proceed to log in
                     login(signin_email.getText().toString(), signin_password.getText().toString());
+                    String workerEmail = signin_email.getText().toString();
+                    String workerPass = signin_password.getText().toString();
+                    SharedPreferences emailPref = getSharedPreferences("WORKER_EMAIL", MODE_PRIVATE);
+                    emailPref.edit().putString("worker_email", workerEmail).apply();
+                    emailPref.edit().putString("worker_password", workerPass).apply();
                 }
             }
         });

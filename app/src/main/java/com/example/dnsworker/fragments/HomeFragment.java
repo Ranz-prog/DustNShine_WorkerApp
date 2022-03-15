@@ -65,6 +65,9 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         taskRecycler.setAdapter(task_adapter);
 
 
+
+
+
 //        swipeRefreshLayout = view.findViewById(R.id.refreshLayout);
 //
 //        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -100,17 +103,34 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
                     clientBookDataList = clientBookData;
                     task_adapter.setTaskModelList(clientBookDataList);
 
-//                    Notification notification = new NotificationCompat.Builder(getContext(),
-//                            NotificationChannel.CHANNEL_1_ID)
-//                            .setSmallIcon(R.drawable.ic_launcher_foreground)
-//                            .setContentTitle("DNS Worker")
-//                            .setContentText("You have a new task for today")
-//                            .setPriority(NotificationCompat.PRIORITY_HIGH)
-//                            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-//                            .build();
-//
-//                    notificationManagerCompat.notify(1, notification);
+                    Notification notification = new NotificationCompat.Builder(getActivity(),
+                            NotificationChannel.CHANNEL_1_ID)
+                            .setSmallIcon(R.drawable.ic_launcher_foreground)
+                            .setContentTitle("DNS Worker")
+                            .setContentText("You have a new" + clientBookDataList.length + "task for today")
+                            .setPriority(NotificationCompat.PRIORITY_HIGH)
+                            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                            .build();
 
+                    notificationManagerCompat.notify(1, notification);
+
+//                    SharedPreferences pref = getActivity().getSharedPreferences("ITEM_COUNT", Context.MODE_PRIVATE);
+//
+//                    int countVal = clientBookDataList.length;
+//                    pref.edit().putInt("count", countVal).apply();
+//
+//                    int newCount = clientBookDataList.length;
+//                    preferences = getActivity().getSharedPreferences("ITEM_COUNT", Context.MODE_PRIVATE);
+//                    int previousCount = preferences.getInt("count", 0);
+//                    Log.d(TAG, "onChanged: previous count" + previousCount);
+//
+//                    if (previousCount == newCount){
+//
+//                        previousCount=newCount;
+//                        Log.d(TAG, "onChanged: new count" + newCount);
+//                    }
+
+                    Log.d(TAG, "onChanged: client count" + clientBookDataList.length);
                     Log.d(TAG, "onChanged: DATA HERE ======>" + clientBookData);
                 }
                 else {
@@ -121,6 +141,10 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         });
     }
 
+    private void updateNotification(){
+
+
+    }
     @Override
     public void onClickTask(int position) {
         Log.d(TAG, "onClickTask: clicked");
