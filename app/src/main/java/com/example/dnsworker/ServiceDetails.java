@@ -82,8 +82,6 @@ public class ServiceDetails extends AppCompatActivity {
 
         loadData();
 
-
-
         serviceBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,7 +160,7 @@ public class ServiceDetails extends AppCompatActivity {
         dialog.setContentView(R.layout.dialog_confirmation);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        Button btnDone = (Button) dialog.findViewById(R.id.confirmButton);
+        TextView btnDone = (TextView) dialog.findViewById(R.id.confirmButton);
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

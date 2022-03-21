@@ -16,6 +16,9 @@
     <color name="app_theme_black">#060b17</color>
     <color name="test">#0067ff</color>
 
+    <color name="transparent">#00FFFFFF</color>
+    <color name="error_color">#EF3434</color>
+
     <!--TextBox Color-->
     <color name="textbox_shadow">#F2F4F8</color>
 

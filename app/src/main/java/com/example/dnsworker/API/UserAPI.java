@@ -3,7 +3,7 @@ package com.example.dnsworker.API;
 import com.example.dnsworker.LogIn.LogInRequest;
 import com.example.dnsworker.LogIn.LogInResponse;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
-import com.example.dnsworker.Model.User;
+import com.example.dnsworker.Model.User.User;
 
 import java.util.Map;
 

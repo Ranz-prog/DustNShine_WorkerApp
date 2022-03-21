@@ -3,6 +3,7 @@ package com.example.dnsworker;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,23 +13,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
 import com.example.dnsworker.Model.ClientBookingModel.Service;
-import com.example.dnsworker.Model.User;
 import com.example.dnsworker.ViewModel.ClientBookingViewModel;
-import com.example.dnsworker.ViewModel.UserViewModel;
 import com.example.dnsworker.adapter.ServiceListAdapter.ServiceListAdapter;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -107,6 +103,7 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
 
         clientBookingVM = new ClientBookingViewModel();
         loadData();
+
 
 
         //MapView
@@ -258,6 +255,18 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
     private void onJitsiMeet() {
 
 
+        SharedPreferences jitsiPref = getSharedPreferences("CUSTOMER_DATA", MODE_PRIVATE);
+        SharedPreferences emailPref = getSharedPreferences("WORKER_EMAIL", MODE_PRIVATE);
+        client_email = jitsiPref.getString("email", null);
+        worker_email = emailPref.getString("worker_email", null);
+        worker_password = emailPref.getString("worker_password", null);
+
+
+        Random random = new Random();
+        int randomVal = random.nextInt(10000);
+
+        Log.d(TAG, "onJitsiMeet: RANDOM CODE ===>" + randomVal);
+
         URL serverURL;
         try{
             serverURL = new URL("https://meet.jit.si ");
@@ -273,20 +282,10 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
             e.printStackTrace();
         }
 
-        SharedPreferences jitsiPref = getSharedPreferences("CUSTOMER_DATA", MODE_PRIVATE);
-        SharedPreferences emailPref = getSharedPreferences("WORKER_EMAIL", MODE_PRIVATE);
-        client_email = jitsiPref.getString("email", null);
-        worker_email = emailPref.getString("worker_email", null);
-        worker_password = emailPref.getString("worker_password", null);
-
-
-        Random random = new Random();
-        int randomVal = random.nextInt(10000);
-
-        Log.d(TAG, "onJitsiMeet: RANDOM CODE ===>" + randomVal);
-
+        String url = "https://meet.jit.si/";
         JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
                 .setRoom(String.valueOf(randomVal))
+                .setServerURL(buildURL(url))
                 .setWelcomePageEnabled(false)
                 .build();
 
@@ -303,7 +302,7 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         props.put("mail.smtp.connectiontimeout", "t1");
         props.put("mail.smtp.timeout", "t2");
         props.put("mail.smtp.auth","true");
-        props.put("mail.smtp.port","888");
+        props.put("mail.smtp.port","587");
 
         Session session = Session.getInstance(props,
                 new javax.mail.Authenticator(){
@@ -314,22 +313,20 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
 
                 });
 
-//        try {
-//            javax.mail.Transport transport = session.getTransport("smtp");
-//            Message message = new MimeMessage(session);
-//            message.setFrom(new InternetAddress(workerEmail));
-//            message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("juanitoalbuera@gmail.com"));
-//            message.setText(messageToSend);
-//            transport.sendMessage(message, message.getAllRecipients());
-//            //Transport.send(message);
-//            //new SendMail().execute(message);
-//            Toast.makeText(getApplicationContext(),"Email sent successfully", Toast.LENGTH_LONG).show();
-//
-//        }
-//
-//        catch (MessagingException e) {
-//            throw new RuntimeException(e);
-//        }
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(workerEmail));
+            message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("penuliarjohncalvin@gmail.com"));
+            message.setText(messageToSend + " " + url + randomVal);
+            //Transport.send(message);
+            new SendMail().execute(message);
+            Toast.makeText(getApplicationContext(),"Email sent successfully", Toast.LENGTH_LONG).show();
+
+        }
+
+        catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
 
         JitsiMeetActivity.launch(CustomerDetails.this, options);
 
@@ -364,5 +361,12 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
 
         }
     }
-
+    private @Nullable
+    URL buildURL(String urlStr) {
+        try {
+            return new URL(urlStr);
+        } catch (MalformedURLException e) {
+            return null;
+        }
+    }
 }

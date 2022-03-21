@@ -1,24 +1,15 @@
 package com.example.dnsworker.ViewModel;
 
-import static android.content.ContentValues.TAG;
-
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.dnsworker.API.APIClient;
 import com.example.dnsworker.LogIn.LogInResponse;
-import com.example.dnsworker.Model.User;
+import com.example.dnsworker.Model.User.User;
 import com.example.dnsworker.Service.UserService;
 
 
 import java.util.Map;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class UserViewModel extends ViewModel {
     private MutableLiveData<User> userMLD;

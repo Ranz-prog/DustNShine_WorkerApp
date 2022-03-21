@@ -5,16 +5,22 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dnsworker.LogIn.LogInResponse;
@@ -23,12 +29,16 @@ import com.example.dnsworker.ViewModel.UserViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import org.w3c.dom.Text;
+
 public class LoginPage extends AppCompatActivity {
 
     private Button signin_btnSignin;
     private TextInputEditText signin_email, signin_password;
     //private TextInputLayout signinpassword;
     UserViewModel userViewModel;
+
+    private Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +49,7 @@ public class LoginPage extends AppCompatActivity {
         signin_password = findViewById(R.id.signin_Password_ET);
         signin_btnSignin = findViewById(R.id.signup_buttonSignin);
 
+        dialog = new Dialog(this);
         Log.d("TAG", "LOGIN PAGE!");
         userViewModel = new UserViewModel();
 
@@ -49,12 +60,11 @@ public class LoginPage extends AppCompatActivity {
 
                 //Validations for Email and Password
                 if (TextUtils.isEmpty(signin_email.getText().toString())) {
-                    signin_email.setError("Email is required");
+//                    signin_email.setError("Email is required");
+                    warningDialogEmpty();
 
                 } else if (TextUtils.isEmpty(signin_password.getText().toString())) {
-                    signin_password.setError("Password is required");
-                    //signinpassword.setError("Password is required");
-                    //signinpassword.setPasswordVisibilityToggleEnabled(false);
+                    warningDialogEmpty();
 
                 } else {
                     //proceed to log in
@@ -73,54 +83,73 @@ public class LoginPage extends AppCompatActivity {
             @Override
             public void signinCallback(Integer statusCode, LogInResponse response) {
                 if (statusCode == 200) {
-                    Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
-                    String token = response.getData().getToken();
-                    SharedPreferences preferences = getSharedPreferences("AUTH_TOKEN", MODE_PRIVATE);
-                    preferences.edit().putString("TOKEN", token).apply();
 
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            startActivity(new Intent(LoginPage.this, MainMenu.class));
-                            finish();
-                        }
-                    }, 700);
-                    Log.d(TAG, "signinCallback: StatusCode ====>");
+                    if (response.getData().getUser().getRoles()[0].getName().equals("worker")){
+                        String token = response.getData().getToken();
+                        SharedPreferences preferences = getSharedPreferences("AUTH_TOKEN", MODE_PRIVATE);
+                        preferences.edit().putString("TOKEN", token).apply();
+
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                startActivity(new Intent(LoginPage.this, MainMenu.class));
+                                finish();
+                            }
+                        }, 700);
+                    }
+                    else{
+                        warningDialog();
+                        Log.d(TAG, "signinCallback: Not Worker");
+                    }
                 } else if (statusCode == 401) {
-
                     warningDialog();
-                    //Toast.makeText(getApplicationContext(), "Invalid Credentials, Try Again", Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "signinCallback: Invalid Credentials, Try again");
                 } else {
-
                     warningDialog();
-                    //Toast.makeText(getApplicationContext(), "Login Failed, Try again", Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "signinCallback: Login Failed");
+
                 }
+            }
+
+            @Override
+            public void signinErrorCallBack() {
+                warningDialog();
+                Log.d(TAG, "signinErrorCallBack: signinErrorCallback ====> ");
             }
         });
     }
 
-    private void warningDialog(){
-        AlertDialog.Builder dialog = new AlertDialog.Builder(LoginPage.this);
-        dialog.setCancelable(false);
-        dialog.setTitle("Error");
-        dialog.setIcon(R.drawable.ic_warning);
-        dialog.setMessage("Invalid Credentials, Try again" );
-        dialog.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+    private void warningDialogEmpty(){
+        dialog.setContentView(R.layout.dialog_error_email);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        TextView btnDone = (TextView) dialog.findViewById(R.id.dismissButton);
+        TextView warningMessage = (TextView) dialog.findViewById(R.id.warningMessage);
+        warningMessage.setText("Email or Password is empty. Please try again");
+        btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int id) {
-                //Action for "Delete".
+            public void onClick(View v) {
                 dialog.dismiss();
             }
         });
-//                .setNegativeButton("Cancel ", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        //Action for "Cancel".
-//                    }
-//                });
+        dialog.show();
+    }
 
-        final AlertDialog alert = dialog.create();
-        alert.show();
+    private void warningDialog(){
+
+        dialog.setContentView(R.layout.dialog_error_email);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        TextView btnDone = (TextView) dialog.findViewById(R.id.dismissButton);
+        TextView warningMessage = (TextView) dialog.findViewById(R.id.warningMessage);
+        warningMessage.setText("Invalid Credentials, Try again");
+        btnDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 
     //passing the email and password into the user view model

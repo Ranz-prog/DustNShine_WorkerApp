@@ -1,4 +1,4 @@
-package com.example.dnsworker.Model;
+package com.example.dnsworker.Model.User;
 
 public class User {
 
@@ -10,6 +10,8 @@ public class User {
     private String email_verified_at;
     private String created_at;
     private String updated_at;
+    private Role[] roles;
+
 
     public int getId() {
         return id;
@@ -73,5 +75,17 @@ public class User {
 
     public void setUpdated_at(String updated_at) {
         this.updated_at = updated_at;
+    }
+
+    public User(Role[] roles) {
+        this.roles = roles;
+    }
+
+    public Role[] getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Role[] roles) {
+        this.roles = roles;
     }
 }

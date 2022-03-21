@@ -62,7 +62,6 @@ public class MainMenu extends AppCompatActivity {
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed();
-            System.exit(0);
             return;
         }
 

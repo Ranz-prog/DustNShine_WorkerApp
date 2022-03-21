@@ -16,7 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import com.example.dnsworker.LoginPage;
-import com.example.dnsworker.Model.User;
+import com.example.dnsworker.Model.User.User;
 import com.example.dnsworker.R;
 import com.example.dnsworker.ViewModel.UserViewModel;
 import com.google.android.material.textfield.TextInputEditText;
@@ -27,7 +27,7 @@ public class ProfileFragment  extends Fragment {
 
     private View view;
 
-    private TextInputEditText worker_fname, worker_lname,
+    private TextInputEditText worker_fname,
                               worker_email, worker_contact;
     private Button btnLogout;
 
@@ -44,7 +44,7 @@ public class ProfileFragment  extends Fragment {
 
         btnLogout = view.findViewById(R.id.btnLogout);
         worker_fname = view.findViewById(R.id.worker_fname_ET);
-        worker_lname = view.findViewById(R.id.worker_lname_ET);
+
         worker_email = view.findViewById(R.id.worker_email_ET);
         worker_contact = view.findViewById(R.id.worker_contact_ET);
 
@@ -71,8 +71,7 @@ public class ProfileFragment  extends Fragment {
         userViewModel.getUserDataResponse(retrievedToken).observe(getActivity(), new Observer<User>() {
             @Override
             public void onChanged(User user) {
-                worker_fname.setText(user.getFirst_name());
-                worker_lname.setText(user.getLast_name());
+                worker_fname.setText(user.getFirst_name() + " " + user.getLast_name());
                 worker_email.setText(user.getEmail());
                 worker_contact.setText(user.getMobile_number());
             }

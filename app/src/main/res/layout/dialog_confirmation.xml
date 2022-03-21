@@ -35,18 +35,19 @@
                 android:text="@string/confirmation_message"
                 android:textSize="14sp" />
 
-            <Button
+            <TextView
                 android:id="@+id/confirmButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/confirmationMessage"
                 android:layout_centerHorizontal="true"
                 android:background="@color/white"
-                android:fontFamily="@font/montserrat_regular"
+                android:fontFamily="@font/roboto_medium"
                 android:stateListAnimator="@null"
                 android:text="Done"
                 android:textColor="@color/app_theme_blue"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:layout_marginTop="8dp"/>
 
             <ImageView
                 android:id="@+id/imageView2"

@@ -11,9 +11,10 @@
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:elevation="4dp"
-        android:scrollbars="none">
+        android:layout_above="@id/doneWorkButton"
+        android:layout_marginBottom="10dp">
 
         <RelativeLayout
             android:id="@+id/midPart"
@@ -23,10 +24,9 @@
             <ImageView
                 android:id="@+id/service_Image"
                 android:layout_width="match_parent"
-                android:src="@drawable/cleaningimage"
                 android:layout_height="250dp"
                 android:scaleType="centerCrop"
-                />
+                android:src="@drawable/cleaningimage" />
 
             <ImageView
                 android:id="@+id/service_arrowback"
@@ -36,7 +36,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:src="@drawable/back" />
-
 
 
             <RelativeLayout
@@ -85,8 +84,8 @@
                     android:id="@+id/service_schedule"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="28dp"
                     android:layout_below="@id/service_customerNameTV"
+                    android:layout_marginLeft="28dp"
                     android:fontFamily="@font/roboto_regular" />
 
                 <!--Customer Location-->
@@ -121,8 +120,7 @@
                     android:layout_marginLeft="28dp"
                     android:fontFamily="@font/roboto_regular"
                     android:text="@string/customer_status"
-                    android:textSize="15sp"
-                    />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/statusTV"
@@ -140,8 +138,8 @@
                 android:id="@+id/bookingDetailsContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_below="@id/customerDetailsContainer">
+                android:layout_below="@id/customerDetailsContainer"
+                android:padding="10dp">
 
                 <ImageView
                     android:id="@+id/cdBooking"
@@ -187,14 +185,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/noteLabel"
-                    android:layout_marginTop="3dp"
-                    >
+                    android:layout_marginTop="3dp">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/sdRecycler"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        />
+                        android:layout_height="wrap_content" />
 
                 </LinearLayout>
             </RelativeLayout>
@@ -204,8 +200,8 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_below="@id/bookingDetailsContainer"
-                android:src="@drawable/money"
-                android:paddingLeft="10dp"/>
+                android:paddingLeft="10dp"
+                android:src="@drawable/money" />
 
             <TextView
                 android:id="@+id/paymentMethodLabel"

@@ -1,6 +1,6 @@
 package com.example.dnsworker.LogIn;
 
-import com.example.dnsworker.Model.MData;
+import com.example.dnsworker.Model.User.MData;
 
 public class LogInResponse {
 
