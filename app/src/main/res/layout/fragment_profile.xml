@@ -5,7 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-
     <RelativeLayout
         android:id="@+id/upPart"
         android:layout_width="match_parent"
@@ -84,7 +83,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/worker_fname_ET"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -106,7 +107,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/worker_email_ET"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -128,13 +131,11 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/worker_contact_ET"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
-
-
-        <!--First Name-->
-
 
     </RelativeLayout>
 

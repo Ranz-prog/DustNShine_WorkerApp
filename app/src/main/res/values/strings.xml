@@ -36,10 +36,10 @@
     <string name="customer_booking">Booking Details</string>
     <string name="customer_payment">Payment Method</string>
     <string name="customer_total">Total Cost:</string>
-    
+
     //Pop Up Message
-    <string name="confirmation_message">Please wait for the customers confirmation!</string>
-    
+    <string name="confirmation_message">Work is done! Please wait for the customers Feedback.</string>
+
     //User Information
     <string name="user_email">Email</string>
     <string name="user_firstname">First Name</string>
@@ -73,7 +73,6 @@
     <string name="citymunicipality">City/Municipality</string>
     <string name="province">Province</string>
     <string name="zipcode">Zip Code</string>
-
 
 
 </resources>

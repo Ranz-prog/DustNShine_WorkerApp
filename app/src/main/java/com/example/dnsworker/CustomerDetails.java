@@ -11,8 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +26,7 @@ import android.widget.Toast;
 
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
+import com.example.dnsworker.Model.ClientBookingModel.Customer;
 import com.example.dnsworker.Model.ClientBookingModel.Service;
 import com.example.dnsworker.ViewModel.ClientBookingViewModel;
 import com.example.dnsworker.adapter.ServiceListAdapter.ServiceListAdapter;
@@ -39,11 +43,13 @@ import org.jitsi.meet.sdk.JitsiMeet;
 import org.jitsi.meet.sdk.JitsiMeetActivity;
 import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 
@@ -75,7 +81,6 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
     //Boolean isOnging = false;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,19 +110,11 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         loadData();
 
 
-
         //MapView
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.mapView);
         mapFragment.getMapAsync(this);
 
-
-//        messageIcon.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                finish();
-//            }
-//        });
 
         preferences = getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
 
@@ -170,7 +167,7 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         }
     }
 
-    private void loadData(){
+    private void loadData() {
 
         //Shared pref for Customer Details
         preferences = getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
@@ -185,7 +182,8 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         String jsonString = servicePreference.getString("SERVICE_LIST", null);
 
         Gson gson = new Gson();
-        Type type = new TypeToken<Service[]>(){}.getType();
+        Type type = new TypeToken<Service[]>() {
+        }.getType();
 
         gson.fromJson(jsonString, type);
         serviceList = gson.fromJson(jsonString, type);
@@ -198,7 +196,7 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         noteTV.setText(note);
     }
 
-    private void postStartTimeAndDate(){
+    private void postStartTimeAndDate() {
 
         preferences.edit().putInt("status", 2).apply();
         int id = preferences.getInt("id", 0);
@@ -206,11 +204,11 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
 
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat format = new SimpleDateFormat(" yyyy-MM-dd HH:mm:ss ");
-        String time =  format.format(calendar.getTime());
+        String time = format.format(calendar.getTime());
 
         Log.d(TAG, "postTimeAndDate: TOKEN" + authToken);
 
-        clientBookingVM.postStartDateTime(authToken,id, time).observe(this, new Observer<ClientBookingModel>() {
+        clientBookingVM.postStartDateTime(authToken, id, time).observe(this, new Observer<ClientBookingModel>() {
             @Override
             public void onChanged(ClientBookingModel clientBookingModel) {
                 Log.d(TAG, "onChanged: DATA ===>" + time + "/n" + id);
@@ -233,10 +231,6 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
 
         String clientAdd = preferences.getString("address", null);
 
-        Log.d(TAG, "onMapReady: LOCATION LATT ==>" + latitude);
-        Log.d(TAG, "onMapReady: LOCATION LONGT ==>" + longitude);
-        Log.d(TAG, "onMapReady: LOCATION CLIENTADD  ==>" + clientAdd);
-
 
         map = googleMap;
         LatLng Address = new LatLng(16.0471126,120.3424204);
@@ -245,6 +239,7 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         map.addMarker(new MarkerOptions().position(Address).title("UPANG"));
         map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         map.moveCamera(CameraUpdateFactory.newLatLng(Address));
+
 
     }
 
@@ -268,9 +263,9 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         Log.d(TAG, "onJitsiMeet: RANDOM CODE ===>" + randomVal);
 
         URL serverURL;
-        try{
+        try {
             serverURL = new URL("https://meet.jit.si ");
-            JitsiMeetConferenceOptions defaultOptions=
+            JitsiMeetConferenceOptions defaultOptions =
                     new JitsiMeetConferenceOptions.Builder()
                             .setServerURL(serverURL)
                             .setWelcomePageEnabled(false)
@@ -292,23 +287,23 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         final String workerEmail = worker_email;
         final String workerPassword = worker_password;
 
-        String messageToSend = "Hello and good day, this is an auto generated mesage. This is your Room Code:  '"  + randomVal + "' or click this Link: ";
+        String messageToSend = "Hello and good day, this is an auto generated mesage. This is your Room Code:  '" + randomVal + "' or click this Link: ";
 
         Properties props = new Properties();
-        props.put("mail.smtp.auth","true");
-        props.put("mail.smtp.starttls.enable","true");
-        props.put("mail.smtp.host","smtp.gmail.com");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
         props.put("mail.smtp.connectiontimeout", "t1");
         props.put("mail.smtp.timeout", "t2");
-        props.put("mail.smtp.auth","true");
-        props.put("mail.smtp.port","587");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.port", "587");
 
         Session session = Session.getInstance(props,
-                new javax.mail.Authenticator(){
+                new javax.mail.Authenticator() {
                     @Override
-                    protected PasswordAuthentication getPasswordAuthentication(){
-                        return new PasswordAuthentication(workerEmail,workerPassword);
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(workerEmail, workerPassword);
                     }
 
                 });
@@ -316,15 +311,13 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         try {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(workerEmail));
-            message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(client_email));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("ivandasigan01@gmail.com"));
             message.setText(messageToSend + " " + url + randomVal);
             //Transport.send(message);
             new SendMail().execute(message);
-            Toast.makeText(getApplicationContext(),"Email sent successfully", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Email sent successfully", Toast.LENGTH_LONG).show();
 
-        }
-
-        catch (MessagingException e) {
+        } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
 
@@ -355,12 +348,13 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
 
-            if (s.equals("Success")){
+            if (s.equals("Success")) {
 
             }
 
         }
     }
+
     private @Nullable
     URL buildURL(String urlStr) {
         try {
@@ -369,4 +363,14 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
             return null;
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent intent = new Intent(CustomerDetails.this, MainMenu.class);
+        startActivity(intent);
+        finish();
+    }
 }
+

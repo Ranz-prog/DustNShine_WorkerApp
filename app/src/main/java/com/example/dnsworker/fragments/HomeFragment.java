@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -65,17 +66,8 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         taskRecycler.setAdapter(task_adapter);
 
 
+        swipeRefreshLayout = view.findViewById(R.id.refreshLayout);
 
-
-
-//        swipeRefreshLayout = view.findViewById(R.id.refreshLayout);
-//
-//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//
-//            }
-//        });
 
         noResult = view.findViewById(R.id.emptyTaskTV);
 
@@ -84,15 +76,47 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         retrievedToken = preferences.getString("TOKEN", null);
 
         clientBookingViewModel = ViewModelProviders.of(getActivity()).get(ClientBookingViewModel.class);
+        //onChangedMethod();
 
         return view;
     }
+
 
     @Override
     public void onStart() {
         super.onStart();
 
         Log.d(TAG, "onStart: ");
+
+//
+//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                swipeRefreshLayout.setRefreshing(false);
+//                onChangedMethod();
+//
+//            }
+//        });
+
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                onChangedMethod();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        Log.d(TAG, "onResume: ");
+
+    }
+
+    private void onChangedMethod() {
 
         clientBookingViewModel.getClientBookingData(retrievedToken).observe(getActivity(), new Observer<ClientBookingModel>() {
             @Override
@@ -102,38 +126,9 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
                     ClientBookData[] clientBookData = clientBookingModel.getData();
                     clientBookDataList = clientBookData;
                     task_adapter.setTaskModelList(clientBookDataList);
-
-                    Notification notification = new NotificationCompat.Builder(getActivity(),
-                            NotificationChannel.CHANNEL_1_ID)
-                            .setSmallIcon(R.drawable.ic_launcher_foreground)
-                            .setContentTitle("DNS Worker")
-                            .setContentText("You have a new" + clientBookDataList.length + "task for today")
-                            .setPriority(NotificationCompat.PRIORITY_HIGH)
-                            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                            .build();
-
-                    notificationManagerCompat.notify(1, notification);
-
-//                    SharedPreferences pref = getActivity().getSharedPreferences("ITEM_COUNT", Context.MODE_PRIVATE);
-//
-//                    int countVal = clientBookDataList.length;
-//                    pref.edit().putInt("count", countVal).apply();
-//
-//                    int newCount = clientBookDataList.length;
-//                    preferences = getActivity().getSharedPreferences("ITEM_COUNT", Context.MODE_PRIVATE);
-//                    int previousCount = preferences.getInt("count", 0);
-//                    Log.d(TAG, "onChanged: previous count" + previousCount);
-//
-//                    if (previousCount == newCount){
-//
-//                        previousCount=newCount;
-//                        Log.d(TAG, "onChanged: new count" + newCount);
-//                    }
-
-                    Log.d(TAG, "onChanged: client count" + clientBookDataList.length);
                     Log.d(TAG, "onChanged: DATA HERE ======>" + clientBookData);
-                }
-                else {
+
+                } else {
                     //if No Data retrieved
                     noResult.setVisibility(View.VISIBLE);
                 }
@@ -141,10 +136,6 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         });
     }
 
-    private void updateNotification(){
-
-
-    }
     @Override
     public void onClickTask(int position) {
         Log.d(TAG, "onClickTask: clicked");
@@ -190,7 +181,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         SharedPreferences servicePreference = getActivity().getSharedPreferences("CUSTOMER_SERVICE", Context.MODE_PRIVATE);
         String jsonString = gson.toJson(serviceList);
         servicePreference.edit().putString("SERVICE_LIST", jsonString).commit();
-    }
 
+    }
 
 }

@@ -5,13 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="10dp"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,21 +17,28 @@
         >
 
         <RelativeLayout
+            android:id="@+id/warningContainer"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:gravity="center"
-            android:padding="10dp">
+            android:padding="10dp"
+            >
 
+            <ImageView
+                android:id="@+id/warningSign"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/ic_error_2" />
             <TextView
-                android:id="@+id/confirmationMessage"
+                android:id="@+id/warningErrorMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/imageView2"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/roboto_regular"
                 android:gravity="center"
-                android:text="@string/confirmation_message"
+                android:layout_below="@+id/warningSign"
+                android:layout_centerHorizontal="true"
                 android:textSize="16sp" />
 
 
@@ -41,30 +46,22 @@
                 android:id="@+id/lineDividerHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:layout_below="@id/confirmationMessage"
+                android:layout_below="@id/warningErrorMessage"
                 android:layout_marginTop="6dp"
                 app:dividerColor="@color/line_color" />
 
             <TextView
-                android:id="@+id/confirmButton"
+                android:id="@+id/dismissWarningButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/confirmationMessage"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="12dp"
-                android:background="@color/white"
+                android:layout_below="@+id/lineDividerHorizontal"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="6dp"
                 android:fontFamily="@font/roboto_medium"
-                android:stateListAnimator="@null"
-                android:text="Done"
+                android:text="Dismiss"
                 android:textColor="@color/app_theme_blue"
                 android:textSize="18sp" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_centerHorizontal="true"
-                app:srcCompat="@drawable/check" />
 
         </RelativeLayout>
 

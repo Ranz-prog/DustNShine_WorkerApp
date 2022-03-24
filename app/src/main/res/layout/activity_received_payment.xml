@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReceivedPayment"
+    android:background="#f5f5f5">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/userIcon"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_above="@id/cardlayout"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="100dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/payment" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardlayout"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="4dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/received_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Customer Information"
+                android:textColor="@color/app_theme_blue"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/received_customername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/received_title"
+                android:text="Juan Dela Cruz"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="15sp"/>
+
+
+            <TextView
+                android:id="@+id/received_customerschedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/received_customername"
+                android:fontFamily="@font/roboto_regular"
+                android:text="2022-03-04 09:00"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/received_customeraddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/received_customerschedule"
+                android:text="Dagupan City, Pangasinan"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/received_customernumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/received_customeraddress"
+                android:text="09203418888"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/received_totalcost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Total Cost"
+                android:textColor="@color/app_theme_blue"
+                android:layout_below="@+id/received_customernumber"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"/>
+
+            <TextView
+                android:id="@+id/received_totalcost_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="400.00"
+                android:textColor="@color/app_theme_blue"
+                android:layout_below="@+id/received_customernumber"
+                android:layout_alignParentRight="true"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"/>
+            
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/received_totalcost"
+                app:dividerColor="@color/line_color"/>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/amountInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:boxBackgroundColor="@color/background"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:hintTextColor="@color/app_theme_blue"
+                android:textColorHint="@color/app_theme_blue"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_below="@id/line"
+                android:layout_toLeftOf="@id/btn_ReceivedPayment"
+                android:layout_marginRight="10dp"
+                app:errorEnabled="false"
+                app:errorTextColor="#E61F1F"
+                android:textAlignment="textEnd"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/received_amount_cost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Amount Receive"
+                    android:inputType="number"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_ReceivedPayment"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_below="@+id/line"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/app_theme_blue"
+                android:text="Receive"
+                android:textColor="@color/white"
+                />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

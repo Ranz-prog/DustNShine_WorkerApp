@@ -60,7 +60,7 @@ public class ServiceDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_details);
 
-        serviceBackButton = findViewById(R.id.service_arrowback);
+//        serviceBackButton = findViewById(R.id.service_arrowback);
         doneWorkBtn = findViewById(R.id.doneWorkButton);
         customerName = findViewById(R.id.service_customerNameTV);
         customerMobileNumber = findViewById(R.id.service_customerMobileNumberTV);
@@ -82,20 +82,14 @@ public class ServiceDetails extends AppCompatActivity {
 
         loadData();
 
-        serviceBackButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Intent intent = new Intent(ServiceDetails.this, CustomerDetails.class);
-//                startActivity(intent);
-                finish();
-            }
-        });
-
         doneWorkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 postEndTimeAndDate();
-                confirmationDialog();
+                //confirmationDialog();
+                Intent intent = new Intent(ServiceDetails.this, ReceivedPayment.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -156,21 +150,26 @@ public class ServiceDetails extends AppCompatActivity {
 
     }
 
-    private void confirmationDialog() {
-        dialog.setContentView(R.layout.dialog_confirmation);
+    private void warningDialog(){
+        dialog.setContentView(R.layout.dialog_error);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        TextView btnDone = (TextView) dialog.findViewById(R.id.confirmButton);
+        TextView btnDone = (TextView) dialog.findViewById(R.id.dismissWarningButton);
+        TextView warningMessage = (TextView) dialog.findViewById(R.id.warningErrorMessage);
+        warningMessage.setText("You are not allowed to exit the app. You need to finish the task first to proceed.");
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainMenu.class);
-                startActivity(intent);
-                finish();
                 dialog.dismiss();
             }
         });
         dialog.show();
+    }
+
+    @Override
+    public void onBackPressed(){
+        warningDialog();
+        //Toast.makeText(getApplicationContext(),"You Are Not Allowed to Exit the App", Toast.LENGTH_SHORT).show();
     }
 
 }

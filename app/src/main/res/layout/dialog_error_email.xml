@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="320dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_gravity="center"
     android:layout_height="wrap_content"
+    android:layout_gravity="center"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -13,78 +13,53 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
             android:id="@+id/warningContainer"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:gravity="center"
-            >
+            android:padding="10dp">
 
             <ImageView
                 android:id="@+id/warningSign"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
+                android:layout_marginTop="12dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
                 android:src="@drawable/ic_error_2" />
-
-            <TextView
-                android:id="@+id/warningMessagetitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/warningSign"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/roboto_medium"
-                android:textColor="@color/black"
-                android:text="Log in Failed!"
-                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/warningMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/roboto_regular"
-                android:layout_below="@+id/warningMessagetitle"
+                android:layout_below="@+id/warningSign"
                 android:layout_centerHorizontal="true"
-                android:textSize="15sp" />
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:textSize="16sp"/>
 
 
-            <RelativeLayout
-                android:layout_width="100dp"
-                android:layout_height="0dp"
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/lineDividerHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
                 android:layout_below="@id/warningMessage"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true">
-                <TextView
-                    android:id="@+id/dismissButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_medium"
-                    android:text="Dismiss"
-                    android:textColor="@color/error_color"
-                    android:textSize="18sp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"/>
+                android:layout_marginTop="6dp"
+                app:dividerColor="@color/line_color" />
 
-<!--                <Button-->
-<!--                    android:id="@+id/confirmButton"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="50dp"-->
-<!--                    android:layout_alignParentBottom="true"-->
-<!--                    android:layout_centerHorizontal="true"-->
-<!--                    android:fontFamily="@font/roboto_regular"-->
-<!--                    android:stateListAnimator="@null"-->
-<!--                    android:text="Dismiss"-->
-<!--                    android:textColor="@color/white"-->
-<!--                    android:background="@color/error_color"-->
-<!--                    android:backgroundTint="@color/error_color"-->
-<!--                    android:textSize="15sp" />-->
-            </RelativeLayout>
+            <TextView
+                android:id="@+id/dismissButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lineDividerHorizontal"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Dismiss"
+                android:textColor="@color/app_theme_blue"
+                android:textSize="18sp" />
 
 
         </RelativeLayout>
@@ -92,3 +67,4 @@
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

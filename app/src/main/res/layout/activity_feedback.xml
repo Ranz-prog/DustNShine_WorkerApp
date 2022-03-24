@@ -23,18 +23,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="Customer Feedback"
+            android:text="Feedback"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
 
     </RelativeLayout>
-
-
 
 
     <RelativeLayout
@@ -272,8 +269,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/customerrating"
-            android:numStars="5"
             android:isIndicator="true"
+            android:numStars="5"
             android:progressTint="@color/app_theme_gold" />
 
         <TextView
@@ -288,7 +285,9 @@
             android:text="5.0"
             android:textColor="@color/app_theme_gold"
             android:textSize="24dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
+
+
 
     </RelativeLayout>
 

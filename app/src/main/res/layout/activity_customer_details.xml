@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/upperPart"
-            android:layout_marginTop="4dp">
+            >
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -66,7 +66,8 @@
                     android:layout_height="match_parent"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:paddingBottom="10dp">
+                    android:paddingBottom="10dp"
+                    android:layout_marginTop="10dp">
 
                     <fragment
                         android:id="@+id/mapView"
