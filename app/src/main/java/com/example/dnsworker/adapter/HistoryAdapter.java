@@ -13,20 +13,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.R;
 
+import java.util.ArrayList;
+
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.BookingViewHolder> {
 
     private OnClickBookingListener onClickBookingListener;
-    private ClientBookData[] customerDataList;
+    private ArrayList<ClientBookData> customerDataList;
     private Context context;
 
 
-    public HistoryAdapter(Context context, ClientBookData[] customerList, OnClickBookingListener onClickBookingListener) {
+    public HistoryAdapter(Context context, ArrayList<ClientBookData> customerList, OnClickBookingListener onClickBookingListener) {
         this.context = context;
         this.customerDataList = customerList;
         this.onClickBookingListener = onClickBookingListener;
     }
 
-    public void setHistoryModelList(ClientBookData[] customerList) {
+    public void setHistoryModelList(ArrayList<ClientBookData> customerList) {
         this.customerDataList = customerList;
         notifyDataSetChanged();
     }
@@ -44,18 +46,18 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.BookingV
     @Override
     public void onBindViewHolder(@NonNull BookingViewHolder holder, int position) {
         //holder.booking_Image.setImageResource(bookingModelsList.get(position).getBooking_clientImage());
-        holder.booking_firstLetter.setText(customerDataList[position].getCustomer().getFirstName().substring(0,1));
-        holder.booking_clientName.setText(customerDataList[position].getCustomer().getFirstName() + " " + customerDataList[position].getCustomer().getLastName());
-        holder.booking_clientLocation.setText(customerDataList[position].getAddress());
-        holder.booking_contactNumber.setText(customerDataList[position].getCustomer().getMobileNumber());
-        holder.booking_schedule.setText(customerDataList[position].getSched_datetime());
+        holder.booking_firstLetter.setText(customerDataList.get(position).getCustomer().getFirstName().substring(0,1));
+        holder.booking_clientName.setText(customerDataList.get(position).getCustomer().getFirstName() + " " + customerDataList.get(position).getCustomer().getLastName());
+        holder.booking_clientLocation.setText(customerDataList.get(position).getAddress());
+        holder.booking_contactNumber.setText(customerDataList.get(position).getCustomer().getMobileNumber());
+        holder.booking_schedule.setText(customerDataList.get(position).getSched_datetime());
 
     }
 
     @Override
     public int getItemCount() {
         if (this.customerDataList != null) {
-            return this.customerDataList.length;
+            return this.customerDataList.size();
         }
         return 0;
     }

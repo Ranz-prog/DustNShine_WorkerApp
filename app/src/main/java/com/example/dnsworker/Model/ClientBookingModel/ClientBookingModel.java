@@ -1,15 +1,16 @@
 package com.example.dnsworker.Model.ClientBookingModel;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 
 public class ClientBookingModel {
-    private ClientBookData[] data;
+    private ArrayList<ClientBookData> data;
     private String message;
 
 
-    public ClientBookData[] getData() { return data; }
-    public void setData(ClientBookData[] value) {
+    public ArrayList<ClientBookData> getData() { return data; }
+    public void setData(ArrayList<ClientBookData> value) {
         this.data = value; }
 
     public String getMessage() { return message; }

@@ -31,20 +31,22 @@ import java.util.Map;
 public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> {
 
     private Context context;
-    private ClientBookData[] customerList;
+//    private ClientBookData[] customerList;
+    private ArrayList<ClientBookData> customerList;
     private OnClickTaskListener onClickTaskListener;
 
 
-    public Task_Adapter(Context context, ClientBookData[] customerList, OnClickTaskListener onClickTaskListener) {
+    public Task_Adapter(Context context, ArrayList<ClientBookData> customerList, OnClickTaskListener onClickTaskListener) {
         this.context = context;
         this.customerList = customerList;
         this.onClickTaskListener = onClickTaskListener;
     }
 
-    public void setTaskModelList(ClientBookData[] customerList) {
-        this.customerList = customerList;
+    public void setTaskModelList(ArrayList<ClientBookData> customer_List) {
+        this.customerList = customer_List;
         notifyDataSetChanged();
     }
+
 
     @NonNull
     @Override
@@ -57,34 +59,18 @@ public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.task_firstLetter.setText(customerList[position].getCustomer().getFirstName().substring(0,1));
-        holder.task_clientName.setText(customerList[position].getCustomer().getFirstName() + " " + customerList[position].getCustomer().getLastName());
-        holder.task_clientLocation.setText(customerList[position].getAddress());
-        holder.task_clientContact.setText(customerList[position].getCustomer().getMobileNumber());
-        holder.task_clientSchedule.setText(customerList[position].getSched_datetime());
-        Log.d(TAG, "onBindViewHolder: DATA HERE =====> " + customerList[position].getStatus());
-
-/*        String status = String.valueOf(customerList[position].getStatus());
-        if (status.equalsIgnoreCase(String.valueOf(1))){
-            holder.task_clientName.setText(customerList[position].getCustomer().getFirstName() + " " + customerList [position].getCustomer().getLastName());
-            holder.task_clientLocation.setText(customerList[position].getAddress());
-            holder.task_clientContact.setText(customerList[position].getCustomer().getMobileNumber());
-            holder.task_clientSchedule.setText(customerList[position].getSched_datetime());
-            Log.d(TAG, "onBindViewHolder: DATA HERE =====> " + customerList[position].getStatus());
-
-        }
-        else{
-
-        }*/
-
+        holder.task_firstLetter.setText(customerList.get(position).getCustomer().getFirstName().substring(0,1));
+        holder.task_clientName.setText(customerList.get(position).getCustomer().getFirstName() + " " + customerList.get(position).getCustomer().getLastName());
+        holder.task_clientLocation.setText(customerList.get(position).getAddress());
+        holder.task_clientContact.setText(customerList.get(position).getCustomer().getMobileNumber());
+        holder.task_clientSchedule.setText(customerList.get(position).getSched_datetime());
 
     }
-
 
     @Override
     public int getItemCount() {
         if (this.customerList != null) {
-            return this.customerList.length;
+            return this.customerList.size();
         }
         return 0;
     }
@@ -98,7 +84,6 @@ public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> 
         public ViewHolder(@NonNull View itemView, OnClickTaskListener onClickTaskListener) {
             super(itemView);
 
-            //task_clientImage = itemView.findViewById(R.id.task_clientImageView);
             task_clientName = itemView.findViewById(R.id.task_clientName_TV);
             task_clientLocation = itemView.findViewById(R.id.task_clientLocation_TV);
             task_clientContact = itemView.findViewById(R.id.task_clientContact_TV);

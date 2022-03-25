@@ -33,6 +33,7 @@ import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
+import java.util.ArrayList;
 
 import okhttp3.ResponseBody;
 import retrofit2.Converter;
@@ -41,7 +42,7 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
 
     private RecyclerView bookingRecycler;
     private View view;
-    private ClientBookData[] clientHistoryDataList;
+    private ArrayList<ClientBookData> clientHistoryDataList;
     private Service[] serviceList;
     private Review[] historyReviews;
     private HistoryAdapter historyAdapter;
@@ -75,11 +76,11 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
                     public void onChanged(ClientBookingModel clientBookingModel) {
 
                         if (clientBookingModel != null) {
-                            ClientBookData[] clientHistoryBookData = clientBookingModel.getData();
+                            ArrayList<ClientBookData> clientHistoryBookData = clientBookingModel.getData();
                             clientHistoryDataList = clientHistoryBookData;
                             historyAdapter.setHistoryModelList(clientHistoryDataList);
                             Log.d(TAG, "onChanged: DATA HERE ======>" + clientHistoryBookData);
-                            Log.d(TAG, "onChanged: Count===>" + clientHistoryBookData.length);
+                            Log.d(TAG, "onChanged: Count===>" + clientHistoryBookData.size());
                         } else {
                             //if No Data retrieved
                             noResult.setVisibility(View.VISIBLE);
@@ -102,21 +103,21 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
 
     private void loadHistoryData(int position){
         //Specific Customer Details
-        String first_name = clientHistoryDataList[position].getCustomer().getFirstName();
-        String last_name = clientHistoryDataList[position].getCustomer().getLastName();
-        String mobile_number = clientHistoryDataList[position].getCustomer().getMobileNumber();
-        String address = clientHistoryDataList[position].getAddress();
-        String schedule = clientHistoryDataList[position].getSched_datetime();
-        String email = clientHistoryDataList[position].getCustomer().getEmail();
-        String note = clientHistoryDataList[position].getNote();
-        int status = clientHistoryDataList[position].getStatus();
-        int id = (int) clientHistoryDataList[position].getID();
-        double totalCost = clientHistoryDataList[position].getTotal();
-        serviceList = clientHistoryDataList[position].getServices();
+        String first_name = clientHistoryDataList.get(position).getCustomer().getFirstName();
+        String last_name = clientHistoryDataList.get(position).getCustomer().getLastName();
+        String mobile_number = clientHistoryDataList.get(position).getCustomer().getMobileNumber();
+        String address = clientHistoryDataList.get(position).getAddress();
+        String schedule = clientHistoryDataList.get(position).getSched_datetime();
+        String email = clientHistoryDataList.get(position).getCustomer().getEmail();
+        String note = clientHistoryDataList.get(position).getNote();
+        int status = clientHistoryDataList.get(position).getStatus();
+        int id = (int) clientHistoryDataList.get(position).getID();
+        double totalCost = clientHistoryDataList.get(position).getTotal();
+        serviceList = clientHistoryDataList.get(position).getServices();
 
         SharedPreferences preferences = getActivity().getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
 
-        historyReviews = clientHistoryDataList[position].getReviews();
+        historyReviews = clientHistoryDataList.get(position).getReviews();
 
         String commentVal = "";
         double ratingVal = 0.0;

@@ -7,6 +7,7 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.dnsworker.API.APIClient;
+import com.example.dnsworker.LogIn.LogInResponse;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
 
 import retrofit2.Call;
@@ -98,4 +99,10 @@ public class BookingService{
 
         return end_dateTimeMLD;
     }
+
+    public interface bookingCallback {
+        void bookingCallback(Integer statusCode, ClientBookingModel clientBookingModel);
+        void signinErrorCallBack();
+    }
+
 }

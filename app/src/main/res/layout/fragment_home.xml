@@ -28,6 +28,19 @@
             android:textStyle="bold"
             android:layout_marginBottom="2dp"/>
 
+
+<!--        <Button-->
+<!--            android:id="@+id/refreshButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/signin_button_shape"-->
+<!--            android:backgroundTint="@color/app_theme_gold"-->
+<!--            android:fontFamily="@font/montserrat_regular"-->
+<!--            android:text="Refresh"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="15sp" />-->
+
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -64,8 +77,6 @@
 
             />
     </RelativeLayout>
-
-
 
 
 </RelativeLayout>
