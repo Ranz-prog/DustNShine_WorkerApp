@@ -10,13 +10,18 @@ import com.example.dnsworker.Service.BookingService;
 
 public class ClientBookingViewModel extends ViewModel{
 
-    private BookingService bookingService;
+    public BookingService bookingService;
     private MutableLiveData<ClientBookingModel> clientBookingMLD;
     private MutableLiveData<ClientBookingModel> clientHistoryBookingMLD;
 
     public ClientBookingViewModel(){
         bookingService = new BookingService();
     }
+
+//    public void getClientBookingData(String authToken){
+//        bookingService.clientBookingRequest(authToken);
+//
+//    }
 
     public LiveData<ClientBookingModel> getClientBookingData(String authToken){
         if(clientBookingMLD == null){

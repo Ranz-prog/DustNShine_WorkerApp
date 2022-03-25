@@ -25,7 +25,12 @@ public class BookingService{
             @Override
             public void onResponse(Call<ClientBookingModel> call, Response<ClientBookingModel> response) {
                 clientBookingMLD.postValue(response.body());
+//                callback.bookingCallback(response.code(), response.body());
+
                 Log.d(TAG, "onResponse: " + response.body());
+
+
+
             }
             @Override
             public void onFailure(Call<ClientBookingModel> call, Throwable t) {
@@ -99,10 +104,14 @@ public class BookingService{
 
         return end_dateTimeMLD;
     }
-
-    public interface bookingCallback {
-        void bookingCallback(Integer statusCode, ClientBookingModel clientBookingModel);
-        void signinErrorCallBack();
-    }
+//
+//
+//    BookingCallback callback;
+//    public interface BookingCallback {
+//        void bookingCallback(Integer statusCode, ClientBookingModel clientBookingModel);
+//    }
+//    public void setOnBookListener(BookingCallback bookingCallback){
+//        callback = bookingCallback;
+//    }
 
 }

@@ -30,6 +30,7 @@ import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
 import com.example.dnsworker.Model.ClientBookingModel.Service;
 import com.example.dnsworker.R;
+import com.example.dnsworker.Service.BookingService;
 import com.example.dnsworker.ViewModel.ClientBookingViewModel;
 import com.example.dnsworker.adapter.Task_Adapter;
 import com.google.gson.Gson;
@@ -50,6 +51,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
     TextView noResult;
     private NotificationManagerCompat notificationManagerCompat;
     private SwipeRefreshLayout swipeRefreshLayout;
+
 
     
     Button buttonRefresh;
@@ -149,6 +151,25 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
     }
 
     private void onChangedMethod() {
+
+
+//
+//        clientBookingViewModel.bookingService.setOnBookListener(new BookingService.BookingCallback() {
+//            @Override
+//            public void bookingCallback(Integer statusCode, ClientBookingModel clientBookingModel) {
+//                if (clientBookingModel != null) {
+//                    ArrayList<ClientBookData> clientBookData = clientBookingModel.getData();
+//                    clientBookDataList = clientBookData;
+//                    task_adapter.setTaskModelList(clientBookDataList);
+//                    Log.d("TAG", "REFRESH == > " + clientBookData.size());
+//
+//                } else {
+//                    //if No Data retrieved
+//                    Log.d("TAG", "NO REFRESH");
+//                    noResult.setVisibility(View.VISIBLE);
+//                }
+//            }
+//        });
 
         clientBookingViewModel.getClientBookingData(retrievedToken).observe(getActivity(), new Observer<ClientBookingModel>() {
             @Override

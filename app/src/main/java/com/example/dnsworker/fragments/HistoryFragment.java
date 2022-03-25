@@ -140,7 +140,7 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
         preferences.edit().putString("last_name", last_name).apply();
         preferences.edit().putString("mobile_number", mobile_number).apply();
         preferences.edit().putString("address", address).apply();
-        preferences.edit().putString("sched_datetime", schedule);
+        preferences.edit().putString("sched_datetime", schedule).apply();
         preferences.edit().putString("total", String.valueOf(totalCost)).apply();
         preferences.edit().putString("email", email).apply();
         preferences.edit().putString("status", String.valueOf(status));

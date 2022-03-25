@@ -311,7 +311,7 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         try {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(workerEmail));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("ivandasigan01@gmail.com"));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(client_email));
             message.setText(messageToSend + " " + url + randomVal);
             //Transport.send(message);
             new SendMail().execute(message);

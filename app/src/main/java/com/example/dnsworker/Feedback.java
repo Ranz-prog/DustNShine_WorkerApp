@@ -70,6 +70,7 @@ public class Feedback extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 
     private void loadFeedbackData(){

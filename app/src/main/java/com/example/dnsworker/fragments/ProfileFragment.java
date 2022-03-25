@@ -88,8 +88,11 @@ public class ProfileFragment  extends Fragment {
 
                 Log.d(TAG, "onChanged: SUCCESS! ========>" );
 
-                startActivity(new Intent(getContext(), LoginPage.class));
+                Intent intent = new Intent(getContext(), LoginPage.class);
+                startActivity(intent);
                 getActivity().finish();
+//                startActivity(new Intent(getContext(), LoginPage.class));
+//                getActivity().finish();
 
             }
         });
