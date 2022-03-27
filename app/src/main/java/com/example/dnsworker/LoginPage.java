@@ -13,29 +13,21 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.dnsworker.LogIn.LogInResponse;
 import com.example.dnsworker.Service.UserService;
 import com.example.dnsworker.ViewModel.UserViewModel;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 
-import org.w3c.dom.Text;
 
 public class LoginPage extends AppCompatActivity {
 
     private Button signin_btnSignin;
     private TextInputEditText signin_email, signin_password;
-    //private TextInputLayout signinpassword;
     UserViewModel userViewModel;
 
     private Dialog dialog;
@@ -60,7 +52,6 @@ public class LoginPage extends AppCompatActivity {
 
                 //Validations for Email and Password
                 if (TextUtils.isEmpty(signin_email.getText().toString())) {
-//                    signin_email.setError("Email is required");
                     warningDialogEmpty();
 
                 } else if (TextUtils.isEmpty(signin_password.getText().toString())) {
@@ -162,20 +153,20 @@ public class LoginPage extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
-            super.onBackPressed();
-            return;
-        }
-
-        this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Please tap BACK again to exit", Toast.LENGTH_SHORT).show();
-
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                doubleBackToExitPressedOnce = false;
-            }
-        }, 2000);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure you want to exit?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        LoginPage.this.finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }

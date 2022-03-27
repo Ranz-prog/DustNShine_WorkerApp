@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -19,7 +18,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.dnsworker.Feedback;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
@@ -28,15 +26,8 @@ import com.example.dnsworker.Model.ClientBookingModel.Service;
 import com.example.dnsworker.R;
 import com.example.dnsworker.ViewModel.ClientBookingViewModel;
 import com.example.dnsworker.adapter.HistoryAdapter;
-import com.google.android.gms.common.api.Response;
 import com.google.gson.Gson;
-
-import java.io.IOException;
-import java.lang.annotation.Annotation;
 import java.util.ArrayList;
-
-import okhttp3.ResponseBody;
-import retrofit2.Converter;
 
 public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickBookingListener {
 
@@ -55,7 +46,6 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_booking, container, false);
-
         bookingRecycler = view.findViewById(R.id.booking_RecyclerView);
         bookingRecycler.setHasFixedSize(true);
         bookingRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -63,8 +53,6 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
         bookingRecycler.setAdapter(historyAdapter);
 
         TextView noResult = view.findViewById(R.id.emptyHistoryTV);
-
-
 
         //Passed Data from shared Pref
         historyPreferences = getActivity().getSharedPreferences("AUTH_TOKEN", Context.MODE_PRIVATE);
@@ -87,10 +75,7 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
                         }
                     }
                 });
-
-
         return view;
-
     }
 
     @Override
@@ -116,8 +101,8 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
         serviceList = clientHistoryDataList.get(position).getServices();
 
         SharedPreferences preferences = getActivity().getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
-
         historyReviews = clientHistoryDataList.get(position).getReviews();
+        
 
         String commentVal = "";
         double ratingVal = 0.0;

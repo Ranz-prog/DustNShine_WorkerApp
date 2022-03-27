@@ -3,16 +3,10 @@ package com.example.dnsworker;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.Toast;
-
 import com.example.dnsworker.fragments.HistoryFragment;
 import com.example.dnsworker.fragments.ChatFragment;
 import com.example.dnsworker.fragments.HomeFragment;
@@ -20,8 +14,6 @@ import com.example.dnsworker.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainMenu extends AppCompatActivity {
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,24 +50,6 @@ public class MainMenu extends AppCompatActivity {
             return true;
         }
     };
-
-    private void exitDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        //Setting message manually and performing action on button click
-        builder.setMessage("Do you want to close this application ?")
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        finish();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-    }
 
     boolean doubleBackToExitPressedOnce = false;
 

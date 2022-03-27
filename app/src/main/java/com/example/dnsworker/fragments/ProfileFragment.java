@@ -2,7 +2,9 @@ package com.example.dnsworker.fragments;
 
 import static android.content.ContentValues.TAG;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -59,7 +61,24 @@ public class ProfileFragment  extends Fragment {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                logout();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage("Are you sure you want to log out?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                logout();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
+
+
+
             }
         });
 
@@ -91,10 +110,9 @@ public class ProfileFragment  extends Fragment {
                 Intent intent = new Intent(getContext(), LoginPage.class);
                 startActivity(intent);
                 getActivity().finish();
-//                startActivity(new Intent(getContext(), LoginPage.class));
-//                getActivity().finish();
 
             }
         });
     }
+
 }

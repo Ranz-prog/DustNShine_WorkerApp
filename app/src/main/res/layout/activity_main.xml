@@ -33,27 +33,4 @@
             android:scaleType="fitXY"
             app:srcCompat="@drawable/launching" />
     </RelativeLayout>
-
-
-    <!--
-        <TextView
-            android:id="@+id/titleTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_alignParentTop="true"
-            android:fontFamily="@font/quicksand_font"
-            android:text="@string/title_splash"
-            android:textColor="#FFFFFF"
-            android:textSize="50sp" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@id/titleTV"
-            android:layout_alignParentBottom="true"
-            app:srcCompat="@drawable/launching" />
-    -->
-
 </RelativeLayout>

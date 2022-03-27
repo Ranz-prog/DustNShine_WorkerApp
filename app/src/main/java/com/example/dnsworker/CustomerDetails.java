@@ -11,11 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
@@ -23,10 +20,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
-import com.example.dnsworker.Model.ClientBookingModel.Customer;
 import com.example.dnsworker.Model.ClientBookingModel.Service;
 import com.example.dnsworker.ViewModel.ClientBookingViewModel;
 import com.example.dnsworker.adapter.ServiceListAdapter.ServiceListAdapter;
@@ -38,21 +33,16 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import org.jitsi.meet.sdk.JitsiMeet;
 import org.jitsi.meet.sdk.JitsiMeetActivity;
 import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
-
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Properties;
 import java.util.Random;
-
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -77,9 +67,6 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
     ServiceListAdapter serviceListAdapter;
     SharedPreferences preferences, servicePreference, authPref;
     ClientBookingViewModel clientBookingVM;
-
-    //Boolean isOnging = false;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +96,6 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         clientBookingVM = new ClientBookingViewModel();
         loadData();
 
-
         //MapView
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.mapView);
@@ -128,7 +114,6 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
 
             }
         });
-
         onGoingWorkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,7 +122,6 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
                 finish();
             }
         });
-
         arrowBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,7 +131,6 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
             }
         });
     }
-
 
     @Override
     protected void onResume() {
@@ -216,14 +199,10 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
             }
         });
 
-        Log.d(TAG, "getTimeAndDate: =====>" + time);
-
     }
-
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
-
         //Sharedpref lat and longt
         preferences = getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
         long longitude = preferences.getLong("longitude", 0);
@@ -231,12 +210,11 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
 
         String clientAdd = preferences.getString("address", null);
 
-
         map = googleMap;
         LatLng Address = new LatLng(16.0471126,120.3424204);
         //LatLng Address = new LatLng(latitude,longitude);
         //map.addMarker(new MarkerOptions().position(Address).title(clientAdd));
-        map.addMarker(new MarkerOptions().position(Address).title("UPANG"));
+        map.addMarker(new MarkerOptions().position(Address).title(clientAdd));
         map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         map.moveCamera(CameraUpdateFactory.newLatLng(Address));
 
@@ -248,7 +226,6 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
     }
 
     private void onJitsiMeet() {
-
 
         SharedPreferences jitsiPref = getSharedPreferences("CUSTOMER_DATA", MODE_PRIVATE);
         SharedPreferences emailPref = getSharedPreferences("WORKER_EMAIL", MODE_PRIVATE);
@@ -287,7 +264,7 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         final String workerEmail = worker_email;
         final String workerPassword = worker_password;
 
-        String messageToSend = "Hello and good day, this is an auto generated mesage. This is your Room Code:  '" + randomVal + "' or click this Link: ";
+        String messageToSend = "Hello and good day, this is an auto generated message. This is your Room Code:  '" + randomVal + "' or click this Link: ";
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
@@ -327,7 +304,6 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         StrictMode.setThreadPolicy(policy);
 
     }
-
 
     private class SendMail extends AsyncTask<Message, String, String> {
 

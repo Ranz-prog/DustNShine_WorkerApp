@@ -3,7 +3,6 @@ package com.example.dnsworker.ViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
 import com.example.dnsworker.Service.BookingService;
 
@@ -18,17 +17,11 @@ public class ClientBookingViewModel extends ViewModel{
         bookingService = new BookingService();
     }
 
-//    public void getClientBookingData(String authToken){
-//        bookingService.clientBookingRequest(authToken);
-//
-//    }
+    public void getClientBookingData(String authToken){
+        bookingService.clientBookingRequest(authToken);
 
-    public LiveData<ClientBookingModel> getClientBookingData(String authToken){
-        if(clientBookingMLD == null){
-            clientBookingMLD = bookingService.clientBookingRequest(authToken);
-        }
-        return clientBookingMLD;
     }
+
     public LiveData<ClientBookingModel> getHistoryBookingData(String authToken){
         if (clientHistoryBookingMLD == null){
             clientHistoryBookingMLD = bookingService.clientHistoryBookingRequest(authToken);

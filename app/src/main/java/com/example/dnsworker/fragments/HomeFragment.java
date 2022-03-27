@@ -5,7 +5,6 @@ import static android.content.ContentValues.TAG;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -14,17 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import com.example.dnsworker.CustomerDetails;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
@@ -41,7 +37,6 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
 
     private RecyclerView taskRecycler;
     private View view;
-    //    private ClientBookData[] clientBookDataList;
     private ArrayList<ClientBookData> clientBookDataList;
     private Service[] serviceList;
     private Task_Adapter task_adapter;
@@ -70,19 +65,6 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         task_adapter = new Task_Adapter(getContext(), clientBookDataList, this);
         taskRecycler.setAdapter(task_adapter);
 
-        
-//        buttonRefresh = view.findViewById(R.id.refreshButton);
-//
-//        buttonRefresh.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                onChangedMethod();
-//                task_adapter.notifyDataSetChanged();
-//                Log.d(TAG, "onClick: ONCHANGEDDDDDD" + clientBookDataList.size());
-//            }
-//        });
-
-
         swipeRefreshLayout = view.findViewById(R.id.refreshLayout);
         swipeRefreshLayout.setOnRefreshListener(this);
         noResult = view.findViewById(R.id.emptyTaskTV);
@@ -99,34 +81,14 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        // Stop animation (This will be after 3 seconds)
-                        //startRefresh();
                         swipeRefreshLayout.setRefreshing(false);
                         onChangedMethod();
 
-
-//                        swipeRefreshLayout.setRefreshing(false);
-//                        clientBookDataList.addAll(clientBookDataList);
-//                        getFragmentManager().beginTransaction().detach(HomeFragment.this).attach(HomeFragment.this).commit();
-//                        Log.d(TAG, "run: Refresh ==>" + clientBookDataList.size());
                     }
                 },1000);
-
-
             }
         });
 
-
-
-//        swipeRefreshLayout.post(new Runnable() {
-//            @Override
-//            public void run() {
-//                swipeRefreshLayout.setRefreshing(false);
-//                onChangedMethod();
-//
-//                Log.d(TAG, "run: REFRESH");
-//            }
-//        });
 
         return view;
     }
@@ -137,7 +99,6 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         super.onStart();
 
         Log.d(TAG, "onStart: ");
-        //onChangedMethod();
 
         onChangedMethod();
     }
@@ -150,31 +111,14 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
 
     }
 
+
     private void onChangedMethod() {
 
+        clientBookingViewModel.getClientBookingData(retrievedToken);
 
-//
-//        clientBookingViewModel.bookingService.setOnBookListener(new BookingService.BookingCallback() {
-//            @Override
-//            public void bookingCallback(Integer statusCode, ClientBookingModel clientBookingModel) {
-//                if (clientBookingModel != null) {
-//                    ArrayList<ClientBookData> clientBookData = clientBookingModel.getData();
-//                    clientBookDataList = clientBookData;
-//                    task_adapter.setTaskModelList(clientBookDataList);
-//                    Log.d("TAG", "REFRESH == > " + clientBookData.size());
-//
-//                } else {
-//                    //if No Data retrieved
-//                    Log.d("TAG", "NO REFRESH");
-//                    noResult.setVisibility(View.VISIBLE);
-//                }
-//            }
-//        });
-
-        clientBookingViewModel.getClientBookingData(retrievedToken).observe(getActivity(), new Observer<ClientBookingModel>() {
+        clientBookingViewModel.bookingService.setOnBookListener(new BookingService.BookingCallback() {
             @Override
-            public void onChanged(ClientBookingModel clientBookingModel) {
-
+            public void bookingCallback(Integer statusCode, ClientBookingModel clientBookingModel) {
                 if (clientBookingModel != null) {
                     ArrayList<ClientBookData> clientBookData = clientBookingModel.getData();
                     clientBookDataList = clientBookData;
@@ -188,46 +132,8 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
                 }
             }
         });
+
     }
-
-    //method to add content to listview while refresh
-//    private void startRefresh() {
-//        new BackgroundTask().execute();
-//    }
-//
-//    //this method executes after loading contents
-//    private void onRefreshComplete(ArrayList<ClientBookData> result) {
-//        //clear the existing adapter
-//        result.clear();
-//        //add new list to adapter
-//        swipeRefreshLayout.setRefreshing(false);
-//        onChangedMethod();
-//
-//    }
-//
-//    //Async task to load data
-//    //here a timer is implemented in doInBackground
-//    private class BackgroundTask extends AsyncTask {
-//        //duration of the swipe feature
-//        static final int Duration = 3000;
-//
-//        @Override
-//        protected ArrayList doInBackground(Object[] objects) {
-//            try {
-//                Thread.sleep(Duration);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//            return clientBookDataList;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(Object o) {
-//            super.onPostExecute(o);
-//            onRefreshComplete(clientBookDataList);
-//        }
-//    }
-
 
 
     @Override
@@ -277,7 +183,6 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         servicePreference.edit().putString("SERVICE_LIST", jsonString).commit();
 
     }
-
 
     @Override
     public void onRefresh() {

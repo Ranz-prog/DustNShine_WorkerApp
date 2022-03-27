@@ -42,7 +42,6 @@ import java.util.Calendar;
 
 public class ServiceDetails extends AppCompatActivity {
 
-    private ImageView serviceBackButton;
     private Button doneWorkBtn;
     private TextView customerName, customerMobileNumber, totalCost, customerLocation, workStatus, schedule, note;
     private Dialog dialog;
@@ -143,7 +142,7 @@ public class ServiceDetails extends AppCompatActivity {
         clientBVM.postEndDateTime(authToken, id, time).observe(this, new Observer<ClientBookingModel>() {
             @Override
             public void onChanged(ClientBookingModel clientBookingModel) {
-                Log.d(TAG, "onChanged: ENDTIME ===>" + time + "/n" + id);
+                Log.d(TAG, "onChanged: END TIME ===>" + time + "/n" + id);
             }
         });
         Log.d(TAG, "getTimeAndDate: =====>" + time);
@@ -169,7 +168,6 @@ public class ServiceDetails extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         warningDialog();
-        //Toast.makeText(getApplicationContext(),"You Are Not Allowed to Exit the App", Toast.LENGTH_SHORT).show();
     }
 
 }

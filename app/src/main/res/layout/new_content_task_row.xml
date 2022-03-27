@@ -15,14 +15,6 @@
         android:layout_height="match_parent"
         android:background="@color/white">
 
-<!--        <ImageView-->
-<!--            android:layout_width="24dp"-->
-<!--            android:layout_height="24dp"-->
-<!--            android:layout_alignParentRight="true"-->
-<!--            android:layout_marginTop="30dp"-->
-<!--            android:layout_marginRight="10dp"-->
-<!--            android:src="@drawable/ic_arrow_open" />-->
-
         <LinearLayout
             android:id="@+id/ciclerImage"
             android:layout_width="50dp"
@@ -42,14 +34,6 @@
                 android:textColor="@color/white"
                 android:textSize="20sp" />
         </LinearLayout>
-
-<!--        <de.hdodenhof.circleimageview.CircleImageView-->
-<!--            android:id="@+id/ic_Customer"-->
-<!--            android:layout_width="50dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_marginLeft="8dp"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:src="@drawable/user" />-->
 
         <TextView
             android:id="@+id/task_clientName_TV"
@@ -123,8 +107,6 @@
                 android:text="03-12-2022 09:00:00"
                 android:textSize="14sp" />
         </RelativeLayout>
-
-
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
 

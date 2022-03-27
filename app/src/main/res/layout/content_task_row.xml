@@ -20,18 +20,6 @@
             android:layout_centerVertical="true"
             android:src="@drawable/user" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/task_service_label"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="11dp"-->
-<!--            android:layout_toRightOf="@+id/task_clientImageView"-->
-<!--            android:fontFamily="@font/quicsandmed"-->
-<!--            android:text="Customer Details"-->
-<!--            android:textColor="@color/app_theme_blue"-->
-<!--            android:textSize="17sp"-->
-<!--            android:textStyle="bold" />-->
-
         <TextView
             android:id="@+id/task_clientName_label"
             android:layout_width="wrap_content"

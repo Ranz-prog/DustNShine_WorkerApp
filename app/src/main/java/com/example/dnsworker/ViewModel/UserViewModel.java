@@ -3,7 +3,6 @@ package com.example.dnsworker.ViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
 import com.example.dnsworker.LogIn.LogInResponse;
 import com.example.dnsworker.Model.User.User;
 import com.example.dnsworker.Service.UserService;
@@ -14,8 +13,6 @@ import java.util.Map;
 public class UserViewModel extends ViewModel {
     private MutableLiveData<User> userMLD;
     private MutableLiveData<Map<String, String>> signoutMLD;
-    private MutableLiveData<LogInResponse> signinMLD;
-
     public UserService userService;
 
 

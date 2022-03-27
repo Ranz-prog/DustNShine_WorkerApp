@@ -1,19 +1,14 @@
 package com.example.dnsworker.Service;
 
 import static android.content.ContentValues.TAG;
-
 import android.util.Log;
-
 import androidx.constraintlayout.helper.widget.MotionEffect;
 import androidx.lifecycle.MutableLiveData;
-
 import com.example.dnsworker.API.APIClient;
 import com.example.dnsworker.LogIn.LogInRequest;
 import com.example.dnsworker.LogIn.LogInResponse;
 import com.example.dnsworker.Model.User.User;
-
 import java.util.Map;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -85,7 +80,6 @@ public class UserService {
 
             @Override
             public void onFailure(Call<LogInResponse> call, Throwable t) {
-                //Toast.makeText(activity, "Throwable: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 callback.signinErrorCallBack();
                 Log.d(MotionEffect.TAG, "onFailure: STATUS CODE ERROR =====>" + t);
             }
@@ -93,8 +87,6 @@ public class UserService {
     }
 
     SigninCallback callback;
-
-
 
     public interface SigninCallback {
         void signinCallback(Integer statusCode, LogInResponse response);
