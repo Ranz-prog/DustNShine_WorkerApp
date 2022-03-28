@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -36,11 +38,14 @@ import com.google.gson.reflect.TypeToken;
 import org.jitsi.meet.sdk.JitsiMeet;
 import org.jitsi.meet.sdk.JitsiMeetActivity;
 import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
+
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 import javax.mail.Message;
@@ -127,6 +132,7 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
             public void onClick(View v) {
                 Intent intent = new Intent(CustomerDetails.this, MainMenu.class);
                 startActivity(intent);
+                finish();
 
             }
         });
@@ -205,20 +211,31 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
     public void onMapReady(@NonNull GoogleMap googleMap) {
         //Sharedpref lat and longt
         preferences = getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
-        long longitude = preferences.getLong("longitude", 0);
-        long latitude = preferences.getLong("latitude", 0);
-
         String clientAdd = preferences.getString("address", null);
 
-        map = googleMap;
-        LatLng Address = new LatLng(16.0471126,120.3424204);
-        //LatLng Address = new LatLng(latitude,longitude);
-        //map.addMarker(new MarkerOptions().position(Address).title(clientAdd));
-        map.addMarker(new MarkerOptions().position(Address).title(clientAdd));
-        map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        map.moveCamera(CameraUpdateFactory.newLatLng(Address));
+        Geocoder geocoder = new Geocoder(this);
+        List<Address> addressList;
+
+        try {
+            addressList = geocoder.getFromLocationName(clientAdd, 1);
+            if (addressList !=null){
+                double locLatitude = addressList.get(0).getLatitude();
+                double locLongitude = addressList.get(0).getLongitude();
+
+                Log.d(TAG, "onMapReady: longitude " + locLongitude);
+                Log.d(TAG, "onMapReady: latitude " + locLatitude );
 
 
+                map = googleMap;
+                LatLng Address = new LatLng(locLatitude,locLongitude);
+                map.addMarker(new MarkerOptions().position(Address).title(clientAdd));
+                map.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                map.moveCamera(CameraUpdateFactory.newLatLng(Address));
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void videoCall(View view) {
@@ -343,8 +360,8 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
         Intent intent = new Intent(CustomerDetails.this, MainMenu.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }

@@ -6,7 +6,6 @@
     android:background="@color/background"
     >
 
-
     <RelativeLayout
         android:id="@+id/upPart"
         android:layout_width="match_parent"
@@ -32,7 +31,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/upPart"
         android:layout_marginTop="10dp"
         android:paddingLeft="10dp"
@@ -42,28 +41,25 @@
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/task_RecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-
-        <TextView
-            android:id="@+id/emptyTaskTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:fontFamily="@font/quicsandmed"
-            android:textSize="24sp"
-            android:text="No Available Task Yet"
-            android:visibility="invisible"
-
-            />
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/emptyTaskTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="18sp"
+        android:text="No Available Task Yet"
+        android:visibility="invisible"
+        />
 
 
 </RelativeLayout>

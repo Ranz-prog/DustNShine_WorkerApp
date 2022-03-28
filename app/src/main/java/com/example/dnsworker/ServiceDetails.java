@@ -85,8 +85,8 @@ public class ServiceDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 postEndTimeAndDate();
-                //confirmationDialog();
                 Intent intent = new Intent(ServiceDetails.this, ReceivedPayment.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
             }

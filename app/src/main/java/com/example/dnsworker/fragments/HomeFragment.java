@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -47,10 +46,6 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
     private NotificationManagerCompat notificationManagerCompat;
     private SwipeRefreshLayout swipeRefreshLayout;
 
-
-    
-    Button buttonRefresh;
-    
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -125,7 +120,11 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
                     task_adapter.setTaskModelList(clientBookDataList);
                     Log.d("TAG", "REFRESH == > " + clientBookData.size());
 
-                } else {
+                }else if(clientBookingModel == null){
+                    noResult.setVisibility(View.VISIBLE);
+                }
+
+                else {
                     //if No Data retrieved
                     Log.d("TAG", "NO REFRESH");
                     noResult.setVisibility(View.VISIBLE);
@@ -184,8 +183,10 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
 
     }
 
+
     @Override
     public void onRefresh() {
         onChangedMethod();
     }
+
 }
