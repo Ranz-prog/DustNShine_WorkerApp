@@ -2,15 +2,19 @@ package com.example.dnsworker.fragments;
 
 import static android.content.ContentValues.TAG;
 
+import static org.webrtc.ContextUtils.getApplicationContext;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +24,8 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.dnsworker.CustomerDetails;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
@@ -42,9 +48,10 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
     private ClientBookingViewModel clientBookingViewModel;
     private String retrievedToken;
     private SharedPreferences preferences;
-    TextView noResult;
+    TextView noResult, noInternetResult;
     private NotificationManagerCompat notificationManagerCompat;
     private SwipeRefreshLayout swipeRefreshLayout;
+    ImageView emptyImage, noConnectionImage;
 
     @Nullable
     @Override
@@ -62,11 +69,31 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
 
         swipeRefreshLayout = view.findViewById(R.id.refreshLayout);
         swipeRefreshLayout.setOnRefreshListener(this);
-        noResult = view.findViewById(R.id.emptyTaskTV);
+        noResult = view.findViewById(R.id.emptyTask);
+        emptyImage = view.findViewById(R.id.noResultLottie);
+        noInternetResult = view.findViewById(R.id.noInternetConnectionTV);
+        noConnectionImage = view.findViewById(R.id.noInternetImage);
 
         //Passed Data from shared Pref
         preferences = getActivity().getSharedPreferences("AUTH_TOKEN", Context.MODE_PRIVATE);
         retrievedToken = preferences.getString("TOKEN", null);
+
+
+
+        if (!isConnected()){
+            noConnectionImage.setVisibility(View.VISIBLE);
+            noInternetResult.setVisibility(View.VISIBLE);
+            taskRecycler.setVisibility(View.GONE);
+            emptyImage.setVisibility(View.GONE);
+            noResult.setVisibility(View.GONE);
+        }
+        else{
+            noConnectionImage.setVisibility(View.GONE);
+            noInternetResult.setVisibility(View.GONE);
+            taskRecycler.setVisibility(View.VISIBLE);
+            emptyImage.setVisibility(View.GONE);
+            noResult.setVisibility(View.GONE);
+        }
 
         clientBookingViewModel = ViewModelProviders.of(getActivity()).get(ClientBookingViewModel.class);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -88,7 +115,6 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         return view;
     }
 
-
     @Override
     public void onStart() {
         super.onStart();
@@ -101,11 +127,8 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
     @Override
     public void onResume() {
         super.onResume();
-
         Log.d(TAG, "onResume: ");
-
     }
-
 
     private void onChangedMethod() {
 
@@ -118,21 +141,41 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
                     ArrayList<ClientBookData> clientBookData = clientBookingModel.getData();
                     clientBookDataList = clientBookData;
                     task_adapter.setTaskModelList(clientBookDataList);
+                    noResult.setVisibility(View.GONE);
+
+                    if (clientBookData.size() != 0){
+                        taskRecycler.setVisibility(View.VISIBLE);
+                        emptyImage.setVisibility(View.GONE);
+                        noResult.setVisibility(View.GONE);
+                        noConnectionImage.setVisibility(View.GONE);
+                        noInternetResult.setVisibility(View.GONE);
+                    }
+                    else{
+                        taskRecycler.setVisibility(View.GONE);
+                        emptyImage.setVisibility(View.VISIBLE);
+                        noResult.setVisibility(View.VISIBLE);
+                        noConnectionImage.setVisibility(View.GONE);
+                        noInternetResult.setVisibility(View.GONE);
+                    }
                     Log.d("TAG", "REFRESH == > " + clientBookData.size());
 
-                }else if(clientBookingModel == null){
-                    noResult.setVisibility(View.VISIBLE);
                 }
 
                 else {
                     //if No Data retrieved
                     Log.d("TAG", "NO REFRESH");
-                    noResult.setVisibility(View.VISIBLE);
                 }
             }
         });
 
     }
+
+    public boolean isConnected(){
+        ConnectivityManager manager = (ConnectivityManager) getActivity().getApplicationContext()
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        return manager.getActiveNetworkInfo()!= null && manager.getActiveNetworkInfo().isConnectedOrConnecting();
+    }
+
 
 
     @Override

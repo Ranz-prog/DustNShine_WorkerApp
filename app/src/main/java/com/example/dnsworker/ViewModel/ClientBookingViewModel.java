@@ -22,12 +22,16 @@ public class ClientBookingViewModel extends ViewModel{
 
     }
 
-    public LiveData<ClientBookingModel> getHistoryBookingData(String authToken){
-        if (clientHistoryBookingMLD == null){
-            clientHistoryBookingMLD = bookingService.clientHistoryBookingRequest(authToken);
-        }
-        return clientHistoryBookingMLD;
+    public void getHistoryBookingData(String authToken){
+        bookingService.clientHistoryBookingRequest(authToken);
     }
+
+//    public LiveData<ClientBookingModel> getHistoryBookingData(String authToken){
+//        if (clientHistoryBookingMLD == null){
+//            clientHistoryBookingMLD = bookingService.clientHistoryBookingRequest(authToken);
+//        }
+//        return clientHistoryBookingMLD;
+//    }
 
     public LiveData<ClientBookingModel> postStartDateTime(String authToken,int id , String start_datetime){
         if (clientBookingMLD == null){

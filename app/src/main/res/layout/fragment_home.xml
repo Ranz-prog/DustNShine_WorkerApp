@@ -2,15 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/background"
-    >
+    android:background="@color/background">
 
     <RelativeLayout
         android:id="@+id/upPart"
         android:layout_width="match_parent"
         android:layout_height="36dp"
         android:background="@color/app_theme_blue">
+
 
 
         <TextView
@@ -31,7 +32,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/upPart"
         android:layout_marginTop="10dp"
         android:paddingLeft="10dp"
@@ -47,19 +48,48 @@
                 android:id="@+id/task_RecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </RelativeLayout>
 
+    <ImageView
+        android:id="@+id/noResultLottie"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/folder"
+        android:visibility="invisible"/>
+
     <TextView
-        android:id="@+id/emptyTaskTV"
+        android:id="@+id/emptyTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:fontFamily="@font/roboto_medium"
-        android:textSize="18sp"
-        android:text="No Available Task Yet"
-        android:visibility="invisible"
-        />
+        android:layout_centerInParent="true"
+        android:text="No Available Task"
+        android:layout_below="@id/noResultLottie"
+        android:textSize="15sp"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/noInternetImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_wifi_off"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/noInternetConnectionTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:layout_centerInParent="true"
+        android:text="Oops! No internet connection"
+        android:layout_below="@id/noInternetImage"
+        android:textSize="15sp"
+        android:visibility="invisible" />
 
 
 </RelativeLayout>

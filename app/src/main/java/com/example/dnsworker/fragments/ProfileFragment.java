@@ -7,12 +7,17 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -28,15 +33,15 @@ import java.util.Map;
 public class ProfileFragment  extends Fragment {
 
     private View view;
-
     private TextInputEditText worker_fname,
                               worker_email, worker_contact;
     private Button btnLogout;
-
     private  String retrievedToken;
+    LinearLayout appIcon;
     SharedPreferences preferences;
-
     UserViewModel userViewModel;
+    TextView noInternetProfileTV, profileSubtitle;
+    ImageView noInternetProfileImage;
 
     @Nullable
     @Override
@@ -46,15 +51,38 @@ public class ProfileFragment  extends Fragment {
 
         btnLogout = view.findViewById(R.id.btnLogout);
         worker_fname = view.findViewById(R.id.worker_fname_ET);
-
         worker_email = view.findViewById(R.id.worker_email_ET);
         worker_contact = view.findViewById(R.id.worker_contact_ET);
+        profileSubtitle = view.findViewById(R.id.profile_subtitle);
+        noInternetProfileTV = view.findViewById(R.id.noInternetConnectionProfileTV);
+        noInternetProfileImage = view.findViewById(R.id.noInternetProfileImage);
+        appIcon = view.findViewById(R.id.appIconProfile);
 
-        //signOutViewModel = new SignOutViewModel();
         userViewModel = new UserViewModel();
 
         preferences = getActivity().getSharedPreferences("AUTH_TOKEN", Context.MODE_PRIVATE);
         retrievedToken = preferences.getString("TOKEN", null);
+
+        if (!isConnected()){
+            noInternetProfileImage.setVisibility(View.VISIBLE);
+            noInternetProfileTV.setVisibility(View.VISIBLE);
+            worker_fname.setVisibility(View.GONE);
+            worker_email.setVisibility(View.GONE);
+            worker_contact.setVisibility(View.GONE);
+            appIcon.setVisibility(View.GONE);
+            btnLogout.setVisibility(View.GONE);
+            profileSubtitle.setVisibility(View.GONE);
+        }
+        else{
+            noInternetProfileImage.setVisibility(View.GONE);
+            noInternetProfileTV.setVisibility(View.GONE);
+            worker_fname.setVisibility(View.VISIBLE);
+            worker_email.setVisibility(View.VISIBLE);
+            worker_contact.setVisibility(View.VISIBLE);
+            appIcon.setVisibility(View.VISIBLE);
+            btnLogout.setVisibility(View.VISIBLE);
+            profileSubtitle.setVisibility(View.VISIBLE);
+        }
 
         getUserInfo();
 
@@ -76,8 +104,6 @@ public class ProfileFragment  extends Fragment {
                         });
                 AlertDialog alert = builder.create();
                 alert.show();
-
-
 
             }
         });
@@ -104,15 +130,19 @@ public class ProfileFragment  extends Fragment {
 
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.remove("TOKEN").apply();
-
-                Log.d(TAG, "onChanged: SUCCESS! ========>" );
-
                 Intent intent = new Intent(getContext(), LoginPage.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 getActivity().finish();
 
             }
         });
+    }
+
+    public boolean isConnected(){
+        ConnectivityManager manager = (ConnectivityManager) getActivity().getApplicationContext()
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        return manager.getActiveNetworkInfo()!= null && manager.getActiveNetworkInfo().isConnectedOrConnecting();
     }
 
 }

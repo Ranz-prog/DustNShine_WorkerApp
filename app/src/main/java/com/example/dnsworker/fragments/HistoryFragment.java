@@ -5,12 +5,16 @@ import static android.content.ContentValues.TAG;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -18,15 +22,20 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.dnsworker.Feedback;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
 import com.example.dnsworker.Model.ClientBookingModel.Review;
 import com.example.dnsworker.Model.ClientBookingModel.Service;
 import com.example.dnsworker.R;
+import com.example.dnsworker.Service.BookingService;
 import com.example.dnsworker.ViewModel.ClientBookingViewModel;
 import com.example.dnsworker.adapter.HistoryAdapter;
 import com.google.gson.Gson;
+
 import java.util.ArrayList;
 
 public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickBookingListener {
@@ -41,6 +50,10 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
     private String retrievedToken;
     private SharedPreferences historyPreferences;
 
+    SwipeRefreshLayout history_swipeRefreshLayout;
+    ImageView emptyHistoryImage, noInternetHistoryImage;
+    TextView noHistoryResult, noIntenetResultHistory;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,41 +65,113 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
         historyAdapter = new HistoryAdapter(getContext(), clientHistoryDataList, this);
         bookingRecycler.setAdapter(historyAdapter);
 
-        TextView noResult = view.findViewById(R.id.emptyHistoryTV);
+        noHistoryResult = view.findViewById(R.id.emptyHistoryTV);
+        emptyHistoryImage = view.findViewById(R.id.noResultLottieHistory);
+        history_swipeRefreshLayout = view.findViewById(R.id.history_refresh);
+        noIntenetResultHistory = view.findViewById(R.id.noInternetConnectionHistoryTV);
+        noInternetHistoryImage = view.findViewById(R.id.noInternetHistoryImage);
+
+
+        if (!isConnected()){
+            noInternetHistoryImage.setVisibility(View.VISIBLE);
+            noIntenetResultHistory.setVisibility(View.VISIBLE);
+            bookingRecycler.setVisibility(View.GONE);
+            emptyHistoryImage.setVisibility(View.GONE);
+            noHistoryResult.setVisibility(View.GONE);
+        }
+        else{
+            noInternetHistoryImage.setVisibility(View.GONE);
+            noIntenetResultHistory.setVisibility(View.GONE);
+            bookingRecycler.setVisibility(View.VISIBLE);
+            emptyHistoryImage.setVisibility(View.GONE);
+            noHistoryResult.setVisibility(View.GONE);
+        }
 
         //Passed Data from shared Pref
         historyPreferences = getActivity().getSharedPreferences("AUTH_TOKEN", Context.MODE_PRIVATE);
         retrievedToken = historyPreferences.getString("TOKEN", null);
 
         clientBookingVM = ViewModelProviders.of(getActivity()).get(ClientBookingViewModel.class);
-        clientBookingVM.getHistoryBookingData(retrievedToken).observe(getActivity(), new Observer<ClientBookingModel>() {
-                    @Override
-                    public void onChanged(ClientBookingModel clientBookingModel) {
 
-                        if (clientBookingModel != null) {
-                            ArrayList<ClientBookData> clientHistoryBookData = clientBookingModel.getData();
-                            clientHistoryDataList = clientHistoryBookData;
-                            historyAdapter.setHistoryModelList(clientHistoryDataList);
-                            Log.d(TAG, "onChanged: DATA HERE ======>" + clientHistoryBookData);
-                            Log.d(TAG, "onChanged: Count===>" + clientHistoryBookData.size());
-                        } else {
-                            //if No Data retrieved
-                            noResult.setVisibility(View.VISIBLE);
-                        }
+        history_swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        history_swipeRefreshLayout.setRefreshing(false);
+                        onChangeMethodHistory();
+
                     }
-                });
+                }, 1000);
+            }
+        });
+        
         return view;
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        Log.d(TAG, "onStart: ");
+
+        onChangeMethodHistory();
+    }
+
+
+    public boolean isConnected(){
+        ConnectivityManager manager = (ConnectivityManager) getActivity().getApplicationContext()
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        return manager.getActiveNetworkInfo()!= null && manager.getActiveNetworkInfo().isConnectedOrConnecting();
     }
 
     @Override
     public void onClickBooking(int position) {
-
         loadHistoryData(position);
         Intent intent = new Intent(getActivity(), Feedback.class);
         startActivity(intent);
     }
 
-    private void loadHistoryData(int position){
+    private void onChangeMethodHistory() {
+        clientBookingVM.getHistoryBookingData(retrievedToken);
+
+        clientBookingVM.bookingService.setOnHistoryListener(new BookingService.BookingHistoryCallback() {
+            @Override
+            public void historyCallback(Integer statusCode, ClientBookingModel clientBookingModel) {
+
+                if (clientBookingModel != null) {
+                    ArrayList<ClientBookData> clientHistoryBookData = clientBookingModel.getData();
+                    clientHistoryDataList = clientHistoryBookData;
+                    historyAdapter.setHistoryModelList(clientHistoryDataList);
+
+                    if (clientHistoryBookData.size() != 0) {
+                        bookingRecycler.setVisibility(View.VISIBLE);
+                        emptyHistoryImage.setVisibility(View.GONE);
+                        noHistoryResult.setVisibility(View.GONE);
+                        noInternetHistoryImage.setVisibility(View.GONE);
+                        noIntenetResultHistory.setVisibility(View.GONE);
+                    } else {
+                        bookingRecycler.setVisibility(View.GONE);
+                        emptyHistoryImage.setVisibility(View.VISIBLE);
+                        noHistoryResult.setVisibility(View.VISIBLE);
+                        noInternetHistoryImage.setVisibility(View.GONE);
+                        noIntenetResultHistory.setVisibility(View.GONE);
+                    }
+
+                    Log.d(TAG, "onChanged: DATA HERE ======>" + clientHistoryBookData);
+                    Log.d(TAG, "onChanged: Count===>" + clientHistoryBookData.size());
+                } else {
+                    //if No Data retrieved
+                    // }
+                }
+            }
+        });
+    }
+
+    private void loadHistoryData(int position) {
         //Specific Customer Details
         String first_name = clientHistoryDataList.get(position).getCustomer().getFirstName();
         String last_name = clientHistoryDataList.get(position).getCustomer().getLastName();
@@ -102,12 +187,12 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
 
         SharedPreferences preferences = getActivity().getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
         historyReviews = clientHistoryDataList.get(position).getReviews();
-        
+
 
         String commentVal = "";
         double ratingVal = 0.0;
 
-        if (historyReviews.length != 0){
+        if (historyReviews.length != 0) {
             String comment = historyReviews[0].getComment();
             double rating = historyReviews[0].getRating();
             preferences.edit().putString("comment", comment).apply();
@@ -115,8 +200,7 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
 
             Log.d(TAG, "loadHistoryData: COMMENT HERE ==>" + comment);
             Log.d(TAG, "loadHistoryData: RATING HERE ==>" + rating);
-        }
-        else{
+        } else {
             preferences.edit().putString("comment", commentVal).apply();
             preferences.edit().putString("ratings", String.valueOf(ratingVal)).apply();
         }

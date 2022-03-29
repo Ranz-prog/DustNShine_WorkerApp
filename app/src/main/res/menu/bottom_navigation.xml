@@ -5,11 +5,11 @@
         android:id="@+id/nav_home"
         android:icon="@drawable/home_64"
         android:title="Dashboard" />
-    <item
-        android:id="@+id/nav_chat"
-        android:icon="@drawable/message_64"
-        android:title="Message"
-        />
+<!--    <item-->
+<!--        android:id="@+id/nav_chat"-->
+<!--        android:icon="@drawable/message_64"-->
+<!--        android:title="Message"-->
+<!--        />-->
     <item
         android:id="@+id/nav_booking"
         android:icon="@drawable/task_64"

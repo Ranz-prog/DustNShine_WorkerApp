@@ -42,7 +42,8 @@ public class BookingService{
         clientBookingModelCall.enqueue(new Callback<ClientBookingModel>() {
             @Override
             public void onResponse(Call<ClientBookingModel> call, Response<ClientBookingModel> response) {
-                clientHistoryBookingMLD.postValue(response.body());
+                bookingHistoryCallback.historyCallback(response.code(), response.body());
+                //clientHistoryBookingMLD.postValue(response.body());
                 Log.d(TAG, "onResponse: " + response.body());
             }
             @Override
@@ -106,4 +107,11 @@ public class BookingService{
         callback = bookingCallback;
     }
 
+    BookingHistoryCallback bookingHistoryCallback;
+    public interface BookingHistoryCallback{
+        void historyCallback(Integer statusCode, ClientBookingModel clientBookingModel);
+    }
+    public void setOnHistoryListener(BookingHistoryCallback callback){
+        bookingHistoryCallback = callback;
+    }
 }

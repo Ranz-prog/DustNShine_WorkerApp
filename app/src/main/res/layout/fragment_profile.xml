@@ -38,17 +38,18 @@
         android:paddingBottom="10dp">
 
         <LinearLayout
-            android:id="@+id/appicon"
+            android:id="@+id/appIconProfile"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:background="@drawable/circle_container"
-            android:gravity="center"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="30dp"
+            android:background="@drawable/circle_container"
+            android:gravity="center">
+
             <ImageView
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:src="@drawable/appicon"/>
+                android:src="@drawable/appicon" />
         </LinearLayout>
 
 
@@ -56,7 +57,7 @@
             android:id="@+id/profile_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/appicon"
+            android:layout_below="@+id/appIconProfile"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/roboto_medium"
@@ -152,5 +153,24 @@
         android:text="Log out"
         android:textColor="@color/white"
         android:textSize="15sp" />
+
+    <ImageView
+        android:id="@+id/noInternetProfileImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_wifi_off"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/noInternetConnectionProfileTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:layout_centerInParent="true"
+        android:text="Oops! No internet connection"
+        android:layout_below="@id/noInternetProfileImage"
+        android:textSize="15sp"
+        android:visibility="invisible" />
 
 </RelativeLayout>
