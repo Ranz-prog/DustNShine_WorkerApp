@@ -52,7 +52,7 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
 
     SwipeRefreshLayout history_swipeRefreshLayout;
     ImageView emptyHistoryImage, noInternetHistoryImage;
-    TextView noHistoryResult, noIntenetResultHistory;
+    TextView noHistoryResult, noIntenetResultHistory, titleHistory;
 
     @Nullable
     @Override
@@ -70,7 +70,7 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
         history_swipeRefreshLayout = view.findViewById(R.id.history_refresh);
         noIntenetResultHistory = view.findViewById(R.id.noInternetConnectionHistoryTV);
         noInternetHistoryImage = view.findViewById(R.id.noInternetHistoryImage);
-
+        titleHistory = view.findViewById(R.id.titleTaskHist);
 
         if (!isConnected()){
             noInternetHistoryImage.setVisibility(View.VISIBLE);
@@ -78,6 +78,7 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
             bookingRecycler.setVisibility(View.GONE);
             emptyHistoryImage.setVisibility(View.GONE);
             noHistoryResult.setVisibility(View.GONE);
+            titleHistory.setVisibility(View.GONE);
         }
         else{
             noInternetHistoryImage.setVisibility(View.GONE);
@@ -111,7 +112,6 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
         return view;
     }
 
-
     @Override
     public void onStart() {
         super.onStart();
@@ -120,8 +120,6 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
 
         onChangeMethodHistory();
     }
-
-
     public boolean isConnected(){
         ConnectivityManager manager = (ConnectivityManager) getActivity().getApplicationContext()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -153,7 +151,11 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
                         noHistoryResult.setVisibility(View.GONE);
                         noInternetHistoryImage.setVisibility(View.GONE);
                         noIntenetResultHistory.setVisibility(View.GONE);
-                    } else {
+                    } else if(clientHistoryBookData.size() == 0){
+                        titleHistory.setVisibility(View.VISIBLE);
+                    }
+
+                    else {
                         bookingRecycler.setVisibility(View.GONE);
                         emptyHistoryImage.setVisibility(View.VISIBLE);
                         noHistoryResult.setVisibility(View.VISIBLE);

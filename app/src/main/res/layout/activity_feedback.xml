@@ -9,14 +9,14 @@
     <RelativeLayout
         android:id="@+id/upperPart"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:background="@color/white"
         android:padding="2dp">
 
         <ImageView
             android:id="@+id/ic_arrowbackFeeback"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="12dp"
@@ -50,23 +50,25 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                >
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/upper"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardElevation="4dp"
+                    android:layout_marginTop="10dp"
                     android:layout_margin="10dp"
                     >
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:paddingBottom="10dp"
-                        android:paddingTop="10dp">
+                        android:paddingTop="4dp"
+                        >
 
                         <ImageView
                             android:id="@+id/cdIcon"
@@ -183,11 +185,11 @@
                                 />
 
                             <androidx.recyclerview.widget.RecyclerView
-                                android:layout_marginTop="10dp"
                                 android:id="@+id/history_recyclerView"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/history_noteTV" />
+                                android:layout_below="@id/history_noteTV"
+                                android:layout_marginTop="10dp" />
                         </RelativeLayout>
 
                         <ImageView

@@ -20,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,9 +31,11 @@ import com.example.dnsworker.CustomerDetails;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
 import com.example.dnsworker.Model.ClientBookingModel.Service;
+import com.example.dnsworker.Model.User.User;
 import com.example.dnsworker.R;
 import com.example.dnsworker.Service.BookingService;
 import com.example.dnsworker.ViewModel.ClientBookingViewModel;
+import com.example.dnsworker.ViewModel.UserViewModel;
 import com.example.dnsworker.adapter.Task_Adapter;
 import com.google.gson.Gson;
 
@@ -48,10 +51,11 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
     private ClientBookingViewModel clientBookingViewModel;
     private String retrievedToken;
     private SharedPreferences preferences;
-    TextView noResult, noInternetResult;
+    TextView noResult, noInternetResult, worker_name, count_task, hiTV, youhaveTV, newTaskToday;
     private NotificationManagerCompat notificationManagerCompat;
     private SwipeRefreshLayout swipeRefreshLayout;
     ImageView emptyImage, noConnectionImage;
+    UserViewModel userViewModel;
 
     @Nullable
     @Override
@@ -73,12 +77,18 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         emptyImage = view.findViewById(R.id.noResultLottie);
         noInternetResult = view.findViewById(R.id.noInternetConnectionTV);
         noConnectionImage = view.findViewById(R.id.noInternetImage);
+        worker_name = view.findViewById(R.id.home_worker_name);
+        count_task = view.findViewById(R.id.home_count_task);
+        hiTV = view.findViewById(R.id.hiTV);
+        youhaveTV = view.findViewById(R.id.youHaveTV);
+        newTaskToday = view.findViewById(R.id.newTaskTodayTV);
 
         //Passed Data from shared Pref
         preferences = getActivity().getSharedPreferences("AUTH_TOKEN", Context.MODE_PRIVATE);
         retrievedToken = preferences.getString("TOKEN", null);
 
-
+        userViewModel = new UserViewModel();
+        getUserInformation();
 
         if (!isConnected()){
             noConnectionImage.setVisibility(View.VISIBLE);
@@ -86,6 +96,11 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
             taskRecycler.setVisibility(View.GONE);
             emptyImage.setVisibility(View.GONE);
             noResult.setVisibility(View.GONE);
+            hiTV.setVisibility(View.GONE);
+            worker_name.setVisibility(View.GONE);
+            youhaveTV.setVisibility(View.GONE);
+            count_task.setVisibility(View.GONE);
+            newTaskToday.setVisibility(View.GONE);
         }
         else{
             noConnectionImage.setVisibility(View.GONE);
@@ -93,6 +108,11 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
             taskRecycler.setVisibility(View.VISIBLE);
             emptyImage.setVisibility(View.GONE);
             noResult.setVisibility(View.GONE);
+            hiTV.setVisibility(View.VISIBLE);
+            worker_name.setVisibility(View.VISIBLE);
+            youhaveTV.setVisibility(View.VISIBLE);
+            count_task.setVisibility(View.VISIBLE);
+            newTaskToday.setVisibility(View.VISIBLE);
         }
 
         clientBookingViewModel = ViewModelProviders.of(getActivity()).get(ClientBookingViewModel.class);
@@ -130,6 +150,14 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         Log.d(TAG, "onResume: ");
     }
 
+    private void getUserInformation(){
+        userViewModel.getUserDataResponse(retrievedToken).observe(getActivity(), new Observer<User>() {
+            @Override
+            public void onChanged(User user) {
+                worker_name.setText(user.getFirst_name());
+            }
+        });
+    }
     private void onChangedMethod() {
 
         clientBookingViewModel.getClientBookingData(retrievedToken);
@@ -145,10 +173,30 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
 
                     if (clientBookData.size() != 0){
                         taskRecycler.setVisibility(View.VISIBLE);
+                        hiTV.setVisibility(View.VISIBLE);
+                        worker_name.setVisibility(View.VISIBLE);
+                        youhaveTV.setVisibility(View.VISIBLE);
+                        count_task.setVisibility(View.VISIBLE);
+                        newTaskToday.setVisibility(View.VISIBLE);
                         emptyImage.setVisibility(View.GONE);
                         noResult.setVisibility(View.GONE);
                         noConnectionImage.setVisibility(View.GONE);
                         noInternetResult.setVisibility(View.GONE);
+
+
+                    }
+                    else if (clientBookData.size() == 0){
+                        hiTV.setVisibility(View.VISIBLE);
+                        youhaveTV.setVisibility(View.VISIBLE);
+                        count_task.setVisibility(View.VISIBLE);
+                        newTaskToday.setVisibility(View.VISIBLE);
+
+                        taskRecycler.setVisibility(View.GONE);
+                        emptyImage.setVisibility(View.VISIBLE);
+                        noResult.setVisibility(View.VISIBLE);
+                        noConnectionImage.setVisibility(View.GONE);
+                        noInternetResult.setVisibility(View.GONE);
+
                     }
                     else{
                         taskRecycler.setVisibility(View.GONE);
@@ -156,7 +204,12 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
                         noResult.setVisibility(View.VISIBLE);
                         noConnectionImage.setVisibility(View.GONE);
                         noInternetResult.setVisibility(View.GONE);
+
                     }
+
+                    count_task.setText(String.valueOf(clientBookData.size()));
+
+
                     Log.d("TAG", "REFRESH == > " + clientBookData.size());
 
                 }
