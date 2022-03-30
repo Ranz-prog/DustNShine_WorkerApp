@@ -8,7 +8,7 @@
         android:id="@+id/upPart"
         android:layout_width="match_parent"
         android:layout_height="36dp"
-        android:background="@color/app_theme_blue"
+        android:background="@color/white"
         >
 
         <TextView
@@ -20,7 +20,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/roboto_medium"
             android:text="History"
-            android:textColor="@color/white"
+            android:textColor="@color/app_theme_gold"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginBottom="2dp"/>
@@ -31,7 +31,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/upPart"
-        android:layout_marginTop="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp">

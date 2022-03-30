@@ -3,6 +3,7 @@ package com.example.dnsworker;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -33,7 +34,7 @@ public class LoginPage extends AppCompatActivity {
 
     Context context;
 
-    private Button signin_btnSignin;
+    private AppCompatButton signin_btnSignin;
     private TextInputEditText signin_email, signin_password;
     UserViewModel userViewModel;
 

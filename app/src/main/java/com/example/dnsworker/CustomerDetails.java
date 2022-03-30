@@ -5,6 +5,7 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -59,7 +60,7 @@ import javax.mail.internet.MimeMessage;
 public class CustomerDetails extends AppCompatActivity implements OnMapReadyCallback {
 
     private ImageView arrowBack;
-    private Button startWorkButton, onGoingWorkButton;
+    private AppCompatButton startWorkButton, onGoingWorkButton;
     private ImageView button_VideoCall;
     private GoogleMap map;
     private RecyclerView serviceRecyclerView;

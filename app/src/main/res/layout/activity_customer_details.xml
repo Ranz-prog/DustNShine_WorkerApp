@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".CustomerDetails">
 
@@ -18,18 +18,16 @@
             android:id="@+id/upperPart"
             android:layout_width="match_parent"
             android:layout_height="36dp"
-            android:background="@color/app_theme_blue"
+            android:background="@color/white"
             android:padding="2dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="10dp"
+                android:layout_centerInParent="true"
                 android:fontFamily="@font/roboto_bold"
                 android:text="Customer Details"
-                android:textColor="@color/white"
+                android:textColor="@color/app_theme_gold"
                 android:textSize="20sp" />
 
             <ImageView
@@ -40,8 +38,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/ic_videocall"
-                android:onClick="videoCall"/>
+                android:onClick="videoCall"
+                android:src="@drawable/ic_videocall" />
 
             <ImageView
                 android:id="@+id/ic_arrowbackCustomerDetails"
@@ -84,118 +82,150 @@
                         map:uiZoomControls="true"
                         map:uiZoomGestures="true" />
 
-                    <ImageView
-                        android:id="@+id/cdIcon"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_below="@id/mapView"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/ic_customerdetails" />
-
-                    <TextView
-                        android:id="@+id/customerDetailsTV"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/mapView"
-                        android:layout_marginTop="10dp"
-                        android:layout_toRightOf="@id/cdIcon"
-                        android:fontFamily="@font/roboto_bold"
-                        android:text="Customer Details"
-                        android:textColor="@color/app_theme_blue"
-                        android:textSize="17sp" />
-
-                    <TextView
-                        android:id="@+id/c_details_fullname"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/customerDetailsTV"
-                        android:layout_marginLeft="28dp"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="Juan Delacruz"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/c_details_schedule"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/c_details_fullname"
-                        android:layout_marginLeft="28dp"
-                        android:fontFamily="@font/roboto_regular" />
-
-
-                    <TextView
-                        android:id="@+id/c_details_location"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/c_details_schedule"
-                        android:layout_marginLeft="28dp"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="431 St. Brgy, Poblacion, Dagupan, Pangasinan"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/c_details_mobileNumber"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/c_details_location"
-                        android:layout_marginLeft="28dp"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="09661581921"
-                        android:textSize="14sp" />
-
-
-                    <ImageView
-                        android:id="@+id/cdBooking"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_below="@id/c_details_mobileNumber"
-                        android:layout_marginTop="8dp"
-                        android:src="@drawable/ic_bookingdetails" />
-
-                    <TextView
-                        android:id="@+id/bookingDetailsTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/c_details_mobileNumber"
-                        android:layout_marginTop="8dp"
-                        android:layout_toRightOf="@id/cdBooking"
-                        android:fontFamily="@font/roboto_bold"
-                        android:text="Booking Details"
-                        android:textColor="@color/app_theme_blue"
-                        android:textSize="17sp" />
-
-
-                    <TextView
-                        android:id="@+id/noteLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/bookingDetailsTextView"
-                        android:layout_marginLeft="28dp"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="Note: "
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/customer_noteTV"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/bookingDetailsTextView"
-                        android:layout_toRightOf="@id/noteLabel"
-                        android:fontFamily="@font/roboto_regular"
-                        android:textSize="15sp" />
-
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/customer_noteTV"
-                        android:background="@color/background"
-                        android:padding="4dp">
+                        android:layout_below="@id/mapView"
+                        >
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/service_RecyclerView"
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/upper"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
+                            android:layout_height="wrap_content"
+                            app:cardElevation="8dp"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
+                            >
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp">
+                                <ImageView
+                                    android:id="@+id/cdIcon"
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:src="@drawable/ic_customerdetails" />
+
+                                <TextView
+                                    android:id="@+id/customerDetailsTV"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/cdIcon"
+                                    android:fontFamily="@font/roboto_bold"
+                                    android:text="Customer Details"
+                                    android:textColor="@color/app_theme_blue"
+                                    android:textSize="17sp" />
+
+                                <TextView
+                                    android:id="@+id/c_details_fullname"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/customerDetailsTV"
+                                    android:layout_marginLeft="28dp"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:text="Juan Delacruz"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/c_details_schedule"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/c_details_fullname"
+                                    android:layout_marginLeft="28dp"
+                                    android:fontFamily="@font/roboto_regular" />
+
+
+                                <TextView
+                                    android:id="@+id/c_details_location"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/c_details_schedule"
+                                    android:layout_marginLeft="28dp"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:text="431 St. Brgy, Poblacion, Dagupan, Pangasinan"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/c_details_mobileNumber"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/c_details_location"
+                                    android:layout_marginLeft="28dp"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:text="09661581921"
+                                    android:textSize="14sp" />
+
+
+                                <ImageView
+                                    android:id="@+id/cdBooking"
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:layout_below="@id/c_details_mobileNumber"
+                                    android:layout_marginTop="8dp"
+                                    android:src="@drawable/ic_bookingdetails" />
+
+                                <TextView
+                                    android:id="@+id/bookingDetailsTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/c_details_mobileNumber"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_toRightOf="@id/cdBooking"
+                                    android:fontFamily="@font/roboto_bold"
+                                    android:text="Booking Details"
+                                    android:textColor="@color/app_theme_blue"
+                                    android:textSize="17sp" />
+
+
+                                <TextView
+                                    android:id="@+id/noteLabel"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/bookingDetailsTextView"
+                                    android:layout_marginLeft="28dp"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="Note: "
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/customer_noteTV"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/bookingDetailsTextView"
+                                    android:layout_toRightOf="@id/noteLabel"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:textSize="15sp" />
+
+                                <com.google.android.material.divider.MaterialDivider
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1px"
+                                    android:layout_below="@id/customer_noteTV"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginRight="26dp"
+                                    android:layout_marginLeft="26dp"
+                                    app:dividerColor="@color/line_color" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/customer_noteTV"
+                                    android:background="@color/white"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginBottom="10dp"
+                                    >
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/service_RecyclerView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@color/white"/>
+                                </LinearLayout>
+                            </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
+
+                    </RelativeLayout>
                 </RelativeLayout>
             </ScrollView>
         </RelativeLayout>
@@ -208,23 +238,23 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/startWorkButton"
             android:layout_width="match_parent"
+            android:background="@drawable/button_container_shape"
             android:layout_height="60dp"
-            android:background="@color/app_theme_blue"
-            android:fontFamily="@font/roboto_regular"
+            android:fontFamily="@font/roboto_medium"
             android:text="Start Work"
             android:textColor="@color/white"
             android:textSize="14sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/onGoingWorkButton"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@color/app_theme_blue"
+            android:background="@drawable/button_container_shape"
             android:enabled="false"
-            android:fontFamily="@font/roboto_regular"
+            android:fontFamily="@font/roboto_medium"
             android:text="On Going Work"
             android:textColor="@color/white"
             android:textSize="15sp"

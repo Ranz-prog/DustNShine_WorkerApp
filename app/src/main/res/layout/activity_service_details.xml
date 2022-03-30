@@ -5,16 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ServiceDetails"
-    android:background="@color/background"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:elevation="4dp"
         android:layout_above="@id/doneWorkButton"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:elevation="4dp"
+        >
 
         <RelativeLayout
             android:id="@+id/midPart"
@@ -28,229 +29,255 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/cleaningimage" />
 
-            <RelativeLayout
-                android:id="@+id/customerDetailsContainer"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/upper"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/service_Image"
-                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
-                android:elevation="4dp">
+                app:cardElevation="8dp">
 
-                <ImageView
-                    android:id="@+id/cdCustomer"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="8dp"
-                    android:src="@drawable/ic_customerdetails" />
-
-                <TextView
-                    android:id="@+id/service_customerDetailsLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_toRightOf="@+id/cdCustomer"
-                    android:fontFamily="@font/roboto_medium"
-                    android:text="@string/customer_details"
-                    android:textColor="@color/app_theme_blue"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-
-                <!--Customer Name Here-->
-
-                <TextView
-                    android:id="@+id/service_customerNameTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/service_customerDetailsLabel"
-                    android:layout_marginLeft="28dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="Juan Dela Cruz"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/service_schedule"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/service_customerNameTV"
-                    android:layout_marginLeft="28dp"
-                    android:fontFamily="@font/roboto_regular" />
-
-                <!--Customer Location-->
-
-                <TextView
-                    android:id="@+id/service_customerLocationTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/service_schedule"
-                    android:layout_marginLeft="28dp"
-                    android:layout_marginTop="1dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="123 Arellano, Dagupan City" />
-
-                <!--Contact Number-->
-
-                <TextView
-                    android:id="@+id/service_customerMobileNumberTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/service_customerLocationTV"
-                    android:layout_marginLeft="28dp"
-                    android:layout_marginTop="1dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="09661581921" />
-
-                <TextView
-                    android:id="@+id/statusLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/service_customerMobileNumberTV"
-                    android:layout_marginLeft="28dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@string/customer_status"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/statusTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/service_customerMobileNumberTV"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="1dp"
-                    android:layout_toRightOf="@id/statusLabel"
-                    android:fontFamily="@font/roboto_regular" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/bookingDetailsContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/customerDetailsContainer"
-                android:padding="10dp">
-
-                <ImageView
-                    android:id="@+id/cdBooking"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_bookingdetails" />
-
-                <TextView
-                    android:id="@+id/titleBookingDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@id/cdBooking"
-                    android:fontFamily="@font/roboto_medium"
-                    android:text="@string/customer_booking"
-                    android:textColor="@color/app_theme_blue"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/noteLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/titleBookingDetails"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="Note: "
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/service_noteTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/titleBookingDetails"
-                    android:layout_marginTop="4dp"
-                    android:layout_toRightOf="@id/noteLabel"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="sample note"
-                    android:textSize="15sp" />
-
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/noteLabel"
-                    android:layout_marginTop="3dp">
+                    android:padding="10dp">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/sdRecycler"
+                    <RelativeLayout
+                        android:id="@+id/customerDetailsContainer"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content">
 
-                </LinearLayout>
-            </RelativeLayout>
+                        <ImageView
+                            android:id="@+id/cdCustomer"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginTop="8dp"
+                            android:src="@drawable/ic_customerdetails" />
 
-            <ImageView
-                android:id="@+id/cdPayment"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_below="@id/bookingDetailsContainer"
-                android:paddingLeft="10dp"
-                android:src="@drawable/money" />
+                        <TextView
+                            android:id="@+id/service_customerDetailsLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_toRightOf="@+id/cdCustomer"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/customer_details"
+                            android:textColor="@color/app_theme_blue"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/paymentMethodLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/bookingDetailsContainer"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="2dp"
-                android:layout_toRightOf="@id/cdPayment"
-                android:fontFamily="@font/roboto_medium"
-                android:text="@string/customer_payment"
-                android:textColor="@color/app_theme_blue"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+                        <!--Customer Name Here-->
 
-            <TextView
-                android:id="@+id/service_paymentMethod"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/paymentMethodLabel"
-                android:layout_marginLeft="42dp"
-                android:fontFamily="@font/roboto_regular"
-                android:text="Cash"
-                android:textSize="15sp" />
+                        <TextView
+                            android:id="@+id/service_customerNameTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/service_customerDetailsLabel"
+                            android:layout_marginLeft="28dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="Juan Dela Cruz"
+                            android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/totalCostlabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/service_paymentMethod"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/quicsandmed"
-                android:text="@string/customer_total"
-                android:textColor="@color/app_theme_blue"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/service_schedule"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/service_customerNameTV"
+                            android:layout_marginLeft="28dp"
+                            android:fontFamily="@font/roboto_regular" />
 
-            <TextView
-                android:id="@+id/totalCost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/service_paymentMethod"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="4dp"
-                android:layout_toRightOf="@id/totalCostlabel"
-                android:fontFamily="@font/quicsandmed"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+                        <!--Customer Location-->
+
+                        <TextView
+                            android:id="@+id/service_customerLocationTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/service_schedule"
+                            android:layout_marginLeft="28dp"
+                            android:layout_marginTop="1dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="123 Arellano, Dagupan City" />
+
+                        <!--Contact Number-->
+
+                        <TextView
+                            android:id="@+id/service_customerMobileNumberTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/service_customerLocationTV"
+                            android:layout_marginLeft="28dp"
+                            android:layout_marginTop="1dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="09661581921" />
+
+                        <TextView
+                            android:id="@+id/statusLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/service_customerMobileNumberTV"
+                            android:layout_marginLeft="28dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="@string/customer_status"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/statusTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/service_customerMobileNumberTV"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_toRightOf="@id/statusLabel"
+                            android:fontFamily="@font/roboto_regular" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/bookingDetailsContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/customerDetailsContainer"
+                        android:paddingTop="0dp">
+
+                        <ImageView
+                            android:id="@+id/cdBooking"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_bookingdetails" />
+
+                        <TextView
+                            android:id="@+id/titleBookingDetails"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/cdBooking"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/customer_booking"
+                            android:textColor="@color/app_theme_blue"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/noteLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/titleBookingDetails"
+                            android:layout_marginLeft="26dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Note: "
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/service_noteTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/titleBookingDetails"
+                            android:layout_toRightOf="@id/noteLabel"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="sample note"
+                            android:textSize="15sp" />
+
+                        <com.google.android.material.divider.MaterialDivider
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_below="@id/service_noteTV"
+                            android:layout_marginLeft="26dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="26dp"
+                            app:dividerColor="@color/line_color" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/noteLabel"
+                            android:layout_marginTop="10dp">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/sdRecycler"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/bookingDetailsContainer"
+                        android:layout_marginBottom="10dp">
+
+                        <ImageView
+                            android:id="@+id/cdPayment"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/money" />
+
+                        <TextView
+                            android:id="@+id/paymentMethodLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="3dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_toRightOf="@id/cdPayment"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/customer_payment"
+                            android:textColor="@color/app_theme_blue"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/service_paymentMethod"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/paymentMethodLabel"
+                            android:layout_marginLeft="33dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="Cash"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/totalCostlabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/service_paymentMethod"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/quicsandmed"
+                            android:text="@string/customer_total"
+                            android:textColor="@color/app_theme_blue"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/totalCost"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/service_paymentMethod"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_toRightOf="@id/totalCostlabel"
+                            android:fontFamily="@font/quicsandmed"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+
         </RelativeLayout>
     </ScrollView>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/doneWorkButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/app_theme_blue"
-        android:fontFamily="@font/roboto_regular"
+        android:background="@drawable/button_container_shape"
+        android:fontFamily="@font/roboto_medium"
         android:text="Work is Done"
         android:textColor="@color/white" />
 

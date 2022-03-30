@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="45dp"
     android:orientation="vertical"
-    android:layout_marginLeft="10dp">
+    android:layout_marginLeft="26dp"
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/icon"
@@ -17,11 +18,13 @@
         android:id="@+id/service_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="11dp"
+        android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/icon"
         android:fontFamily="@font/roboto_medium"
         android:text="Customer Details"
-        android:textSize="14sp" />
+        android:layout_marginTop="4dp"
+        android:textSize="14sp"
+        />
 
     <TextView
         android:id="@+id/service_description"

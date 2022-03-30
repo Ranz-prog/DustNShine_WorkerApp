@@ -92,15 +92,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/signup_buttonSignin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/passwordInputLayout"
             android:layout_marginTop="20dp"
             android:background="@drawable/signin_button_shape"
-            android:backgroundTint="@color/app_theme_gold"
-            android:fontFamily="@font/montserrat_regular"
+            android:fontFamily="@font/roboto_medium"
             android:text="@string/signup_button_title"
             android:textColor="@color/white"
             android:textSize="15sp" />

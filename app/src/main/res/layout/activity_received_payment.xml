@@ -145,17 +145,16 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_ReceivedPayment"
                 android:layout_width="100dp"
                 android:layout_height="60dp"
                 android:layout_below="@+id/line"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="8dp"
-                android:backgroundTint="@color/app_theme_blue"
+                android:backgroundTint="@color/app_theme_gold"
                 android:text="Receive"
-                android:textColor="@color/white"
-                />
+                android:textColor="@color/white" />
 
         </RelativeLayout>
 

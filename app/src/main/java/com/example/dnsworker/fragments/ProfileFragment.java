@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import com.example.dnsworker.LoginPage;
@@ -35,7 +36,7 @@ public class ProfileFragment  extends Fragment {
     private View view;
     private TextInputEditText worker_fname,
                               worker_email, worker_contact;
-    private Button btnLogout;
+    private AppCompatButton btnLogout;
     private  String retrievedToken;
     LinearLayout appIcon;
     SharedPreferences preferences;

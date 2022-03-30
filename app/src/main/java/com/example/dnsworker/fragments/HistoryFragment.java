@@ -107,7 +107,7 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
                 }, 1000);
             }
         });
-        
+
         return view;
     }
 

@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -42,7 +43,7 @@ import java.util.Calendar;
 
 public class ServiceDetails extends AppCompatActivity {
 
-    private Button doneWorkBtn;
+    private AppCompatButton doneWorkBtn;
     private TextView customerName, customerMobileNumber, totalCost, customerLocation, workStatus, schedule, note;
     private Dialog dialog;
     private RecyclerView serviceRecyclerView;

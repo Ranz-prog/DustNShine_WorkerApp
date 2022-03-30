@@ -2,6 +2,8 @@ package com.example.dnsworker;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,7 +23,7 @@ public class ReceivedPayment extends AppCompatActivity {
     String client_firstname, client_lastname, clientschedule, clientlocation, clientcontact, client_totalcost;
     TextInputLayout receive_amount_ET;
     SharedPreferences preferences;
-    Button received_btn;
+    AppCompatButton received_btn;
     private Dialog dialog;
 
 
