@@ -164,7 +164,7 @@ public class ServiceDetails extends AppCompatActivity {
 
         AppCompatButton btnDone = (AppCompatButton) dialog.findViewById(R.id.dismissWarningButton);
         TextView warningMessage = (TextView) dialog.findViewById(R.id.warningErrorMessage);
-        warningMessage.setText("You are not allowed to exit the app. You need to finish the task first to proceed.");
+        warningMessage.setText("You are not allowed to return to the previous page. You need to finish the task first to proceed.");
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

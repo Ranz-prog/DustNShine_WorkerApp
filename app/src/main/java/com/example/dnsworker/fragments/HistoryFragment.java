@@ -150,8 +150,14 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
                         noHistoryResult.setVisibility(View.GONE);
                         noInternetHistoryImage.setVisibility(View.GONE);
                         noIntenetResultHistory.setVisibility(View.GONE);
+
                     } else if(clientHistoryBookData.size() == 0){
                         titleHistory.setVisibility(View.VISIBLE);
+                        bookingRecycler.setVisibility(View.GONE);
+                        emptyHistoryImage.setVisibility(View.VISIBLE);
+                        noHistoryResult.setVisibility(View.VISIBLE);
+                        noInternetHistoryImage.setVisibility(View.GONE);
+                        noIntenetResultHistory.setVisibility(View.GONE);
                     }
 
                     else {
