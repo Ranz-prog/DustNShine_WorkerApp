@@ -1,23 +1,15 @@
 package com.example.dnsworker.adapter.SLAdapter;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.dnsworker.Model.ClientBookingModel.Service;
 import com.example.dnsworker.R;
-import com.example.dnsworker.adapter.ServiceListAdapter.ServiceListAdapter;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
-import java.util.prefs.Preferences;
 
 public class SLAdapter extends RecyclerView.Adapter<SLAdapter.ViewHolder> {
 

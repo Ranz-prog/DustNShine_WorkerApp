@@ -10,9 +10,7 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
-
 import com.example.dnsworker.fragments.HistoryFragment;
-import com.example.dnsworker.fragments.ChatFragment;
 import com.example.dnsworker.fragments.HomeFragment;
 import com.example.dnsworker.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

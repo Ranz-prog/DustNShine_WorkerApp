@@ -1,37 +1,21 @@
 package com.example.dnsworker.adapter;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
-import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
-import com.example.dnsworker.Model.ClientBookingModel.Customer;
 import com.example.dnsworker.R;
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> {
 
     private Context context;
-//    private ClientBookData[] customerList;
     private ArrayList<ClientBookData> customerList;
     private OnClickTaskListener onClickTaskListener;
 
@@ -80,6 +64,7 @@ public class Task_Adapter extends RecyclerView.Adapter<Task_Adapter.ViewHolder> 
         private TextView task_clientName, task_clientLocation, task_clientContact,
                 task_clientSchedule, task_firstLetter;
         OnClickTaskListener onClickTaskListener;
+        CardView cardView;
 
         public ViewHolder(@NonNull View itemView, OnClickTaskListener onClickTaskListener) {
             super(itemView);

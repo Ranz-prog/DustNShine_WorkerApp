@@ -1,9 +1,6 @@
 package com.example.dnsworker.fragments;
 
 import static android.content.ContentValues.TAG;
-
-import static org.webrtc.ContextUtils.getApplicationContext;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,9 +23,8 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-import com.airbnb.lottie.LottieAnimationView;
 import com.example.dnsworker.CustomerDetails;
+import com.example.dnsworker.LoadingDialog;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
 import com.example.dnsworker.Model.ClientBookingModel.Service;
@@ -56,6 +53,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
     private SwipeRefreshLayout swipeRefreshLayout;
     ImageView emptyImage, noConnectionImage;
     UserViewModel userViewModel;
+    ProgressBar circularProgressIndicator;
 
     @Nullable
     @Override
@@ -82,6 +80,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         hiTV = view.findViewById(R.id.hiTV);
         youhaveTV = view.findViewById(R.id.youHaveTV);
         newTaskToday = view.findViewById(R.id.newTaskTodayTV);
+        circularProgressIndicator = view.findViewById(R.id.circularProgressBar);
 
         //Passed Data from shared Pref
         preferences = getActivity().getSharedPreferences("AUTH_TOKEN", Context.MODE_PRIVATE);
@@ -90,7 +89,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         userViewModel = new UserViewModel();
         getUserInformation();
 
-        if (!isConnected()){
+        if (!isConnected()) {
             noConnectionImage.setVisibility(View.VISIBLE);
             noInternetResult.setVisibility(View.VISIBLE);
             taskRecycler.setVisibility(View.GONE);
@@ -101,8 +100,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
             youhaveTV.setVisibility(View.GONE);
             count_task.setVisibility(View.GONE);
             newTaskToday.setVisibility(View.GONE);
-        }
-        else{
+        } else {
             noConnectionImage.setVisibility(View.GONE);
             noInternetResult.setVisibility(View.GONE);
             taskRecycler.setVisibility(View.VISIBLE);
@@ -127,7 +125,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
                         onChangedMethod();
 
                     }
-                },1000);
+                }, 1000);
             }
         });
 
@@ -144,13 +142,8 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         onChangedMethod();
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.d(TAG, "onResume: ");
-    }
 
-    private void getUserInformation(){
+    private void getUserInformation() {
         userViewModel.getUserDataResponse(retrievedToken).observe(getActivity(), new Observer<User>() {
             @Override
             public void onChanged(User user) {
@@ -158,6 +151,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
             }
         });
     }
+
     private void onChangedMethod() {
 
         clientBookingViewModel.getClientBookingData(retrievedToken);
@@ -171,7 +165,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
                     task_adapter.setTaskModelList(clientBookDataList);
                     noResult.setVisibility(View.GONE);
 
-                    if (clientBookData.size() != 0){
+                    if (clientBookData.size() != 0) {
                         taskRecycler.setVisibility(View.VISIBLE);
                         hiTV.setVisibility(View.VISIBLE);
                         worker_name.setVisibility(View.VISIBLE);
@@ -184,8 +178,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
                         noInternetResult.setVisibility(View.GONE);
 
 
-                    }
-                    else if (clientBookData.size() == 0){
+                    } else if (clientBookData.size() == 0) {
                         hiTV.setVisibility(View.VISIBLE);
                         youhaveTV.setVisibility(View.VISIBLE);
                         count_task.setVisibility(View.VISIBLE);
@@ -197,8 +190,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
                         noConnectionImage.setVisibility(View.GONE);
                         noInternetResult.setVisibility(View.GONE);
 
-                    }
-                    else{
+                    } else {
                         taskRecycler.setVisibility(View.GONE);
                         emptyImage.setVisibility(View.VISIBLE);
                         noResult.setVisibility(View.VISIBLE);
@@ -212,9 +204,7 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
 
                     Log.d("TAG", "REFRESH == > " + clientBookData.size());
 
-                }
-
-                else {
+                } else {
                     //if No Data retrieved
                     Log.d("TAG", "NO REFRESH");
                 }
@@ -223,20 +213,28 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
 
     }
 
-    public boolean isConnected(){
+    public boolean isConnected() {
         ConnectivityManager manager = (ConnectivityManager) getActivity().getApplicationContext()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
-        return manager.getActiveNetworkInfo()!= null && manager.getActiveNetworkInfo().isConnectedOrConnecting();
+        return manager.getActiveNetworkInfo() != null && manager.getActiveNetworkInfo().isConnectedOrConnecting();
     }
-
-
 
     @Override
     public void onClickTask(int position) {
         Log.d(TAG, "onClickTask: clicked");
-        loadData(position);
-        Intent intent = new Intent(getContext(), CustomerDetails.class);
-        startActivity(intent);
+
+        final LoadingDialog loadingDialog = new LoadingDialog(getActivity());
+        loadingDialog.startLoadingDialog();
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loadData(position);
+                Intent intent = new Intent(getContext(), CustomerDetails.class);
+                startActivity(intent);
+                loadingDialog.dismissDialog();
+            }
+        }, 1000);
     }
 
     private void loadData(int position) {
@@ -278,7 +276,6 @@ public class HomeFragment extends Fragment implements Task_Adapter.OnClickTaskLi
         servicePreference.edit().putString("SERVICE_LIST", jsonString).commit();
 
     }
-
 
     @Override
     public void onRefresh() {

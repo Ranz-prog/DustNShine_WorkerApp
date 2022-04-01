@@ -5,28 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-
-<!--    <RelativeLayout-->
-<!--        android:id="@+id/upPart"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:background="@color/white">-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/titleTask"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_centerInParent="true"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_marginBottom="2dp"-->
-<!--            android:fontFamily="@font/roboto_bold"-->
-<!--            android:text="Profile"-->
-<!--            android:textColor="@color/app_theme_gold"-->
-<!--            android:textSize="20sp"-->
-<!--            android:textStyle="bold" />-->
-
-<!--    </RelativeLayout>-->
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

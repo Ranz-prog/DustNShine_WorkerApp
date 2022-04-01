@@ -39,6 +39,8 @@
 
     //Pop Up Message
     <string name="confirmation_message">Work is done! Please wait for the customers Feedback.</string>
+    <string name="start_work_message">Would you like to start your work?</string>
+    <string name="end_work_message">Would you like to finish your work?</string>
 
     //User Information
     <string name="user_email">Email</string>

@@ -19,8 +19,9 @@
         <RelativeLayout
             android:id="@+id/warningContainer"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="220dp"
             android:padding="10dp"
+            android:gravity="center"
             >
 
             <ImageView
@@ -28,7 +29,6 @@
                 android:layout_width="68dp"
                 android:layout_height="68dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="12dp"
                 android:src="@drawable/ic_error_2" />
             <TextView
                 android:id="@+id/warningErrorMessage"
@@ -50,17 +50,19 @@
                 android:layout_marginTop="6dp"
                 app:dividerColor="@color/line_color" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/dismissWarningButton"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/lineDividerHorizontal"
                 android:layout_centerInParent="true"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/signin_button_shape"
                 android:fontFamily="@font/roboto_medium"
+                android:stateListAnimator="@null"
                 android:text="Dismiss"
-                android:textColor="@color/app_theme_blue"
-                android:textSize="18sp" />
+                android:textColor="@color/white"
+                android:textSize="16sp" />
 
 
         </RelativeLayout>

@@ -7,6 +7,12 @@
     android:background="@color/white"
     >
 
+    <ProgressBar
+        android:id="@+id/circularProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"/>
 
     <RelativeLayout
         android:id="@+id/upPart"
@@ -68,7 +74,7 @@
             android:layout_marginLeft="4dp"
             android:layout_toRightOf="@+id/home_count_task"
             android:fontFamily="@font/roboto_regular"
-            android:text=" new task today"
+            android:text=" pending task"
             android:textColor="@color/app_theme_blue"
             android:textSize="14sp" />
 

@@ -9,9 +9,13 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
@@ -21,6 +25,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
@@ -67,6 +72,8 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
     private TextView fullnameTV, mobilenumberTV, addressTV, scheduleTV, noteTV;
     private String first_name, last_name, mobile_number, location, client_email,
             schedule, note, authToken, worker_email, worker_password;
+    private Dialog dialog;
+    private AppCompatButton btnYes, btnNo;
 
     Service[] serviceList;
     ClientBookData[] customerList;
@@ -89,7 +96,6 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         noteTV = findViewById(R.id.customer_noteTV);
         button_VideoCall = findViewById(R.id.btnVideoCall);
 
-        //RecyclerView for Service List
         serviceRecyclerView = findViewById(R.id.service_RecyclerView);
         serviceRecyclerView.setHasFixedSize(true);
         serviceRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -98,6 +104,8 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
 
         authPref = getSharedPreferences("AUTH_TOKEN", MODE_PRIVATE);
         authToken = authPref.getString("TOKEN", null);
+
+        dialog = new Dialog(this);
 
         clientBookingVM = new ClientBookingViewModel();
         loadData();
@@ -113,10 +121,7 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         startWorkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                postStartTimeAndDate();
-                Intent intent = new Intent(CustomerDetails.this, ServiceDetails.class);
-                startActivity(intent);
-                finish();
+                alertStartDialog();
 
             }
         });
@@ -155,6 +160,34 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
             onGoingWorkButton.setVisibility(View.INVISIBLE);
             onGoingWorkButton.setEnabled(false);
         }
+    }
+
+    private void alertStartDialog(){
+        dialog.setContentView(R.layout.dialog_start_work);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        btnNo = dialog.findViewById(R.id.noStartButton);
+        btnYes = dialog.findViewById(R.id.yesStartButton);
+
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                postStartTimeAndDate();
+                Intent intent = new Intent(CustomerDetails.this, ServiceDetails.class);
+                startActivity(intent);
+                dialog.dismiss();
+                finish();
+
+            }
+        });
+        btnNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+
     }
 
     private void loadData() {
@@ -210,7 +243,7 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
-        //Sharedpref lat and longt
+
         preferences = getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
         String clientAdd = preferences.getString("address", null);
 
@@ -341,11 +374,9 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-
             if (s.equals("Success")) {
 
             }
-
         }
     }
 
@@ -357,6 +388,9 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
             return null;
         }
     }
+
+
+
 
     @Override
     public void onBackPressed() {

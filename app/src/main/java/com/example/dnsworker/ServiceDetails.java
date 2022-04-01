@@ -2,41 +2,28 @@ package com.example.dnsworker;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
 import com.example.dnsworker.Model.ClientBookingModel.Service;
 import com.example.dnsworker.ViewModel.ClientBookingViewModel;
 import com.example.dnsworker.adapter.SLAdapter.SLAdapter;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -55,6 +42,8 @@ public class ServiceDetails extends AppCompatActivity {
 
     private String first_name, last_name, mobile_number, location, total, status, sched, noteValue;
 
+    AppCompatButton yesButton, noButton;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +60,6 @@ public class ServiceDetails extends AppCompatActivity {
         note = findViewById(R.id.service_noteTV);
 
         clientBVM = new ClientBookingViewModel();
-
         dialog = new Dialog(this);
 
         serviceRecyclerView = findViewById(R.id.sdRecycler);
@@ -85,17 +73,40 @@ public class ServiceDetails extends AppCompatActivity {
         doneWorkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                postEndTimeAndDate();
-                Intent intent = new Intent(ServiceDetails.this, ReceivedPayment.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                finish();
+                alertEndDialog();
             }
         });
     }
 
-    private void loadData() {
+    private void alertEndDialog(){
+        dialog.setContentView(R.layout.dialog_end_work);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
+        yesButton = dialog.findViewById(R.id.yesEndButton);
+        noButton = dialog.findViewById(R.id.noEndButton);
+
+        yesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                postEndTimeAndDate();
+                Intent intent = new Intent(ServiceDetails.this, ReceivedPayment.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                dialog.dismiss();
+                startActivity(intent);
+                finish();
+
+            }
+        });
+        noButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
+    private void loadData() {
         //Shared Customer Data
         preferences = getSharedPreferences("CUSTOMER_DATA", Context.MODE_PRIVATE);
         first_name = preferences.getString("first_name", null);
@@ -132,13 +143,10 @@ public class ServiceDetails extends AppCompatActivity {
         SharedPreferences authPref = getSharedPreferences("AUTH_TOKEN", MODE_PRIVATE);
         String authToken = authPref.getString("TOKEN", null);
         int id = preferences.getInt("id", 0);
-        Log.d(TAG, "postTimeAndDate: ID===>" + id);
 
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat format = new SimpleDateFormat(" yyyy-MM-dd HH:mm:ss ");
         String time =  format.format(calendar.getTime());
-
-        Log.d(TAG, "postTimeAndDate: TOKEN" + authToken);
 
         clientBVM.postEndDateTime(authToken, id, time).observe(this, new Observer<ClientBookingModel>() {
             @Override
@@ -154,7 +162,7 @@ public class ServiceDetails extends AppCompatActivity {
         dialog.setContentView(R.layout.dialog_error);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        TextView btnDone = (TextView) dialog.findViewById(R.id.dismissWarningButton);
+        AppCompatButton btnDone = (AppCompatButton) dialog.findViewById(R.id.dismissWarningButton);
         TextView warningMessage = (TextView) dialog.findViewById(R.id.warningErrorMessage);
         warningMessage.setText("You are not allowed to exit the app. You need to finish the task first to proceed.");
         btnDone.setOnClickListener(new View.OnClickListener() {

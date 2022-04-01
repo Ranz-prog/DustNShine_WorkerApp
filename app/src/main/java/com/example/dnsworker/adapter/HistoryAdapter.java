@@ -4,15 +4,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.R;
-
 import java.util.ArrayList;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.BookingViewHolder> {
@@ -73,10 +69,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.BookingV
 
         public BookingViewHolder(@NonNull View itemView, OnClickBookingListener onClickBookingListener) {
             super(itemView);
-
-            /*Use from task_container_row.xml as sample*/
-
-            //booking_Image = itemView.findViewById(R.id.booking_clientImageView);
             booking_clientName = itemView.findViewById(R.id.booking_clientName_TV);
             booking_clientLocation = itemView.findViewById(R.id.booking_clientLocation_TV);
             booking_contactNumber = itemView.findViewById(R.id.booking_clientContact_TV);

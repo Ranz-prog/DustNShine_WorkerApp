@@ -67,8 +67,9 @@
                 android:id="@+id/signin_Email_ET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="40"
-                android:maxLines="1"/>
+                android:maxLength="35"
+                android:maxLines="1"
+                android:singleLine="true"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -90,8 +91,9 @@
                 android:id="@+id/signin_Password_ET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="40"
-                android:maxLines="1"/>
+                android:maxLength="30"
+                android:maxLines="1"
+                android:singleLine="true"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

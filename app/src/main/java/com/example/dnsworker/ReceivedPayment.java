@@ -84,7 +84,7 @@ public class ReceivedPayment extends AppCompatActivity {
         dialog.getWindow()
                 .setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        TextView btnDone = (TextView) dialog.findViewById(R.id.confirmButton);
+        AppCompatButton btnDone = (AppCompatButton) dialog.findViewById(R.id.done_confirmButton);
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,7 +102,7 @@ public class ReceivedPayment extends AppCompatActivity {
         dialog.setContentView(R.layout.dialog_error_email);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        TextView btnDone = (TextView) dialog.findViewById(R.id.dismissButton);
+        AppCompatButton btnDone = (AppCompatButton) dialog.findViewById(R.id.dismissButton);
         TextView warningMessage = (TextView) dialog.findViewById(R.id.warningMessage);
         warningMessage.setText("Please Enter the received amount to proceed and exit.");
         btnDone.setOnClickListener(new View.OnClickListener() {

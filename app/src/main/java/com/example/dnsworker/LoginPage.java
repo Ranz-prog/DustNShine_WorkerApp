@@ -4,7 +4,6 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -23,7 +22,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.dnsworker.LogIn.LogInResponse;
 import com.example.dnsworker.Service.UserService;
 import com.example.dnsworker.ViewModel.UserViewModel;
@@ -33,11 +31,9 @@ import com.google.android.material.textfield.TextInputEditText;
 public class LoginPage extends AppCompatActivity {
 
     Context context;
-
     private AppCompatButton signin_btnSignin;
     private TextInputEditText signin_email, signin_password;
     UserViewModel userViewModel;
-
     private Dialog dialog;
 
     @Override
@@ -50,7 +46,6 @@ public class LoginPage extends AppCompatActivity {
         signin_btnSignin = findViewById(R.id.signup_buttonSignin);
 
         dialog = new Dialog(this);
-        Log.d("TAG", "LOGIN PAGE!");
         userViewModel = new UserViewModel();
 
         //Proceed to Login
@@ -91,15 +86,8 @@ public class LoginPage extends AppCompatActivity {
                         SharedPreferences preferences = getSharedPreferences("AUTH_TOKEN", MODE_PRIVATE);
                         preferences.edit().putString("TOKEN", token).apply();
 
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                Intent intent = new Intent(LoginPage.this, MainMenu.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                                finish();
-                            }
-                        }, 700);
+                        loginDialog();
+
                     }
                     else{
                         warningDialog();
@@ -122,6 +110,21 @@ public class LoginPage extends AppCompatActivity {
             }
         });
     }
+
+    private void loginDialog(){
+        final LoadingDialog loadingDialog = new LoadingDialog(this);
+        loadingDialog.startloginLoading();
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(LoginPage.this, MainMenu.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
+        }, 1000);
+    }
     public boolean isConnected(){
         ConnectivityManager manager = (ConnectivityManager) getApplicationContext()
                 .getSystemService(context.CONNECTIVITY_SERVICE);
@@ -134,7 +137,7 @@ public class LoginPage extends AppCompatActivity {
 
         TextView btnDone = (TextView) dialog.findViewById(R.id.dismissButton);
         TextView warningMessage = (TextView) dialog.findViewById(R.id.warningMessage);
-        warningMessage.setText("Email or Password is empty. Please try again");
+        warningMessage.setText("Email or Password is empty. Please try again.");
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,7 +154,7 @@ public class LoginPage extends AppCompatActivity {
 
         TextView btnDone = (TextView) dialog.findViewById(R.id.dismissButton);
         TextView warningMessage = (TextView) dialog.findViewById(R.id.warningMessage);
-        warningMessage.setText("Invalid Credentials, Try again");
+        warningMessage.setText("Invalid Credentials, Please Try again.");
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -166,8 +169,6 @@ public class LoginPage extends AppCompatActivity {
         userViewModel.getSignInRes(email, password);
     }
 
-    //OnBack press to Exit the Application
-    boolean doubleBackToExitPressedOnce = false;
 
     @Override
     public void onBackPressed() {

@@ -191,7 +191,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/noteLabel"
+                            android:layout_below="@id/service_noteTV"
                             android:layout_marginTop="10dp">
 
                             <androidx.recyclerview.widget.RecyclerView
@@ -233,7 +233,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/paymentMethodLabel"
-                            android:layout_marginLeft="33dp"
+                            android:layout_marginLeft="28dp"
                             android:fontFamily="@font/roboto_regular"
                             android:text="Cash"
                             android:textSize="15sp" />

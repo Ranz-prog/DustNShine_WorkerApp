@@ -18,13 +18,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
+
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.example.dnsworker.Feedback;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookData;
 import com.example.dnsworker.Model.ClientBookingModel.ClientBookingModel;
@@ -163,11 +162,8 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnClickB
                         noIntenetResultHistory.setVisibility(View.GONE);
                     }
 
-                    Log.d(TAG, "onChanged: DATA HERE ======>" + clientHistoryBookData);
-                    Log.d(TAG, "onChanged: Count===>" + clientHistoryBookData.size());
                 } else {
                     //if No Data retrieved
-                    // }
                 }
             }
         });
