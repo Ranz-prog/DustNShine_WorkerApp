@@ -40,7 +40,7 @@
                 android:id="@+id/received_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_medium"
+                android:fontFamily="@font/montserrat_regular"
                 android:text="Customer Information"
                 android:textColor="@color/app_theme_blue"
                 android:textSize="18sp" />
@@ -86,24 +86,36 @@
                 android:id="@+id/received_totalcost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_medium"
+                android:layout_below="@+id/received_customernumber"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/montserrat_regular"
                 android:text="Total Cost"
                 android:textColor="@color/app_theme_blue"
-                android:layout_below="@+id/received_customernumber"
-                android:textSize="18sp"
-                android:layout_marginTop="4dp"/>
+                android:textSize="18sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/pesoSign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/received_customernumber"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="4dp"
+                android:layout_toLeftOf="@id/received_totalcost_value"
+                android:text="₱"
+                android:textSize="17sp" />
+
 
             <TextView
                 android:id="@+id/received_totalcost_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_medium"
-                android:text="400.00"
-                android:textColor="@color/app_theme_blue"
                 android:layout_below="@+id/received_customernumber"
                 android:layout_alignParentRight="true"
-                android:textSize="18sp"
-                android:layout_marginTop="4dp"/>
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="400.00"
+                android:textSize="18sp" />
             
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/line"
@@ -144,6 +156,7 @@
                     android:maxLength="10"
                     android:maxLines="1"
                     android:singleLine="true"
+                    android:fontFamily="@font/roboto_regular"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>

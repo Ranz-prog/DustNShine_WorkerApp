@@ -20,7 +20,6 @@
         android:background="?android:attr/windowBackground"
         android:elevation="8dp"
         app:elevation="8dp"
-        app:labelVisibilityMode="unlabeled"
         app:menu="@menu/bottom_navigation" />
 
 </RelativeLayout>

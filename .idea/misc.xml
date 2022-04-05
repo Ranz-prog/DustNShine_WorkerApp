@@ -50,13 +50,13 @@
         <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/drawable/signin_button_shape_red.xml" value="0.1462837837837838" />
         <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/drawable/signin_container_shape.xml" value="0.1462837837837838" />
         <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/activity_customer_details.xml" value="0.2" />
-        <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/activity_feedback.xml" value="0.2" />
+        <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/activity_feedback.xml" value="0.16" />
         <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/activity_login_page.xml" value="0.17" />
         <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/activity_main.xml" value="0.1358108108108108" />
-        <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/activity_main_menu.xml" value="0.13444816053511705" />
+        <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/activity_main_menu.xml" value="0.16" />
         <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/activity_message_box.xml" value="0.18" />
         <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/activity_received_payment.xml" value="0.16" />
-        <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/activity_service_details.xml" value="0.22" />
+        <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/activity_service_details.xml" value="0.17" />
         <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/content_booking_row.xml" value="0.209375" />
         <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/content_message_row.xml" value="0.18" />
         <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/content_servicelist_row.xml" value="0.5" />
@@ -70,13 +70,13 @@
         <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/dialog_start_work.xml" value="0.18" />
         <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/fragment_booking.xml" value="0.2" />
         <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/fragment_chat.xml" value="0.18" />
-        <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/fragment_home.xml" value="0.22" />
-        <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/fragment_profile.xml" value="0.12" />
+        <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/fragment_profile.xml" value="0.18" />
         <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/new_content_booking_row.xml" value="0.18" />
-        <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/new_content_task_row.xml" value="0.15" />
+        <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/new_content_task_row.xml" value="0.18" />
         <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/progress_dialog_custom.xml" value="0.2" />
         <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/layout/progress_dialog_custom_login.xml" value="0.1358108108108108" />
-        <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/menu/bottom_navigation.xml" value="0.13444816053511705" />
+        <entry key="..\:/Users/adria/Desktop/boomtech/workers-app/app/src/main/res/menu/bottom_navigation.xml" value="0.16" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/drawable/container_border.xml" value="0.2203125" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/drawable/container_border_2.xml" value="0.2203125" />
         <entry key="..\:/Users/adria/Documents/GitHub/workers-app/app/src/main/res/drawable/container_border_3.xml" value="0.2203125" />

@@ -63,11 +63,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:layout_toRightOf="@+id/cdCustomer"
-                            android:fontFamily="@font/roboto_medium"
+                            android:fontFamily="@font/montserrat_regular"
                             android:text="@string/customer_details"
                             android:textColor="@color/app_theme_blue"
                             android:textSize="17sp"
-                            android:textStyle="bold" />
+                            />
 
                         <!--Customer Name Here-->
 
@@ -153,11 +153,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_toRightOf="@id/cdBooking"
-                            android:fontFamily="@font/roboto_medium"
+                            android:fontFamily="@font/montserrat_regular"
                             android:text="@string/customer_booking"
                             android:textColor="@color/app_theme_blue"
                             android:textSize="17sp"
-                            android:textStyle="bold" />
+                             />
 
                         <TextView
                             android:id="@+id/noteLabel"
@@ -222,11 +222,11 @@
                             android:layout_marginLeft="3dp"
                             android:layout_marginTop="2dp"
                             android:layout_toRightOf="@id/cdPayment"
-                            android:fontFamily="@font/roboto_medium"
+                            android:fontFamily="@font/montserrat_regular"
                             android:text="@string/customer_payment"
                             android:textColor="@color/app_theme_blue"
                             android:textSize="17sp"
-                            android:textStyle="bold" />
+                             />
 
                         <TextView
                             android:id="@+id/service_paymentMethod"
@@ -238,28 +238,49 @@
                             android:text="Cash"
                             android:textSize="15sp" />
 
+                        <com.google.android.material.divider.MaterialDivider
+                            android:id="@+id/linedivider"
+                            android:layout_width="match_parent"
+                            android:layout_height="2px"
+                            android:layout_below="@id/service_paymentMethod"
+                            android:layout_marginTop="4dp"/>
+
+
                         <TextView
                             android:id="@+id/totalCostlabel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/service_paymentMethod"
-                            android:layout_marginTop="4dp"
-                            android:fontFamily="@font/quicsandmed"
+                            android:layout_below="@id/linedivider"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/montserrat_regular"
                             android:text="@string/customer_total"
                             android:textColor="@color/app_theme_blue"
                             android:textSize="17sp"
-                            android:textStyle="bold" />
+                             />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/pesoSign"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/linedivider"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_toLeftOf="@+id/totalCost"
+                            android:text="₱"
+                            android:textSize="17sp"
+                            />
 
                         <TextView
                             android:id="@+id/totalCost"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/service_paymentMethod"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_toRightOf="@id/totalCostlabel"
-                            android:fontFamily="@font/quicsandmed"
-                            android:textSize="15sp"
+                            android:layout_below="@id/linedivider"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="1000"
+                            android:textSize="17sp"
                             android:textStyle="bold" />
                     </RelativeLayout>
 

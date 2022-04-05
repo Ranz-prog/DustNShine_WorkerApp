@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:fontFamily="@font/roboto_bold"
+                android:fontFamily="@font/montserrat_medium"
                 android:text="Customer Details"
                 android:textColor="@color/app_theme_gold"
                 android:textSize="20sp" />
@@ -115,7 +115,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@id/cdIcon"
-                                    android:fontFamily="@font/roboto_bold"
+                                    android:fontFamily="@font/montserrat_regular"
                                     android:text="Customer Details"
                                     android:textColor="@color/app_theme_blue"
                                     android:textSize="17sp" />
@@ -175,7 +175,7 @@
                                     android:layout_below="@id/c_details_mobileNumber"
                                     android:layout_marginTop="8dp"
                                     android:layout_toRightOf="@id/cdBooking"
-                                    android:fontFamily="@font/roboto_bold"
+                                    android:fontFamily="@font/montserrat_regular"
                                     android:text="Booking Details"
                                     android:textColor="@color/app_theme_blue"
                                     android:textSize="17sp" />

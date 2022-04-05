@@ -10,14 +10,15 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dp" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/customProgressBar"
-        android:layout_centerVertical="true"
-        android:text="Loading Please wait ..."
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/customProgressBar"
+        android:text="Loading Please wait ..."
+        android:fontFamily="@font/roboto_regular"/>
 
 </RelativeLayout>

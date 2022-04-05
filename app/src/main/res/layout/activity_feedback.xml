@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:fontFamily="@font/roboto_bold"
+            android:fontFamily="@font/montserrat_medium"
             android:text="Feedback"
             android:textColor="@color/app_theme_gold"
             android:textSize="20sp" />
@@ -82,7 +82,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="4dp"
                             android:layout_toRightOf="@id/cdIcon"
-                            android:fontFamily="@font/roboto_medium"
+                            android:fontFamily="@font/montserrat_regular"
                             android:text="Customer Details"
                             android:textColor="@color/app_theme_blue"
                             android:textSize="17sp" />
@@ -149,10 +149,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="4dp"
                                 android:layout_marginTop="8dp"
-                                android:layout_toRightOf="@id/cdBooking"
-                                android:fontFamily="@font/roboto_medium"
-                                android:text="Booking Details"
                                 android:textColor="@color/app_theme_blue"
+                                android:layout_toRightOf="@id/cdBooking"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:text="Booking Details"
                                 android:textSize="17sp" />
 
                             <TextView
@@ -207,7 +207,7 @@
                             android:layout_below="@id/recyclerContainaer"
                             android:layout_marginLeft="4dp"
                             android:layout_toRightOf="@id/cdPayment"
-                            android:fontFamily="@font/roboto_medium"
+                            android:fontFamily="@font/montserrat_regular"
                             android:text="Payment Method"
                             android:textColor="@color/app_theme_blue"
                             android:textSize="17sp" />
@@ -223,26 +223,44 @@
                             android:text="Cash Payment"
                             android:textSize="15sp" />
 
+                        <com.google.android.material.divider.MaterialDivider
+                            android:id="@+id/linedivider"
+                            android:layout_width="match_parent"
+                            android:layout_height="2px"
+                            android:layout_below="@id/history_paymentMethod"
+                            android:layout_marginTop="4dp"/>
 
                         <TextView
                             android:id="@+id/customertotalcost"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/customerpayment"
-                            android:layout_marginTop="30dp"
-                            android:fontFamily="@font/roboto_medium"
+                            android:layout_below="@id/linedivider"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/montserrat_regular"
                             android:text="Total Cost: "
                             android:textColor="@color/app_theme_blue"
+                            android:textSize="17sp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/pesoSign"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/linedivider"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_toLeftOf="@+id/history_totalCost"
+                            android:text="₱"
                             android:textSize="17sp" />
 
                         <TextView
                             android:id="@+id/history_totalCost"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/customerpayment"
-                            android:layout_marginTop="30dp"
+                            android:layout_below="@id/linedivider"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
-                            android:layout_toRightOf="@id/customertotalcost"
                             android:fontFamily="@font/roboto_medium"
                             android:text="1000 "
                             android:textSize="17sp"
@@ -266,7 +284,7 @@
                         android:id="@+id/customerhowsourwork"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_medium"
+                        android:fontFamily="@font/montserrat_regular"
                         android:text="How's our work?"
                         android:textSize="17sp" />
 
@@ -297,9 +315,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/how"
                         android:layout_marginTop="10dp"
-                        android:fontFamily="@font/roboto_medium"
+                        android:fontFamily="@font/montserrat_regular"
                         android:text="Rating"
-                        android:textColor="@color/app_theme_blue"
                         android:textSize="17sp" />
 
                     <RatingBar
@@ -323,7 +340,7 @@
                         android:text="5.0"
                         android:textColor="@color/app_theme_gold"
                         android:textSize="24dp"
-                        android:textStyle="bold" />
+                        />
 
                 </RelativeLayout>
             </RelativeLayout>

@@ -16,10 +16,10 @@
             android:id="@+id/titleTaskHist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/roboto_regular"
-            android:text="Your Finished Task"
             android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Your Finished Task"
             android:textColor="@color/app_theme_gold"
             android:textSize="24sp" />
 

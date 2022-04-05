@@ -177,7 +177,6 @@ public class CustomerDetails extends AppCompatActivity implements OnMapReadyCall
                 startActivity(intent);
                 dialog.dismiss();
                 finish();
-
             }
         });
         btnNo.setOnClickListener(new View.OnClickListener() {
