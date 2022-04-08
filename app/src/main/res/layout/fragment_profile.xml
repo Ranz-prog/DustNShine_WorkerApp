@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp">
+
+        <LinearLayout
+            android:id="@+id/appIconProfile"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/circle_container"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/appicon" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/profile_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/appIconProfile"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="@string/profile_subtitle"
+            android:textColor="@color/app_theme_gold"
+            android:textSize="17sp" />
+
+        <!--Information-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/firstnameLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Full Name"
+            android:layout_marginTop="8dp"
+            app:boxBackgroundColor="@color/background"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintTextColor="@color/app_theme_blue"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_below="@+id/profile_subtitle"
+            android:textColorHint="@color/app_theme_blue"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/worker_fname_ET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:textColor="@color/text_color"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailAddInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:layout_marginTop="8dp"
+            app:boxBackgroundColor="@color/background"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintTextColor="@color/app_theme_blue"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_below="@+id/firstnameLayout"
+            android:textColorHint="@color/app_theme_blue"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/worker_email_ET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:textColor="@color/text_color"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/contactInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contact Number"
+            app:boxBackgroundColor="@color/background"
+            app:boxStrokeWidth="0dp"
+            android:layout_marginTop="8dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintTextColor="@color/app_theme_blue"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_below="@+id/emailAddInputLayout"
+            android:textColorHint="@color/app_theme_blue"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/worker_contact_ET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:textColor="@color/text_color"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </RelativeLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLogout"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/signin_button_shape"
+        android:fontFamily="@font/roboto_regular"
+        android:text="Log out"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:id="@+id/noInternetProfileImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_wifi_off"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/noInternetConnectionProfileTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:layout_centerInParent="true"
+        android:text="Oops! No internet connection"
+        android:layout_below="@id/noInternetProfileImage"
+        android:textSize="15sp"
+        android:visibility="invisible" />
+
+</RelativeLayout>

@@ -8,15 +8,11 @@
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".LoginPage">
-
-
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/logincard" />
-
-
     <LinearLayout
         android:id="@+id/upperPartContainer"
         android:layout_width="match_parent"
@@ -34,86 +30,85 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/calibribold"
+            android:fontFamily="@font/montserrat_medium"
             android:gravity="center"
             android:text="DustNShine"
             android:textColor="@color/app_theme_blue"
-            android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textSize="28sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/calibribold"
-            android:gravity="center"
-            android:text="Sign In"
-            android:textSize="24sp"
-            android:textStyle="bold" />
     </LinearLayout>
 
 
     <!--Input Data Account Here-->
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/upperPartContainer"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="40dp">
 
-        <EditText
-            android:id="@+id/signin_Email_ET"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/signin_edit_text_shape"
-            android:fontFamily="@font/quicksandreg"
-            android:hint="@string/signup_email"
-            android:padding="10dp"
-            android:textSize="14sp" />
-
-        <EditText
-            android:id="@+id/signin_Password_ET"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@id/signin_Email_ET"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/signin_edit_text_shape"
-            android:fontFamily="@font/quicksandreg"
-            android:hint="@string/signup_password"
-            android:padding="10dp"
-            android:textSize="14sp" />
-
-        <CheckBox
-            android:id="@+id/signin_Checkbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/signin_Password_ET"
-            android:layout_marginTop="14dp" />
-
-        <TextView
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/signin_Password_ET"
-            android:layout_marginTop="20dp"
-            android:layout_toRightOf="@id/signin_Checkbox"
-            android:fontFamily="@font/quicksand_font"
-            android:text="@string/signup_keep_login"
-            android:textSize="16sp" />
+            android:layout_margin="10dp"
+            android:hint="Email"
+            app:boxBackgroundColor="@color/background"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintTextColor="@color/app_theme_blue"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signin_Email_ET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="35"
+                android:maxLines="1"
+                android:singleLine="true"/>
 
-        <Button
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="Password"
+            app:passwordToggleEnabled="true"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintTextColor="@color/app_theme_blue"
+            app:boxBackgroundColor="@color/background"
+            android:layout_below="@+id/emailInputLayout"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signin_Password_ET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="30"
+                android:maxLines="1"
+                android:singleLine="true"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/signup_buttonSignin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/signin_Checkbox"
+            android:layout_below="@id/passwordInputLayout"
             android:layout_marginTop="20dp"
             android:background="@drawable/signin_button_shape"
-            android:backgroundTint="@color/app_theme_gold"
-            android:fontFamily="@font/quicksandbold"
+            android:fontFamily="@font/roboto_medium"
             android:text="@string/signup_button_title"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="15sp" />
 
 
     </RelativeLayout>

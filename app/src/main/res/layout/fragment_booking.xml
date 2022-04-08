@@ -2,23 +2,88 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/upPart"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/white"
+        android:layout_marginLeft="20dp"
+        >
+
+        <TextView
+            android:id="@+id/titleTaskHist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Your Finished Task"
+            android:textColor="@color/app_theme_gold"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/upPart"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/history_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/booking_RecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/noResultLottieHistory"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/folder"
+        android:visibility="invisible"/>
 
     <TextView
-        android:id="@+id/titleBooking"
-        android:layout_width="match_parent"
+        android:id="@+id/emptyHistoryTV"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/calibribold"
-        android:text="@string/bookings_title"
-        android:textColor="@color/app_theme_gold"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:fontFamily="@font/roboto_medium"
+        android:layout_centerInParent="true"
+        android:text="No Available Data"
+        android:layout_below="@id/noResultLottieHistory"
+        android:textSize="15sp"
+        android:visibility="invisible" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/booking_RecyclerView"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/noInternetHistoryImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_wifi_off"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/noInternetConnectionHistoryTV"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/titleBooking" />
+        android:fontFamily="@font/roboto_medium"
+        android:layout_centerInParent="true"
+        android:text="Oops! No internet connection"
+        android:layout_below="@id/noInternetHistoryImage"
+        android:textSize="15sp"
+        android:visibility="invisible" />
+
+
 
 </RelativeLayout>

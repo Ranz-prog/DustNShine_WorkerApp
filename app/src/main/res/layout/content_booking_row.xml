@@ -1,106 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_marginTop="6dp"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginTop="10dp"
     app:cardCornerRadius="5dp"
-    >
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/container_border"
-        android:orientation="vertical"
         android:padding="10dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/booking_clientImageView"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/ic_launcher_background" />
-
-        <TextView
-            android:id="@+id/booking_service_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/booking_clientImageView"
-            android:fontFamily="@font/calibribold"
-            android:text="Customer Details"
-            android:textColor="@color/app_theme_blue"
-            android:textSize="16dp"
-            android:textStyle="bold" />
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/user" />
 
         <TextView
             android:id="@+id/booking_clientName_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/booking_service_label"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="6dp"
             android:layout_toRightOf="@+id/booking_clientImageView"
-            android:fontFamily="@font/quicsandmed"
-            android:singleLine="true"
+            android:fontFamily="@font/roboto_medium"
             android:text="Client Name:"
-            android:textStyle="bold" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/booking_clientName_TV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/booking_service_label"
-            android:layout_marginLeft="6dp"
-            android:layout_marginTop="6dp"
-            android:layout_toRightOf="@id/booking_clientName_label"
-            android:fontFamily="@font/quicksandreg"
-            android:text="Juan Delacruz" />
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/booking_clientName_label"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/ClientName"
+            android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/booking_location_label"
+            android:id="@+id/booking_clientSchedule_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/booking_clientName_label"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/booking_clientImageView"
-            android:fontFamily="@font/quicsandmed"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Schedule:"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/booking_clientSchedule_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/booking_clientName_TV"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/booking_clientSchedule_label"
+            android:fontFamily="@font/quicksandreg"
             android:singleLine="true"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/booking_location_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/booking_clientSchedule_label"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/booking_clientImageView"
+            android:fontFamily="@font/roboto_medium"
             android:text="Location:"
-            android:textStyle="bold" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/booking_clientLocation_TV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/booking_clientName_TV"
-            android:layout_marginLeft="6dp"
-            android:layout_toRightOf="@id/booking_location_label"
-            android:fontFamily="@font/quicksandreg"
+            android:layout_below="@+id/booking_clientSchedule_label"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/booking_location_label"
+            android:fontFamily="@font/roboto_regular"
+            android:maxLines="1"
             android:singleLine="true"
-            android:text="Dagupan, Pangasinan" />
+            android:text="@string/Location"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/booking_contact_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/booking_location_label"
+            android:layout_below="@+id/booking_location_label"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/booking_clientImageView"
-            android:fontFamily="@font/quicsandmed"
+            android:fontFamily="@font/roboto_medium"
             android:text="Contact Number:"
-            android:textStyle="bold" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/booking_clientContact_TV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/booking_clientLocation_TV"
-            android:layout_marginLeft="6dp"
-            android:layout_toRightOf="@id/booking_contact_label"
-            android:fontFamily="@font/quicksandreg"
-            android:text="09123456789" />
+            android:layout_below="@+id/booking_clientLocation_TV"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/booking_contact_label"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/ContactNumber"
+            android:textSize="14sp" />
     </RelativeLayout>
-
-
 </androidx.cardview.widget.CardView>
+
+
+
+
+

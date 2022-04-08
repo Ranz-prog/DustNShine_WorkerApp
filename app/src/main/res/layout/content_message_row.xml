@@ -13,11 +13,25 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/chat_clientImage"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/user" />
+        <LinearLayout
+            android:id="@+id/chatCircularAvatar"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/circle_container"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/chat_firstLetterTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="J"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/chat_clientName_TV"
@@ -25,12 +39,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"
             android:layout_marginTop="2dp"
-            android:layout_toRightOf="@+id/chat_clientImage"
-            android:fontFamily="@font/quicsandmed"
+            android:layout_toRightOf="@+id/chatCircularAvatar"
+            android:fontFamily="@font/roboto_medium"
             android:text="Client Name"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            android:textStyle="bold" />
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/chat_clientMessage_TV"
@@ -39,15 +51,17 @@
             android:layout_below="@id/chat_clientName_TV"
             android:layout_marginLeft="14dp"
             android:layout_marginTop="2dp"
-            android:layout_toRightOf="@+id/chat_clientImage"
-            android:fontFamily="@font/quicksandreg"
+            android:layout_toRightOf="@+id/chatCircularAvatar"
+            android:fontFamily="@font/roboto_regular"
             android:singleLine="true"
-            android:text="Lorem ipsum lorem ipsum" />
+            android:text="Lorem ipsum lorem ipsum"
+            android:textSize="14sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:fontFamily="@font/roboto_regular"
             android:text="10:00"
             android:textSize="10sp" />
     </RelativeLayout>

@@ -2,7 +2,8 @@
     <string name="app_name">DNSWorker</string>
 
     //Splash Title
-    <string name="title_splash">DustNShine</string>
+    <string name="title_splash">DustnShine</string>
+    <string name="title">Worker</string>
 
     //Sign up Text
     <string name="signup_title">Sign In</string>
@@ -15,22 +16,65 @@
     //Main Menu Titles
     <string name="home_title">Tasks</string>
     <string name="message_title">Message</string>
-    <string name="bookings_title">Bookings</string>
+    <string name="bookings_title">History</string>
+    <string name="profile_title">Manage Account</string>
+    <string name="profile_subtitle">Personal Information</string>
 
 
     //Customer Details
     <string name="cleaning_title">Cleaning Package</string>
 
+    //Google Map API KEY
+    <string name="map_key">AIzaSyDO-LIt8TXeE_2kEGStwVdJMtIH9qGSKtI</string>
 
     //Labels
     <string name="customer_details">Customer Details:</string>
     <string name="customer_name">Customer Name:</string>
     <string name="customer_location">Location:</string>
     <string name="customer_number">Contact Number:</string>
+    <string name="customer_status">Status: </string>
     <string name="customer_booking">Booking Details</string>
     <string name="customer_payment">Payment Method</string>
     <string name="customer_total">Total Cost:</string>
-    
+
     //Pop Up Message
-    <string name="confirmation_message">Please wait for the customers confirmation!</string>
+    <string name="confirmation_message">Work is done! Please wait for the customers Feedback.</string>
+    <string name="start_work_message">Would you like to start your work?</string>
+    <string name="end_work_message">Would you like to finish your work?</string>
+
+    //User Information
+    <string name="user_email">Email</string>
+    <string name="user_firstname">First Name</string>
+    <string name="user_lastname">Last Name</string>
+    <string name="user_contact">Contact Number</string>
+    <string name="user_location">Location</string>
+    <string name="user_house_number">House No.</string>
+    <string name="user_street">Street</string>
+    <string name="user_brgy">Barangay</string>
+    <string name="user_municipality">Municipality/City</string>
+    <string name="user_province">Province</string>
+    <string name="user_zip">Zip Code</string>
+
+    //Booking Content
+    <string name="ClientName">Juan Delacruz</string>
+    <string name="Location">123 Arellano, Dagupan City</string>
+    <string name="ContactNumber">09123456789</string>
+
+    //Manage Profile
+    <string name="signup">Sign Up</string>
+    <string name="Manage">Profile</string>
+    <string name="personalinformation">Personal Information</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="email">Email Address</string>
+    <string name="retypepassword">Re-type Password</string>
+    <string name="location">Location</string>
+    <string name="houseno">House no.</string>
+    <string name="street">Street</string>
+    <string name="barangay">Barangay</string>
+    <string name="citymunicipality">City/Municipality</string>
+    <string name="province">Province</string>
+    <string name="zipcode">Zip Code</string>
+
+
 </resources>
